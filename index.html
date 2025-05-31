@@ -3,29 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - The Coders Club</title>
+    <title>Home - Feedback</title>
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .code-container {
-            display: flex;
-            align-items: center;
-            gap: 10px; /* Adds space between the elements */
-        }
-        pre {
-            margin: 0;
-            padding: 5px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-        }
-        button {
-            padding: 5px 10px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
-
     <div class="blue-container">
         <div class="left-aligned">
             <a href="https://mce-madurai.ac.in/" target="_blank">
@@ -38,33 +20,51 @@
         </div>
     </div>
 
-    <!-- Centered Content -->
+    <!-- Back Button Positioned Below the Title Bar, Slightly Right <div class="back-button-container" style="margin: 10px 0; text-align: left; padding-left: 20px;"><button onclick="window.location.href='https://thecodersclub-mce.github.io/'">Back to Leaderboard</button></div>-->
     <div class="content-container">
-        <h2>QUIZ CLOSED. FILL FEEDBACK FORM.</h2>
+        <center><h4 id="status">MINDMASH - WEEK 01</h4></center>
 
-        <!-- Instruction, Code, and Copy Button in one line      <div class="code-container"> <span>Enter code if asked:</span><pre id="auto-code">2653 2852</pre><button onclick="copyToClipboard()">Copy Code for Quiz</button></div> -->
-       
-        <!-- Buttons Section -->
-        <div class="button-container">
-            <button onclick="window.location.href='';">Quiz</button>
-            <button onclick="window.location.href='feedback.html';">Feedback Form</button>
-        </div>
+        <section>
+            <div class="label-button-container">
+                <h3>2ND YEAR CSE DEPARTMENT</h3>
+                <div class="button-row">
+                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdLfx0pTjxdFjaeSpAD7J--PIYQ9FRiJrHlTG01lITEc_olng/viewform?usp=header';">BOYS</button>
+                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScM1QdLeHzaIsOBlga7o-5Ag5ayce-g1Oznjy9MMqNMYzAscQ/viewform?usp=header';">GIRLS</button>
+                    <br/><br/>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="label-button-container">
+                <h3>2ND YEAR AI/ML DEPARTMENT</h3>
+                <div class="button-row">
+                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScM1QdLeHzaIsOBlga7o-5Ag5ayce-g1Oznjy9MMqNMYzAscQ/viewform?usp=header';">BOYS</button>
+                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfwjdavp557kxiFq0efJ3QMwDx8LIUKKHQR8djKxg1pDmV3aw/viewform?usp=header';">GIRLS</button>
+                    <br/><br/>
+                </div>
+            </div>
+        </section>
+        
+        <section>
+            <div class="label-button-container">
+                <h3>3RD YEAR CSE DEPARTMENT</h3>
+                <div class="button-row">
+                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf7RiWCVUUM72CDOLc73iWN2M1y_i2NzDImNNJ-s5cI7Nvcxg/viewform?usp=sharing&ouid=103113943123720362851';">BOYS</button>
+                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc9vS2TA-OlbfGKVdGzBIY9YWAR_pssQowGsSGNu21DvMCzbw/viewform?usp=sharing&ouid=103113943123720362851';">GIRLS</button>
+                    <br/><br/>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Created by The Coders Club</p>
-    </footer>
+<footer>
+    <p>Created by The Coders Club</p>
+    <!-- Instagram Icon in Footer -->
+    <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
+        <img src="images.png" alt="Instagram" class="instagram-logo">
+    </a>
+</footer>
 
-    <script>
-        function copyToClipboard() {
-            let codeText = document.getElementById("auto-code").innerText;
-            navigator.clipboard.writeText(codeText).then(() => {
-                alert("Code copied to clipboard!");
-            }).catch(err => {
-                console.error("Failed to copy: ", err);
-            });
-        }
-    </script>
 </body>
 </html>
