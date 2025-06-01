@@ -7,7 +7,7 @@
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="disableLinks()">
     <div class="blue-container">
         <div class="left-aligned">
             <a href="https://mce-madurai.ac.in/" target="_blank">
@@ -20,7 +20,6 @@
         </div>
     </div>
 
-    <!-- Back Button Positioned Below the Title Bar, Slightly Right <div class="back-button-container" style="margin: 10px 0; text-align: left; padding-left: 20px;"><button onclick="window.location.href='https://thecodersclub-mce.github.io/'">Back to Leaderboard</button></div>-->
     <div class="content-container">
         <center><h4 id="status">MINDMASH - WEEK 01</h4></center>
 
@@ -28,9 +27,8 @@
             <div class="label-button-container">
                 <h3>2ND YEAR CSE DEPARTMENT</h3>
                 <div class="button-row">
-                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdLfx0pTjxdFjaeSpAD7J--PIYQ9FRiJrHlTG01lITEc_olng/viewform?usp=header';">BOYS</button>
-                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe2zuaLHJqQOr-7PQsOCb3TgUDYbSZO8CsiR9AXTmN2n7SPCg/viewform?usp=header';">GIRLS</button>
-                    <br/><br/>
+                    <button class="feedback-button" id="form1" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdLfx0pTjxdFjaeSpAD7J--PIYQ9FRiJrHlTG01lITEc_olng/viewform?usp=header';">BOYS</button>
+                    <button class="feedback-button" id="form2" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe2zuaLHJqQOr-7PQsOCb3TgUDYbSZO8CsiR9AXTmN2n7SPCg/viewform?usp=header';">GIRLS</button>
                 </div>
             </div>
         </section>
@@ -39,32 +37,47 @@
             <div class="label-button-container">
                 <h3>2ND YEAR AI/ML DEPARTMENT</h3>
                 <div class="button-row">
-                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScM1QdLeHzaIsOBlga7o-5Ag5ayce-g1Oznjy9MMqNMYzAscQ/viewform?usp=header';">BOYS</button>
-                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfwjdavp557kxiFq0efJ3QMwDx8LIUKKHQR8djKxg1pDmV3aw/viewform?usp=header';">GIRLS</button>
-                    <br/><br/>
+                    <button class="feedback-button" id="form3" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScM1QdLeHzaIsOBlga7o-5Ag5ayce-g1Oznjy9MMqNMYzAscQ/viewform?usp=header';">BOYS</button>
+                    <button class="feedback-button" id="form4" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfwjdavp557kxiFq0efJ3QMwDx8LIUKKHQR8djKxg1pDmV3aw/viewform?usp=header';">GIRLS</button>
                 </div>
             </div>
         </section>
-        
+
         <section>
             <div class="label-button-container">
                 <h3>3RD YEAR CSE DEPARTMENT</h3>
                 <div class="button-row">
-                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf7RiWCVUUM72CDOLc73iWN2M1y_i2NzDImNNJ-s5cI7Nvcxg/viewform?usp=sharing&ouid=103113943123720362851';">BOYS</button>
-                    <button class="feedback-button" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc9vS2TA-OlbfGKVdGzBIY9YWAR_pssQowGsSGNu21DvMCzbw/viewform?usp=sharing&ouid=103113943123720362851';">GIRLS</button>
-                    <br/><br/>
+                    <button class="feedback-button" id="form5" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf7RiWCVUUM72CDOLc73iWN2M1y_i2NzDImNNJ-s5cI7Nvcxg/viewform?usp=sharing&ouid=103113943123720362851';">BOYS</button>
+                    <button class="feedback-button" id="form6" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc9vS2TA-OlbfGKVdGzBIY9YWAR_pssQowGsSGNu21DvMCzbw/viewform?usp=sharing&ouid=103113943123720362851';">GIRLS</button>
                 </div>
             </div>
         </section>
     </div>
 
-<footer>
-    <p>Created by The Coders Club</p>
-    <!-- Instagram Icon in Footer -->
-    <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
-        <img src="images.png" alt="Instagram" class="instagram-logo">
-    </a>
-</footer>
+    <footer>
+        <p>Created by The Coders Club</p>
+        <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
+            <img src="images.png" alt="Instagram" class="instagram-logo">
+        </a>
+    </footer>
+
+    <script>
+        function disableLinks() {
+            let currentTime = new Date();
+            let cutoffTime = new Date();
+            cutoffTime.setHours(18, 0, 0); // 6 PM IST
+
+            if (currentTime >= cutoffTime) {
+                let buttons = document.querySelectorAll(".feedback-button");
+                buttons.forEach(button => {
+                    button.disabled = true; // Disables button interaction
+                    button.style.opacity = "0.5"; // Visually disabled
+                    button.style.cursor = "not-allowed";
+                    button.innerText = "Link Disabled"; // Updates button text
+                });
+            }
+        }
+    </script>
 
 </body>
 </html>
