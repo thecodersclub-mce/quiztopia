@@ -7,7 +7,7 @@
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="disableLinks()">
+<body onload="disableFormLinks()">
     <div class="blue-container">
         <div class="left-aligned">
             <a href="https://mce-madurai.ac.in/" target="_blank">
@@ -20,8 +20,14 @@
         </div>
     </div>
 
+    <!-- Buttons aligned to the right below the blue container -->
+    <div class="button-container" style="text-align: right; padding: 15px;">
+        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
+        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+    </div>
+
     <div class="content-container">
-        <center><h4 id="status">MINDMASH - WEEK 01</h4></center>
+        <center><h4 id="status">MINDMASH - WEEK 02<br>Links open on 7/6/25 6:00 PM IST</h4></center>
 
         <section>
             <div class="label-button-container">
@@ -62,20 +68,29 @@
     </footer>
 
     <script>
-        function disableLinks() {
-            let currentTime = new Date();
-            let cutoffTime = new Date();
-            cutoffTime.setHours(18, 0, 0); // 6 PM IST
+        let enable = false; // Default: Form links disabled
 
-            if (currentTime >= cutoffTime) {
+        function disableFormLinks() {
+            if (!enable) { // Only disable if enable is false
                 let buttons = document.querySelectorAll(".feedback-button");
                 buttons.forEach(button => {
-                    button.disabled = true; // Disables button interaction
-                    button.style.opacity = "0.5"; // Visually disabled
+                    button.disabled = true;
+                    button.style.opacity = "0.5";
                     button.style.cursor = "not-allowed";
-                    button.innerText = "Link Disabled"; // Updates button text
+                    button.innerText = "Link Disabled";
                 });
             }
+        }
+
+        function enableFormLinks() {
+            enable = true; // Set variable to true
+            let buttons = document.querySelectorAll(".feedback-button");
+            buttons.forEach(button => {
+                button.disabled = false;
+                button.style.opacity = "1";
+                button.style.cursor = "pointer";
+                button.innerText = button.getAttribute("data-original-text") || "Enabled Link";
+            });
         }
     </script>
 
