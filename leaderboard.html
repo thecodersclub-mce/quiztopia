@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - The Coders Club</title>
+    <link rel="icon" href="TCC.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Mini Window Styling */
+        .mini-window {
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Tab Navigation - Slim Browser Style */
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            background: #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 5px;
+            box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-button {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            background-color: #00408f;
+            background: linear-gradient(to right, #F5F5F5, #E0E0E0);
+            color: #333;
+            font-size: 14px;
+            border-radius: 6px 6px 0 0;
+            transition: 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-button:hover {
+            background: #1E88E5;
+        }
+
+        /* Active Tab Effect */
+        .tab-button.active {
+            background: #00408f;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Table Wrapper with Scroll and Background */
+        .table-wrapper {
+            overflow-x: auto;
+            max-height: 350px;
+            background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #007BFF;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            background: #FAFAFA;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #007BFF;
+        }
+
+        th {
+            background: #00408f;
+            color: white;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .active-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blue-container">
+        <div class="left-aligned">
+            <a href="https://mce-madurai.ac.in/" target="_blank">
+                <img src="MCE_tab.png" alt="Logo" class="favicon-logo">
+            </a>
+            <div class="titles">
+                <h1 class="college-name">Mangayarkarasi College of Engineering</h1>
+                <h2 class="site-title">The Coders Club - Leaderboard</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="button-container" style="text-align: right; padding: 15px;">
+        <button class="nav-button" onclick="window.location.href='index.html';">Back to Home</button>
+        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+    </div>
+
+    <!-- Mini Window Leaderboard -->
+    <div class="mini-window">
+<p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+    Results for Week 1 Quiz
+</p>
+
+        <div class="tab-nav">
+            <button class="tab-button active" onclick="switchTab('cse2')">CSE 2nd Year</button>
+            <button class="tab-button" onclick="switchTab('aiml2')">AI/ML 2nd Year</button>
+            <button class="tab-button" onclick="switchTab('cse3')">CSE 3rd Year</button>
+        </div>
+
+        <div class="table-wrapper">
+            <div id="cse2" class="tab-content active-content">
+                <h3>2ND YEAR CSE DEPARTMENT</h3>
+                <table>
+                    <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                    <tr><td>1</td><td>Karthikeyan B S</td><td>5</td></tr>
+                    <tr><td>2</td><td>Sathyaraj K</td><td>5</td></tr>
+                    <tr><td>3</td><td>Uma Ghayathri I</td><td>3</td></tr>
+		    <tr><td>4</td><td>Jerusha Grace J T</td><td>4</td></tr>
+		    <tr><td>5</td><td>Anitha M</td><td>4</td></tr>
+		    <tr><td>6</td><td>Nagajothi M</td><td>5</td></tr>
+		    <tr><td>7</td><td>Madhumitha P R</td><td>1</td></tr>
+		    <tr><td>8</td><td>Prithika J</td><td>4</td></tr>
+		    <tr><td>9</td><td>Azmath Fouziya M</td><td>5</td></tr>
+                </table>
+            </div>
+
+            <div id="aiml2" class="tab-content">
+                <h3>2ND YEAR AI/ML DEPARTMENT</h3>
+                <table>
+                    <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                    <tr><td>1</td><td>Suriya Sri</td><td>5</td></tr>
+                    <tr><td>2</td><td>Dharshini S</td><td>5</td></tr>
+                    <tr><td>3</td><td>Dhanyalakshmi B</td><td>2</td></tr>
+		    <tr><td>4</td><td>Ragavi L</td><td>4</td></tr>
+		    <tr><td>5</td><td>Harishma K</td><td>3</td></tr>
+                </table>
+            </div>
+
+            <div id="cse3" class="tab-content">
+                <h3>3RD YEAR CSE DEPARTMENT</h3>
+                <table>
+                    <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                    <tr><td>1</td><td>Dharani S</td><td>4</td></tr>
+                    <tr><td>2</td><td>Amirtha Varshni R</td><td>5</td></tr>
+                    <tr><td>3</td><td>Murugalakshmi T </td><td>3</td></tr>
+		    <tr><td>4</td><td>Anushma S</td><td>5</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by The Coders Club</p>
+        <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
+            <img src="images.png" alt="Instagram" class="instagram-logo">
+        </a>
+    </footer>
+
+    <script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            let tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active-content'));
+
+            // Activate selected tab
+            document.getElementById(tabId).classList.add('active-content');
+
+            // Update active button styling
+            let buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
