@@ -185,3 +185,152 @@ footer {
         gap: 15px;
     }
 }
+
+/* Leaderboard Specific Styles (moved from leaderboard.html) */
+/* Mini Window Styling */
+.mini-window {
+    width: 90%; /* Allows it to take more space on smaller screens, but capped by max-width */
+    max-width: 600px; /* Default max-width for smaller screens (mobile) */
+    margin: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    text-align: center;
+}
+
+/* Wrapper for Table Tabs */
+.table-tabs-wrapper {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Tab Navigation */
+.tab-nav {
+    display: flex;
+    justify-content: center;
+    background: #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 5px;
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.tab-button {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(to right, #F5F5F5, #E0E0E0);
+    color: #333;
+    font-size: 14px;
+    border-radius: 6px 6px 0 0;
+    transition: 0.3s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tab-button:hover {
+    background: #1E88E5;
+    color: white;
+}
+
+.tab-button.active {
+    background: #00408f;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Table Wrapper */
+.table-wrapper {
+    overflow-x: auto; /* Enables horizontal scrolling on smaller screens if content overflows */
+    max-height: 350px;
+    background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 2px solid #007BFF;
+    margin-top: -1px;
+}
+
+/* Table Styling */
+table {
+    width: 100%; /* Table takes full width of its container */
+    border-collapse: collapse;
+    text-align: left;
+    background: #FAFAFA;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #cceeff;
+    text-align: center; /* Center align all table content */
+}
+
+th {
+    background: #00408f;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Striped rows for better readability */
+tbody tr:nth-child(even) {
+    background-color: #f0f8ff;
+}
+
+/* Hover effect on table rows */
+tbody tr:hover {
+    background-color: #e0f2f7;
+    cursor: pointer;
+}
+
+.tab-content {
+    display: none;
+}
+
+.active-content {
+    display: block;
+}
+
+/* Heading for department tables */
+.tab-content h3 {
+    color: #00408f;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* --- Media Queries for Laptop Screens and Larger --- */
+@media (min-width: 768px) { /* Adjust breakpoint as needed (e.g., 768px for tablets/small laptops) */
+    .mini-window {
+        max-width: 900px; /* Allow the leaderboard to be wider on laptops */
+        padding: 20px; /* Slightly more padding for larger screens */
+    }
+
+    /* Optional: Adjust table column widths for better distribution on larger screens */
+    table th:nth-child(1),
+    table td:nth-child(1) { /* S.No. column */
+        width: 10%; /* Make S.No. column relatively smaller */
+    }
+
+    table th:nth-child(2),
+    table td:nth-child(2) { /* Name column */
+        width: 70%; /* Give most space to names */
+    }
+
+    table th:nth-child(3),
+    table td:nth-child(3) { /* Score column */
+        width: 20%; /* Make Score column relatively smaller */
+    }
+}
+
+@media (min-width: 1024px) { /* For larger laptops/desktops */
+    .mini-window {
+        max-width: 1000px; /* Even wider on larger screens */
+    }
+}
