@@ -52,6 +52,7 @@
 
         .tab-button:hover {
             background: #1E88E5;
+            color: white; /* Changed hover color to white for better contrast */
         }
 
         .tab-button.active {
@@ -70,6 +71,7 @@
             padding: 12px;
             box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.1);
             border: 2px solid #007BFF;
+            margin-top: -1px; /* Adjust to align with tabs */
         }
 
         /* Table Styling */
@@ -78,17 +80,33 @@
             border-collapse: collapse;
             text-align: left;
             background: #FAFAFA;
+            border-radius: 8px; /* Rounded corners for the table */
+            overflow: hidden; /* Ensures rounded corners are applied */
         }
 
         th, td {
-            padding: 10px;
-            border: 1px solid #007BFF;
+            padding: 12px 15px; /* Increased padding for better spacing */
+            border: 1px solid #cceeff; /* Lighter border color */
+            text-align: center; /* Center align all table content */
         }
 
         th {
             background: #00408f;
             color: white;
             font-weight: bold;
+            text-transform: uppercase; /* Uppercase for table headers */
+            letter-spacing: 0.5px; /* Add some letter spacing */
+        }
+
+        /* Striped rows for better readability */
+        tbody tr:nth-child(even) {
+            background-color: #f0f8ff; /* Light blue for even rows */
+        }
+
+        /* Hover effect on table rows */
+        tbody tr:hover {
+            background-color: #e0f2f7; /* Slightly darker hover color */
+            cursor: pointer;
         }
 
         .tab-content {
@@ -97,6 +115,14 @@
 
         .active-content {
             display: block;
+        }
+
+        /* Heading for department tables */
+        .tab-content h3 {
+            color: #00408f;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -114,19 +140,16 @@
         </div>
     </div>
 
-    <!-- Navigation Buttons -->
     <div class="button-container" style="text-align: right; padding: 15px;">
         <button class="nav-button" onclick="window.location.href='index.html';">Back to Home</button>
         <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
     </div>
 
-    <!-- Mini Window Leaderboard -->
     <div class="mini-window">
         <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
             Results for Week 1 Quiz
         </p>
 
-        <!-- Table Tabs Wrapper -->
         <div class="table-tabs-wrapper">
             <div class="tab-nav">
                 <button class="tab-button active" onclick="switchTab('cse2')">CSE 2nd Year</button>
@@ -139,15 +162,15 @@
                     <h3>2ND YEAR CSE DEPARTMENT</h3>
                     <table>
                         <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-		    <tr><td>1</td><td>Karthikeyan B S</td><td>5</td></tr>
-		    <tr><td>2</td><td>Sathyaraj K</td><td>5</td></tr>
-		    <tr><td>3</td><td>Nagajothi M</td><td>5</td></tr>
-		    <tr><td>4</td><td>Azmath Fouziya M</td><td>5</td></tr>
-		    <tr><td>5</td><td>Jerusha Grace J T</td><td>4</td></tr>
-		    <tr><td>6</td><td>Anitha M</td><td>4</td></tr>
-		    <tr><td>7</td><td>Prithika J</td><td>4</td></tr>
-		    <tr><td>8</td><td>Uma Ghayathri I</td><td>3</td></tr>
-		    <tr><td>9</td><td>Madhumitha P R</td><td>1</td></tr>
+                        <tr><td>1</td><td>Karthikeyan B S</td><td>5</td></tr>
+                        <tr><td>2</td><td>Sathyaraj K</td><td>5</td></tr>
+                        <tr><td>3</td><td>Nagajothi M</td><td>5</td></tr>
+                        <tr><td>4</td><td>Azmath Fouziya M</td><td>5</td></tr>
+                        <tr><td>5</td><td>Jerusha Grace J T</td><td>4</td></tr>
+                        <tr><td>6</td><td>Anitha M</td><td>4</td></tr>
+                        <tr><td>7</td><td>Prithika J</td><td>4</td></tr>
+                        <tr><td>8</td><td>Uma Ghayathri I</td><td>3</td></tr>
+                        <tr><td>9</td><td>Madhumitha P R</td><td>1</td></tr>
                     </table>
                 </div>
 
@@ -156,21 +179,21 @@
                     <table>
                         <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
                         <tr><td>1</td><td>Suriya Sri</td><td>5</td></tr>
-                    <tr><td>2</td><td>Dharshini S</td><td>5</td></tr>
-		    <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
-		    <tr><td>4</td><td>Harishma K</td><td>3</td></tr>
-                    <tr><td>5</td><td>Dhanyalakshmi B</td><td>2</td></tr>
+                        <tr><td>2</td><td>Dharshini S</td><td>5</td></tr>
+                        <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
+                        <tr><td>4</td><td>Harishma K</td><td>3</td></tr>
+                        <tr><td>5</td><td>Dhanyalakshmi B</td><td>2</td></tr>
                     </table>
                 </div>
 
                 <div id="cse3" class="tab-content">
                     <h3>3RD YEAR CSE DEPARTMENT</h3>
                     <table>
-                    <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                    <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
-		    <tr><td>2</td><td>Anushma S</td><td>5</td></tr>
-		    <tr><td>3</td><td>Dharani S</td><td>4</td></tr>
-                    <tr><td>4</td><td>Murugalakshmi T</td><td>3</td></tr>
+                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                        <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
+                        <tr><td>2</td><td>Anushma S</td><td>5</td></tr>
+                        <tr><td>3</td><td>Dharani S</td><td>4</td></tr>
+                        <tr><td>4</td><td>Murugalakshmi T</td><td>3</td></tr>
                     </table>
                 </div>
             </div>
