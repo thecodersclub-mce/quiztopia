@@ -9,8 +9,8 @@
     <style>
         /* Mini Window Styling */
         .mini-window {
-            width: 80%;
-            max-width: 600px;
+            width: 90%; /* Allows it to take more space on smaller screens, but capped by max-width */
+            max-width: 600px; /* Default max-width for smaller screens (mobile) */
             margin: auto;
             background: white;
             border-radius: 12px;
@@ -52,7 +52,7 @@
 
         .tab-button:hover {
             background: #1E88E5;
-            color: white; /* Changed hover color to white for better contrast */
+            color: white;
         }
 
         .tab-button.active {
@@ -64,29 +64,29 @@
 
         /* Table Wrapper */
         .table-wrapper {
-            overflow-x: auto;
+            overflow-x: auto; /* Enables horizontal scrolling on smaller screens if content overflows */
             max-height: 350px;
             background: linear-gradient(to bottom, #e3f2fd, #ffffff);
             border-radius: 8px;
             padding: 12px;
             box-shadow: inset 0px 2px 8px rgba(0, 0, 0, 0.1);
             border: 2px solid #007BFF;
-            margin-top: -1px; /* Adjust to align with tabs */
+            margin-top: -1px;
         }
 
         /* Table Styling */
         table {
-            width: 100%;
+            width: 100%; /* Table takes full width of its container */
             border-collapse: collapse;
             text-align: left;
             background: #FAFAFA;
-            border-radius: 8px; /* Rounded corners for the table */
-            overflow: hidden; /* Ensures rounded corners are applied */
+            border-radius: 8px;
+            overflow: hidden;
         }
 
         th, td {
-            padding: 12px 15px; /* Increased padding for better spacing */
-            border: 1px solid #cceeff; /* Lighter border color */
+            padding: 12px 15px;
+            border: 1px solid #cceeff;
             text-align: center; /* Center align all table content */
         }
 
@@ -94,18 +94,18 @@
             background: #00408f;
             color: white;
             font-weight: bold;
-            text-transform: uppercase; /* Uppercase for table headers */
-            letter-spacing: 0.5px; /* Add some letter spacing */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         /* Striped rows for better readability */
         tbody tr:nth-child(even) {
-            background-color: #f0f8ff; /* Light blue for even rows */
+            background-color: #f0f8ff;
         }
 
         /* Hover effect on table rows */
         tbody tr:hover {
-            background-color: #e0f2f7; /* Slightly darker hover color */
+            background-color: #e0f2f7;
             cursor: pointer;
         }
 
@@ -123,6 +123,36 @@
             margin-top: 15px;
             margin-bottom: 10px;
             font-size: 1.2em;
+        }
+
+        /* --- Media Queries for Laptop Screens and Larger --- */
+        @media (min-width: 768px) { /* Adjust breakpoint as needed (e.g., 768px for tablets/small laptops) */
+            .mini-window {
+                max-width: 900px; /* Allow the leaderboard to be wider on laptops */
+                padding: 20px; /* Slightly more padding for larger screens */
+            }
+
+            /* Optional: Adjust table column widths for better distribution on larger screens */
+            table th:nth-child(1),
+            table td:nth-child(1) { /* S.No. column */
+                width: 10%; /* Make S.No. column relatively smaller */
+            }
+
+            table th:nth-child(2),
+            table td:nth-child(2) { /* Name column */
+                width: 70%; /* Give most space to names */
+            }
+
+            table th:nth-child(3),
+            table td:nth-child(3) { /* Score column */
+                width: 20%; /* Make Score column relatively smaller */
+            }
+        }
+
+        @media (min-width: 1024px) { /* For larger laptops/desktops */
+            .mini-window {
+                max-width: 1000px; /* Even wider on larger screens */
+            }
         }
     </style>
 </head>
@@ -217,7 +247,10 @@
             let buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(button => button.classList.remove('active'));
 
-            event.target.classList.add('active');
+            // `event.target` refers to the button that was clicked
+            if (event.target) {
+                event.target.classList.add('active');
+            }
         }
     </script>
 
