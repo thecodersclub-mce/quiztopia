@@ -7,7 +7,8 @@
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body onload="disableFormLinks()">
+<body>
+
     <div class="blue-container">
         <div class="left-aligned">
             <a href="https://mce-madurai.ac.in/" target="_blank">
@@ -20,77 +21,99 @@
         </div>
     </div>
 
-    <!-- Buttons aligned to the right below the blue container -->
-    <div class="button-container" style="text-align: right; padding: 15px;">
-        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
-        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
-    </div>
+    <div class="page-scroll-content">
+        <div class="button-container" style="text-align: right; padding: 15px;">
+            <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
+            <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+        </div>
 
-    <div class="content-container">
-        <center><h4 id="status">MINDMASH - WEEK 02<br>The links will open on July 6, 2025, at 6:00 PM IST</h4></center>
+        <div class="content-container">
+            <center><h4 id="status">MINDMASH - WEEK 02<br>The links will open on July 7, 2025, at 6:00 PM IST</h4></center>
 
-        <section>
-            <div class="label-button-container">
-                <h3>2ND YEAR CSE DEPARTMENT</h3>
-                <div class="button-row">
-                    <button class="feedback-button" id="form1" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdLfx0pTjxdFjaeSpAD7J--PIYQ9FRiJrHlTG01lITEc_olng/viewform?usp=header';">BOYS</button>
-                    <button class="feedback-button" id="form2" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe2zuaLHJqQOr-7PQsOCb3TgUDYbSZO8CsiR9AXTmN2n7SPCg/viewform?usp=header';">GIRLS</button>
+            <section>
+                <div class="label-button-container">
+                    <h3>2ND YEAR CSE DEPARTMENT</h3>
+                    <div class="button-row">
+                        <button class="feedback-button" id="form1" data-original-text="BOYS" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeGvrYXrDxtCMj6KMcfqKwgQ-UFRTI8EKrrcfvbs0wYHIbNSw/viewform?usp=dialog';">BOYS</button>
+                        <button class="feedback-button" id="form2" data-original-text="GIRLS" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSeGvrYXrDxtCMj6KMcfqKwgQ-UFRTI8EKrrcfvbs0wYHIbNSw/viewform?usp=dialog';">GIRLS</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <div class="label-button-container">
-                <h3>2ND YEAR AI/ML DEPARTMENT</h3>
-                <div class="button-row">
-                    <button class="feedback-button" id="form3" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScM1QdLeHzaIsOBlga7o-5Ag5ayce-g1Oznjy9MMqNMYzAscQ/viewform?usp=header';">BOYS</button>
-                    <button class="feedback-button" id="form4" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfwjdavp557kxiFq0efJ3QMwDx8LIUKKHQR8djKxg1pDmV3aw/viewform?usp=header';">GIRLS</button>
+            <section>
+                <div class="label-button-container">
+                    <h3>2ND YEAR AI/ML DEPARTMENT</h3>
+                    <div class="button-row">
+                        <button class="feedback-button" id="form3" data-original-text="BOYS" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc9PpIpl7gEBVdwwdABAaL0lHGzZNSXV-U6N3VCRnV6-ngYKg/viewform?usp=dialog';">BOYS</button>
+                        <button class="feedback-button" id="form4" data-original-text="GIRLS" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScozEzz3_m9XM3IdQPReqw2KfP3l0NEITtwuNFsVGFinb3LOg/viewform?usp=dialog';">GIRLS</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section>
-            <div class="label-button-container">
-                <h3>3RD YEAR CSE DEPARTMENT</h3>
-                <div class="button-row">
-                    <button class="feedback-button" id="form5" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf7RiWCVUUM72CDOLc73iWN2M1y_i2NzDImNNJ-s5cI7Nvcxg/viewform?usp=sharing&ouid=103113943123720362851';">BOYS</button>
-                    <button class="feedback-button" id="form6" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc9vS2TA-OlbfGKVdGzBIY9YWAR_pssQowGsSGNu21DvMCzbw/viewform?usp=sharing&ouid=103113943123720362851';">GIRLS</button>
+            <section>
+                <div class="label-button-container">
+                    <h3>3RD YEAR CSE DEPARTMENT</h3>
+                    <div class="button-row">
+                        <button class="feedback-button" id="form5" data-original-text="BOYS" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfyTJD-lAX3Eztu46zxOzlgDwKw2xZaEeWO2cwTJ1D7fXfeTg/viewform?usp=dialog';">BOYS</button>
+                        <button class="feedback-button" id="form6" data-original-text="GIRLS" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdEUsHRoZ0VVC_463U_NYW0jC6pXqOSTmVj4nWx72_BFnfirw/viewform?usp=dialog';">GIRLS</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
 
-    <footer>
-        <p>Created by The Coders Club</p>
-        <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
-            <img src="images.png" alt="Instagram" class="instagram-logo">
-        </a>
-    </footer>
+        <footer>
+            <p>Created by The Coders Club</p>
+            <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
+                <img src="images.png" alt="Instagram" class="instagram-logo">
+            </a>
+        </footer>
+    </div> <script>
+        // Store original button text in data attributes
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.feedback-button').forEach(button => {
+                button.setAttribute('data-original-text', button.innerText);
+            });
+            checkLinkStatus(); // Initial check on page load
+            // Set up a timer to check link status every minute (adjust as needed)
+            setInterval(checkLinkStatus, 60 * 1000);
+        });
 
-    <script>
-        let enable = false; // Default: Form links disabled
+        function checkLinkStatus() {
+            const now = new Date();
+            // Target Start Time: July 7, 2025, 6:00 PM IST
+            const startTimeIST = new Date('2025-07-07T18:00:00+05:30'); // +05:30 for IST
+            // Target End Time: 24 hours after start time
+            const endTimeIST = new Date(startTimeIST.getTime() + (24 * 60 * 60 * 1000));
 
-        function disableFormLinks() {
-            if (!enable) { // Only disable if enable is false
-                let buttons = document.querySelectorAll(".feedback-button");
-                buttons.forEach(button => {
+            const statusElement = document.getElementById('status');
+            const feedbackButtons = document.querySelectorAll(".feedback-button");
+
+            if (now >= startTimeIST && now < endTimeIST) {
+                // Links should be enabled
+                feedbackButtons.forEach(button => {
+                    button.disabled = false;
+                    button.style.opacity = "1";
+                    button.style.cursor = "pointer";
+                    button.innerText = button.getAttribute("data-original-text");
+                });
+                statusElement.innerHTML = 'MINDMASH - WEEK 02<br>Links are currently **OPEN**!';
+                statusElement.style.color = '#008000'; // Green for active
+            } else {
+                // Links should be disabled
+                feedbackButtons.forEach(button => {
                     button.disabled = true;
                     button.style.opacity = "0.5";
                     button.style.cursor = "not-allowed";
-                    button.innerText = "Link Disabled";
+                    button.innerText = 'Link Disabled';
                 });
+                if (now < startTimeIST) {
+                    statusElement.innerHTML = 'MINDMASH - WEEK 02<br>The links will open on July 7, 2025, at 6:00 PM IST';
+                    statusElement.style.color = '#00408f'; // Original color
+                } else {
+                    statusElement.innerHTML = 'MINDMASH - WEEK 02<br>The links are now **CLOSED**!';
+                    statusElement.style.color = '#CC0000'; // Red for closed
+                }
             }
-        }
-
-        function enableFormLinks() {
-            enable = true; // Set variable to true
-            let buttons = document.querySelectorAll(".feedback-button");
-            buttons.forEach(button => {
-                button.disabled = false;
-                button.style.opacity = "1";
-                button.style.cursor = "pointer";
-                button.innerText = button.getAttribute("data-original-text") || "Enabled Link";
-            });
         }
     </script>
 
