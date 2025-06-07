@@ -115,21 +115,22 @@ footer {
     background-color: #00408f;
     color: white;
     text-align: center;
-    padding: 10px 0; /* Improved spacing */
-    font-size: 12px;
+    padding: 3px 0; /* Reduced vertical padding even more */
+    font-size: 10px; /* Smaller font size for text */
+    height: 30px; /* Set a fixed, smaller height for the footer */
     position: fixed;
     bottom: 0;
     left: 0;
     display: flex;
-    align-items: center; /* Centers items horizontally */
-    justify-content: center; /* Centers text and logo */
+    align-items: center; /* Centers items vertically */
+    justify-content: center; /* Centers text and logo horizontally */
 }
 
 /* Instagram Logo */
 .instagram-logo {
-    width: 24px; /* Adjusted size */
-    height: 24px;
-    margin-left: 8px; /* Small space after "Club" */
+    width: 18px; /* Further reduced logo size */
+    height: 18px; /* Further reduced logo size */
+    margin-left: 5px; /* Reduced space after "Club" */
 }
 
 
