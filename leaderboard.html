@@ -188,24 +188,24 @@
 
     <div class="mini-window">
         <div class="tab-nav">
-            <button class="tab-button active" onclick="switchWeekTab('week1', event)">Week 1</button>
+            <button class="tab-button" onclick="switchWeekTab('week1', event)">Week 1</button>
             <button class="tab-button" onclick="switchWeekTab('week2', event)">Week 2</button>
             <button class="tab-button" onclick="switchWeekTab('week3', event)">Week 3</button>
             <button class="tab-button" onclick="switchWeekTab('week4', event)">Week 4</button>
         </div>
 
         <div class="table-wrapper">
-            <div id="week1" class="tab-content active-content">
+            <div id="week1" class="tab-content">
                 <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
                     Results for Week 1 Quiz
                 </p>
                 <div class="tab-nav">
-                    <button class="tab-button active" onclick="switchDepartmentTab('cse2', event, 'week1')">CSE 2nd Year</button>
+                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week1')">CSE 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week1')">AI/ML 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week1')">CSE 3rd Year</button>
                 </div>
 
-                <div id="cse2_week1" class="tab-content active-content">
+                <div id="cse2_week1" class="tab-content">
                     <h3>2ND YEAR CSE DEPARTMENT</h3>
                     <table>
                         <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
@@ -250,17 +250,17 @@
                     Results for Week 2 Quiz - WAIT FOR UPDATES!
                 </p>
                 <div class="tab-nav">
-                    <button class="tab-button active" onclick="switchDepartmentTab('cse2', event, 'week2')">CSE 2nd Year</button>
+                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week2')">CSE 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week2')">AI/ML 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week2')">CSE 3rd Year</button>
                 </div>
 
-                <div id="cse2_week2" class="tab-content active-content">
+                <div id="cse2_week2" class="tab-content">
                     <h3>2ND YEAR CSE DEPARTMENT</h3>
                     <table>
                         <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
                         <tr><td>1</td><td>Sathyaraj K</td><td>5</td></tr>
-	                <tr><td>2</td><td>Jerusha Grace J T</td><td>5</td></tr>
+                        <tr><td>2</td><td>Jerusha Grace J T</td><td>5</td></tr>
                     </table>
                 </div>
 
@@ -269,7 +269,8 @@
                     <table>
                         <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
                         <tr><td>1</td><td>Gladiyas Asin D</td><td>5</td></tr>
-		        <tr><td>2</td><td>Ragavi L</td><td>4</td></tr>
+                        <tr><td>2</td><td>Suriya Sri</td><td>5</td></tr>
+		        <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
                     </table>
                 </div>
 
@@ -289,12 +290,12 @@
                     Results for Week 3 Quiz - COMING SOON!
                 </p>
                 <div class="tab-nav">
-                    <button class="tab-button active" onclick="switchDepartmentTab('cse2', event, 'week3')">CSE 2nd Year</button>
+                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week3')">CSE 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week3')">AI/ML 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week3')">CSE 3rd Year</button>
                 </div>
 
-                <div id="cse2_week3" class="tab-content active-content">
+                <div id="cse2_week3" class="tab-content">
                     <h3>COMING SOON</h3>
                 </div>
 
@@ -312,12 +313,12 @@
                     Results for Week 4 Quiz - COMING SOON!
                 </p>
                 <div class="tab-nav">
-                    <button class="tab-button active" onclick="switchDepartmentTab('cse2', event, 'week4')">CSE 2nd Year</button>
+                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week4')">CSE 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week4')">AI/ML 2nd Year</button>
                     <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week4')">CSE 3rd Year</button>
                 </div>
 
-                <div id="cse2_week4" class="tab-content active-content">
+                <div id="cse2_week4" class="tab-content">
                     <h3>COMING SOON</h3>
                 </div>
 
@@ -352,9 +353,12 @@
             let mainTabButtons = document.querySelectorAll('.mini-window > .tab-nav > .tab-button');
             mainTabButtons.forEach(button => button.classList.remove('active'));
 
-            // Activate the clicked main tab button
+            // Activate the clicked main tab button (if an event triggered it)
             if (event && event.target) {
                 event.target.classList.add('active');
+            } else {
+                // If no event (i.e., called on page load), find the correct button and activate it
+                document.querySelector(`.mini-window > .tab-nav > .tab-button[onclick*="${weekId}"]`).classList.add('active');
             }
 
             // Reset the department tabs for the newly active week
@@ -373,7 +377,6 @@
             }
             if (departmentTabContents.length > 0) {
                 // Determine the correct ID for the first department content within this week
-                // We extract the 'cse2' part from the onclick function of the first button
                 const firstDepartmentId = departmentTabButtons[0].getAttribute('onclick').match(/'(.*?)'/)[1];
                 document.getElementById(firstDepartmentId + '_' + weekId).classList.add('active-content');
             }
@@ -400,8 +403,8 @@
 
         // Initialize the first week and its first department tab on page load
         document.addEventListener('DOMContentLoaded', () => {
-            switchWeekTab('week1', null); // Initialize with Week 1
-            // The switchWeekTab function already handles activating the first department tab for the selected week.
+            // Call switchWeekTab to set 'week1' as active, which in turn sets its first department tab as active.
+            switchWeekTab('week1', null); // Passing null for event, as it's not triggered by a click
         });
     </script>
 
