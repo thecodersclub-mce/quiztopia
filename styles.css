@@ -26,10 +26,11 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centers both vertically and horizontally */
-    height: 80vh; /* Adjusted height to avoid footer overlap */
+    /* Removed fixed height (80vh) to allow content to push it, added flex-grow */
+    flex-grow: 1; /* Allows it to take available space */
     width: 100%;
     text-align: center;
+    padding-bottom: 60px; /* Add padding at the bottom equal to or slightly more than footer height */
 }
 
 .left-aligned {
@@ -117,12 +118,13 @@ footer {
     text-align: center;
     padding: 5px 0; /* Improved spacing */
     font-size: 10px;
-    position: fixed;
+    position: fixed; /* Keep it fixed */
     bottom: 0;
     left: 0;
     display: flex;
     align-items: center; /* Centers items horizontally */
     justify-content: center; /* Centers text and logo */
+    height: 40px; /* Explicitly set height for calculation */
 }
 
 /* Instagram Logo */
@@ -132,71 +134,20 @@ footer {
     margin-left: 8px; /* Small space after "Club" */
 }
 
-
-/* Responsive styles for medium screens (Samsung phones, tablets) */
-@media only screen and (max-width: 768px) {
-    body {
-        font-size: 14px;
-    }
-    .favicon-logo {
-        width: 40px;
-    }
-    .college-name {
-        font-size: 16px;
-    }
-    .site-title {
-        font-size: 14px;
-    }
-    .label-button-container h3 {
-        font-size: 16px;
-    }
-    button {
-        font-size: 12px;
-        padding: 10px 15px;
-    }
-    .button-row {
-        gap: 15px;
-    }
-}
-
-/* Responsive styles for smaller screens (Samsung phones) */
-@media only screen and (max-width: 480px) {
-    body {
-        font-size: 14px;
-    }
-    .favicon-logo {
-        width: 30px;
-    }
-    .college-name {
-        font-size: 16px;
-    }
-    .site-title {
-        font-size: 14px;
-    }
-    .label-button-container h3 {
-        font-size: 14px;
-        padding: 6px 10px;
-    }
-    button {
-        font-size: 12px;
-        padding: 8px 12px;
-    }
-    .button-row {
-        gap: 15px;
-    }
-}
-
-/* Leaderboard Specific Styles (moved from leaderboard.html) */
+/* Leaderboard Specific Styles */
 /* Mini Window Styling */
 .mini-window {
     width: 90%; /* Allows it to take more space on smaller screens, but capped by max-width */
     max-width: 600px; /* Default max-width for smaller screens (mobile) */
-    margin: auto;
+    margin: 20px auto; /* Added top/bottom margin for separation */
     background: white;
     border-radius: 12px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
     padding: 15px;
     text-align: center;
+    /* Ensure content inside doesn't go below the footer */
+    position: relative; /* Needed for z-index if ever used */
+    z-index: 1; /* Ensure it stays above other content */
 }
 
 /* Wrapper for Table Tabs */
@@ -305,13 +256,82 @@ tbody tr:hover {
     font-size: 1.2em;
 }
 
-/* --- Media Queries for Laptop Screens and Larger --- */
-@media (min-width: 768px) { /* Adjust breakpoint as needed (e.g., 768px for tablets/small laptops) */
+/* --- Responsive styles for all screen sizes --- */
+
+/* Base Media Queries for all screens (can refine further for specific devices if needed) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .favicon-logo {
+        width: 40px;
+    }
+    .college-name {
+        font-size: 16px;
+    }
+    .site-title {
+        font-size: 14px;
+    }
+    .label-button-container h3 {
+        font-size: 16px;
+    }
+    button {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+    .button-row {
+        gap: 15px;
+    }
+    /* Adjust mini-window for smaller screens */
+    .mini-window {
+        margin: 10px auto 50px auto; /* More bottom margin for footer on smaller screens */
+        padding: 10px;
+    }
+    /* Adjust content-container padding for smaller screens if necessary */
+    .content-container {
+        padding-bottom: 50px; /* Slightly less padding if footer is smaller on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .favicon-logo {
+        width: 30px;
+    }
+    .college-name {
+        font-size: 16px;
+    }
+    .site-title {
+        font-size: 14px;
+    }
+    .label-button-container h3 {
+        font-size: 14px;
+        padding: 6px 10px;
+    }
+    button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
+    .button-row {
+        gap: 15px;
+    }
+    .mini-window {
+        margin: 10px auto 50px auto; /* Ensure enough space for footer */
+    }
+    .content-container {
+        padding-bottom: 50px;
+    }
+}
+
+/* Media Queries for Laptop Screens and Larger */
+@media (min-width: 769px) { /* Adjust breakpoint as needed (e.g., 768px for tablets/small laptops) */
     .mini-window {
         max-width: 900px; /* Allow the leaderboard to be wider on laptops */
         padding: 20px; /* Slightly more padding for larger screens */
+        margin-bottom: 70px; /* Add extra bottom margin for content above footer on laptops */
     }
-
     /* Optional: Adjust table column widths for better distribution on larger screens */
     table th:nth-child(1),
     table td:nth-child(1) { /* S.No. column */
@@ -326,6 +346,12 @@ tbody tr:hover {
     table th:nth-child(3),
     table td:nth-child(3) { /* Score column */
         width: 20%; /* Make Score column relatively smaller */
+    }
+    .content-container {
+        padding-bottom: 70px; /* Ensure main content pushes up to clear footer on laptops */
+        height: auto; /* Allow content to dictate height */
+        min-height: calc(100vh - 100px - 40px); /* Adjust based on header/footer heights */
+        /* min-height: calc(100vh - (height of blue-container) - (height of footer)); */
     }
 }
 
