@@ -124,15 +124,16 @@ footer {
     display: flex;
     align-items: center; /* Centers items vertically */
     justify-content: center; /* Centers text and logo horizontally */
+    z-index: 100; /* Ensure footer stays on top */
 }
 
-/* Instagram Logo */
-.instagram-logo {
-    width: 18px; /* Further reduced logo size */
-    height: 18px; /* Further reduced logo size */
-    margin-left: 5px; /* Reduced space after "Club" */
+/* Social media logos in footer */
+.social-logo {
+    width: 18px; /* Consistent size for all social logos */
+    height: 18px; /* Consistent size for all social logos */
+    margin: 0 4px; /* Space between logos */
+    vertical-align: middle; /* Align with text */
 }
-
 
 /* Responsive styles for medium screens (Samsung phones, tablets) */
 @media only screen and (max-width: 768px) {
