@@ -2,13 +2,19 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%;
+    height: 100%; /* Ensure html and body take full viewport height */
     background-color: #f8f8f8;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-y: auto; /* Enable vertical scrolling for the whole page */
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     color: #333;
     box-sizing: border-box;
+
+    /* --- Flexbox for Sticky Footer --- */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    min-height: 100vh; /* Ensure body is at least full viewport height */
+    /* --- End Flexbox for Sticky Footer --- */
 }
 
 /* Header */
@@ -20,17 +26,21 @@ html, body {
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
+    /* Flex item specific */
+    flex-shrink: 0; /* Prevent header from shrinking */
 }
+
 /* Centered Content */
 .content-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* Removed fixed height (80vh) to allow content to push it, added flex-grow */
-    flex-grow: 1; /* Allows it to take available space */
     width: 100%;
     text-align: center;
-    padding-bottom: 60px; /* Add padding at the bottom equal to or slightly more than footer height */
+    /* --- Flexbox for Sticky Footer --- */
+    flex-grow: 1; /* Allow content area to take up all available space */
+    padding-bottom: 20px; /* Add some default padding to content */
+    /* --- End Flexbox for Sticky Footer --- */
 }
 
 .left-aligned {
@@ -110,21 +120,21 @@ button:hover {
 button:active {
     transform: scale(0.98);
 }
+
 /* Footer */
 footer {
     width: 100%;
     background-color: #00408f;
     color: white;
     text-align: center;
-    padding: 5px 0; /* Improved spacing */
+    padding: 10px 0; /* Slightly increased padding for better spacing */
     font-size: 10px;
-    position: fixed; /* Keep it fixed */
-    bottom: 0;
-    left: 0;
+    /* Removed position: fixed */
     display: flex;
     align-items: center; /* Centers items horizontally */
     justify-content: center; /* Centers text and logo */
-    height: 40px; /* Explicitly set height for calculation */
+    flex-shrink: 0; /* Prevent footer from shrinking */
+    margin-top: auto; /* Push footer to the bottom when content is short */
 }
 
 /* Instagram Logo */
@@ -145,9 +155,8 @@ footer {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
     padding: 15px;
     text-align: center;
-    /* Ensure content inside doesn't go below the footer */
-    position: relative; /* Needed for z-index if ever used */
-    z-index: 1; /* Ensure it stays above other content */
+    /* This margin provides spacing BEFORE the footer when content is long */
+    margin-bottom: 40px; /* Increased padding from footer, adjust as needed */
 }
 
 /* Wrapper for Table Tabs */
@@ -256,9 +265,9 @@ tbody tr:hover {
     font-size: 1.2em;
 }
 
-/* --- Responsive styles for all screen sizes --- */
+/* --- Media Queries --- */
 
-/* Base Media Queries for all screens (can refine further for specific devices if needed) */
+/* For screens up to 768px (tablets/small laptops) */
 @media (max-width: 768px) {
     body {
         font-size: 14px;
@@ -284,15 +293,12 @@ tbody tr:hover {
     }
     /* Adjust mini-window for smaller screens */
     .mini-window {
-        margin: 10px auto 50px auto; /* More bottom margin for footer on smaller screens */
+        margin: 10px auto 30px auto; /* More bottom margin for footer on smaller screens */
         padding: 10px;
-    }
-    /* Adjust content-container padding for smaller screens if necessary */
-    .content-container {
-        padding-bottom: 50px; /* Slightly less padding if footer is smaller on mobile */
     }
 }
 
+/* For screens up to 480px (mobile phones) */
 @media (max-width: 480px) {
     body {
         font-size: 14px;
@@ -318,19 +324,16 @@ tbody tr:hover {
         gap: 15px;
     }
     .mini-window {
-        margin: 10px auto 50px auto; /* Ensure enough space for footer */
-    }
-    .content-container {
-        padding-bottom: 50px;
+        margin: 10px auto 30px auto; /* Ensure enough space for footer */
     }
 }
 
-/* Media Queries for Laptop Screens and Larger */
-@media (min-width: 769px) { /* Adjust breakpoint as needed (e.g., 768px for tablets/small laptops) */
+/* For screens 769px and wider (laptops/desktops) */
+@media (min-width: 769px) {
     .mini-window {
         max-width: 900px; /* Allow the leaderboard to be wider on laptops */
         padding: 20px; /* Slightly more padding for larger screens */
-        margin-bottom: 70px; /* Add extra bottom margin for content above footer on laptops */
+        margin-bottom: 60px; /* Increased margin for aesthetic padding above the footer */
     }
     /* Optional: Adjust table column widths for better distribution on larger screens */
     table th:nth-child(1),
@@ -346,12 +349,6 @@ tbody tr:hover {
     table th:nth-child(3),
     table td:nth-child(3) { /* Score column */
         width: 20%; /* Make Score column relatively smaller */
-    }
-    .content-container {
-        padding-bottom: 70px; /* Ensure main content pushes up to clear footer on laptops */
-        height: auto; /* Allow content to dictate height */
-        min-height: calc(100vh - 100px - 40px); /* Adjust based on header/footer heights */
-        /* min-height: calc(100vh - (height of blue-container) - (height of footer)); */
     }
 }
 
