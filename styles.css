@@ -2,27 +2,34 @@
 html, body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Ensure html and body take full viewport height */
+    height: 100%;
     background-color: #f8f8f8;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden;
+    overflow-y: auto;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     color: #333;
     box-sizing: border-box;
-    display: flex; /* Use flexbox on body to position header/content/footer */
-    flex-direction: column; /* Stack children vertically */
 }
 
-/* Fixed Header */
+/* Header */
 .blue-container {
     width: 100%;
     background-color: #00408f;
-    padding: 10px; /* 10px top/bottom padding */
+    padding: 10px;
     display: flex;
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
-    flex-shrink: 0; /* Prevent header from shrinking when content is long */
-    box-sizing: border-box; /* Include padding in width/height calculation */
+}
+/* Centered Content */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers both vertically and horizontally */
+    height: 80vh; /* Adjusted height to avoid footer overlap */
+    width: 100%;
+    text-align: center;
 }
 
 .left-aligned {
@@ -55,49 +62,20 @@ html, body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Page Scroll Content Wrapper (for the main content area that scrolls) */
-.page-scroll-content {
-    flex-grow: 1; /* Allows this section to take up available space */
-    display: flex;
-    flex-direction: column; /* Stack its children vertically */
-    /* No margin-top needed here anymore as the header is not 'fixed' relative to this */
-}
-
-/* Button Container (for nav buttons like Back to Home, Leaderboard, Feedback) */
-.button-container {
-    text-align: right;
-    padding: 15px;
-    flex-shrink: 0; /* Prevent this from shrinking */
-}
-
-/* Main Content Area */
-.content-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    flex-grow: 1; /* Allows this to push the footer down if content is short */
-    padding-bottom: 20px; /* Default padding at the bottom of content-container */
-}
-
-/* Department Label & Button Section (e.g., "2ND YEAR CSE DEPARTMENT") */
+/* Label & Button Section */
 .label-button-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
     text-align: center;
-    margin: 15px auto; /* Vertical margin for spacing between sections */
-    width: 90%;
-    max-width: 500px; /* Limit width for readability */
 }
 
 .label-button-container h3 {
     background-color: #e3f2fd;
     color: #00408f;
     padding: 6px 12px;
-    font-size: 12px; /* **REDUCED FONT SIZE** */
+    font-size: 12px;
     text-align: center;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -111,14 +89,14 @@ html, body {
     gap: 10px;
 }
 
-/* General Button Styles (applies to all buttons unless overridden) */
+/* Buttons */
 button {
     background-color: #00408f;
     color: white;
     border: none;
-    padding: 8px 10px; /* **REDUCED PADDING/SIZE** */
+    padding: 8px 10px;
     border-radius: 5px;
-    font-size: 12px; /* **REDUCED FONT SIZE** */
+    font-size: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -131,43 +109,35 @@ button:hover {
 button:active {
     transform: scale(0.98);
 }
-
-/* Specific Navigation Buttons (e.g., Leaderboard, Feedback) */
-.nav-button {
-    /* Styles inherited from 'button' base, no specific overrides needed here */
-}
-
-/* Fixed Footer */
+/* Footer */
 footer {
     width: 100%;
     background-color: #00408f;
     color: white;
     text-align: center;
-    padding: 5px 0; /* **REDUCED UPPER AND LOWER SIZE** */
+    padding: 5px 0; /* Improved spacing */
     font-size: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0; /* Prevent footer from shrinking */
-
-    /* Fixed to bottom properties */
-    position: sticky; /* Sticky positions it relative to its scrolling container (body) */
-    bottom: 0; /* Sticks it to the bottom */
-    /* This setup makes the footer *always* visible at the bottom of the viewport
-       unless content is very short, then it appears right after the content. */
+    align-items: center; /* Centers items horizontally */
+    justify-content: center; /* Centers text and logo */
 }
 
 /* Instagram Logo */
 .instagram-logo {
-    width: 24px;
+    width: 24px; /* Adjusted size */
     height: 24px;
-    margin-left: 8px;
+    margin-left: 8px; /* Small space after "Club" */
 }
 
-/* --- Media Queries --- */
 
-/* For screens up to 768px (tablets/small laptops) */
-@media (max-width: 768px) {
+/* Responsive styles for medium screens (Samsung phones, tablets) */
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
     .favicon-logo {
         width: 40px;
     }
@@ -178,53 +148,40 @@ footer {
         font-size: 14px;
     }
     .label-button-container h3 {
-        font-size: 14px; /* Adjusted for mobile */
-        padding: 5px 10px;
+        font-size: 16px;
     }
-    button, .nav-button {
-        font-size: 10px; /* Adjusted for mobile */
-        padding: 6px 10px;
+    button {
+        font-size: 12px;
+        padding: 10px 15px;
     }
     .button-row {
-        gap: 10px;
-    }
-    .blue-container {
-        padding: 5px; /* Adjust header padding for smaller screens */
-    }
-    footer {
-        padding: 4px 0; /* More reduced for mobile */
+        gap: 15px;
     }
 }
 
-/* For screens up to 480px (mobile phones) */
-@media (max-width: 480px) {
+/* Responsive styles for smaller screens (Samsung phones) */
+@media only screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
     .favicon-logo {
         width: 30px;
     }
     .college-name {
-        font-size: 14px;
+        font-size: 16px;
     }
     .site-title {
-        font-size: 12px;
+        font-size: 14px;
     }
     .label-button-container h3 {
-        font-size: 12px; /* Even smaller for very small screens */
-        padding: 4px 8px;
-    }
-    button, .nav-button {
-        font-size: 10px;
+        font-size: 14px;
         padding: 6px 10px;
     }
+    button {
+        font-size: 12px;
+        padding: 8px 12px;
+    }
     .button-row {
-        flex-direction: column; /* Stack buttons vertically on very small screens */
-        gap: 8px;
-    }
-    footer {
-        font-size: 9px;
-        padding: 3px 0; /* Minimal padding for mobile */
-    }
-    .instagram-logo {
-        width: 20px;
-        height: 20px;
+        gap: 15px;
     }
 }
