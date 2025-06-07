@@ -6,8 +6,72 @@
     <title>Home - Feedback</title>
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling for the new feedback form elements */
+        .feedback-form-container {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            display: none; /* Hidden by default */
+            opacity: 0; /* Initially transparent */
+            transition: opacity 0.5s ease-in-out; /* Smooth transition */
+        }
+
+        .feedback-form-container.active {
+            display: block; /* Shown when active */
+            opacity: 1; /* Fully opaque when active */
+        }
+
+        .feedback-form-container h4 {
+            color: #00408f;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .question {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .question label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .question input[type="radio"] {
+            margin-right: 8px;
+        }
+
+        .question input[type="radio"] + label {
+            font-weight: normal;
+            display: inline-block;
+            margin-right: 15px;
+        }
+
+        .question textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            min-height: 80px;
+            resize: vertical;
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+        }
+
+        /* Styling for disabled elements */
+        .feedback-form-container.disabled,
+        .feedback-form-container *:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    </style>
 </head>
-<body onload="disableFormLinks()">
+<body onload="initializeFeedbackForm()">
     <div class="blue-container">
         <div class="left-aligned">
             <a href="https://mce-madurai.ac.in/" target="_blank">
@@ -20,7 +84,6 @@
         </div>
     </div>
 
-    <!-- Buttons aligned to the right below the blue container -->
     <div class="button-container" style="text-align: right; padding: 15px;">
         <button class="nav-button" onclick="window.location.href='index.html';">Back to Home</button>
         <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
@@ -58,6 +121,48 @@
                 </div>
             </div>
         </section>
+
+        <div id="additional-feedback-form" class="feedback-form-container">
+            <center><h4>Additional Feedback</h4></center>
+
+            <div class="question">
+                <label for="q1">1. How satisfied are you with the overall event organization?</label>
+                <input type="radio" id="q1_vgood" name="q1" value="Very Good"> <label for="q1_vgood">Very Good</label>
+                <input type="radio" id="q1_good" name="q1" value="Good"> <label for="q1_good">Good</label>
+                <input type="radio" id="q1_avg" name="q1" value="Average"> <label for="q1_avg">Average</label>
+                <input type="radio" id="q1_poor" name="q1" value="Poor"> <label for="q1_poor">Poor</label>
+            </div>
+
+            <div class="question">
+                <label for="q2">2. Were the quiz questions challenging and relevant?</label>
+                <input type="radio" id="q2_yes" name="q2" value="Yes"> <label for="q2_yes">Yes</label>
+                <input type="radio" id="q2_mostly" name="q2" value="Mostly"> <label for="q2_mostly">Mostly</label>
+                <input type="radio" id="q2_some" name="q2" value="Somewhat"> <label for="q2_some">Somewhat</label>
+                <input type="radio" id="q2_no" name="q2" value="No"> <label for="q2_no">No</label>
+            </div>
+
+            <div class="question">
+                <label for="q3">3. How would you rate the clarity of instructions provided for the event?</label>
+                <input type="radio" id="q3_excellent" name="q3" value="Excellent"> <label for="q3_excellent">Excellent</label>
+                <input type="radio" id="q3_good" name="q3" value="Good"> <label for="q3_good">Good</label>
+                <input type="radio" id="q3_fair" name="q3" value="Fair"> <label for="q3_fair">Fair</label>
+                <input type="radio" id="q3_poor" name="q3" value="Poor"> <label for="q3_poor">Poor</label>
+            </div>
+
+            <div class="question">
+                <label for="q4">4. Would you recommend "The Coders Club" events to your friends?</label>
+                <input type="radio" id="q4_definitely" name="q4" value="Definitely Yes"> <label for="q4_definitely">Definitely Yes</label>
+                <input type="radio" id="q4_likely" name="q4" value="Likely"> <label for="q4_likely">Likely</label>
+                <input type="radio" id="q4_maybe" name="q4" value="Maybe"> <label for="q4_maybe">Maybe</label>
+                <input type="radio" id="q4_not" name="q4" value="Not Really"> <label for="q4_not">Not Really</label>
+            </div>
+
+            <div class="question">
+                <label for="q5">5. Please provide any additional suggestions or comments:</label>
+                <textarea id="q5" name="q5" rows="4" placeholder="Type your suggestions here..."></textarea>
+            </div>
+        </div>
+
     </div>
 
     <footer>
@@ -68,29 +173,62 @@
     </footer>
 
     <script>
-        let enable = false; // Default: Disable form links
+        // Set this variable to "enable" to activate the feedback forms and questions
+        let secretKey = "disable"; // Change this to "enable" to activate feedback
 
-        function disableFormLinks() {
-            if (!enable) { // Only disable if enable is false
-                let buttons = document.querySelectorAll(".feedback-button");
-                buttons.forEach(button => {
+        function initializeFeedbackForm() {
+            const feedbackButtons = document.querySelectorAll(".feedback-button");
+            const additionalFeedbackForm = document.getElementById("additional-feedback-form");
+            const statusMessage = document.getElementById("status");
+
+            if (secretKey === "enable") {
+                // Enable feedback buttons
+                feedbackButtons.forEach(button => {
+                    // Store original text before changing to "Link Disabled"
+                    if (!button.hasAttribute("data-original-text")) {
+                        button.setAttribute("data-original-text", button.innerText);
+                    }
+                    button.disabled = false;
+                    button.style.opacity = "1";
+                    button.style.cursor = "pointer";
+                    button.innerText = button.getAttribute("data-original-text"); // Restore original text
+                });
+                statusMessage.innerHTML = "MINDMASH - Feedback Form<br>Please provide your valuable feedback!";
+
+                // Enable and show the additional feedback form
+                additionalFeedbackForm.classList.add("active");
+                additionalFeedbackForm.classList.remove("disabled");
+
+                // Enable all input elements within the additional feedback form
+                const formElements = additionalFeedbackForm.querySelectorAll('input, textarea');
+                formElements.forEach(element => {
+                    element.disabled = false;
+                });
+
+            } else {
+                // Disable feedback buttons
+                feedbackButtons.forEach(button => {
+                    // Store original text before changing to "Link Disabled"
+                    if (!button.hasAttribute("data-original-text")) {
+                        button.setAttribute("data-original-text", button.innerText);
+                    }
                     button.disabled = true;
                     button.style.opacity = "0.5";
                     button.style.cursor = "not-allowed";
                     button.innerText = "Link Disabled";
                 });
-            }
-        }
+                statusMessage.innerHTML = "MINDMASH - Feedback Form<br>links will enable after this series end";
 
-        function enableFormLinks() {
-            enable = true; // Set variable to true
-            let buttons = document.querySelectorAll(".feedback-button");
-            buttons.forEach(button => {
-                button.disabled = false;
-                button.style.opacity = "1";
-                button.style.cursor = "pointer";
-                button.innerText = button.getAttribute("data-original-text") || "Enabled Link";
-            });
+                // Hide and disable the additional feedback form
+                additionalFeedbackForm.classList.remove("active");
+                additionalFeedbackForm.classList.add("disabled");
+
+                // Disable all input elements within the additional feedback form
+                const formElements = additionalFeedbackForm.querySelectorAll('input, textarea');
+                formElements.forEach(element => {
+                    element.disabled = true;
+                });
+            }
         }
     </script>
 
