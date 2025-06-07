@@ -1,195 +1,98 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Home - Feedback</title>
-
-    <link rel="icon" href="TCC.png" type="image/png">
-
-    <link rel="stylesheet" href="styles.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Feedback</title>
+    <link rel="icon" href="TCC.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body onload="disableFormLinks()">
-
-    <div class="blue-container">
-
-        <div class="left-aligned">
-
-            <a href="https://mce-madurai.ac.in/" target="_blank">
-
-                <img src="MCE_tab.png" alt="Logo" class="favicon-logo">
-
-            </a>
-
-            <div class="titles">
-
-                <h1 class="college-name">Mangayarkarasi College of Engineering</h1>
-
-                <h2 class="site-title">The Coders Club</h2>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- Buttons aligned to the right below the blue container -->
-
-    <div class="button-container" style="text-align: right; padding: 15px;">
-
-        <button class="nav-button" onclick="window.location.href='index.html';">Back to Home</button>
-
-        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
-
-    </div>
-
-
-
-    <div class="content-container">
-
-        <center><h4 id="status">MINDMASH - Feedback Form<br>links will enable after this series end</h4></center>
-
-
-
-        <section>
-
-            <div class="label-button-container">
-
-                <h3>2ND YEAR CSE DEPARTMENT</h3>
-
-                <div class="button-row">
-
-                    <button class="feedback-button" id="form1" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdLfx0pTjxdFjaeSpAD7J--PIYQ9FRiJrHlTG01lITEc_olng/viewform?usp=header';">BOYS</button>
-
-                    <button class="feedback-button" id="form2" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe2zuaLHJqQOr-7PQsOCb3TgUDYbSZO8CsiR9AXTmN2n7SPCg/viewform?usp=header';">GIRLS</button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <section>
-
-            <div class="label-button-container">
-
-                <h3>2ND YEAR AI/ML DEPARTMENT</h3>
-
-                <div class="button-row">
-
-                    <button class="feedback-button" id="form3" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScM1QdLeHzaIsOBlga7o-5Ag5ayce-g1Oznjy9MMqNMYzAscQ/viewform?usp=header';">BOYS</button>
-
-                    <button class="feedback-button" id="form4" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfwjdavp557kxiFq0efJ3QMwDx8LIUKKHQR8djKxg1pDmV3aw/viewform?usp=header';">GIRLS</button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <section>
-
-            <div class="label-button-container">
-
-                <h3>3RD YEAR CSE DEPARTMENT</h3>
-
-                <div class="button-row">
-
-                    <button class="feedback-button" id="form5" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf7RiWCVUUM72CDOLc73iWN2M1y_i2NzDImNNJ-s5cI7Nvcxg/viewform?usp=sharing&ouid=103113943123720362851';">BOYS</button>
-
-                    <button class="feedback-button" id="form6" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc9vS2TA-OlbfGKVdGzBIY9YWAR_pssQowGsSGNu21DvMCzbw/viewform?usp=sharing&ouid=103113943123720362851';">GIRLS</button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </div>
-
-
-
-    <footer>
-
-        <p>Created by The Coders Club</p>
-
-        <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
-
-            <img src="images.png" alt="Instagram" class="instagram-logo">
-
-        </a>
-
-    </footer>
-
-
-
-    <script>
-
-        let enable = false; // Default: Disable form links
-
-
-
-        function disableFormLinks() {
-
-            if (!enable) { // Only disable if enable is false
-
-                let buttons = document.querySelectorAll(".feedback-button");
-
-                buttons.forEach(button => {
-
-                    button.disabled = true;
-
-                    button.style.opacity = "0.5";
-
-                    button.style.cursor = "not-allowed";
-
-                    button.innerText = "Link Disabled";
-
-                });
-
-            }
-
-        }
-
-
-
-        function enableFormLinks() {
-
-            enable = true; // Set variable to true
-
-            let buttons = document.querySelectorAll(".feedback-button");
-
-            buttons.forEach(button => {
-
-                button.disabled = false;
-
-                button.style.opacity = "1";
-
-                button.style.cursor = "pointer";
-
-                button.innerText = button.getAttribute("data-original-text") || "Enabled Link";
-
-            });
-
-        }
-
-    </script>
-
-
+    <div class="blue-container">
+        <div class="left-aligned">
+            <a href="https://mce-madurai.ac.in/" target="_blank">
+                <img src="MCE_tab.png" alt="Logo" class="favicon-logo">
+            </a>
+            <div class="titles">
+                <h1 class="college-name">Mangayarkarasi College of Engineering</h1>
+                <h2 class="site-title">The Coders Club</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Buttons aligned to the right below the blue container -->
+    <div class="button-container" style="text-align: right; padding: 15px;">
+        <button class="nav-button" onclick="window.location.href='index.html';">Back to Home</button>
+        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
+    </div>
+
+    <div class="content-container">
+        <center><h4 id="status">MINDMASH - Feedback Form<br>coming soon</h4></center>
+
+        <section>
+            <div class="label-button-container">
+                <h3>2ND YEAR CSE DEPARTMENT</h3>
+                <div class="button-row">
+                    <button class="feedback-button" id="form1" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSdLfx0pTjxdFjaeSpAD7J--PIYQ9FRiJrHlTG01lITEc_olng/viewform?usp=header';">BOYS</button>
+                    <button class="feedback-button" id="form2" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSe2zuaLHJqQOr-7PQsOCb3TgUDYbSZO8CsiR9AXTmN2n7SPCg/viewform?usp=header';">GIRLS</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="label-button-container">
+                <h3>2ND YEAR AI/ML DEPARTMENT</h3>
+                <div class="button-row">
+                    <button class="feedback-button" id="form3" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLScM1QdLeHzaIsOBlga7o-5Ag5ayce-g1Oznjy9MMqNMYzAscQ/viewform?usp=header';">BOYS</button>
+                    <button class="feedback-button" id="form4" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSfwjdavp557kxiFq0efJ3QMwDx8LIUKKHQR8djKxg1pDmV3aw/viewform?usp=header';">GIRLS</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="label-button-container">
+                <h3>3RD YEAR CSE DEPARTMENT</h3>
+                <div class="button-row">
+                    <button class="feedback-button" id="form5" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSf7RiWCVUUM72CDOLc73iWN2M1y_i2NzDImNNJ-s5cI7Nvcxg/viewform?usp=sharing&ouid=103113943123720362851';">BOYS</button>
+                    <button class="feedback-button" id="form6" onclick="window.location.href='https://docs.google.com/forms/d/e/1FAIpQLSc9vS2TA-OlbfGKVdGzBIY9YWAR_pssQowGsSGNu21DvMCzbw/viewform?usp=sharing&ouid=103113943123720362851';">GIRLS</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>Created by The Coders Club</p>
+        <a href="https://www.instagram.com/the_mce.coders_club/" target="_blank">
+            <img src="images.png" alt="Instagram" class="instagram-logo">
+        </a>
+    </footer>
+
+    <script>
+        let enable = false; // Default: Disable form links
+
+        function disableFormLinks() {
+            if (!enable) { // Only disable if enable is false
+                let buttons = document.querySelectorAll(".feedback-button");
+                buttons.forEach(button => {
+                    button.disabled = true;
+                    button.style.opacity = "0.5";
+                    button.style.cursor = "not-allowed";
+                    button.innerText = "Link Disabled";
+                });
+            }
+        }
+
+        function enableFormLinks() {
+            enable = true; // Set variable to true
+            let buttons = document.querySelectorAll(".feedback-button");
+            buttons.forEach(button => {
+                button.disabled = false;
+                button.style.opacity = "1";
+                button.style.cursor = "pointer";
+                button.innerText = button.getAttribute("data-original-text") || "Enabled Link";
+            });
+        }
+    </script>
 
 </body>
-
 </html>
