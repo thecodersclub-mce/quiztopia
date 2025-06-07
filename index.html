@@ -26,8 +26,6 @@
     </div>
 
     <div class="content-container">
-        <center><h4 id="status">MINDMASH - Feedback Form<br></h4></center>
-
         <section>
             <div class="label-button-container">
                 <h3>2ND YEAR CSE DEPARTMENT</h3>
@@ -69,7 +67,7 @@
     <script>
         // --- CONTROL KEYWORD HERE ---
         // Change this variable to "disable" or "enable"
-        const linkControlStatus = "enable"; // Set to "enable" to activate links
+        const linkControlStatus = "disable"; // Set to "enable" to activate links
         // --- END CONTROL KEYWORD ---
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -93,7 +91,7 @@
                     button.style.cursor = "pointer";
                     button.innerText = button.getAttribute("data-original-text"); // Restore original text
                 });
-                statusElement.innerHTML = 'complete quiz within 8/6/25 5.59 PM IST';
+                statusElement.innerHTML = 'MINDMASH - Quiz<br>complete quiz within 8/6/25 5.59 PM IST';
                 statusElement.style.color = '#008000'; // Green for active
             } else { // Assumes "disable" or any other value means disabled
                 // Links should be DISABLED
@@ -103,7 +101,7 @@
                     button.style.cursor = "not-allowed";
                     button.innerText = "Link Disabled"; // Set text to disabled message
                 });
-                statusElement.innerHTML = 'MINDMASH - Quiz<br>Links are currently **CLOSED**!';
+                statusElement.innerHTML = 'MINDMASH - Quiz<br>quiz starts at 7/6/25 6.00 PM IST';
                 statusElement.style.color = '#CC0000'; // Red for closed
             }
         }
