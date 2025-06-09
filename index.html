@@ -52,7 +52,9 @@
 
         .form-group input[type="text"],
         .form-group input[type="email"],
-        .form-group textarea {
+        .form-group textarea,
+        /* Add select to this list */
+        .form-group select {
             width: 100%; /* Take full width of parent */
             padding: 12px;
             border: 1px solid #c0c0c0; /* Lighter border */
@@ -60,11 +62,20 @@
             box-sizing: border-box; /* Include padding in width */
             font-size: 15px;
             transition: border-color 0.3s ease;
+            -webkit-appearance: none; /* Remove default browser styling for select */
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M192%20256L64%20128v256l128-128z%22%2F%3E%3C%2Fsvg%3E'); /* Custom dropdown arrow */
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            padding-right: 30px; /* Make space for the custom arrow */
         }
 
         .form-group input[type="text"]:focus,
         .form-group input[type="email"]:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             border-color: #00408f; /* Highlight on focus */
             outline: none; /* Remove default outline */
             box-shadow: 0 0 5px rgba(0, 64, 143, 0.2);
@@ -143,7 +154,7 @@
             .quiz-form-wrapper h2 {
                 font-size: 22px;
             }
-            .form-group label, .form-group input, .form-group textarea, .radio-group label, .checkbox-group label {
+            .form-group label, .form-group input, .form-group textarea, .radio-group label, .checkbox-group label, .form-group select {
                 font-size: 14px;
             }
             .submit-button {
@@ -160,7 +171,7 @@
                 font-size: 20px;
                 margin-bottom: 20px;
             }
-            .form-group label, .form-group input, .form-group textarea, .radio-group label, .checkbox-group label {
+            .form-group label, .form-group input, .form-group textarea, .radio-group label, .checkbox-group label, .form-group select {
                 font-size: 13px;
             }
             .form-group p {
@@ -182,7 +193,7 @@
             user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
         }
         /* Allow selection for input fields within no-select, if needed */
-        .no-select input, .no-select textarea {
+        .no-select input, .no-select textarea, .no-select select {
             pointer-events: auto;
             user-select: auto;
         }
@@ -201,7 +212,8 @@
         }
         /* Override pointer-events for input fields within the disabled section to allow JS to disable them */
         #quizQuestionsSection.quiz-disabled-overlay input,
-        #quizQuestionsSection.quiz-disabled-overlay textarea {
+        #quizQuestionsSection.quiz-disabled-overlay textarea,
+        #quizQuestionsSection.quiz-disabled-overlay select {
             pointer-events: auto; /* Allows JS to disable them properly */
         }
 
@@ -314,19 +326,23 @@
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="Email" required placeholder="your.email@example.com">
                 </div>
+
                 <div class="form-group">
-                    <label>Department:</label>
-                    <div class="radio-group">
-                        <label><input type="radio" id="dept_cse" name="Department" value="CSE" required> CSE</label>
-                        <label><input type="radio" id="dept_aiml" name="Department" value="CSE (AI&ML)"> CSE (AI&ML)</label>
-                    </div>
+                    <label for="department">Department:</label>
+                    <select id="department" name="Department" required>
+                        <option value="">Select your Department</option>
+                        <option value="CSE">CSE</option>
+                        <option value="CSE (AI&ML)">CSE (AI&ML)</option>
+                        </select>
                 </div>
+
                 <div class="form-group">
-                    <label>Year:</label>
-                    <div class="radio-group">
-                        <label><input type="radio" id="year_2nd" name="Year" value="2nd Year" required> 2nd Year</label>
-                        <label><input type="radio" id="year_3rd" name="Year" value="3rd Year"> 3rd Year</label>
-                    </div>
+                    <label for="year">Year:</label>
+                    <select id="year" name="Year" required>
+                        <option value="">Select your Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        </select>
                 </div>
 
                 <hr>
@@ -489,7 +505,7 @@
                 }, 500); // Matches CSS transition duration
 
                 // Enable relevant form elements inside the quiz questions section
-                quizQuestionsSection.querySelectorAll('input, textarea').forEach(input => {
+                quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
                     input.disabled = false;
                 });
                 submitButton.disabled = false; // Ensure submit button is enabled
@@ -511,7 +527,7 @@
                 quizQuestionsSection.classList.add('quiz-disabled-overlay');
 
                 // Disable relevant form elements inside the quiz questions section
-                quizQuestionsSection.querySelectorAll('input, textarea').forEach(input => {
+                quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
                     input.disabled = true;
                 });
                 submitButton.disabled = true; // Ensure submit button is disabled
