@@ -50,10 +50,10 @@
             font-size: 15px;
         }
 
+        /* Common styling for all input types (text, email, textarea, select) */
         .form-group input[type="text"],
         .form-group input[type="email"],
         .form-group textarea,
-        /* Add select to this list */
         .form-group select {
             width: 100%; /* Take full width of parent */
             padding: 12px;
@@ -62,6 +62,10 @@
             box-sizing: border-box; /* Include padding in width */
             font-size: 15px;
             transition: border-color 0.3s ease;
+        }
+
+        /* Specific styling for <select> dropdowns to add the custom arrow */
+        .form-group select {
             -webkit-appearance: none; /* Remove default browser styling for select */
             -moz-appearance: none;
             appearance: none;
@@ -333,7 +337,7 @@
                         <option value="">Select your Department</option>
                         <option value="CSE">CSE</option>
                         <option value="CSE (AI&ML)">CSE (AI&ML)</option>
-                        </select>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -342,14 +346,14 @@
                         <option value="">Select your Year</option>
                         <option value="2nd Year">2nd Year</option>
                         <option value="3rd Year">3rd Year</option>
-                        </select>
+                    </select>
                 </div>
 
                 <hr>
 
                 <div id="quizQuestionsSection">
                     <div id="quizOverlay">
-                        </div>
+                    </div>
                     <h3>Quiz Questions</h3>
 
                     <div class="form-group no-select">
@@ -486,7 +490,6 @@
 
             const quizQuestionsSection = document.getElementById('quizQuestionsSection');
             const quizOverlay = document.getElementById('quizOverlay');
-            // Removed lockIcon variable as the element is gone
             const quizForm = document.getElementById('quizForm');
             const submitButton = quizForm.querySelector('.submit-button');
 
@@ -540,8 +543,6 @@
                 statusElement.innerHTML = 'MINDMASH - WEEK 03 QUIZ<br>starts at 14/6/25 6.00 PM IST!';
                 statusElement.style.color = '#CC0000'; // Red for closed
             }
-            // Navigation buttons (Leaderboard, Feedback) are NOT managed by linkControlStatus
-            // They remain enabled and visible by default.
         }
 
         // Handle form submission to Google Sheet via Google Apps Script
