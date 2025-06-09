@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Additional CSS for the quiz form to integrate with your existing styles */
+        /* Additional CSS for the form to integrate with your existing styles */
         .content-container {
             /* Override previous height/centering to allow form content to flow naturally */
             height: auto; /* Allow height to adjust based on content */
@@ -18,7 +18,7 @@
             box-sizing: border-box; /* Include padding in the element's total width and height */
         }
 
-        .quiz-form-wrapper {
+        .quiz-form-wrapper { /* Renamed to feedback-form-wrapper for clarity, but kept for compatibility */
             width: 90%; /* Adjust width for better responsiveness */
             max-width: 700px; /* Limit max-width for larger screens */
             margin: 20px auto; /* Center the form wrapper */
@@ -52,7 +52,8 @@
 
         .form-group input[type="text"],
         .form-group input[type="email"],
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select { /* Added select for dropdowns */
             width: 100%; /* Take full width of parent */
             padding: 12px;
             border: 1px solid #c0c0c0; /* Lighter border */
@@ -64,7 +65,8 @@
 
         .form-group input[type="text"]:focus,
         .form-group input[type="email"]:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             border-color: #00408f; /* Highlight on focus */
             outline: none; /* Remove default outline */
             box-shadow: 0 0 5px rgba(0, 64, 143, 0.2);
@@ -98,7 +100,7 @@
             cursor: pointer;
         }
 
-        /* Styling for quiz questions paragraph */
+        /* Styling for form questions paragraph */
         .form-group p {
             font-weight: 600;
             color: #333;
@@ -134,7 +136,7 @@
             margin: 30px 0;
         }
 
-        /* Responsive adjustments for quiz form */
+        /* Responsive adjustments for form */
         @media only screen and (max-width: 768px) {
             .quiz-form-wrapper {
                 width: 95%; /* Make it slightly wider on tablets */
@@ -172,57 +174,72 @@
             }
         }
 
-        /* --- New CSS for Anti-Copying --- */
+        /* --- CSS for Anti-Copying (kept for consistency) --- */
         .no-select {
-            -webkit-touch-callout: none; /* iOS Safari */
-            -webkit-user-select: none; /* Safari */
-            -khtml-user-select: none; /* Konqueror HTML */
-            -moz-user-select: none; /* Old versions of Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-        /* Allow selection for input fields within no-select, if needed */
-        .no-select input, .no-select textarea {
+        .no-select input, .no-select textarea, .no-select select { /* Added select */
             pointer-events: auto;
             user-select: auto;
         }
 
-        /* --- New CSS for the QUIZ QUESTIONS SECTION (Blurring, Jumbling & Overlay Container) --- */
-        #quizQuestionsSection {
-            position: relative; /* Essential for positioning the absolute overlay */
+        /* --- CSS for form section (Blurring & Overlay Container) --- */
+        #feedbackFormSection { /* Renamed ID to be specific to feedback */
+            position: relative;
         }
 
-        /* Keep this if you still want the blur/opacity effect when disabled */
-        #quizQuestionsSection.quiz-disabled-overlay {
-            opacity: 0.5; /* Makes the section semi-transparent */
-            filter: blur(3px); /* Applies a blur effect */
-            pointer-events: none; /* Disables all click/hover events on the section content */
-            transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out; /* Smooth transition */
+        #feedbackFormSection.form-disabled-overlay { /* Renamed class */
+            opacity: 0.5;
+            filter: blur(3px);
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out;
         }
-        /* Override pointer-events for input fields within the disabled section to allow JS to disable them */
-        #quizQuestionsSection.quiz-disabled-overlay input,
-        #quizQuestionsSection.quiz-disabled-overlay textarea {
-            pointer-events: auto; /* Allows JS to disable them properly */
+        #feedbackFormSection.form-disabled-overlay input,
+        #feedbackFormSection.form-disabled-overlay textarea,
+        #feedbackFormSection.form-disabled-overlay select { /* Added select */
+            pointer-events: auto;
         }
 
-        /* --- New CSS for Submission Success Message --- */
+        /* --- CSS for White Opaque Overlay (if you still need it for disabling) --- */
+        /* If you just want blur/opacity, this overlay might not be strictly necessary */
+        #formOverlay { /* Renamed ID */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+        }
+
+        /* --- Submission Success Message (COPIED FROM QUIZ PAGE) --- */
         #submissionSuccessMessage {
-            position: fixed; /* Stays in place relative to the viewport */
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+            background-color: rgba(0, 0, 0, 0.5);
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000; /* Ensures it's on top of all other content */
-            opacity: 0; /* Initially hidden */
-            visibility: hidden; /* Also hidden by default for accessibility/layout */
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth fade in/out */
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
         }
 
-        /* Class to show the success message */
         #submissionSuccessMessage.show {
             opacity: 1;
             visibility: visible;
@@ -234,39 +251,35 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            transform: scale(0.9); /* Initial scale for a subtle zoom-in effect */
+            transform: scale(0.9);
             transition: transform 0.3s ease-in-out;
         }
 
-        /* Animation for the content when shown */
         #submissionSuccessMessage.show .success-content {
-            transform: scale(1); /* Scales up to normal size */
+            transform: scale(1);
         }
 
         .success-content p {
             font-size: 20px;
             font-weight: bold;
-            color: #008000; /* Green text for success */
+            color: #008000;
             margin-top: 15px;
         }
 
-        /* New CSS for the Font Awesome icon */
         .success-icon-fa {
-            font-size: 80px; /* Adjust size as needed */
-            color: #008000; /* Green color for the icon */
-            margin-bottom: 10px; /* Space between icon and text */
-            animation: fadeInScale 0.6s forwards; /* Simple fade-in and scale animation */
+            font-size: 80px;
+            color: #008000;
+            margin-bottom: 10px;
+            animation: fadeInScale 0.6s forwards;
         }
 
-        /* New keyframe for the Font Awesome icon */
         @keyframes fadeInScale {
             0% { opacity: 0; transform: scale(0.7); }
             100% { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
-<body onload="setLinkStatus()">
-    <div class="blue-container">
+<body onload="setFormStatus()"> <div class="blue-container">
         <div class="left-aligned">
             <a href="https://mce-madurai.ac.in/" target="_blank">
                 <img src="MCE_tab.png" alt="Logo" class="favicon-logo">
@@ -286,10 +299,7 @@
     <div class="content-container">
         <center><h4 id="status"></h4></center>
 
-        <div class="quiz-form-wrapper">
-            <h2>MINDMASH</h2>
-            <form id="quizForm" method="POST" action="https://script.google.com/macros/s/AKfycbwYjG5TPLqg9X-91Z3g6-FgRLDhJOAG028wiqIO8_-gXcwgS6TM0oZlJWcazUTqQEZD/exec">
-                <div class="form-group">
+        <div class="quiz-form-wrapper"> <h2>Feedback Form</h2> <form id="feedbackForm" method="POST" action="https://script.google.com/macros/s/AKfycbwYjG5TPLqg9X-91Z3g6-FgRLDhJOAG028wiqIO8_-gXcwgS6TM0oZlJWcazUTqQEZD/exec"> <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="Name" required placeholder="Enter your full name">
                 </div>
@@ -298,63 +308,59 @@
                     <input type="email" id="email" name="Email" required placeholder="your.email@example.com">
                 </div>
                 <div class="form-group">
-                    <label>Department:</label>
-                    <div class="radio-group">
-                        <label><input type="radio" id="dept_cse" name="Department" value="CSE" required> CSE</label>
-                        <label><input type="radio" id="dept_aiml" name="Department" value="CSE (AI&ML)"> CSE (AI&ML)</label>
-                    </div>
+                    <label for="department">Department:</label>
+                    <select id="department" name="Department" required>
+                        <option value="">Select your Department</option>
+                        <option value="CSE">CSE</option>
+                        <option value="CSE (AI&ML)">CSE (AI&ML)</option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label>Year:</label>
-                    <div class="radio-group">
-                        <label><input type="radio" id="year_2nd" name="Year" value="2nd Year" required> 2nd Year</label>
-                        <label><input type="radio" id="year_3rd" name="Year" value="3rd Year"> 3rd Year</label>
-                    </div>
+                    <label for="year">Year:</label>
+                    <select id="year" name="Year" required>
+                        <option value="">Select your Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                    </select>
                 </div>
 
                 <hr>
 
-                <div id="quizQuestionsSection">
-                    <h3>Quiz Questions</h3>
+                <div id="feedbackFormSection"> <h3>Your Feedback</h3>
 
                     <div class="form-group no-select">
-                        <p><strong>1. Which of the following is NOT a core principle of Object-Oriented Programming (OOP)?</strong></p>
+                        <p><strong>1. How satisfied are you with the recent Coders Club event/quiz?</strong></p>
                         <div class="radio-group">
-                            <label><input type="radio" id="q1_a" name="Question1" value="Encapsulation" required> Encapsulation</label>
-                            <label><input type="radio" id="q1_b" name="Question1" value="Inheritance"> Inheritance</label>
-                            <label><input type="radio" id="q1_c" name="Question1" value="Polymorphism"> Polymorphism</label>
-                            <label><input type="radio" id="q1_d" name="Question1" value="Modularity"> Modularity</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group no-select">
-                        <p><strong>2. Select all data structures that allow for direct access to elements by an index:</strong></p>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" id="q2_a" name="Question2[]" value="Array"> Array</label>
-                            <label><input type="checkbox" id="q2_b" name="Question2[]" value="Linked List"> Linked List</label>
-                            <label><input type="checkbox" id="q2_c" name="Question2[]" value="Hash Map"> Hash Map</label>
-                            <label><input type="checkbox" id="q2_d" name="Question2[]" value="Stack"> Stack</label>
+                            <label><input type="radio" id="rating_5" name="SatisfactionRating" value="5 - Very Satisfied" required> 5 - Very Satisfied</label>
+                            <label><input type="radio" id="rating_4" name="SatisfactionRating" value="4 - Satisfied"> 4 - Satisfied</label>
+                            <label><input type="radio" id="rating_3" name="SatisfactionRating" value="3 - Neutral"> 3 - Neutral</label>
+                            <label><input type="radio" id="rating_2" name="SatisfactionRating" value="2 - Dissatisfied"> 2 - Dissatisfied</label>
+                            <label><input type="radio" id="rating_1" name="SatisfactionRating" value="1 - Very Dissatisfied"> 1 - Very Dissatisfied</label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <p class="no-select"><strong>3. Briefly explain the difference between `let`, `const`, and `var` in JavaScript.</strong></p>
-                        <textarea id="q3_ans" name="Question3" required placeholder="Type your answer here..."></textarea>
+                        <p class="no-select"><strong>2. What did you like most about the event/quiz?</strong></p>
+                        <textarea id="likedMost" name="LikedMost" required placeholder="Tell us what you enjoyed..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="no-select"><strong>3. What suggestions do you have for improving future events/quizzes?</strong></p>
+                        <textarea id="suggestions" name="Suggestions" required placeholder="Suggestions for improvement..."></textarea>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>4. Which of the following best describes the purpose of a primary key in a relational database?</strong></p>
+                        <p><strong>4. Would you recommend Coders Club events/quizzes to your friends?</strong></p>
                         <div class="radio-group">
-                            <label><input type="radio" id="q4_a" name="Question4" value="To uniquely identify each record in a table" required> To uniquely identify each record in a table</label>
-                            <label><input type="radio" id="q4_b" name="Question4" value="To establish relationships between tables"> To establish relationships between tables</label>
-                            <label><input type="radio" id="q4_c" name="Question4" value="To enforce data integrity"> To enforce data integrity</label>
-                            <label><input type="radio" id="q4_d" name="Question4" value="To speed up data retrieval"> To speed up data retrieval</label>
+                            <label><input type="radio" id="recommend_yes" name="Recommend" value="Yes" required> Yes</label>
+                            <label><input type="radio" id="recommend_no" name="Recommend" value="No"> No</label>
+                            <label><input type="radio" id="recommend_maybe" name="Recommend" value="Maybe"> Maybe</label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <p class="no-select"><strong>5. What is the main benefit of using version control systems like Git?</strong></p>
-                        <textarea id="q5_ans" name="Question5" required placeholder="Type your answer here..."></textarea>
+                        <p class="no-select"><strong>5. Any other comments or feedback?</strong></p>
+                        <textarea id="otherComments" name="OtherComments" placeholder="Optional comments..."></textarea>
                     </div>
 
                     <button type="submit" class="submit-button">Submit Feedback</button>
@@ -388,7 +394,7 @@
     <script>
         // --- CONTROL KEYWORD HERE ---
         // Change this variable to "disable" or "enable"
-        const linkControlStatus = "disable"; // Set to "enable" to activate links
+        const formControlStatus = "disable"; // Changed variable name to be specific for feedback form
         // --- END CONTROL KEYWORD ---
 
         // Object to store original text content for jumbling/unjumbling
@@ -443,26 +449,25 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            setLinkStatus(); // Call the main function to set the quiz status based on the keyword
+            setFormStatus(); // Call the main function to set the form status based on the keyword
         });
 
-        function setLinkStatus() {
+        function setFormStatus() { // Renamed function for clarity
             const statusElement = document.getElementById('status');
-            const quizQuestionsSection = document.getElementById('quizQuestionsSection');
-            // Removed quizOverlay and lockIcon variables
-            const quizForm = document.getElementById('quizForm');
-            const submitButton = quizForm.querySelector('.submit-button');
+            const feedbackFormSection = document.getElementById('feedbackFormSection'); // Changed ID
+            const feedbackForm = document.getElementById('feedbackForm'); // Changed ID
+            const submitButton = feedbackForm.querySelector('.submit-button');
 
-            // Select elements whose text needs to be jumbled
-            const elementsToJumble = quizQuestionsSection.querySelectorAll('h3, p, .radio-group label, .checkbox-group label');
+            // Select elements whose text needs to be jumbled (questions and options)
+            const elementsToJumble = feedbackFormSection.querySelectorAll('h3, p, .radio-group label, .checkbox-group label');
 
-            if (linkControlStatus === "enable") {
-                // Quiz is Enabled
-                // Remove the disabled styling from the quiz questions section
-                quizQuestionsSection.classList.remove('quiz-disabled-overlay');
+            if (formControlStatus === "enable") { // Using new control variable
+                // Form is Enabled
+                // Remove the disabled styling from the form section
+                feedbackFormSection.classList.remove('form-disabled-overlay'); // Changed class
 
-                // Enable relevant form elements inside the quiz questions section
-                quizQuestionsSection.querySelectorAll('input, textarea').forEach(input => {
+                // Enable relevant form elements inside the form section
+                feedbackFormSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
                     input.disabled = false;
                 });
                 submitButton.disabled = false; // Ensure submit button is enabled
@@ -472,15 +477,15 @@
                     unjumbleText(element);
                 });
 
-                statusElement.innerHTML = 'MINDMASH - FEEDBACK<br>fill within 15/6/25 5.59 PM IST!';
+                statusElement.innerHTML = 'MINDMASH - FEEDBACK OPEN<br>Please share your valuable thoughts!';
                 statusElement.style.color = '#008000'; // Green for active
             } else { // Assumes "disable" or any other value means disabled
-                // Quiz is Disabled
-                // Add the disabled styling to the quiz questions section for blur and opacity
-                quizQuestionsSection.classList.add('quiz-disabled-overlay');
+                // Form is Disabled
+                // Add the disabled styling to the form section for blur and opacity
+                feedbackFormSection.classList.add('form-disabled-overlay'); // Changed class
 
-                // Disable relevant form elements inside the quiz questions section
-                quizQuestionsSection.querySelectorAll('input, textarea').forEach(input => {
+                // Disable relevant form elements inside the form section
+                feedbackFormSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
                     input.disabled = true;
                 });
                 submitButton.disabled = true; // Ensure submit button is disabled
@@ -490,25 +495,25 @@
                     jumbleText(element);
                 });
 
-                statusElement.innerHTML = 'MINDMASH - FEEDBACK<br>wait until further notice!';
+                statusElement.innerHTML = 'MINDMASH - FEEDBACK<br>wait until further updates!';
                 statusElement.style.color = '#CC0000'; // Red for closed
             }
-            // Navigation buttons (Leaderboard, Feedback) are NOT managed by linkControlStatus
+            // Navigation buttons (Back to Quiz, Leaderboard) are NOT managed by formControlStatus
             // They remain enabled and visible by default.
         }
 
         // Handle form submission to Google Sheet via Google Apps Script
-        const quizForm = document.getElementById('quizForm');
-        quizForm.addEventListener('submit', function(e) {
+        const feedbackForm = document.getElementById('feedbackForm'); // Changed variable name
+        feedbackForm.addEventListener('submit', function(e) {
             e.preventDefault(); // Prevent default form submission
 
-            // Check if the form is disabled by the linkControlStatus
+            // Check if the form is disabled by the formControlStatus
             if (this.querySelector('.submit-button').disabled) {
-                alert('The quiz is currently closed.');
+                alert('The feedback form is currently closed.');
                 return; // Stop submission if disabled
             }
 
-            const formData = new FormData(quizForm);
+            const formData = new FormData(feedbackForm); // Changed variable name
             const data = {};
             for (let [key, value] of formData.entries()) {
                 if (key.endsWith('[]')) { // Handle checkbox arrays
@@ -529,7 +534,7 @@
                 }
             }
 
-            // Replace 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE' with your deployed Apps Script URL
+            // Replace 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE' with your deployed Apps Script URL for FEEDBACK
             const scriptUrl = 'https://script.google.com/macros/s/AKfycbwYjG5TPLqg9X-91Z3g6-FgRLDhJOAG028wiqIO8_-gXcwgS6TM0oZlJWcazUTqQEZD/exec';
             fetch(scriptUrl, {
                 method: 'POST',
@@ -540,12 +545,14 @@
                 body: new URLSearchParams(data).toString()
             })
             .then(response => {
+                // If the fetch completes (even with no-cors), we assume the data was sent.
+                // Therefore, we can show the success animation.
                 showSuccessAnimation(); // CALL THE NEW ANIMATION FUNCTION HERE
-                quizForm.reset(); // Clear the form
+                feedbackForm.reset(); // Clear the form (changed variable name)
             })
             .catch(error => {
-                console.error('Error submitting quiz:', error);
-                alert('There was an error submitting the quiz. Please try again.');
+                console.error('Error submitting feedback:', error);
+                alert('There was an error submitting your feedback. Please try again.');
             });
         });
     </script>
