@@ -205,7 +205,7 @@
             pointer-events: auto; /* Allows JS to disable them properly */
         }
 
-        /* --- New CSS for the White Opaque Overlay and Lock Icon --- */
+        /* --- New CSS for the White Opaque Overlay --- */
         #quizOverlay {
             position: absolute;
             top: 0;
@@ -220,12 +220,6 @@
             opacity: 0; /* Hidden by default */
             visibility: hidden; /* Also hidden by default for accessibility/layout */
             transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
-        }
-
-        #lockIcon {
-            width: 80px; /* Adjust size as needed */
-            height: 80px; /* Adjust size as needed */
-            display: none; /* Hidden by default */
         }
 
         /* --- New CSS for Submission Success Message --- */
@@ -339,8 +333,7 @@
 
                 <div id="quizQuestionsSection">
                     <div id="quizOverlay">
-                        <img src="https://jumpshare.com/lock/png" alt="Locked" id="lockIcon">
-                    </div>
+                        </div>
                     <h3>Quiz Questions</h3>
 
                     <div class="form-group no-select">
@@ -384,7 +377,7 @@
                     </div>
 
                     <button type="submit" class="submit-button">Submit Quiz</button>
-                </div> 
+                </div>
             </form>
 
             <div id="submissionSuccessMessage">
@@ -477,7 +470,7 @@
 
             const quizQuestionsSection = document.getElementById('quizQuestionsSection');
             const quizOverlay = document.getElementById('quizOverlay');
-            const lockIcon = document.getElementById('lockIcon'); // This selects the img element
+            // Removed lockIcon variable as the element is gone
             const quizForm = document.getElementById('quizForm');
             const submitButton = quizForm.querySelector('.submit-button');
 
@@ -486,11 +479,8 @@
 
             if (linkControlStatus === "enable") {
                 // Quiz is Enabled
-                // Hide overlay and lock icon first for smooth transition
+                // Hide overlay first for smooth transition
                 quizOverlay.style.opacity = '0';
-                // Lock icon is a child of the overlay, so it will also hide with the overlay's opacity
-                // However, explicitly setting its display to 'none' for an instant hide is good practice.
-                lockIcon.style.display = 'none'; 
 
                 // After overlay fades out, remove its visibility and disable class from quiz section
                 setTimeout(() => {
@@ -513,10 +503,9 @@
                 statusElement.style.color = '#008000'; // Green for active
             } else { // Assumes "disable" or any other value means disabled
                 // Quiz is Disabled
-                // Show overlay and lock icon immediately or with a slight delay
+                // Show overlay immediately or with a slight delay
                 quizOverlay.style.visibility = 'visible';
                 quizOverlay.style.opacity = '1';
-                lockIcon.style.display = 'block'; // Make the lock icon visible
 
                 // Add the disabled styling to the quiz questions section for blur and opacity
                 quizQuestionsSection.classList.add('quiz-disabled-overlay');
@@ -582,6 +571,8 @@
                 body: new URLSearchParams(data).toString()
             })
             .then(response => {
+                // If the fetch completes (even with no-cors), we assume the data was sent.
+                // Therefore, we can show the success animation.
                 showSuccessAnimation(); // CALL THE NEW ANIMATION FUNCTION HERE
                 quizForm.reset(); // Clear the form
             })
