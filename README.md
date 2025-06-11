@@ -1,7 +1,10 @@
+---
+
 # 🧠 MINDMASH Quiz, Feedback, & Leaderboard Application
 
 This repository contains the front-end code for the **MINDMASH** application, designed by The Coders Club. It features an interactive quiz, a feedback form, and a dynamic leaderboard, all capable of adapting their state and submitting data.
 
+---
 
 ## ✨ Features
 
@@ -18,12 +21,13 @@ This repository contains the front-end code for the **MINDMASH** application, de
 * **Responsive Design**: Adapts to different screen sizes for optimal viewing on desktop and mobile devices.
 * **Anti-Copying Measures**: Basic CSS to prevent text selection in certain quiz elements when disabled.
 
+---
 
 ## 🚀 Setup & Usage
 
 ### 1. Google Apps Script Setup (Backend for Data Submission)
 
-Both the quiz and feedback forms submit data to a Google Sheet via a deployed Google Apps Script web app. You need to set this up first for submissions to work.
+Both the quiz and feedback forms submit data to a Google Sheet via a deployed Google Apps Script web app. You'll need to set this up first for submissions to work.
 
 #### For each form (Quiz and Feedback):
 
@@ -57,9 +61,9 @@ Both the quiz and feedback forms submit data to a Google Sheet via a deployed Go
 
       return ContentService.createTextOutput(JSON.stringify({"result":"success", "row": sheet.getLastRow()})).setMimeType(ContentService.MimeType.JSON);
     }
-
+    ```
 5.  **Deploy as Web App**:
-    * Save the script (File > Save project).
+    * Save the script (`File > Save project`).
     * Click `Deploy > New deployment`.
     * For "Select type," choose **Web app**.
     * For "Execute as," choose `Me`.
@@ -96,26 +100,38 @@ The leaderboard data in `leaderboard.html` is currently **static HTML**. This me
 * Edit the `<table>` rows (`<tr><td>...</td></tr>`) to reflect the latest rankings and scores.
 * Follow the same process for other weeks and departments as needed.
 
+---
 
 ## 💻 Local Development
 
 You can open `index.html`, `feedback.html`, and `leaderboard.html` directly in your web browser to test them. Remember that for form submissions to work, you *must* have completed the Google Apps Script setup and updated the `scriptUrl` in `index.html` and `feedback.html`.
 
+---
 
 ## 📄 File Structure
 
 * `index.html`: The main Quiz application page.
 * `feedback.html`: The Feedback form page.
-* **`leaderboard.html`**: Displays the quiz results with weekly and department-wise filtering.
+* `leaderboard.html`: Displays the quiz results with weekly and department-wise filtering.
 * `styles.css`: Contains the common CSS styling for all pages.
 * `TCC.png`, `MCE_tab.png`, `IG.png`, `LINKEDLN.png`, `YT.png`, `WP.svg`: Image assets used throughout the pages.
 
+---
 
 ## 🤝 Contributing
+
 Feel free to fork this repository, open issues, or submit pull requests.
 
+---
+
 ## 📝 License
+
 This project is open-sourced under the MIT License.
 
+---
+
 ## 📧 Contact
+
 For any questions or suggestions, please contact The Coders Club.
+
+---
