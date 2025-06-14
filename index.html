@@ -296,6 +296,25 @@
             0% { opacity: 0; transform: scale(0.7); }
             100% { opacity: 1; transform: scale(1); }
         }
+
+        /* Styling for the new <pre><code> block */
+        .code-block {
+            background-color: #f4f4f4; /* Light grey background */
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+        }
+
+        /* Crucial: Style for <code> inside <pre> */
+        .code-block code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em; /* Slightly smaller font size */
+            color: #333; /* Darker text color */
+            display: block; /* Ensures it takes up full width of pre and respects line breaks */
+            white-space: pre-wrap; /* Ensures line breaks in code are respected */
+        }
     </style>
 </head>
 <body>
@@ -321,7 +340,7 @@
 
         <div class="quiz-form-wrapper">
             <h2>MINDMASH</h2>
-            <form id="quizForm" method="POST" action="https://script.google.com/macros/s/AKfycby_BUIw3iWX2yH4vFDEU2HnpFzgiPz4GSdGCvZNAVIWlEZiI1JJOeniIW_WrlzQpgijpA/exec">
+            <form id="quizForm" method="POST" action="https://script.google.com/macros/s/AKfycby_BUIw3iWX2yH4vFDEU2HnpFzgiPz4GSgDCvZNAVIWlEZiI1JJOeniIW_WrlzQpgijpA/exec">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="Name" required placeholder="Enter your full name">
@@ -356,44 +375,84 @@
                     </div>
                     <h3>Quiz Questions</h3>
 
-                    <div class="form-group no-select">
-                        <p><strong>1. Which of the following is NOT a core principle of Object-Oriented Programming (OOP)?</strong></p>
-                        <div class="radio-group">
-                            <label><input type="radio" id="q1_a" name="Question1" value="Encapsulation" required> Encapsulation</label>
-                            <label><input type="radio" id="q1_b" name="Question1" value="Inheritance"> Inheritance</label>
-                            <label><input type="radio" id="q1_c" name="Question1" value="Polymorphism"> Polymorphism</label>
-                            <label><input type="radio" id="q1_d" name="Question1" value="Modularity"> Modularity</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group no-select">
-                        <p><strong>2. Select all data structures that allow for direct access to elements by an index:</strong></p>
-                        <div class="checkbox-group">
-                            <label><input type="checkbox" id="q2_a" name="Question2[]" value="Array"> Array</label>
-                            <label><input type="checkbox" id="q2_b" name="Question2[]" value="Linked List"> Linked List</label>
-                            <label><input type="checkbox" id="q2_c" name="Question2[]" value="Hash Map"> Hash Map</label>
-                            <label><input type="checkbox" id="q2_d" name="Question2[]" value="Stack"> Stack</label>
-                        </div>
-                    </div>
-
                     <div class="form-group">
-                        <p class="no-select"><strong>3. Briefly explain the difference between `let`, `const`, and `var` in JavaScript.</strong></p>
-                        <textarea id="q3_ans" name="Question3" required placeholder="Type your answer here..."></textarea>
+                        <p class="no-select"><strong>1. Define what a "function" is in C programming, and explain how its use contributes to better code quality.</strong></p>
+                        <textarea id="q1_ans" name="Question1" required placeholder="Type your answer here..."></textarea>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>4. Which of the following best describes the purpose of a primary key in a relational database?</strong></p>
+                        <p><strong>2. Which of the following statements about arrays in C is TRUE, considering pointer behavior, memory allocation, and function interactions?</strong></p>
                         <div class="radio-group">
-                            <label><input type="radio" id="q4_a" name="Question4" value="To uniquely identify each record in a table" required> To uniquely identify each record in a table</label>
-                            <label><input type="radio" id="q4_b" name="Question4" value="To establish relationships between tables"> To establish relationships between tables</label>
-                            <label><input type="radio" id="q4_c" name="Question4" value="To enforce data integrity"> To enforce data integrity</label>
-                            <label><input type="radio" id="q4_d" name="Question4" value="To speed up data retrieval"> To speed up data retrieval</label>
+                            <label><input type="radio" id="q2_a" name="Question2" value="A. The name of an array can be incremented like a pointer, because it points to the base address of the array." required> A. The name of an array can be incremented like a pointer, because it points to the base address of the array.</label>
+                            <label><input type="radio" id="q2_b" name="Question2" value="B. When an array is passed to a function, the entire array is copied and operated on as a separate entity."> B. When an array is passed to a function, the entire array is copied and operated on as a separate entity.</label>
+                            <label><input type="radio" id="q2_c" name="Question2" value="C. Arrays in C can have dynamic lengths declared using variables in standard C90."> C. Arrays in C can have dynamic lengths declared using variables in standard C90.</label>
+                            <label><input type="radio" id="q2_d" name="Question2" value="D. The expression *(arr + i) is equivalent to arr[i] in terms of accessing array elements."> D. The expression *(arr + i) is equivalent to arr[i] in terms of accessing array elements.</label>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <p class="no-select"><strong>5. What is the main benefit of using version control systems like Git?</strong></p>
-                        <textarea id="q5_ans" name="Question5" required placeholder="Type your answer here..."></textarea>
+                    <div class="form-group no-select">
+                        <p><strong>3. What concept is primarily demonstrated by the output of the following C program involving a variable and a pointer?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;        // Declare an integer variable
+    int *ptr;          // Declare a pointer to int
+
+    ptr = &amp;a;            // Store address of variable 'a' in pointer 'ptr'
+
+    // Print the value and address
+    printf("Value of a: %d\n", a);
+    printf("Address of a: %p\n", &amp;a);
+    printf("Value stored in ptr (address of a): %p\n", ptr);
+    printf("Value pointed to by ptr (value of a): %d\n", *ptr);
+
+    return 0;
+}
+</code></pre>
+                        <div class="radio-group">
+                            <label><input type="radio" id="q3_a" name="Question3" value="A. The program shows how to use a pointer to access the address and value of a variable." required> A. The program shows how to use a pointer to access the address and value of a variable.</label>
+                            <label><input type="radio" id="q3_b" name="Question3" value="B. The program swaps two integers using pointers."> B. The program swaps two integers using pointers.</label>
+                            <label><input type="radio" id="q3_c" name="Question3" value="C. The program performs dynamic memory allocation using malloc."> C. The program performs dynamic memory allocation using malloc.</label>
+                            <label><input type="radio" id="q3_d" name="Question3" value="D. The program uses arrays to store multiple integer values."> D. The program uses arrays to store multiple integer values.
+</label>
+                            <label><input type="radio" id="q3_e" name="Question3" value="E. The program demonstrates pointer arithmetic with arrays."> E. The program demonstrates pointer arithmetic with arrays.</label>
+
+                        </div>
+                    </div>
+<div class="form-group no-select">
+                        <p><strong>4. Why is the size parameter typically necessary when an array is passed to a function in C, as shown in the printArray example?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+#include <stdio.h>
+
+// Function to print array elements
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int numbers[5] = {1, 2, 3, 4, 5};
+    printArray(numbers, 5);
+    return 0;
+}</code></pre>
+                        <div class="radio-group">
+                            <label><input type="radio" id="q4_a" name="Question4" value="A. Because the function needs to make a new copy of the array of the exact same size." required> A. The program shows how to use a pointer to access the address and value of a variable.</label>
+                            <label><input type="radio" id="q4_b" name="Question3" value="B. To ensure the array elements are passed by value instead of by reference."> B. To ensure the array elements are passed by value instead of by reference.</label>
+                            <label><input type="radio" id="q4_c" name="Question4" value="C. Because when an array decays to a pointer, the function loses information about its original size."> C. Because when an array decays to a pointer, the function loses information about its original size.</label>
+                            <label><input type="radio" id="q4_d" name="Question4" value="D. To allow the function to modify the array's dimensions dynamically."> D. To allow the function to modify the array's dimensions dynamically.</label>
+                    </div>
+                    </div>
+                    <div class="form-group no-select">
+                        <p><strong>5. What is the primary advantage of using function pointers in C?</strong></p>
+                        <div class="radio-group">
+                            <label><input type="radio" id="q5_a" name="Question5" value="A. They allow defining arrays with dynamic sizes at runtime." required> A. They allow defining arrays with dynamic sizes at runtime.</label>
+                            <label><input type="radio" id="q5_b" name="Question5" value="B. They enable runtime function selection and dynamic invocation." > B. They enable runtime function selection and dynamic invocation.</label>
+                            <label><input type="radio" id="q5_c" name="Question5" value="C. They eliminate the need for manual memory allocation."> C. They eliminate the need for manual memory allocation.</label>
+                            <label><input type="radio" id="q5_d" name="Question5" value="D. They are used to declare fixed-size arrays."> D. They are used to declare fixed-size arrays.</label>
+                        </div>
                     </div>
 
                     <button type="submit" class="submit-button">Submit Quiz</button>
@@ -405,6 +464,7 @@
                     <i class="fas fa-check-circle success-icon-fa"></i> <p>Quiz Submitted Successfully!</p>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -427,7 +487,7 @@
     <script>
         // --- CONTROL KEYWORD HERE ---
         // Change this variable to "disable" or "enable"
-        const linkControlStatus = "disable"; // Set to "enable" to activate links
+        const linkControlStatus = "enable"; // Set to "enable" to activate links
         // --- END CONTROL KEYWORD ---
 
         // Object to store original text content for jumbling/unjumbling
