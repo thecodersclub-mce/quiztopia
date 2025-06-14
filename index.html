@@ -393,17 +393,13 @@
                         <pre class="code-block"><code>#include &lt;stdio.h&gt;
 
 int main() {
-    int a = 10;        // Declare an integer variable
-    int *ptr;          // Declare a pointer to int
-
-    ptr = &amp;a;            // Store address of variable 'a' in pointer 'ptr'
-
-    // Print the value and address
+    int a = 10;        
+    int *ptr;          
+    ptr = &amp;a;           
     printf("Value of a: %d\n", a);
     printf("Address of a: %p\n", &amp;a);
     printf("Value stored in ptr (address of a): %p\n", ptr);
     printf("Value pointed to by ptr (value of a): %d\n", *ptr);
-
     return 0;
 }
 </code></pre>
@@ -420,17 +416,12 @@ int main() {
 <div class="form-group no-select">
                         <p><strong>4. Why is the size parameter typically necessary when an array is passed to a function in C, as shown in the printArray example?</strong></p>
                         <pre class="code-block"><code>#include &lt;stdio.h&gt;
-
-#include <stdio.h>
-
-// Function to print array elements
 void printArray(int arr[], int size) {
     for (int i = 0; i < size; i++) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 }
-
 int main() {
     int numbers[5] = {1, 2, 3, 4, 5};
     printArray(numbers, 5);
