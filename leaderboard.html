@@ -125,6 +125,20 @@
             cursor: pointer;
         }
 
+        /* Style for disqualified rows */
+        .disqualified-row {
+            background-color: #ffe6e6 !important; /* Light red background */
+            color: #a00; /* Darker red text */
+            text-decoration: line-through; /* Strikethrough text */
+            opacity: 0.7; /* Slightly faded */
+            font-style: italic;
+        }
+
+        .disqualified-row td {
+            /* Ensure border and padding are consistent */
+            border: 1px solid #ffcccc;
+        }
+
         .tab-content {
             display: none;
         }
@@ -192,6 +206,7 @@
             <button class="tab-button" onclick="switchWeekTab('week2', event)">Week 2</button>
             <button class="tab-button" onclick="switchWeekTab('week3', event)">Week 3</button>
             <button class="tab-button" onclick="switchWeekTab('week4', event)">Week 4</button>
+            <button class="tab-button" onclick="switchWeekTab('week5', event)">Week 5</button>
         </div>
 
         <div class="table-wrapper">
@@ -299,7 +314,7 @@
                 </div>
 
                 <div id="cse2_week3" class="tab-content">
-                     <h3>2ND YEAR CSE DEPARTMENT</h3>
+                    <h3>2ND YEAR CSE DEPARTMENT</h3>
                     <table>
                         <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
                         <tr><td>1</td><td>Jerusha Grace J T</td><td>5</td></tr>
@@ -324,7 +339,7 @@
                     <table>
                         <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
                         <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
-                        <tr><td>2</td><td>Dharani S</td><td></td>5</tr>
+                        <!--<tr class="disqualified-row">--><td>2</td><td>Dharani S</td><td>5</td></tr>
                         <tr><td>3</td><td>Murugalakshmi T</td><td>5</td></tr>
                         <tr><td>4</td><td>Janany N</td><td>3</td></tr>
                     </table>
@@ -350,6 +365,29 @@
                 </div>
 
                 <div id="cse3_week4" class="tab-content">
+                    <h3>COMING SOON</h3>
+                </div>
+            </div>
+
+            <div id="week5" class="tab-content">
+                <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                    Results for Week 5 Quiz - COMING SOON!
+                </p>
+                <div class="tab-nav">
+                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week5')">CSE 2nd Year</button>
+                    <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week5')">CSE (AI/ML) 2nd Year</button>
+                    <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week5')">CSE 3rd Year</button>
+                </div>
+
+                <div id="cse2_week5" class="tab-content">
+                    <h3>COMING SOON</h3>
+                </div>
+
+                <div id="aiml2_week5" class="tab-content">
+                    <h3>COMING SOON</h3>
+                </div>
+
+                <div id="cse3_week5" class="tab-content">
                     <h3>COMING SOON</h3>
                 </div>
             </div>
