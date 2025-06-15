@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily C Programming Content - The Coders Club</title>
+    <link rel="icon" href="TCC.png" type="image/png">
+    <link rel="stylesheet" href="styles.css"> <style>
+        /* General Container for all content */
+        .content-container-wrapper {
+            width: 90%;
+            max-width: 900px; /* Increased max-width for better content display */
+            margin: 20px auto; /* General top/bottom margin */
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px; /* Space before footer */
+        }
+
+        /* Main Tab Navigation (Week 1, Week 2, etc.) */
+        .main-tab-nav {
+            display: flex;
+            justify-content: center;
+            background: #E0E0E0;
+            border-radius: 8px;
+            overflow: hidden;
+            padding: 5px;
+            box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+        }
+
+        /* Nested Tab Navigation (Monday, Tuesday, etc.) */
+        .nested-tab-nav {
+            display: flex;
+            justify-content: center;
+            background: #e3f2fd; /* Lighter blue background for nested tabs */
+            border-radius: 6px;
+            overflow: hidden;
+            padding: 5px;
+            box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 15px; /* Space above nested tabs */
+            margin-bottom: 15px; /* Space below nested tabs */
+            flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+        }
+
+        /* General Tab Button Styling */
+        .tab-button {
+            flex: 1; /* Allows buttons to grow and shrink */
+            min-width: 80px; /* Minimum width to prevent squishing */
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(to right, #F5F5F5, #E0E0E0);
+            color: #333;
+            font-size: 14px;
+            border-radius: 6px; /* Uniform rounded corners */
+            transition: 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 2px; /* Adjusted margin for consistent spacing when wrapping */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        .tab-button:hover {
+            background: #1E88E5;
+            color: white;
+        }
+
+        .tab-button.active {
+            background: #00408f;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Content sections */
+        .week-content, .day-content {
+            display: none; /* Hidden by default */
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: left; /* Ensure text alignment is natural */
+        }
+
+        .active-content {
+            display: block; /* Shown when active */
+        }
+
+        /* Styling for daily content sections within weeks */
+        .day-section {
+            margin-top: 20px; /* Space between the daily tabs and content */
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .day-section h2 {
+            color: #00408f;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+        }
+
+        .content-block {
+            margin-bottom: 20px;
+        }
+
+        .content-block h3 {
+            color: #1E88E5;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .content-block p {
+            margin-bottom: 10px;
+            line-height: 1.6; /* Improved readability for text */
+        }
+
+        .content-block ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .content-block ul li {
+            margin-bottom: 5px;
+        }
+
+        code {
+            display: block;
+            background-color: #e6f7ff;
+            color: #333;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.95em;
+            white-space: pre-wrap; /* Ensures line breaks are respected */
+            word-wrap: break-word; /* Breaks long words if necessary */
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+            color: inherit;
+            font-size: 1em;
+            white-space: pre;
+        }
+
+        .example-label {
+            font-weight: bold;
+            color: #00408f;
+            margin-top: 15px;
+            display: block;
+        }
+
+        /* --- Mobile Responsiveness for Content and Buttons --- */
+
+        /* Small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            .content-container-wrapper {
+                width: 95%; /* Slightly more width on small screens */
+                padding: 10px;
+                margin: 10px auto 15px auto;
+            }
+
+            /* Make week and day buttons stack vertically or wrap more efficiently */
+            .main-tab-nav, .nested-tab-nav {
+                flex-direction: row; /* Keep as row, but allow wrapping */
+                justify-content: space-around; /* Distribute space evenly */
+                padding: 5px;
+            }
+
+            .tab-button {
+                flex: 1 1 auto; /* Allow buttons to grow, shrink, and wrap */
+                min-width: unset; /* Remove fixed min-width for better wrapping */
+                width: calc(50% - 4px); /* Two buttons per row for main tabs, accounting for margin */
+                margin: 2px; /* Ensure small gap between buttons */
+                font-size: 11px; /* Smaller font size for buttons */
+                padding: 6px 8px;
+            }
+
+            .nested-tab-nav .tab-button {
+                width: calc(33.33% - 4px); /* Three buttons per row for day tabs on very small screens */
+            }
+
+            .day-section {
+                padding: 15px; /* Reduce content padding */
+            }
+
+            .day-section h2 {
+                font-size: 1.4em; /* Smaller headings */
+            }
+
+            .content-block h3 {
+                font-size: 1.1em; /* Smaller sub-headings */
+            }
+
+            .content-block p, .content-block ul li {
+                font-size: 0.9em; /* Smaller text for paragraphs and lists */
+            }
+
+            code {
+                font-size: 0.8em; /* Smaller code font */
+                padding: 8px; /* Smaller padding for code blocks */
+            }
+        }
+
+        /* Medium devices (tablets, 601px to 900px) */
+        @media only screen and (min-width: 601px) and (max-width: 900px) {
+            .content-container-wrapper {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .tab-button {
+                font-size: 13px;
+                padding: 7px 10px;
+                min-width: 90px; /* Slightly larger min-width for tablets */
+            }
+
+            .day-section {
+                padding: 20px;
+            }
+
+            .day-section h2 {
+                font-size: 1.6em;
+            }
+
+            .content-block h3 {
+                font-size: 1.3em;
+            }
+
+            code {
+                font-size: 0.9em;
+                padding: 12px;
+            }
+        }
+
+        /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
+        /* No specific media query needed here as base styles handle larger screens */
+    </style>
+</head>
+<body>
+
+    <div class="blue-container">
+        <div class="left-aligned">
+            <a href="https://mce-madurai.ac.in/" target="_blank">
+                <img src="MCE_tab.png" alt="Logo" class="favicon-logo">
+            </a>
+            <div class="titles">
+                <h1 class="college-name">Mangayarkarasi College of Engineering</h1>
+                <h2 class="site-title">The Coders Club</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container" style="text-align: right; padding: 15px;">
+        <button class="nav-button" onclick="window.location.href='quiz.html';">Quiz</button>
+        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
+        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+    </div>
+
+    <div class="content-container-wrapper">
+        <div class="main-tab-nav">
+            <button class="tab-button" onclick="showWeek('week1', this)">Week 1</button>
+            <button class="tab-button" onclick="showWeek('week2', this)">Week 2</button>
+            <button class="tab-button" onclick="showWeek('week3', this)">Week 3</button>
+            <button class="tab-button" onclick="showWeek('week4', this)">Week 4</button>
+            <button class="tab-button" onclick="showWeek('week5', this)">Week 5</button>
+        </div>
+
+        <div id="week1" class="week-content">
+            <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                Content for Week 1
+            </p>
+            <div class="nested-tab-nav">
+                <button class="tab-button" onclick="showDay('monday', this, 'week1')">Monday</button>
+                <button class="tab-button" onclick="showDay('tuesday', this, 'week1')">Tuesday</button>
+                <button class="tab-button" onclick="showDay('wednesday', this, 'week1')">Wednesday</button>
+                <button class="tab-button" onclick="showDay('thursday', this, 'week1')">Thursday</button>
+                <button class="tab-button" onclick="showDay('friday', this, 'week1')">Friday</button>
+            </div>
+
+            <div id="monday-content" class="day-content day-section">
+                <h2>Monday: Introduction to Functions</h2>
+                <div class="content-block">
+                    <h3><code>What is a Function?</code></h3>
+                    <p>
+                        In C programming, a **function** is a block of code that performs a specific task.
+                        It helps in breaking down a large program into smaller, manageable, and reusable modules.
+                        Functions promote code reusability and make the program more organized and easier to debug.
+                    </p>
+                    <ul>
+                        <li><code>Modularity:</code> Breaks down complex problems into simpler parts.</li>
+                        <li><code>Reusability:</code> A function can be called multiple times from different parts of the program.</li>
+                        <li><code>Readability:</code> Makes the code easier to understand and maintain.</li>
+                        <li><code>Abstraction:</code> Hides the implementation details from the user.</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h3><code>Function Syntax</code></h3>
+                    <p>
+                        The general syntax for defining a function in C is as follows:
+                    </p>
+                    <pre><code>
+return_type function_name(parameter_list) {
+    // body of the function
+    // statements;
+    // return value; (if return_type is not void)
+}
+                    </code></pre>
+                    <ul>
+                        <li><code>return_type:</code> The data type of the value the function returns. Use <code>void</code> if the function does not return any value.</li>
+                        <li><code>function_name:</code> A unique name for the function.</li>
+                        <li><code>parameter_list:</code> A comma-separated list of input parameters (arguments) that the function accepts. Can be empty.</li>
+                        <li><code>function body:</code> Contains the C statements that perform the function's task.</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h3><code>Example: Simple Function</code></h3>
+                    <span class="example-label">C Code:</span>
+                    <pre><code>
+#include &lt;stdio.h&gt;
+
+// Function definition
+void greet() {
+    // printf() displays the string inside quotation
+    printf("Hello from a function!\n");
+}
+
+int main() {
+    greet(); // Function call
+    return 0;
+}
+                    </code></pre>
+                    <span class="example-label">Output:</span>
+                    <pre><code>
+Hello from a function!
+                    </code></pre>
+                </div>
+            </div>
+
+            <div id="tuesday-content" class="day-content day-section">
+                <h2>Tuesday: Function Parameters and Return Values</h2>
+                <div class="content-block">
+                    <h3><code>Passing Arguments to Functions</code></h3>
+                    <p>
+                        Functions can accept arguments (also known as parameters) that provide data for the function to operate on.
+                        These arguments are specified in the function's parameter list during definition.
+                    </p>
+                    <ul>
+                        <li><code>Formal Parameters:</code> Variables declared in the function definition's parameter list.</li>
+                        <li><code>Actual Arguments:</code> Values passed to the function when it is called.</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h3><code>Return Values</code></h3>
+                    <p>
+                        A function can return a single value back to the calling code using the <code>return</code> statement.
+                        The data type of this returned value must match the <code>return_type</code> specified in the function definition.
+                    </p>
+                    <pre><code>
+int add(int a, int b) {
+    int sum = a + b;
+    return sum; // Returns the sum of a and b
+}
+                    </code></pre>
+                </div>
+                <div class="content-block">
+                    <h3><code>Example: Function with Parameters and Return Value</code></h3>
+                    <span class="example-label">C Code:</span>
+                    <pre><code>
+#include &lt;stdio.h&gt;
+
+// Function to add two numbers
+int addNumbers(int num1, int num2) {
+    int sum = num1 + num2;
+    return sum;
+}
+
+int main() {
+    int result = addNumbers(5, 7); // Call function with arguments
+    printf("The sum is: %d\n", result);
+    return 0;
+}
+                    </code></pre>
+                    <span class="example-label">Output:</span>
+                    <pre><code>
+The sum is: 12
+                    </code></pre>
+                </div>
+            </div>
+
+            <div id="wednesday-content" class="day-content day-section">
+                <h2>Wednesday: Function Prototypes and Scope</h2>
+                <div class="content-block">
+                    <h3><code>Function Prototypes (Declarations)</code></h3>
+                    <p>
+                        A **function prototype** (or function declaration) tells the compiler about the function's return type, name, and parameters.
+                        It's essential to declare a function before it's used if its definition appears after its call in the code.
+                    </p>
+                    <ul>
+                        <li><code>Syntax:</code> <code>return_type function_name(parameter_type_list);</code></li>
+                        <li>Helps the compiler check for correct function calls.</li>
+                        <li>Allows functions to be defined in any order in the source file.</li>
+                    </ul>
+                    <pre><code>
+// Function prototype
+int multiply(int x, int y);
+
+int main() {
+    int prod = multiply(10, 20); // Call function
+    return 0;
+}
+
+// Function definition (can be after main due to prototype)
+int multiply(int x, int y) {
+    return x * y;
+}
+                    </code></pre>
+                </div>
+                <div class="content-block">
+                    <h3><code>Scope of Variables in Functions</code></h3>
+                    <p>
+                        Variables declared inside a function have **local scope**, meaning they are only accessible within that function.
+                        Variables declared outside any function have **global scope** and can be accessed from anywhere in the program.
+                    </p>
+                    <ul>
+                        <li><code>Local Variables:</code> Created when the function is called and destroyed when the function exits.</li>
+                        <li><code>Global Variables:</code> Persist throughout the program's execution.</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h3><code>Example: Function Prototype and Scope</code></h3>
+                    <span class="example-label">C Code:</span>
+                    <pre><code>
+#include &lt;stdio.h&gt;
+
+// Global variable
+int globalVar = 100;
+
+// Function prototype
+void demonstrateScope();
+
+int main() {
+    int mainLocal = 10; // Local to main
+    printf("In main: mainLocal = %d, globalVar = %d\n", mainLocal, globalVar);
+    demonstrateScope();
+    return 0;
+}
+
+void demonstrateScope() {
+    int funcLocal = 50; // Local to demonstrateScope
+    printf("In demonstrateScope: funcLocal = %d, globalVar = %d\n", funcLocal, globalVar);
+    // printf("In demonstrateScope: mainLocal = %d\n", mainLocal); // ERROR: mainLocal is not accessible here
+}
+                    </code></pre>
+                    <span class="example-label">Output:</span>
+                    <pre><code>
+In main: mainLocal = 10, globalVar = 100
+In demonstrateScope: funcLocal = 50, globalVar = 100
+                    </code></pre>
+                </div>
+            </div>
+
+            <div id="thursday-content" class="day-content day-section">
+                <h2>Thursday: Recursion and Storage Classes</h2>
+                <div class="content-block">
+                    <h3><code>Recursion</code></h3>
+                    <p>
+                        **Recursion** is a programming technique where a function calls itself to solve a problem.
+                        It's often used for problems that can be broken down into smaller, self-similar sub-problems.
+                    </p>
+                    <ul>
+                        <li>A **base case** is essential to stop the recursion and prevent infinite loops.</li>
+                        <li>Each recursive call solves a smaller part of the problem.</li>
+                    </ul>
+                    <pre><code>
+// Recursive function to calculate factorial
+int factorial(int n) {
+    if (n == 0) { // Base case
+        return 1;
+    } else {
+        return n * factorial(n - 1); // Recursive call
+    }
+}
+                    </code></pre>
+                </div>
+                <div class="content-block">
+                    <h3><code>Storage Classes in C</code></h3>
+                    <p>
+                        Storage classes define the scope, lifetime, initial value, and storage location of a variable.
+                        The main storage classes in C are <code>auto</code>, <code>register</code>, <code>static</code>, and <code>extern</code>.
+                    </p>
+                    <ul>
+                        <li><code>auto:</code> Default for local variables. Stored in memory, lifetime limited to function execution.</li>
+                        <li><code>register:</code> Suggests storing the variable in a CPU register for faster access (compiler might ignore).</li>
+                        <li><code>static:</code> Preserves the variable's value between function calls. Local static variables retain their value. Global static variables have file scope.</li>
+                        <li><code>extern:</code> Declares a variable that is defined in another file, making it accessible from the current file.</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h3><code>Example: Recursion and Static Variable</code></h3>
+                    <span class="example-label">C Code:</span>
+                    <pre><code>
+#include &lt;stdio.h&gt;
+
+// Recursive factorial function
+int factorial(int n) {
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+// Function with a static variable
+void counter() {
+    static int count = 0; // Initialized once
+    count++;
+    printf("Counter: %d\n", count);
+}
+
+int main() {
+    printf("Factorial of 5: %d\n", factorial(5));
+
+    counter(); // Output: Counter: 1
+    counter(); // Output: Counter: 2
+    counter(); // Output: Counter: 3
+    return 0;
+}
+                    </code></pre>
+                    <span class="example-label">Output:</span>
+                    <pre><code>
+Factorial of 5: 120
+Counter: 1
+Counter: 2
+Counter: 3
+                    </code></pre>
+                </div>
+            </div>
+
+            <div id="friday-content" class="day-content day-section">
+                <h2>Friday: Function Pointers and Callback Functions</h2>
+                <div class="content-block">
+                    <h3><code>Function Pointers</code></h3>
+                    <p>
+                        A **function pointer** is a variable that stores the memory address of a function.
+                        This allows you to call functions indirectly, pass functions as arguments to other functions,
+                        and store functions in data structures.
+                    </p>
+                    <pre><code>
+// Declare a function pointer that points to a function
+// taking two ints and returning an int
+int (*ptrToFunc)(int, int);
+                    </code></pre>
+                    <ul>
+                        <li>Useful for implementing callback mechanisms.</li>
+                        <li>Enables dynamic selection of functions at runtime.</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h3><code>Callback Functions</code></h3>
+                    <p>
+                        A **callback function** is a function that is passed as an argument to another function
+                        and is intended to be called by that other function at a later time.
+                        They are common in event handling, sorting algorithms, and asynchronous operations.
+                    </p>
+                </div>
+                <div class="content-block">
+                    <h3><code>Example: Function Pointers and Callback</code></h3>
+                    <span class="example-label">C Code:</span>
+                    <pre><code>
+#include &lt;stdio.h&gt;
+
+// Function to be pointed to
+int add(int a, int b) {
+    return a + b;
+}
+
+// Another function to be pointed to
+int subtract(int a, int b) {
+    return a - b;
+}
+
+// Function that takes a function pointer as an argument (callback)
+void performOperation(int num1, int num2, int (*operation)(int, int)) {
+    int result = operation(num1, num2);
+    printf("Result of operation: %d\n", result);
+}
+
+int main() {
+    // Declare and initialize a function pointer
+    int (*opPtr)(int, int);
+
+    opPtr = add; // Point to the add function
+    printf("Using function pointer to add: %d\n", opPtr(10, 5));
+
+    opPtr = subtract; // Point to the subtract function
+    printf("Using function pointer to subtract: %d\n", opPtr(10, 5));
+
+    printf("\nDemonstrating callback function:\n");
+    performOperation(20, 10, add); // Pass add as a callback
+    performOperation(20, 10, subtract); // Pass subtract as a callback
+
+    return 0;
+}
+                    </code></pre>
+                    <span class="example-label">Output:</span>
+                    <pre><code>
+Using function pointer to add: 15
+Using function pointer to subtract: 5
+
+Demonstrating callback function:
+Result of operation: 30
+Result of operation: 10
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <div id="week2" class="week-content">
+            <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
+                Week 2 Content - COMING SOON!
+            </p>
+        </div>
+
+        <div id="week3" class="week-content">
+            <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
+                Week 3 Content - COMING SOON!
+            </p>
+        </div>
+
+        <div id="week4" class="week-content">
+            <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
+                Week 4 Content - COMING SOON!
+            </p>
+        </div>
+
+        <div id="week5" class="week-content">
+            <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
+                Week 5 Content - COMING SOON!
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by The Coders Club</p>
+        <a href="https://www.instagram.com/the_mce.coders_club?igsh=Z245eDZmdWhkcmRn" target="_blank">
+            <img src="IG.png" alt="Instagram" class="social-logo">
+        </a>
+        <a href="https://www.linkedin.com/in/thecodersclub-mce/" target="_blank">
+            <img src="LINKEDLN.png" alt="LinkedIn" class="social-logo">
+        </a>
+        <a href="https://www.youtube.com/@TheCodersClub_MCE" target="_blank">
+            <img src="YT.png" alt="YouTube" class="social-logo">
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb6HMGKKAwEe8OdjAF0X" target="_blank">
+            <img src="WP.svg" alt="WhatsApp" class="social-logo">
+        </a>
+    </footer>
+
+    <script>
+        // Function to show content for a specific week
+        function showWeek(weekId, clickedButton) {
+            // Hide all week content sections
+            const weekContents = document.querySelectorAll('.week-content');
+            weekContents.forEach(content => {
+                content.classList.remove('active-content');
+            });
+
+            // Deactivate all main tab buttons
+            const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+            mainTabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected week's content
+            const selectedWeekContent = document.getElementById(weekId);
+            selectedWeekContent.classList.add('active-content');
+
+            // Activate the clicked week button
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
+
+            // Special handling for Week 1: show Monday content by default
+            if (weekId === 'week1') {
+                showDay('monday', document.querySelector('#week1 .nested-tab-nav .tab-button[onclick*="monday"]'), 'week1');
+            } else {
+                // For other weeks, hide any nested daily content
+                const dayContents = selectedWeekContent.querySelectorAll('.day-content');
+                dayContents.forEach(content => content.classList.remove('active-content'));
+                const dayButtons = selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button');
+                dayButtons.forEach(button => button.classList.remove('active'));
+            }
+        }
+
+        // Function to show content for a specific day within a week
+        function showDay(dayId, clickedButton, weekId) {
+            const weekContentDiv = document.getElementById(weekId);
+            // Hide all day content sections within the current week
+            const dayContents = weekContentDiv.querySelectorAll('.day-content');
+            dayContents.forEach(content => {
+                content.classList.remove('active-content');
+            });
+
+            // Deactivate all nested day tab buttons within the current week
+            const dayTabButtons = weekContentDiv.querySelectorAll('.nested-tab-nav .tab-button');
+            dayTabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show the selected day's content
+            document.getElementById(dayId + '-content').classList.add('active-content');
+
+            // Activate the clicked day button
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
+        }
+
+        // Initialize by showing Week 1 and Monday's content on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            showWeek('week1', document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]'));
+        });
+    </script>
+
+</body>
+</html>
