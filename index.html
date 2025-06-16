@@ -21,7 +21,7 @@
 
     /* Main Tab Navigation (Week 1, Week 2, etc.) */
     .main-tab-nav {
-        display: flex;
+        display: flex; /* Flexbox for buttons */
         justify-content: center;
         background: #E0E0E0;
         border-radius: 8px;
@@ -29,7 +29,7 @@
         padding: 5px;
         box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
         margin-bottom: 10px;
-        flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+        /* Removed flex-wrap here to ensure they stay on one line like leaderboard */
     }
 
     /* Nested Tab Navigation (Monday, Tuesday, etc.) */
@@ -43,13 +43,12 @@
         box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
         margin-top: 15px; /* Space above nested tabs */
         margin-bottom: 15px; /* Space below nested tabs */
-        flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+        flex-wrap: wrap; /* Keep wrap for nested (day) buttons, they might be more */
     }
 
     /* General Tab Button Styling */
     .tab-button {
         flex: 1; /* Allows buttons to grow and shrink */
-        min-width: 80px; /* Minimum width to prevent squishing */
         padding: 8px 12px;
         border: none;
         cursor: pointer;
@@ -59,8 +58,18 @@
         border-radius: 6px; /* Uniform rounded corners */
         transition: 0.3s;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        margin: 2px; /* Adjusted margin for consistent spacing when wrapping */
-        white-space: nowrap; /* Prevent text wrapping */
+        margin: 0 2px; /* Small gap between buttons, adjusted from 2px general margin */
+        white-space: nowrap; /* Prevent text wrapping inside buttons */
+    }
+
+    .tab-button:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    .tab-button:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
     }
 
     .tab-button:hover {
@@ -73,6 +82,7 @@
         color: white;
         font-weight: bold;
         box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+        border-radius: 6px; /* Active button looks like a solid block */
     }
 
     /* Styling for disabled buttons */
@@ -183,89 +193,85 @@
 
     /* --- Mobile Responsiveness for Content and Buttons --- */
 
-    /* Small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px) {
+    /* Small devices (phones, 768px and down - using leaderboard's breakpoint for consistency) */
+    @media (max-width: 768px) {
         .content-container-wrapper {
-            width: 95%; /* Slightly more width on small screens */
-            padding: 10px;
             margin: 10px auto 15px auto;
+            padding: 10px;
         }
 
-        /* Make week and day buttons stack vertically or wrap more efficiently */
-        .main-tab-nav, .nested-tab-nav {
-            flex-direction: row; /* Keep as row, but allow wrapping */
-            justify-content: space-around; /* Distribute space evenly */
-            padding: 5px;
+        /* For the main week buttons, allow them to shrink significantly */
+        .main-tab-nav {
+            padding: 3px; /* Slightly less padding around buttons */
+        }
+        .main-tab-nav .tab-button {
+            padding: 6px 8px; /* Smaller padding for main week buttons */
+            font-size: 12px; /* Smaller font for main week buttons */
+            flex: 1 1 0%; /* Allows buttons to shrink to almost 0, but content prevents it */
+            margin: 0 1px; /* Even smaller gap between main buttons */
+            min-width: 0; /* Allow them to shrink as much as needed */
+        }
+        
+        .main-tab-nav .tab-button:first-child {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
         }
 
-        .tab-button {
-            flex: 1 1 auto; /* Allow buttons to grow, shrink, and wrap */
-            min-width: unset; /* Remove fixed min-width for better wrapping */
-            width: calc(50% - 4px); /* Two buttons per row for main tabs, accounting for margin */
-            margin: 2px; /* Ensure small gap between buttons */
-            font-size: 11px; /* Smaller font size for buttons */
-            padding: 6px 8px;
+        .main-tab-nav .tab-button:last-child {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
         }
 
+
+        /* For nested day buttons, keep wrap if they are many */
+        .nested-tab-nav {
+            flex-wrap: wrap; /* Re-enable wrap for day buttons if desired */
+            justify-content: center;
+        }
         .nested-tab-nav .tab-button {
-            width: calc(33.33% - 4px); /* Three buttons per row for day tabs on very small screens */
+            flex: 1 1 auto; /* Allow growth, shrink, wrap */
+            min-width: 70px; /* A reasonable min-width for day buttons when wrapping */
+            width: calc(33.33% - 4px); /* Attempt 3 per row for day buttons */
+            margin: 2px; /* Standard margin for wrapping buttons */
+            font-size: 11px; /* Smaller font for day buttons */
+            padding: 5px 8px;
         }
 
         .day-section {
-            padding: 15px; /* Reduce content padding */
+            padding: 15px;
         }
 
         .day-section h2 {
-            font-size: 1.4em; /* Smaller headings */
+            font-size: 1.4em;
         }
 
         .content-block h3 {
-            font-size: 1.1em; /* Smaller sub-headings */
+            font-size: 1.1em;
         }
 
         .content-block p, .content-block ul li {
-            font-size: 0.9em; /* Smaller text for paragraphs and lists */
-        }
-
-        code {
-            font-size: 0.8em; /* Smaller code font */
-            padding: 8px; /* Smaller padding for code blocks */
-        }
-    }
-
-    /* Medium devices (tablets, 601px to 900px) */
-    @media only screen and (min-width: 601px) and (max-width: 900px) {
-        .content-container-wrapper {
-            width: 90%;
-            padding: 20px;
-        }
-
-        .tab-button {
-            font-size: 13px;
-            padding: 7px 10px;
-            min-width: 90px; /* Slightly larger min-width for tablets */
-        }
-
-        .day-section {
-            padding: 20px;
-        }
-
-        .day-section h2 {
-            font-size: 1.6em;
-        }
-
-        .content-block h3 {
-            font-size: 1.3em;
-        }
-
-        code {
             font-size: 0.9em;
-            padding: 12px;
+        }
+
+        code {
+            font-size: 0.8em;
+            padding: 8px;
         }
     }
 
+    /* Medium devices (tablets, 769px to 900px) */
+    @media (min-width: 769px) {
+        .content-container-wrapper {
+            max-width: 900px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .tab-button {
+            font-size: 14px; /* Standard font size */
+            padding: 8px 12px; /* Standard padding */
+        }
+    }
     /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
-    /* No specific media query needed here as base styles handle larger screens */
 </style>
 </head>
 <body>
