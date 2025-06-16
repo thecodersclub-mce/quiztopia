@@ -1,26 +1,39 @@
 ---
 ---
 
-# 🧠 MINDMASH Quiz, Feedback, & Leaderboard Application
+# 🧠 MINDMASH Application: C Programming Series & Quizzes
 
-This repository contains the front-end code for the **MINDMASH** application, designed by The Coders Club. It features an interactive quiz, a feedback form, and a dynamic leaderboard, all capable of adapting their state and submitting data.
+This repository contains the front-end code for **MINDMASH**, an application designed by The Coders Club. It serves as a comprehensive platform for a C Programming Series, featuring structured weekly content, interactive quizzes, a feedback mechanism, and a dynamic leaderboard.
 
 ---
 
 ## ✨ Features
 
-* **Interactive Quiz Form**: Allows users to answer multiple-choice, multi-select, and open-ended questions.
-* **Feedback Form**: Gathers valuable insights from users with various input types.
-* **Dynamic Form Control**: Both quiz and feedback forms can be set to `enable` or `disable` using a simple JavaScript variable for active control.
-* **"Quiz Closed" Experience**: When disabled, the quiz section's questions are **jumbled and blurred**, and input fields are inaccessible, providing clear visual feedback that it's currently unavailable.
-* **Submission Success Animation**: A pleasant tick mark animation appears upon successful form submission.
-* **Google Sheets Integration**: Submits quiz and feedback form data directly to Google Sheets using a Google Apps Script web app (requires user setup).
-* **Dynamic Leaderboard Display**:
-    * **Weekly Tabs**: View quiz results categorized by different weeks.
-    * **Department-wise Filtering**: Within each week, results can be filtered by specific departments (e.g., CSE 2nd Year, CSE (AI/ML) 2nd Year, CSE 3rd Year).
+* **C Programming Series Content (Homepage - `index.html`)**:
+    * **Structured Weekly Content**: Navigate through C programming content organized by weeks.
+    * **Daily Learning Modules**: Each week breaks down into daily sections (Monday, Tuesday, etc.), offering focused learning.
+    * **Responsive Tab Navigation**: Week and day selection buttons are fully responsive, gracefully adapting to different screen sizes and maintaining a consistent, sleek appearance on both desktop and mobile devices.
+    * **Code Snippets & Examples**: Content includes clearly formatted code blocks for hands-on learning.
+
+* **Interactive Quiz Form (`quiz.html`)**:
+    * Allows users to answer multiple-choice, multi-select, and open-ended questions.
+    * Can be **enabled or disabled** via a simple JavaScript variable for active control.
+    * **"Quiz Closed" Experience**: When disabled, quiz questions are **jumbled and blurred**, and input fields are inaccessible, providing clear visual feedback that it's currently unavailable.
+    * **Anti-Copying Measures**: Basic CSS to prevent text selection in certain quiz elements when disabled.
+
+* **Feedback Form (`feedback.html`)**:
+    * Gathers valuable insights from users with various input types.
+    * Can also be **enabled or disabled** for active control.
+
+* **Dynamic Leaderboard Display (`leaderboard.html`)**:
+    * **Weekly Tabs**: View quiz results categorized by different weeks, with **responsive navigation buttons** that adapt to screen size.
+    * **Department-wise Filtering**: Within each week, results can be filtered by specific departments (e.g., CSE 2nd Year, CSE (AI/ML) 2nd Year, CSE 3rd Year), also with **responsive buttons**.
     * Clearly shows S.No., Name, and Score.
-* **Responsive Design**: Adapts to different screen sizes for optimal viewing on desktop and mobile devices.
-* **Anti-Copying Measures**: Basic CSS to prevent text selection in certain quiz elements when disabled.
+    * Highlights **disqualified rows** for easy identification.
+
+* **Submission Success Animation**: A pleasant tick mark animation appears upon successful form submission for both quiz and feedback.
+
+* **Google Sheets Integration**: Submits quiz and feedback form data directly to Google Sheets using a Google Apps Script web app (requires user setup).
 
 ---
 
@@ -76,15 +89,15 @@ Both the quiz and feedback forms submit data to a Google Sheet via a deployed Go
 
 1.  **Download/Clone**: Get all the HTML, CSS (`styles.css`), and image files (`TCC.png`, `MCE_tab.png`, `IG.png`, `LINKEDLN.png`, `YT.png`, `WP.svg`) from this repository.
 2.  **Update Script URLs**:
-    * Open `index.html` (for the Quiz form) in a text editor.
+    * Open `quiz.html` (for the Quiz form) in a text editor.
     * Find the line: `const scriptUrl = 'YOUR_QUIZ_GOOGLE_APPS_SCRIPT_URL_HERE';`
     * Replace the placeholder URL with the **Web app URL** you copied from your Google Apps Script deployment for the Quiz form's Google Sheet.
     * Do the **same for `feedback.html`**, replacing its `scriptUrl` with the **Web app URL** for the Feedback form's Google Sheet.
 
 ### 3. Dynamic Form Status Control
 
-* **For the Quiz form (`index.html`)**:
-    * Open `index.html`.
+* **For the Quiz form (`quiz.html`)**:
+    * Open `quiz.html`.
     * Find the line: `const linkControlStatus = "disable";`
     * Change `"disable"` to `"enable"` to make the quiz form active.
 * **For the Feedback form (`feedback.html`)**:
@@ -96,7 +109,7 @@ Both the quiz and feedback forms submit data to a Google Sheet via a deployed Go
 
 The leaderboard data in `leaderboard.html` is currently **static HTML**. This means that to update the quiz scores, you will need to manually edit the `leaderboard.html` file.
 
-* To update scores for Week 1, find the `<div id="week1" ...>` section.
+* To update scores for a specific week, find the `div` with the corresponding `id` (e.g., `<div id="week1" ...>`).
 * Within that, locate the specific department's `div` (e.g., `<div id="cse2_week1" ...>`).
 * Edit the `<table>` rows (`<tr><td>...</td></tr>`) to reflect the latest rankings and scores.
 * Follow the same process for other weeks and departments as needed.
@@ -105,13 +118,14 @@ The leaderboard data in `leaderboard.html` is currently **static HTML**. This me
 
 ## 💻 Local Development
 
-You can open `index.html`, `feedback.html`, and `leaderboard.html` directly in your web browser to test them. Remember that for form submissions to work, you *must* have completed the Google Apps Script setup and updated the `scriptUrl` in `index.html` and `feedback.html`.
+You can open `index.html`, `quiz.html`, `feedback.html`, and `leaderboard.html` directly in your web browser to test them. Remember that for form submissions to work, you *must* have completed the Google Apps Script setup and updated the `scriptUrl` in `quiz.html` and `feedback.html`.
 
 ---
 
 ## 📄 File Structure
 
-* `index.html`: The main Quiz application page.
+* `index.html`: The **homepage** featuring the C Programming Series weekly and daily content.
+* `quiz.html`: The interactive Quiz application page.
 * `feedback.html`: The Feedback form page.
 * `leaderboard.html`: Displays the quiz results with weekly and department-wise filtering.
 * `styles.css`: Contains the common CSS styling for all pages.
