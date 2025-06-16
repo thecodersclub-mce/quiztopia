@@ -43,7 +43,6 @@
         box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2); /* Changed to match main tab shadow */
         margin-top: 15px; /* Space above nested tabs */
         margin-bottom: 15px; /* Space below nested tabs */
-        /* We'll manage wrapping in media queries if needed, for now similar to main */
         flex-wrap: nowrap; /* Default to no wrap, allow shrinking */
     }
 
@@ -64,7 +63,6 @@
     }
 
     /* Specific border-radius for first and last buttons in a flex container */
-    /* This ensures rounded ends when buttons are side-by-side */
     .main-tab-nav .tab-button:first-child,
     .nested-tab-nav .tab-button:first-child {
         border-top-left-radius: 6px;
@@ -212,22 +210,23 @@
         .main-tab-nav .tab-button {
             padding: 6px 8px;
             font-size: 12px;
-            flex: 1 1 0%; /* Allows buttons to shrink to almost 0, but content prevents it */
+            flex: 1 1 0%;
             margin: 0 1px;
-            min-width: 0; /* Allow them to shrink as much as needed */
+            min-width: 0;
         }
         
-        /* Nested day buttons (Monday, Tuesday, etc.) - Make them behave the same */
+        /* Nested day buttons (Monday, Tuesday, etc.) - Specific adjustments */
         .nested-tab-nav {
-            padding: 3px; /* Smaller padding for the container */
-            flex-wrap: nowrap; /* Force no wrap by default */
+            padding: 3px;
+            flex-wrap: nowrap; /* Still prefer no wrap if possible */
         }
         .nested-tab-nav .tab-button {
-            padding: 6px 8px; /* Smaller padding for day buttons */
-            font-size: 12px; /* Smaller font for day buttons */
-            flex: 1 1 0%; /* Allow shrinking like main tabs */
-            margin: 0 1px; /* Small gap between buttons */
-            min-width: 0; /* Allow them to shrink as much as needed */
+            /* Adjusted for Wednesday: */
+            padding: 6px 6px; /* Slightly reduced horizontal padding */
+            font-size: 11px; /* Slightly smaller font for day buttons */
+            flex: 1 1 0%;
+            margin: 0 1px;
+            min-width: 0; /* Still allow shrinking */
         }
 
         .day-section {
