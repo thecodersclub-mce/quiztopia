@@ -6,267 +6,267 @@
     <title>Daily C Programming Content - The Coders Club</title>
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css"> <style>
-        /* General Container for all content */
+    /* General Container for all content */
+    .content-container-wrapper {
+        width: 90%;
+        max-width: 900px; /* Increased max-width for better content display */
+        margin: 20px auto; /* General top/bottom margin */
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 20px; /* Space before footer */
+    }
+
+    /* Main Tab Navigation (Week 1, Week 2, etc.) */
+    .main-tab-nav {
+        display: flex;
+        justify-content: center;
+        background: #E0E0E0;
+        border-radius: 8px;
+        overflow: hidden;
+        padding: 5px;
+        box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
+        margin-bottom: 10px;
+        flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+    }
+
+    /* Nested Tab Navigation (Monday, Tuesday, etc.) */
+    .nested-tab-nav {
+        display: flex;
+        justify-content: center;
+        background: #e3f2fd; /* Lighter blue background for nested tabs */
+        border-radius: 6px;
+        overflow: hidden;
+        padding: 5px;
+        box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 15px; /* Space above nested tabs */
+        margin-bottom: 15px; /* Space below nested tabs */
+        flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+    }
+
+    /* General Tab Button Styling */
+    .tab-button {
+        flex: 1; /* Allows buttons to grow and shrink */
+        min-width: 80px; /* Minimum width to prevent squishing */
+        padding: 8px 12px;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(to right, #F5F5F5, #E0E0E0);
+        color: #333;
+        font-size: 14px;
+        border-radius: 6px; /* Uniform rounded corners */
+        transition: 0.3s;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        margin: 2px; /* Adjusted margin for consistent spacing when wrapping */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+
+    .tab-button:hover {
+        background: #1E88E5;
+        color: white;
+    }
+
+    .tab-button.active {
+        background: #00408f;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Styling for disabled buttons */
+    .tab-button.disabled {
+        background: #cccccc;
+        color: #666666;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+    .tab-button.disabled:hover {
+        background: #cccccc;
+        color: #666666;
+    }
+
+    /* Content sections */
+    .week-content, .day-content {
+        display: none; /* Hidden by default */
+        padding: 10px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        text-align: left; /* Ensure text alignment is natural */
+    }
+
+    .active-content {
+        display: block; /* Shown when active */
+    }
+
+    /* Styling for daily content sections within weeks */
+    .day-section {
+        margin-top: 20px; /* Space between the daily tabs and content */
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .day-section h2 {
+        color: #00408f;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        border-bottom: 2px solid #007BFF;
+        padding-bottom: 10px;
+    }
+
+    .content-block {
+        margin-bottom: 20px;
+    }
+
+    .content-block h3 {
+        color: #1E88E5;
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    
+    .content-block h4 {
+        color: #1E88E5;
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+
+    .content-block p {
+        margin-bottom: 10px;
+        line-height: 1.6; /* Improved readability for text */
+    }
+
+    .content-block ul {
+        list-style-type: disc;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .content-block ul li {
+        margin-bottom: 5px;
+    }
+
+    code {
+        display: block;
+        background-color: #e6f7ff;
+        color: #333;
+        padding: 15px;
+        border-radius: 6px;
+        overflow-x: auto;
+        font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+        font-size: 0.95em;
+        white-space: pre-wrap; /* Ensures line breaks are respected */
+        word-wrap: break-word; /* Breaks long words if necessary */
+    }
+
+    pre code {
+        padding: 0;
+        background: none;
+        color: inherit;
+        font-size: 1em;
+        white-space: pre;
+    }
+
+    .example-label {
+        font-weight: bold;
+        color: #00408f;
+        margin-top: 15px;
+        display: block;
+    }
+
+    /* --- Mobile Responsiveness for Content and Buttons --- */
+
+    /* Small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px) {
         .content-container-wrapper {
-            width: 90%;
-            max-width: 900px; /* Increased max-width for better content display */
-            margin: 20px auto; /* General top/bottom margin */
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            text-align: center;
-            margin-bottom: 20px; /* Space before footer */
-        }
-
-        /* Main Tab Navigation (Week 1, Week 2, etc.) */
-        .main-tab-nav {
-            display: flex;
-            justify-content: center;
-            background: #E0E0E0;
-            border-radius: 8px;
-            overflow: hidden;
-            padding: 5px;
-            box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
-            margin-bottom: 10px;
-            flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
-        }
-
-        /* Nested Tab Navigation (Monday, Tuesday, etc.) */
-        .nested-tab-nav {
-            display: flex;
-            justify-content: center;
-            background: #e3f2fd; /* Lighter blue background for nested tabs */
-            border-radius: 6px;
-            overflow: hidden;
-            padding: 5px;
-            box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
-            margin-top: 15px; /* Space above nested tabs */
-            margin-bottom: 15px; /* Space below nested tabs */
-            flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
-        }
-
-        /* General Tab Button Styling */
-        .tab-button {
-            flex: 1; /* Allows buttons to grow and shrink */
-            min-width: 80px; /* Minimum width to prevent squishing */
-            padding: 8px 12px;
-            border: none;
-            cursor: pointer;
-            background: linear-gradient(to right, #F5F5F5, #E0E0E0);
-            color: #333;
-            font-size: 14px;
-            border-radius: 6px; /* Uniform rounded corners */
-            transition: 0.3s;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-            margin: 2px; /* Adjusted margin for consistent spacing when wrapping */
-            white-space: nowrap; /* Prevent text wrapping */
-        }
-
-        .tab-button:hover {
-            background: #1E88E5;
-            color: white;
-        }
-
-        .tab-button.active {
-            background: #00408f;
-            color: white;
-            font-weight: bold;
-            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Styling for disabled buttons */
-        .tab-button.disabled {
-            background: #cccccc;
-            color: #666666;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        .tab-button.disabled:hover {
-            background: #cccccc;
-            color: #666666;
-        }
-
-        /* Content sections */
-        .week-content, .day-content {
-            display: none; /* Hidden by default */
+            width: 95%; /* Slightly more width on small screens */
             padding: 10px;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            text-align: left; /* Ensure text alignment is natural */
+            margin: 10px auto 15px auto;
         }
 
-        .active-content {
-            display: block; /* Shown when active */
+        /* Make week and day buttons stack vertically or wrap more efficiently */
+        .main-tab-nav, .nested-tab-nav {
+            flex-direction: row; /* Keep as row, but allow wrapping */
+            justify-content: space-around; /* Distribute space evenly */
+            padding: 5px;
         }
 
-        /* Styling for daily content sections within weeks */
+        .tab-button {
+            flex: 1 1 auto; /* Allow buttons to grow, shrink, and wrap */
+            min-width: unset; /* Remove fixed min-width for better wrapping */
+            width: calc(50% - 4px); /* Two buttons per row for main tabs, accounting for margin */
+            margin: 2px; /* Ensure small gap between buttons */
+            font-size: 11px; /* Smaller font size for buttons */
+            padding: 6px 8px;
+        }
+
+        .nested-tab-nav .tab-button {
+            width: calc(33.33% - 4px); /* Three buttons per row for day tabs on very small screens */
+        }
+
         .day-section {
-            margin-top: 20px; /* Space between the daily tabs and content */
-            padding: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 15px; /* Reduce content padding */
         }
 
         .day-section h2 {
-            color: #00408f;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #007BFF;
-            padding-bottom: 10px;
-        }
-
-        .content-block {
-            margin-bottom: 20px;
+            font-size: 1.4em; /* Smaller headings */
         }
 
         .content-block h3 {
-            color: #1E88E5;
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-        
-        .content-block h4 {
-            color: #1E88E5;
-            font-size: 1.2em;
-            margin-bottom: 8px;
+            font-size: 1.1em; /* Smaller sub-headings */
         }
 
-
-        .content-block p {
-            margin-bottom: 10px;
-            line-height: 1.6; /* Improved readability for text */
-        }
-
-        .content-block ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            margin-bottom: 10px;
-        }
-
-        .content-block ul li {
-            margin-bottom: 5px;
+        .content-block p, .content-block ul li {
+            font-size: 0.9em; /* Smaller text for paragraphs and lists */
         }
 
         code {
-            display: block;
-            background-color: #e6f7ff;
-            color: #333;
-            padding: 15px;
-            border-radius: 6px;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 0.95em;
-            white-space: pre-wrap; /* Ensures line breaks are respected */
-            word-wrap: break-word; /* Breaks long words if necessary */
+            font-size: 0.8em; /* Smaller code font */
+            padding: 8px; /* Smaller padding for code blocks */
+        }
+    }
+
+    /* Medium devices (tablets, 601px to 900px) */
+    @media only screen and (min-width: 601px) and (max-width: 900px) {
+        .content-container-wrapper {
+            width: 90%;
+            padding: 20px;
         }
 
-        pre code {
-            padding: 0;
-            background: none;
-            color: inherit;
-            font-size: 1em;
-            white-space: pre;
+        .tab-button {
+            font-size: 13px;
+            padding: 7px 10px;
+            min-width: 90px; /* Slightly larger min-width for tablets */
         }
 
-        .example-label {
-            font-weight: bold;
-            color: #00408f;
-            margin-top: 15px;
-            display: block;
+        .day-section {
+            padding: 20px;
         }
 
-        /* --- Mobile Responsiveness for Content and Buttons --- */
-
-        /* Small devices (phones, 600px and down) */
-        @media only screen and (max-width: 600px) {
-            .content-container-wrapper {
-                width: 95%; /* Slightly more width on small screens */
-                padding: 10px;
-                margin: 10px auto 15px auto;
-            }
-
-            /* Make week and day buttons stack vertically or wrap more efficiently */
-            .main-tab-nav, .nested-tab-nav {
-                flex-direction: row; /* Keep as row, but allow wrapping */
-                justify-content: space-around; /* Distribute space evenly */
-                padding: 5px;
-            }
-
-            .tab-button {
-                flex: 1 1 auto; /* Allow buttons to grow, shrink, and wrap */
-                min-width: unset; /* Remove fixed min-width for better wrapping */
-                width: calc(50% - 4px); /* Two buttons per row for main tabs, accounting for margin */
-                margin: 2px; /* Ensure small gap between buttons */
-                font-size: 11px; /* Smaller font size for buttons */
-                padding: 6px 8px;
-            }
-
-            .nested-tab-nav .tab-button {
-                width: calc(33.33% - 4px); /* Three buttons per row for day tabs on very small screens */
-            }
-
-            .day-section {
-                padding: 15px; /* Reduce content padding */
-            }
-
-            .day-section h2 {
-                font-size: 1.4em; /* Smaller headings */
-            }
-
-            .content-block h3 {
-                font-size: 1.1em; /* Smaller sub-headings */
-            }
-
-            .content-block p, .content-block ul li {
-                font-size: 0.9em; /* Smaller text for paragraphs and lists */
-            }
-
-            code {
-                font-size: 0.8em; /* Smaller code font */
-                padding: 8px; /* Smaller padding for code blocks */
-            }
+        .day-section h2 {
+            font-size: 1.6em;
         }
 
-        /* Medium devices (tablets, 601px to 900px) */
-        @media only screen and (min-width: 601px) and (max-width: 900px) {
-            .content-container-wrapper {
-                width: 90%;
-                padding: 20px;
-            }
-
-            .tab-button {
-                font-size: 13px;
-                padding: 7px 10px;
-                min-width: 90px; /* Slightly larger min-width for tablets */
-            }
-
-            .day-section {
-                padding: 20px;
-            }
-
-            .day-section h2 {
-                font-size: 1.6em;
-            }
-
-            .content-block h3 {
-                font-size: 1.3em;
-            }
-
-            code {
-                font-size: 0.9em;
-                padding: 12px;
-            }
+        .content-block h3 {
+            font-size: 1.3em;
         }
 
-        /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
-        /* No specific media query needed here as base styles handle larger screens */
-    </style>
+        code {
+            font-size: 0.9em;
+            padding: 12px;
+        }
+    }
+
+    /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
+    /* No specific media query needed here as base styles handle larger screens */
+</style>
 </head>
 <body>
 
