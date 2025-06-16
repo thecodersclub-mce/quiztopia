@@ -36,14 +36,15 @@
     .nested-tab-nav {
         display: flex;
         justify-content: center;
-        background: #e3f2fd; /* Lighter blue background for nested tabs */
-        border-radius: 6px;
+        background: #E0E0E0; /* Changed to match main tab background */
+        border-radius: 8px; /* Changed to match main tab radius */
         overflow: hidden;
-        padding: 5px;
-        box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 5px; /* Changed to match main tab padding */
+        box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2); /* Changed to match main tab shadow */
         margin-top: 15px; /* Space above nested tabs */
         margin-bottom: 15px; /* Space below nested tabs */
-        flex-wrap: wrap; /* Keep wrap for nested (day) buttons, they might be more */
+        /* We'll manage wrapping in media queries if needed, for now similar to main */
+        flex-wrap: nowrap; /* Default to no wrap, allow shrinking */
     }
 
     /* General Tab Button Styling */
@@ -62,12 +63,16 @@
         white-space: nowrap; /* Prevent text wrapping inside buttons */
     }
 
-    .tab-button:first-child {
+    /* Specific border-radius for first and last buttons in a flex container */
+    /* This ensures rounded ends when buttons are side-by-side */
+    .main-tab-nav .tab-button:first-child,
+    .nested-tab-nav .tab-button:first-child {
         border-top-left-radius: 6px;
         border-bottom-left-radius: 6px;
     }
 
-    .tab-button:last-child {
+    .main-tab-nav .tab-button:last-child,
+    .nested-tab-nav .tab-button:last-child {
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
     }
@@ -193,48 +198,36 @@
 
     /* --- Mobile Responsiveness for Content and Buttons --- */
 
-    /* Small devices (phones, 768px and down - using leaderboard's breakpoint for consistency) */
+    /* Small devices (phones, up to 768px) */
     @media (max-width: 768px) {
         .content-container-wrapper {
             margin: 10px auto 15px auto;
             padding: 10px;
         }
 
-        /* For the main week buttons, allow them to shrink significantly */
+        /* Main week buttons (Week 1, Week 2, etc.) */
         .main-tab-nav {
-            padding: 3px; /* Slightly less padding around buttons */
+            padding: 3px;
         }
         .main-tab-nav .tab-button {
-            padding: 6px 8px; /* Smaller padding for main week buttons */
-            font-size: 12px; /* Smaller font for main week buttons */
+            padding: 6px 8px;
+            font-size: 12px;
             flex: 1 1 0%; /* Allows buttons to shrink to almost 0, but content prevents it */
-            margin: 0 1px; /* Even smaller gap between main buttons */
+            margin: 0 1px;
             min-width: 0; /* Allow them to shrink as much as needed */
         }
         
-        .main-tab-nav .tab-button:first-child {
-            border-top-left-radius: 6px;
-            border-bottom-left-radius: 6px;
-        }
-
-        .main-tab-nav .tab-button:last-child {
-            border-top-right-radius: 6px;
-            border-bottom-right-radius: 6px;
-        }
-
-
-        /* For nested day buttons, keep wrap if they are many */
+        /* Nested day buttons (Monday, Tuesday, etc.) - Make them behave the same */
         .nested-tab-nav {
-            flex-wrap: wrap; /* Re-enable wrap for day buttons if desired */
-            justify-content: center;
+            padding: 3px; /* Smaller padding for the container */
+            flex-wrap: nowrap; /* Force no wrap by default */
         }
         .nested-tab-nav .tab-button {
-            flex: 1 1 auto; /* Allow growth, shrink, wrap */
-            min-width: 70px; /* A reasonable min-width for day buttons when wrapping */
-            width: calc(33.33% - 4px); /* Attempt 3 per row for day buttons */
-            margin: 2px; /* Standard margin for wrapping buttons */
-            font-size: 11px; /* Smaller font for day buttons */
-            padding: 5px 8px;
+            padding: 6px 8px; /* Smaller padding for day buttons */
+            font-size: 12px; /* Smaller font for day buttons */
+            flex: 1 1 0%; /* Allow shrinking like main tabs */
+            margin: 0 1px; /* Small gap between buttons */
+            min-width: 0; /* Allow them to shrink as much as needed */
         }
 
         .day-section {
@@ -266,12 +259,13 @@
             padding: 20px;
             margin-bottom: 30px;
         }
+        /* Restore standard sizes for larger screens */
         .tab-button {
-            font-size: 14px; /* Standard font size */
-            padding: 8px 12px; /* Standard padding */
+            font-size: 14px;
+            padding: 8px 12px;
         }
     }
-    /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
+    /* Large devices (desktops, 901px and up - uses existing styles) */
 </style>
 </head>
 <body>
