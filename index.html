@@ -75,6 +75,19 @@
             box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
         }
 
+        /* Styling for disabled buttons */
+        .tab-button.disabled {
+            background: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .tab-button.disabled:hover {
+            background: #cccccc;
+            color: #666666;
+        }
+
         /* Content sections */
         .week-content, .day-content {
             display: none; /* Hidden by default */
@@ -117,6 +130,13 @@
             font-size: 1.4em;
             margin-bottom: 10px;
         }
+        
+        .content-block h4 {
+            color: #1E88E5;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
 
         .content-block p {
             margin-bottom: 10px;
@@ -279,7 +299,7 @@
 
         <div id="week1" class="week-content">
             <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                PAGE UNDER CONSTRUCTION!
+                Content for Week 1
             </p>
             <div class="nested-tab-nav">
                 <button class="tab-button" onclick="showDay('monday', this, 'week1')">Monday</button>
@@ -290,339 +310,147 @@
             </div>
 
             <div id="monday-content" class="day-content day-section">
-                <h2>Monday: Introduction to Functions</h2>
+                <h2>Monday Maverick</h2>
                 <div class="content-block">
-                    <h3><code>What is a Function?</code></h3>
-                    <p>
-                        In C programming, a **function** is a block of code that performs a specific task.
-                        It helps in breaking down a large program into smaller, manageable, and reusable modules.
-                        Functions promote code reusability and make the program more organized and easier to debug.
-                    </p>
+                    <h3>What Are Header Files?</h3>
                     <ul>
-                        <li><code>Modularity:</code> Breaks down complex problems into simpler parts.</li>
-                        <li><code>Reusability:</code> A function can be called multiple times from different parts of the program.</li>
-                        <li><code>Readability:</code> Makes the code easier to understand and maintain.</li>
-                        <li><code>Abstraction:</code> Hides the implementation details from the user.</li>
+                        <li>They contain function declarations, macros, constants, and data type definitions.</li>
+                        <li>Included in source files using the #include directive to share code across multiple files.</li>
+                        <li>Facilitate modularity, code reuse, and separation of interface from implementation.</li>
                     </ul>
-                </div>
-                <div class="content-block">
-                    <h3><code>Function Syntax</code></h3>
-                    <p>
-                        The general syntax for defining a function in C is as follows:
-                    </p>
-                    <pre><code>
-return_type function_name(parameter_list) {
-    // body of the function
-    // statements;
-    // return value; (if return_type is not void)
-}
-                    </code></pre>
-                    <ul>
-                        <li><code>return_type:</code> The data type of the value the function returns. Use <code>void</code> if the function does not return any value.</li>
-                        <li><code>function_name:</code> A unique name for the function.</li>
-                        <li><code>parameter_list:</code> A comma-separated list of input parameters (arguments) that the function accepts. Can be empty.</li>
-                        <li><code>function body:</code> Contains the C statements that perform the function's task.</li>
-                    </ul>
-                </div>
-                <div class="content-block">
-                    <h3><code>Example: Simple Function</code></h3>
-                    <span class="example-label">C Code:</span>
-                    <pre><code>
-#include &lt;stdio.h&gt;
-
-// Function definition
-void greet() {
-    // printf() displays the string inside quotation
-    printf("Hello from a function!\n");
-}
-
-int main() {
-    greet(); // Function call
-    return 0;
-}
-                    </code></pre>
-                    <span class="example-label">Output:</span>
-                    <pre><code>
-Hello from a function!
-                    </code></pre>
                 </div>
             </div>
 
             <div id="tuesday-content" class="day-content day-section">
-                <h2>Tuesday: Function Parameters and Return Values</h2>
+                <h2>Techie Tuesday</h2>
                 <div class="content-block">
-                    <h3><code>Passing Arguments to Functions</code></h3>
-                    <p>
-                        Functions can accept arguments (also known as parameters) that provide data for the function to operate on.
-                        These arguments are specified in the function's parameter list during definition.
-                    </p>
+                    <h3>Variables</h3>
+                    <p>Variables are named locations in memory that are used to hold a value that may be modified by the program.</p>
+                    <p>The syntax for declaring a variable is:</p>
+                    <pre><code>Data_type variableName;</code></pre>
+                    <p>Valid Examples:</p>
+                    <pre><code>
+int age = 21;
+float salary = 4564.50;
+int marks;
+int acc_type;
+char ch = 'y';
+char name[20] = "apollo";
+                    </code></pre>
+                    <p>Invalid Examples:</p>
+                    <pre><code>
+int 5marks;
+int @host;
+int acc no$;
+                    </code></pre>
+                    <h4>Rules for framing a variable:</h4>
                     <ul>
-                        <li><code>Formal Parameters:</code> Variables declared in the function definition's parameter list.</li>
-                        <li><code>Actual Arguments:</code> Values passed to the function when it is called.</li>
+                        <li>The first character in the variable name must be an alphabet.</li>
+                        <li>Alphabets can be followed by a number of digits or underscores _.</li>
+                        <li>No commas or blank spaces are allowed within a variable name.</li>
+                        <li>No special characters other than underscore (_) can be used in a variable name.</li>
+                        <li>The variable name should not be a keyword.</li>
+                        <li>Variable names are case sensitive.</li>
+                        <li>It should not be of length more than 31 characters.</li>
                     </ul>
-                </div>
-                <div class="content-block">
-                    <h3><code>Return Values</code></h3>
-                    <p>
-                        A function can return a single value back to the calling code using the <code>return</code> statement.
-                        The data type of this returned value must match the <code>return_type</code> specified in the function definition.
-                    </p>
-                    <pre><code>
-int add(int a, int b) {
-    int sum = a + b;
-    return sum; // Returns the sum of a and b
-}
-                    </code></pre>
-                </div>
-                <div class="content-block">
-                    <h3><code>Example: Function with Parameters and Return Value</code></h3>
-                    <span class="example-label">C Code:</span>
-                    <pre><code>
-#include &lt;stdio.h&gt;
-
-// Function to add two numbers
-int addNumbers(int num1, int num2) {
-    int sum = num1 + num2;
-    return sum;
-}
-
-int main() {
-    int result = addNumbers(5, 7); // Call function with arguments
-    printf("The sum is: %d\n", result);
-    return 0;
-}
-                    </code></pre>
-                    <span class="example-label">Output:</span>
-                    <pre><code>
-The sum is: 12
-                    </code></pre>
                 </div>
             </div>
 
             <div id="wednesday-content" class="day-content day-section">
-                <h2>Wednesday: Function Prototypes and Scope</h2>
+                <h2>Syntax Snapshots Wednesday</h2>
                 <div class="content-block">
-                    <h3><code>Function Prototypes (Declarations)</code></h3>
-                    <p>
-                        A **function prototype** (or function declaration) tells the compiler about the function's return type, name, and parameters.
-                        It's essential to declare a function before it's used if its definition appears after its call in the code.
-                    </p>
-                    <ul>
-                        <li><code>Syntax:</code> <code>return_type function_name(parameter_type_list);</code></li>
-                        <li>Helps the compiler check for correct function calls.</li>
-                        <li>Allows functions to be defined in any order in the source file.</li>
-                    </ul>
+                    <h3>Basic Syntax of a C Program</h3>
                     <pre><code>
-// Function prototype
-int multiply(int x, int y);
+#include &lt;stdio.h&gt;  // Preprocessor directive
 
+// main function - entry point of the program
 int main() {
-    int prod = multiply(10, 20); // Call function
-    return 0;
-}
+    // Print output to the screen
+    printf("Hello, World!\\n");
 
-// Function definition (can be after main due to prototype)
-int multiply(int x, int y) {
-    return x * y;
+    return 0;  // Exit the program
 }
                     </code></pre>
-                </div>
-                <div class="content-block">
-                    <h3><code>Scope of Variables in Functions</code></h3>
-                    <p>
-                        Variables declared inside a function have **local scope**, meaning they are only accessible within that function.
-                        Variables declared outside any function have **global scope** and can be accessed from anywhere in the program.
-                    </p>
-                    <ul>
-                        <li><code>Local Variables:</code> Created when the function is called and destroyed when the function exits.</li>
-                        <li><code>Global Variables:</code> Persist throughout the program's execution.</li>
-                    </ul>
-                </div>
-                <div class="content-block">
-                    <h3><code>Example: Function Prototype and Scope</code></h3>
-                    <span class="example-label">C Code:</span>
-                    <pre><code>
-#include &lt;stdio.h&gt;
-
-// Global variable
-int globalVar = 100;
-
-// Function prototype
-void demonstrateScope();
-
-int main() {
-    int mainLocal = 10; // Local to main
-    printf("In main: mainLocal = %d, globalVar = %d\n", mainLocal, globalVar);
-    demonstrateScope();
-    return 0;
-}
-
-void demonstrateScope() {
-    int funcLocal = 50; // Local to demonstrateScope
-    printf("In demonstrateScope: funcLocal = %d, globalVar = %d\n", funcLocal, globalVar);
-    // printf("In demonstrateScope: mainLocal = %d\n", mainLocal); // ERROR: mainLocal is not accessible here
-}
-                    </code></pre>
-                    <span class="example-label">Output:</span>
-                    <pre><code>
-In main: mainLocal = 10, globalVar = 100
-In demonstrateScope: funcLocal = 50, globalVar = 100
-                    </code></pre>
+                    <h4>Explanation of Each Part:</h4>
+                    <ol>
+                        <li>Every C program must have a main() function.</li>
+                        <li>Statements must end with a semicolon ;</li>
+                        <li>C is case-sensitive.</li>
+                        <li>Code is typically written in .c files and compiled using tools like gcc.</li>
+                    </ol>
                 </div>
             </div>
 
             <div id="thursday-content" class="day-content day-section">
-                <h2>Thursday: Recursion and Storage Classes</h2>
+                <h2>Te Ta Thursday</h2>
                 <div class="content-block">
-                    <h3><code>Recursion</code></h3>
-                    <p>
-                        **Recursion** is a programming technique where a function calls itself to solve a problem.
-                        It's often used for problems that can be broken down into smaller, self-similar sub-problems.
-                    </p>
-                    <ul>
-                        <li>A **base case** is essential to stop the recursion and prevent infinite loops.</li>
-                        <li>Each recursive call solves a smaller part of the problem.</li>
-                    </ul>
-                    <pre><code>
-// Recursive function to calculate factorial
-int factorial(int n) {
-    if (n == 0) { // Base case
-        return 1;
-    } else {
-        return n * factorial(n - 1); // Recursive call
-    }
-}
-                    </code></pre>
-                </div>
-                <div class="content-block">
-                    <h3><code>Storage Classes in C</code></h3>
-                    <p>
-                        Storage classes define the scope, lifetime, initial value, and storage location of a variable.
-                        The main storage classes in C are <code>auto</code>, <code>register</code>, <code>static</code>, and <code>extern</code>.
-                    </p>
-                    <ul>
-                        <li><code>auto:</code> Default for local variables. Stored in memory, lifetime limited to function execution.</li>
-                        <li><code>register:</code> Suggests storing the variable in a CPU register for faster access (compiler might ignore).</li>
-                        <li><code>static:</code> Preserves the variable's value between function calls. Local static variables retain their value. Global static variables have file scope.</li>
-                        <li><code>extern:</code> Declares a variable that is defined in another file, making it accessible from the current file.</li>
-                    </ul>
-                </div>
-                <div class="content-block">
-                    <h3><code>Example: Recursion and Static Variable</code></h3>
-                    <span class="example-label">C Code:</span>
                     <pre><code>
 #include &lt;stdio.h&gt;
-
-// Recursive factorial function
-int factorial(int n) {
-    if (n == 0 || n == 1) {
-        return 1;
-    } else {
-        return n * factorial(n - 1);
-    }
-}
-
-// Function with a static variable
-void counter() {
-    static int count = 0; // Initialized once
-    count++;
-    printf("Counter: %d\n", count);
-}
-
-int main() {
-    printf("Factorial of 5: %d\n", factorial(5));
-
-    counter(); // Output: Counter: 1
-    counter(); // Output: Counter: 2
-    counter(); // Output: Counter: 3
-    return 0;
-}
+#define ADD(a, b) ((a) + (b))
+int main() { printf("%d\\n", ADD(5, 7)); return 0; }
                     </code></pre>
-                    <span class="example-label">Output:</span>
-                    <pre><code>
-Factorial of 5: 120
-Counter: 1
-Counter: 2
-Counter: 3
-                    </code></pre>
+                    <h4>Explanation:</h4>
+                    <ol>
+		    <li>#define ADD(a, b) ((a) + (b))</li>
+                    This line defines a macro named ADD that takes two arguments, a and b. The macro expands to the expression ((a) + (b)) , which calculates the sum of a and b.
+                    The parentheses around a and b are used to ensure that the macro works correctly even if the arguments are expressions themselves.<br>
+                    <li>printf("%d\n", ADD(5, 7));
+                    Here, the ADD macro is used to calculate the sum of 5 and 7. The macro expands to ((5) + (7)) , which evaluates to 12. The result is then passed to printf(), which prints the value to the console.</li>
+                    </ol>
+                    <h4>How it works:</h4>
+                    <ol>
+                        <li>The preprocessor expands the ADD macro to ((5) + (7))</li>
+                        <li>The compiler evaluates the expression ((5) + (7)) to 12.</li>
+                        <li>The printf() function prints the result, 12, to the console.</li>
+                    </ol>
+                    <p>
+                        Using macros like ADD can be useful for simple calculations, but be cautious when using complex macros, as they can lead to unexpected behavior.
+                    </p>
                 </div>
             </div>
 
             <div id="friday-content" class="day-content day-section">
-                <h2>Friday: Function Pointers and Callback Functions</h2>
+		<h2>Function Friday</h2>
                 <div class="content-block">
-                    <h3><code>Function Pointers</code></h3>
+                    <h3>Function Friday</h3>
                     <p>
-                        A **function pointer** is a variable that stores the memory address of a function.
-                        This allows you to call functions indirectly, pass functions as arguments to other functions,
-                        and store functions in data structures.
+                        Functions are blocks of code designed to perform specific tasks. They enhance modularity, code reuse, and readability.
                     </p>
-                    <pre><code>
-// Declare a function pointer that points to a function
-// taking two ints and returning an int
-int (*ptrToFunc)(int, int);
-                    </code></pre>
-                    <ul>
-                        <li>Useful for implementing callback mechanisms.</li>
-                        <li>Enables dynamic selection of functions at runtime.</li>
-                    </ul>
-                </div>
-                <div class="content-block">
-                    <h3><code>Callback Functions</code></h3>
-                    <p>
-                        A **callback function** is a function that is passed as an argument to another function
-                        and is intended to be called by that other function at a later time.
-                        They are common in event handling, sorting algorithms, and asynchronous operations.
-                    </p>
-                </div>
-                <div class="content-block">
-                    <h3><code>Example: Function Pointers and Callback</code></h3>
-                    <span class="example-label">C Code:</span>
+                    <h4>Types of Functions:</h4>
+                    <ol>
+                        <li>Library Functions: Predefined in header files (printf(),scanf(),strlen(), etc.).</li>
+                        <li>User-Defined Functions: Created by the programmer for specific tasks.</li>
+                        <li>Recursive Functions: Functions that call themselves.</li>
+                    </ol>
+                    <h4>Basic Function Syntax:</h4>
                     <pre><code>
 #include &lt;stdio.h&gt;
-
-// Function to be pointed to
+// Function declaration
+int add(int a, int b);
+int main() {
+    int result = add(5, 7);
+    printf("Sum: %d\\n", result);
+    return 0;
+}
+// Function definition
 int add(int a, int b) {
     return a + b;
 }
-
-// Another function to be pointed to
-int subtract(int a, int b) {
-    return a - b;
-}
-
-// Function that takes a function pointer as an argument (callback)
-void performOperation(int num1, int num2, int (*operation)(int, int)) {
-    int result = operation(num1, num2);
-    printf("Result of operation: %d\n", result);
-}
-
-int main() {
-    // Declare and initialize a function pointer
-    int (*opPtr)(int, int);
-
-    opPtr = add; // Point to the add function
-    printf("Using function pointer to add: %d\n", opPtr(10, 5));
-
-    opPtr = subtract; // Point to the subtract function
-    printf("Using function pointer to subtract: %d\n", opPtr(10, 5));
-
-    printf("\nDemonstrating callback function:\n");
-    performOperation(20, 10, add); // Pass add as a callback
-    performOperation(20, 10, subtract); // Pass subtract as a callback
-
-    return 0;
-}
                     </code></pre>
-                    <span class="example-label">Output:</span>
-                    <pre><code>
-Using function pointer to add: 15
-Using function pointer to subtract: 5
-
-Demonstrating callback function:
-Result of operation: 30
-Result of operation: 10
-                    </code></pre>
+                    <h4>Function Components Explained:</h4>
+                    <ul>
+                        <li>Function Declaration: Specifies return type, function name, and parameters.</li>
+                        <li>Function Definition: Contains the actual implementation.</li>
+                        <li>Function Call: Invokes the function with arguments.</li>
+                    </ul>
+                    <h4>Function Advantages:</h4>
+                    <ul>
+                        <li>Encourages code reusability</li>
+                        <li>Breaks problems into smaller manageable chunks</li>
+                        <li>Improves readability and maintainability</li>
+                    </ul>
+                    <h4>Fun Fact</h4>
+		    <p>In C, functions must be declared before they are used, unless included in header files.</p>
                 </div>
             </div>
         </div>
@@ -669,8 +497,18 @@ Result of operation: 10
     </footer>
 
     <script>
+        // Define a variable to store the ID of the disabled week
+        // Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
+        let disabledWeekId = ''; // Example: Week 4 is disabled
+
         // Function to show content for a specific week
         function showWeek(weekId, clickedButton) {
+            // Check if the clicked week is disabled
+            if (weekId === disabledWeekId) {
+                alert('This week is currently disabled for content viewing.');
+                return; // Prevent further execution
+            }
+
             // Hide all week content sections
             const weekContents = document.querySelectorAll('.week-content');
             weekContents.forEach(content => {
@@ -728,8 +566,21 @@ Result of operation: 10
             }
         }
 
+        // Function to apply disabled state to week buttons
+        function applyDisabledWeeks() {
+            const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+            mainTabButtons.forEach(button => {
+                const weekIdMatch = button.onclick.toString().match(/'(week\d+)'/);
+                if (weekIdMatch && weekIdMatch[1] === disabledWeekId) {
+                    button.classList.add('disabled');
+                    button.removeAttribute('onclick'); // Remove onclick to disable interaction
+                }
+            });
+        }
+
         // Initialize by showing Week 1 and Monday's content on page load
         document.addEventListener('DOMContentLoaded', () => {
+            applyDisabledWeeks(); // Apply disabled styles and behavior first
             showWeek('week1', document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]'));
         });
     </script>
