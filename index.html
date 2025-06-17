@@ -881,16 +881,377 @@ Value: 40
         </div>
 
         <div id="week3" class="week-content">
-            <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
-                Week 3 Content - COMING SOON!
-            </p>
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 3
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week3', this, 'week3')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week3', this, 'week3')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week3', this, 'week3')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week3', this, 'week3')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week3', this, 'week3')">Friday</button>
+    </div>
+
+    <div id="monday-content-week3" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>What is a function?</h3>
+            <p>A function is a block of code that performs a specific task. It improves modularity and reusability.</p>
         </div>
 
-        <div id="week4" class="week-content">
-            <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
-                Week 4 Content - COMING SOON!
-            </p>
+        <div class="content-block">
+            <h3>Syntax</h3>
+            <pre><code>
+return_type function_name(parameters) {
+    // code
+}
+            </code></pre>
         </div>
+
+        <div class="content-block">
+            <h3>Example</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+
+// Function declaration
+int add(int a, int b);
+
+int main() {
+    int sum = add(5, 10);  // Function call
+    printf("Sum is: %d", sum);
+    return 0;
+}
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}
+            </code></pre>
+        </div>
+        <div class="content-block">
+            <h3>Output</h3>
+            <code>
+Sum is: 15
+            </code>
+        </div>
+    </div>
+
+    <div id="tuesday-content-week3" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <div class="content-block">
+            <h3>Arrays in C</h3>
+            <p>An array in C is a collection of elements, all of the same type, stored in contiguous memory locations.</p>
+
+            <div class="content-block">
+                <h3>Syntax</h3>
+                <pre><code>
+data_type array_name[size];
+// Example: int myArray[10];
+                </code></pre>
+                <p>Type: The data type of the array elements (e.g., int, float).<br>Size: The number of elements the array can store.</p>
+            </div>
+
+            <div class="content-block">
+                <h3>Example</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};  // Declaration and initialization
+    printf("Element at index 2: %d\n", arr[2]);
+    return 0;
+}
+                </code></pre>
+            </div>
+            <div class="content-block">
+                <h3>Output</h3>
+                <code>
+Element at index 2: 3
+                </code>
+            </div>
+
+<div class="content-block">
+                <h3>Control Structures for Arrays in C </h3>
+                <p>Control structures like loops are used to traverse and manipulate arrays in C.</p>
+                <h3>Example with for loop</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};    
+    // Loop through array and print each element
+    for (int i = 0; i < 5; i++) {
+        printf("Element at index %d: %d\n", i, arr[i]);
+    }
+    return 0;
+}
+
+                </code></pre>
+<p>This code prints all the elements of the array arr.</p>
+            </div>
+
+ <div class="content-block">
+                <h3>Output</h3>
+                <code>
+Element at index 0: 1
+Element at index 1: 2
+Element at index 2: 3
+Element at index 3: 4
+Element at index 4: 5
+                </code>
+            </div>
+        </div>
+    </div>
+
+    <div id="wednesday-content-week3" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+            <h3>Let see about pointers in C program</h3>
+            <p>A pointer is a variable that stores the address of another variable. Pointers are powerful tools that enable efficient memory access, dynamic memory management, and are essential in data structures like linked lists and trees.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Example program</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;          // Declare an integer variable
+    int *ptr;            // Declare a pointer to int
+
+    ptr = &a;            // Store address of variable 'a' in pointer 'ptr'
+
+    // Print the value and address
+    printf("Value of a: %d\n", a);
+    printf("Address of a: %p\n", &a);
+    printf("Value stored in ptr (address of a): %p\n", ptr);
+    printf("Value pointed to by ptr (value of a): %d\n", *ptr);
+
+    return 0;
+}
+            </code></pre>
+        </div>
+        <div class="content-block">
+            <h3>Output</h3>
+            <code>
+Value of a: 10
+Address of a: 0x7ffee0b01234  (This will be a hexadecimal address)
+Value stored in ptr (address of a): 0x7ffee0b01234 (This will be the same as Address of a)
+Value pointed to by ptr (value of a): 10
+            </code>
+        </div>
+    </div>
+
+    <div id="thursday-content-week3" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+            <h3>Passing Arrays to Functions</h3>
+            <p>One lesser-known aspect is how arrays are passed to functions in C. When an array is passed to a function, it decays into a pointer to the first element. This means the function receives a pointer, not the entire array.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Example program</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+
+// Function to print array elements
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int numbers[5] = {1, 2, 3, 4, 5};
+    printArray(numbers, 5);
+    return 0;
+}
+
+            </code></pre>
+<p>In this example, arr in the printArray function is essentially a pointer to the first element of the numbers array. The size parameter is necessary because the function doesn't know the size of the array otherwise.</p>
+        </div>
+        <div class="content-block">
+            <h3>Output</h3>
+            <code>
+1 2 3 4 5 
+            </code>
+        </div>
+    </div>
+
+    <div id="friday-content-week3" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+            <h3>Function Pointers in C</h3>
+            <p>A function pointer stores the address of a function and allows dynamic invocation.</p>
+            <h4>Syntax</h4>
+            <pre><code>
+// Function pointer declaration
+void (*funcPtr)();
+
+// Assign function address to pointer
+funcPtr = &greet;
+
+// Call function using pointer
+funcPtr();
+
+            </code></pre>
+            <h3>Example</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+// Function to display a message
+void greet() {
+    printf("Hello, Function Pointers!\n");
+}
+int main() {
+    void (*funcPtr)(); // Declare function pointer
+    funcPtr = &greet;  // Assign function address
+    funcPtr();         // Call function using pointer
+    return 0;
+}
+
+            </code></pre>
+            <h3>Output</h3>
+            <code>
+Hello, Function Pointers!
+            </code>
+            <h3>Why use function pointers?</h3>
+            <ul>
+                <li>Enables callback functions in programs like sorting algorithms.</li>
+                <li>Used in event-driven programming and function abstraction.</li>
+            </ul>
+<h3>Deeper Dive</h3>
+            <ul>
+                <li>Function pointers allow runtime function selection, making programs more flexible.</li>
+                <li>They are essential for implementing state machines, commonly used in embedded systems.</li>
+            </ul>
+<h3>Variable-Length Arrays (VLA)</h3>
+            <p>Unlike fixed-size arrays, VLAs allow defining arrays with dynamic sizes at runtime (supported in modern C versions).</p>
+
+<h3>Syntax</h3>
+<pre><code>
+int n;
+scanf("%d", &n);  // Get array size from user
+int arr[n];       // Declare a variable-length array
+            </code></pre>
+
+            <pre><code>
+int main() {
+    int n;
+    printf("Enter array size: ");
+    scanf("%d", &n);
+    int arr[n];  // Variable-length array
+    for (int i = 0; i < n; i++) {
+        arr[i] = i + 1;
+    }
+    printf("Array contents:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+
+            </code></pre>
+            <h3>Output</h3>
+            <code>
+Enter array size: 5
+Array contents:
+1 2 3 4 5
+
+--
+
+Enter array size: 3
+Array contents:
+1 2 3
+
+--
+
+Enter array size: 10
+Array contents:
+1 2 3 4 5 6 7 8 9 10
+            </code>
+            <h3>Why use VLAs?</h3>
+            <ul>
+                <li>Allows dynamic array sizing at runtime.</li>
+                <li>Useful when the required array size is unknown before execution.</li>
+            </ul>
+<h3>Deeper Dive</h3>
+            <ul>
+                <li>Simpler Syntax Compared to malloc.</li>
+                <li>Eliminates the need for manual memory allocation & deallocation.</li>
+            </ul>
+<h3>When Should You Use VLAs?</h3>
+            <ul>
+                <li>When you need simple runtime array sizing for small arrays.</li>
+                <li>When writing temporary arrays that won’t persist beyond function scope</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div id="week4" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 4
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week4', this, 'week4')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week4', this, 'week4')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week4', this, 'week4')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week4', this, 'week4')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week4', this, 'week4')">Friday</button>
+    </div>
+
+    <div id="monday-content-week4" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>What is a Pointer?</h3>
+            <p>A pointer is a variable that stores the memory address of another variable.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Syntax</h3>
+            <pre><code>
+data_type *pointer_name;
+            </code></pre>
+        </div>
+
+        <div class="content-block">
+            <h3>Examples</h3>
+            <pre><code>
+int *ptr;        // pointer to an int
+float *fptr;     // pointer to a float
+char *cptr;      // pointer to a char
+double *dptr;    // pointer to a double          
+</code></pre>
+<p><strong>Note:</strong> Even though * is used in the declaration, the pointer itself just stores an address.</p>
+        </div>
+        <div class="content-block">
+            <h3>Example</h3>
+            <pre><code>
+int a = 10;
+int *ptr = &a;   // ptr now holds the address of a
+        </code></pre>
+        </div>
+    </div>
+
+    <div id="tuesday-content-week4" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+    </div>
+
+    <div id="wednesday-content-week4" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+    </div>
+
+    <div id="thursday-content-week4" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+    </div>
+
+    <div id="friday-content-week4" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+    </div>
+</div>
 
         <div id="week5" class="week-content">
             <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
