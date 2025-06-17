@@ -7,7 +7,7 @@
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css"> 
     <style>
-       /* General Container for all content */
+/* General Container for all content */
 .content-container-wrapper {
     width: 90%;
     max-width: 900px; /* Increased max-width for better content display */
@@ -57,11 +57,22 @@
     background: linear-gradient(to right, #F5F5F5, #E0E0E0);
     color: #333;
     font-size: 14px;
-    border-radius: 6px; /* Uniform rounded corners */
+    border-radius: 6px 6px 0 0; /* Match leaderboard: top rounded, bottom sharp for inactive */
     transition: 0.3s;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 2px; /* Adjusted margin for consistent spacing when wrapping */
+    margin: 0 2px; /* Match leaderboard: Small gap between buttons */
     white-space: nowrap; /* Prevent text wrapping */
+    box-sizing: border-box; /* Include padding and border in sizing */
+}
+
+.tab-button:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.tab-button:last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .tab-button:hover {
@@ -74,6 +85,7 @@
     color: white;
     font-weight: bold;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+    border-radius: 6px; /* Match leaderboard: Active button looks like a solid block */
 }
 
 /* Styling for disabled buttons */
@@ -82,6 +94,7 @@
     color: #666666;
     cursor: not-allowed;
     box-shadow: none;
+    border-radius: 6px; /* Ensure disabled buttons also look solid */
 }
 
 .tab-button.disabled:hover {
@@ -124,8 +137,6 @@
 
 .content-block {
     margin-bottom: 20px;
-    /* Ensure no extra padding/margin on the content block itself
-       that might throw off the alignment for its children */
     padding-left: 0;
     padding-right: 0;
 }
@@ -135,11 +146,10 @@
 .content-block h3,
 .content-block h4 {
     color: #1E88E5;
-    /* Adjust margin-bottom to control space before the list */
     margin-bottom: 3px; /* Reduced for tighter spacing */
-    margin-left: 0; /* Crucial: Align heading text to the very left of .content-block */
-    padding-left: 0; /* Crucial: Align heading text to the very left of .content-block */
-    text-align: left; /* Ensure text is left-aligned */
+    margin-left: 0;
+    padding-left: 0;
+    text-align: left;
 }
 
 
@@ -164,8 +174,6 @@
     margin-bottom: 5px;
     position: relative; /* Needed for ::before positioning */
     line-height: 1.6; /* Ensure consistent line spacing */
-    
-    /* Padding to create space for the circle bullet and gap */
     padding-left: 18px; /* Space for the circle bullet + small gap */
 }
 
@@ -175,7 +183,6 @@
     color: #00408f; /* Matching blue */
     font-weight: bold; /* Make it more prominent */
     font-size: 1em; /* Ensure the bullet size matches the text */
-    
     position: absolute; /* Position the bullet absolutely relative to the list item */
     left: 0; /* Align it to the very left edge of the LI's content area */
     top: 0; /* Align with the top of the text */
@@ -192,8 +199,6 @@
     margin-top: 0; /* Pull list closer to the heading */
     margin-bottom: 10px;
     text-align: left;
-
-    /* Initialize the counter for ordered lists */
     counter-reset: custom-numbered-list;
 }
 
@@ -201,23 +206,16 @@
     margin-bottom: 5px;
     line-height: 1.6; /* Ensure consistent line spacing */
     position: relative; /* Needed for positioning the ::before pseudo-element */
-    
-    /* Padding to create space for the number (e.g., "10.") and gap.
-       Adjust this based on the max number of items you expect (e.g., if you go to 100, you need more space). */
     padding-left: 30px; /* Space for the number and text content */
 }
 
 /* Custom Numbered Bullet using ::before pseudo-element for OL */
 .content-block ol li::before {
-    /* Increment the counter for each list item */
     counter-increment: custom-numbered-list;
-    /* Display the counter value followed by a period */
     content: counter(custom-numbered-list) ".";
-    
     color: #00408f; /* Matching blue */
     font-weight: bold;
     font-size: 1em; /* Ensure the number size matches the text */
-    
     position: absolute; /* Position the number absolutely relative to the list item */
     left: 0; /* Align it to the very left edge of the LI's content area */
     top: 0; /* Align with the top of the text */
@@ -265,24 +263,48 @@ pre code {
         margin: 10px auto 15px auto;
     }
 
-    /* Make week and day buttons stack vertically or wrap more efficiently */
+    /* Make week and day buttons appear like the leaderboard buttons on mobile */
     .main-tab-nav, .nested-tab-nav {
-        flex-direction: row; /* Keep as row, but allow wrapping */
-        justify-content: space-around; /* Distribute space evenly */
+        flex-direction: row;
+        justify-content: center; /* Center the buttons */
         padding: 5px;
+        /* Gap is usually preferred over margin for flex items, but for "button group" feel,
+           we'll manage spacing with button margins for consistent look. */
     }
 
     .tab-button {
-        flex: 1 1 auto; /* Allow buttons to grow, shrink, and wrap */
+        flex: 1; /* Allow buttons to grow and shrink equally */
         min-width: unset; /* Remove fixed min-width for better wrapping */
-        width: calc(50% - 4px); /* Two buttons per row for main tabs, accounting for margin */
-        margin: 2px; /* Ensure small gap between buttons */
         font-size: 11px; /* Smaller font size for buttons */
         padding: 6px 8px;
+        margin: 0 1px; /* Very small gap between buttons to create group feel */
+        border-radius: 6px 6px 0 0; /* Ensure top rounded, bottom sharp for inactive */
     }
 
+    /* Override for active button on mobile to have full rounded corners */
+    .tab-button.active {
+        border-radius: 6px;
+    }
+
+    /* Adjust first and last child for continuous button group */
+    .tab-button:first-child {
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
+    }
+
+    .tab-button:last-child {
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
+    }
+
+    /* For main tab navigation, let them be 2 per row */
+    .main-tab-nav .tab-button {
+        flex: 1 1 calc(50% - 2px); /* Two buttons per row, accounting for margin */
+    }
+
+    /* For nested tab navigation, let them be 3 per row (or adjust as needed) */
     .nested-tab-nav .tab-button {
-        width: calc(33.33% - 4px); /* Three buttons per row for day tabs on very small screens */
+        flex: 1 1 calc(33.33% - 2px); /* Three buttons per row, accounting for margin */
     }
 
     .day-section {
@@ -363,7 +385,7 @@ pre code {
 
 /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
 /* No specific media query needed here as base styles handle larger screens */
-    </style>
+</style>
 </head>
 <body>
 
