@@ -252,7 +252,29 @@ pre code {
     display: block;
 }
 
-/* --- Mobile Responsiveness for Content and Buttons --- */
+/* Add this to your existing CSS file or style block */
+
+.week-content.content-disabled-overlay,
+.day-content.content-disabled-overlay {
+    position: relative;
+    filter: blur(10px); /* Increased blur amount from 5px to 10px */
+    pointer-events: none; /* Disables all mouse events on the blurred content */
+    user-select: none; /* Prevents text selection */
+    opacity: 0.6; /* Optional: Make it slightly faded */
+}
+
+/* Optional: Add an actual overlay on top if you want a more distinct disabled look */
+.week-content.content-disabled-overlay::before,
+.day-content.content-disabled-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white overlay */
+    z-index: 1; /* Make sure it's above the blurred content */
+}
 /* --- Mobile Responsiveness for Content and Buttons --- */
 
 /* Small devices (phones, 600px and down) */
@@ -1276,89 +1298,152 @@ int *ptr = &a;   // ptr now holds the address of a
         </a>
     </footer>
 
-    <script>
-        // Configuration for week accessibility
-// Set 'true' to enable a week, 'false' to disable it.
-// 'disableAllWeeks: true' overrides individual week settings and disables everything.
-const weekConfiguration = {
-    disableAllWeeks: false, // Set this to true to disable all weeks
-    week1: true,   // Set to true to enable Week 1
-    week2: true,   // Set to true to enable Week 2
-    week3: true,  // Set to false to disable Week 3
-    week4: true,  // Set to false to disable Week 4
-    week5: false   // Set to false to disable Week 5
+    <script>// --- CONTROL KEYWORD HERE ---
+// Define a variable to store the ID of the disabled week
+// Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
+let disabledWeekId = ''; // Example: Week 4 is disabled
+// Define an array of disabled days for a given week (e.g., ['tuesday', 'thursday'] for week1)
+const disabledDays = {
+    'week1': ['monday', 'tuesday','wednesday', 'thursday'], // Example: Tuesday and Thursday are disabled for Week 1
+    'week2': ['monday', 'tuesday','wednesday', 'thursday'],
+    'week3': ['monday', 'tuesday','wednesday', 'thursday'],
 };
+// --- END CONTROL KEYWORD ---
 
-/**
- * Function to show content for a specific week.
- * It checks the weekConfiguration before displaying content.
- * @param {string} weekId - The ID of the week to show (e.g., 'week1', 'week2').
- * @param {HTMLElement} clickedButton - The button element that was clicked.
- */
-function showWeek(weekId, clickedButton) {
-    // If 'disableAllWeeks' is true OR the specific week is configured as disabled,
-    // prevent showing content and return.
-    if (weekConfiguration.disableAllWeeks || !weekConfiguration[weekId]) {
-        // Optionally, you can provide an alert here, but applying the 'disabled' class
-        // and removing the onclick handler on load is usually sufficient to prevent interaction.
-        // alert('This week is currently disabled for content viewing.');
-        return;
+// Object to store original text content for jumbling/unjumbling
+const originalTextStore = {};
+
+// Function to shuffle characters in a string
+function shuffleString(str) {
+    let a = str.split("");
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
     }
+    return a.join("");
+}
 
+// Function to jumble the text content of an element
+function jumbleText(element) {
+    // Check if element has any text content to jumble and is not just whitespace
+    if (element && element.textContent && element.textContent.trim().length > 0) {
+        // Use a unique key for storage, preferring element ID or generating one
+        const elementKey = element.id || 'jumble-' + Math.random().toString(36).substring(2, 9);
+        if (!element.id) { // Assign ID if it didn't exist for consistent lookup
+            element.id = elementKey;
+        }
+
+        // Store original text if not already stored
+        if (!originalTextStore[elementKey]) {
+            originalTextStore[elementKey] = element.textContent;
+        }
+        element.textContent = shuffleString(element.textContent);
+    }
+}
+
+// Function to unjumble the text content of an element
+function unjumbleText(element) {
+    if (element && element.id && originalTextStore[element.id]) {
+        element.textContent = originalTextStore[element.id];
+        // Optionally delete from store if you don't need it after unjumbling
+        // delete originalTextStore[element.id];
+    }
+}
+
+// Function to show content for a specific week
+function showWeek(weekId, clickedButton) {
     // Hide all week content sections
-    const allWeekContents = document.querySelectorAll('.week-content');
-    allWeekContents.forEach(content => {
+    const weekContents = document.querySelectorAll('.week-content');
+    weekContents.forEach(content => {
         content.classList.remove('active-content');
+        content.classList.remove('content-disabled-overlay'); // Ensure this is removed when not disabled
     });
 
     // Deactivate all main tab buttons
-    const allMainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
-    allMainTabButtons.forEach(button => {
+    const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+    mainTabButtons.forEach(button => {
         button.classList.remove('active');
     });
 
     // Show the selected week's content
     const selectedWeekContent = document.getElementById(weekId);
-    if (selectedWeekContent) {
-        selectedWeekContent.classList.add('active-content');
+    selectedWeekContent.classList.add('active-content');
 
-        // Activate the clicked week button
-        if (clickedButton) {
-            clickedButton.classList.add('active');
-        }
+    // Activate the clicked week button
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
 
-        // --- Special handling to show Monday content by default for the *currently active* week ---
-        const defaultDayId = `monday-content-${weekId}`; // Construct the correct default day ID
+    // Check if the current week is disabled
+    if (weekId === disabledWeekId) {
+        selectedWeekContent.classList.add('content-disabled-overlay');
+        // Jumble text for questions and options within the entire disabled week
+        selectedWeekContent.querySelectorAll('h3, p, h4, span, .radio-group label, .checkbox-group label').forEach(element => { // Adjust selectors as needed
+            jumbleText(element);
+        });
+
+        // Ensure day buttons for a disabled week do not have 'active' class
+        selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // Hide all day content within the disabled week, and also apply blur
+        selectedWeekContent.querySelectorAll('.day-content').forEach(content => {
+            content.classList.remove('active-content'); // Hide any active day content
+            content.classList.add('content-disabled-overlay'); // Apply blur to all day contents
+            content.querySelectorAll('h4, p, span').forEach(element => { // Jumble text within day content
+                jumbleText(element);
+            });
+        });
+
+    } else { // Week is enabled
+        selectedWeekContent.classList.remove('content-disabled-overlay');
+        // Unjumble text for questions and options within the entire enabled week
+        selectedWeekContent.querySelectorAll('h3, p, h4, span, .radio-group label, .checkbox-group label').forEach(element => { // Adjust selectors as needed
+            unjumbleText(element);
+        });
+
+        // Re-add onclick handler for nested day buttons for enabled week
+        selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
+            const dayIdMatch = button.textContent.trim().toLowerCase(); // Assuming button text is the day name
+            const originalDayId = dayIdMatch + '-content-' + weekId; // Reconstruct the ID
+            button.setAttribute('onclick', `showDay('${originalDayId}', this, '${weekId}')`);
+            // No 'disabled' class or onclick removal for buttons based on individual day status here.
+            // showDay will handle the content blur.
+        });
+
+        // Special handling to show Monday content by default for the *currently active* week
+        const defaultDayId = 'monday-content-' + weekId;
         const defaultDayButton = selectedWeekContent.querySelector(`.nested-tab-nav .tab-button[onclick*="${defaultDayId}"]`);
-
         if (defaultDayButton) {
-            // Use showDay to activate Monday and its button
             showDay(defaultDayId, defaultDayButton, weekId);
         } else {
-            // If there's no Monday content for a given week (e.g., 'Coming Soon'),
-            // ensure all daily content and buttons within this week are hidden/deactivated.
             const dayContents = selectedWeekContent.querySelectorAll('.day-content');
-            dayContents.forEach(content => content.classList.remove('active-content'));
+            dayContents.forEach(content => {
+                content.classList.remove('active-content');
+                content.classList.remove('content-disabled-overlay'); // Ensure removed if no default day
+                content.querySelectorAll('h4, p, span').forEach(element => {
+                    unjumbleText(element); // Unjumble if no default day content is shown
+                });
+            });
             const dayButtons = selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button');
             dayButtons.forEach(button => button.classList.remove('active'));
         }
     }
 }
 
-/**
- * Function to show content for a specific day within a week.
- * @param {string} dayIdWithWeek - The full ID of the day content (e.g., 'monday-content-week1').
- * @param {HTMLElement} clickedButton - The button element that was clicked.
- * @param {string} weekId - The ID of the parent week (e.g., 'week1').
- */
+// Function to show content for a specific day within a week
 function showDay(dayIdWithWeek, clickedButton, weekId) {
     const weekContentDiv = document.getElementById(weekId);
-    if (!weekContentDiv) return; // Should not happen if showWeek calls it correctly
 
-    // Hide all day content sections within the current week
+    // Hide and un-blur/unjumble all day content sections within the current week first
     const dayContents = weekContentDiv.querySelectorAll('.day-content');
     dayContents.forEach(content => {
         content.classList.remove('active-content');
+        content.classList.remove('content-disabled-overlay'); // Always remove before potentially adding it back
+        content.querySelectorAll('h4, p, span').forEach(element => { // Adjust selectors as needed
+            unjumbleText(element); // Always unjumble previous content
+        });
     });
 
     // Deactivate all nested day tab buttons within the current week
@@ -1367,75 +1452,46 @@ function showDay(dayIdWithWeek, clickedButton, weekId) {
         button.classList.remove('active');
     });
 
+    // Extract just the day name from dayIdWithWeek (e.g., 'monday' from 'monday-content-week1')
+    const dayName = dayIdWithWeek.split('-')[0];
+
+    const targetDayContent = document.getElementById(dayIdWithWeek);
+
     // Show the selected day's content
-    const selectedDayContent = document.getElementById(dayIdWithWeek);
-    if (selectedDayContent) {
-        selectedDayContent.classList.add('active-content');
-    }
+    targetDayContent.classList.add('active-content');
 
     // Activate the clicked day button
     if (clickedButton) {
         clickedButton.classList.add('active');
     }
-}
 
-/**
- * Initializes the state of the main week buttons on page load,
- * applying 'disabled' styles and controlling clickability based on configuration.
- * It also automatically displays the content for the first enabled week.
- */
-function initializeWeekButtons() {
-    const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
-    let firstEnabledWeekId = null; // To keep track of the first week that is enabled
-
-    mainTabButtons.forEach(button => {
-        // Extract weekId (e.g., 'week1') from the button's text content
-        const weekName = button.textContent.replace(' ', '').toLowerCase(); // "Week 1" -> "week1"
-
-        // Determine if the button should be disabled
-        if (weekConfiguration.disableAllWeeks || !weekConfiguration[weekName]) {
-            button.classList.add('disabled');
-            button.removeAttribute('onclick'); // Remove onclick to disable interaction
-        } else {
-            // Ensure the button is enabled and its onclick is correctly set
-            button.classList.remove('disabled');
-            // Re-add onclick attribute if it was removed, or ensure it's there
-            if (!button.hasAttribute('onclick')) {
-                button.setAttribute('onclick', `showWeek('${weekName}', this)`);
-            }
-            // Store the first enabled week ID found
-            if (firstEnabledWeekId === null) {
-                firstEnabledWeekId = weekName;
-            }
-        }
-    });
-
-    // After setting up all buttons, show the first enabled week's content.
-    // If all weeks are disabled by 'disableAllWeeks', it will default to showing Week 1 button as active
-    // but its content won't be shown due to the check in showWeek().
-    if (firstEnabledWeekId) {
-        const initialButton = document.querySelector(`.main-tab-nav .tab-button[onclick*="${firstEnabledWeekId}"]`);
-        if (initialButton) {
-            showWeek(firstEnabledWeekId, initialButton);
-        }
-    } else if (weekConfiguration.disableAllWeeks) {
-        // If all weeks are disabled, make sure no content is visible and no button is active
-        // but visually, the first button can still be present (just disabled).
-        const allWeekContents = document.querySelectorAll('.week-content');
-        allWeekContents.forEach(content => content.classList.remove('active-content'));
-        const allMainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
-        allMainTabButtons.forEach(button => button.classList.remove('active'));
+    // Check if the specific day is disabled for this week OR if the entire week is disabled
+    if ((disabledDays[weekId] && disabledDays[weekId].includes(dayName)) || weekId === disabledWeekId) {
+        // Apply blur to the day's content if it's disabled or its parent week is disabled
+        targetDayContent.classList.add('content-disabled-overlay');
+        // Jumble the text contents within this specific disabled day
+        targetDayContent.querySelectorAll('h4, p, span').forEach(element => { // Adjust selectors as needed
+            jumbleText(element);
+        });
     } else {
-        // Fallback: If no week is explicitly enabled in config, default to week1 (it will be disabled if config.week1 is false)
-        const week1Button = document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]');
-        if (week1Button) {
-            showWeek('week1', week1Button);
-        }
+        // Unjumble text if the day is enabled
+        targetDayContent.querySelectorAll('h4, p, span').forEach(element => { // Adjust selectors as needed
+            unjumbleText(element);
+        });
     }
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', initializeWeekButtons);
+// Function to apply initial setup (no disabled button styles)
+function applyInitialWeekSetup() {
+    // No "disabled" class or onclick removal needed for main tab buttons now.
+    // They will always be clickable.
+}
+
+// Initialize by showing Week 1 and its Monday content on page load
+document.addEventListener('DOMContentLoaded', () => {
+    applyInitialWeekSetup(); // Apply initial setup
+    showWeek('week1', document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]'));
+});
     </script>
 
 </body>
