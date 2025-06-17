@@ -265,76 +265,76 @@ pre code {
     /* For both main and nested tab navigation, allow horizontal wrapping */
     .main-tab-nav,
     .nested-tab-nav {
-        flex-direction: row; /* Ensure they are in a row (default for flex, but good to be explicit) */
-        justify-content: center; /* Center buttons horizontally */
-        flex-wrap: wrap; /* Allow buttons to wrap to the next line within their row */
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
         padding: 5px;
-        /* No need for align-items: stretch here, as we want them to take calculated width */
     }
 
     .tab-button {
-        /* Allow buttons to grow/shrink and wrap, without taking full width */
-        flex: 1 1 auto; /* This makes them flexible */
-        min-width: 80px; /* Give them a minimum width so they don't get too small */
-        max-width: calc(50% - 4px); /* For Week buttons: try to fit 2 per row (adjust as needed) */
+        flex: 1 1 auto;
+        min-width: 80px; /* Base min-width */
         margin: 2px; /* Small margin for consistent spacing when wrapping */
-        font-size: 11px; /* Smaller font size for buttons on mobile */
-        padding: 6px 8px; /* Adjusted padding */
+        font-size: 11px;
+        padding: 6px 8px;
     }
 
-    /* Specifically for weekday buttons, you might want more or fewer per row */
+    /* Specific adjustments for week buttons to make 'Week 5' go to a new row */
+    .main-tab-nav .tab-button {
+        /* This calc allows for 2 buttons per row, making Week 5 wrap if 5 buttons exist */
+        max-width: calc(50% - 4px); /* (100% / 2 buttons) - margin */
+    }
+
+    /* Specific adjustments for weekday buttons to make 'Friday' go to a new row */
     .nested-tab-nav .tab-button {
-        max-width: calc(33.33% - 4px); /* For Day buttons: try to fit 3 per row (adjust as needed) */
-        /* You can adjust min-width here if you want them to be able to shrink more or less */
-        min-width: 65px; /* A bit smaller min-width for day buttons if you want more per row */
+        /* This calc allows for 4 buttons per row, making Friday wrap if 5 buttons exist */
+        max-width: calc(25% - 4px); /* (100% / 4 buttons) - margin */
+        min-width: 60px; /* A bit smaller min-width to help fit 4 per row */
     }
 
-    /* Content and other elements responsiveness remain similar to previous good suggestions */
+    /* Content and other elements responsiveness (no change needed here for this specific request) */
     .day-section {
-        padding: 15px; /* Reduce content padding */
+        padding: 15px;
     }
 
     .day-section h2 {
-        font-size: 1.4em; /* Smaller headings */
+        font-size: 1.4em;
     }
 
     .content-block h3,
-    .content-block h4 { /* Apply responsive font-size to both */
+    .content-block h4 {
         font-size: 1.1em;
-        margin-bottom: 2px; /* Even tighter spacing for mobile */
+        margin-bottom: 2px;
     }
 
     .content-block p,
     .content-block ul li,
-    .content-block ol li { /* Apply responsive font-size to all text */
+    .content-block ol li {
         font-size: 0.9em;
     }
 
-    /* Adjust UL (circle) bullets positioning for smaller screens */
     .content-block ul li {
-        padding-left: 15px; /* Slightly less padding for smaller text */
+        padding-left: 15px;
     }
     .content-block ul li::before {
-        margin-right: 4px; /* Slightly less gap for smaller text */
-        font-size: 0.9em; /* Adjust bullet size with text */
+        margin-right: 4px;
+        font-size: 0.9em;
     }
 
-    /* Adjust OL (numbered) bullets for smaller screens */
     .content-block ol li {
-        padding-left: 25px; /* Adjust padding for smaller screens if numbers get larger */
+        padding-left: 25px;
     }
     .content-block ol li::before {
-        width: 20px; /* Adjust width for numbers on smaller screens */
-        margin-right: 3px; /* Smaller margin for tighter spacing */
-        font-size: 0.9em; /* Adjust bullet size with text */
+        width: 20px;
+        margin-right: 3px;
+        font-size: 0.9em;
     }
 
     code {
-        font-size: 0.8em; /* Smaller code font */
-        padding: 8px; /* Smaller padding for code blocks */
+        font-size: 0.8em;
+        padding: 8px;
     }
 }
-
 /* Medium devices (tablets, 601px to 900px) */
 @media only screen and (min-width: 601px) and (max-width: 900px) {
     .content-container-wrapper {
