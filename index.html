@@ -279,15 +279,22 @@ pre code {
         padding: 6px 8px;
     }
 
-    /* Specific adjustments for week buttons to make 'Week 5' go to a new row */
+    /* --- Specific Adjustments for Week Buttons --- */
     .main-tab-nav .tab-button {
-        /* This calc allows for 2 buttons per row, making Week 5 wrap if 5 buttons exist */
+        /* This forces 2 buttons per row. With 5 buttons, this means:
+           Row 1: Week 1, Week 2
+           Row 2: Week 3, Week 4
+           Row 3: Week 5
+        */
         max-width: calc(50% - 4px); /* (100% / 2 buttons) - margin */
     }
 
-    /* Specific adjustments for weekday buttons to make 'Friday' go to a new row */
+    /* --- Specific Adjustments for Weekday Buttons --- */
     .nested-tab-nav .tab-button {
-        /* This calc allows for 4 buttons per row, making Friday wrap if 5 buttons exist */
+        /* This forces 4 buttons per row. With 5 buttons, this means:
+           Row 1: Monday, Tuesday, Wednesday, Thursday
+           Row 2: Friday
+        */
         max-width: calc(25% - 4px); /* (100% / 4 buttons) - margin */
         min-width: 60px; /* A bit smaller min-width to help fit 4 per row */
     }
