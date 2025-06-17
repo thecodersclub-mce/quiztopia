@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily C Programming Content - The Coders Club</title>
+    <title>C Programming Series - The Coders Club</title>
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css"> 
     <style>
@@ -262,25 +262,27 @@ pre code {
         margin: 10px auto 15px auto;
     }
 
-    /* Make week and day buttons stack vertically or wrap more efficiently */
+    /* Make week and day buttons stack vertically */
     .main-tab-nav, .nested-tab-nav {
-        flex-direction: row; /* Keep as row, but allow wrapping */
-        justify-content: space-around; /* Distribute space evenly */
+        flex-direction: column; /* This will stack them vertically */
+        justify-content: flex-start; /* Align items to the start */
+        align-items: stretch; /* Make items take full width */
         padding: 5px;
     }
 
     .tab-button {
-        flex: 1 1 auto; /* Allow buttons to grow, shrink, and wrap */
-        min-width: unset; /* Remove fixed min-width for better wrapping */
-        width: calc(50% - 4px); /* Two buttons per row for main tabs, accounting for margin */
-        margin: 2px; /* Ensure small gap between buttons */
-        font-size: 11px; /* Smaller font size for buttons */
-        padding: 6px 8px;
+        flex: none; /* Remove flex growing/shrinking properties */
+        min-width: unset; /* Remove fixed min-width */
+        width: 100%; /* Make each button take full width */
+        margin: 5px 0; /* Add vertical margin between stacked buttons, remove horizontal */
+        font-size: 14px; /* Adjust font size as desired for stacked buttons */
+        padding: 10px 12px; /* Adjust padding as desired */
     }
 
-    .nested-tab-nav .tab-button {
-        width: calc(33.33% - 4px); /* Three buttons per row for day tabs on very small screens */
-    }
+    /* No specific override needed for nested-tab-nav .tab-button if main .tab-button is 100% */
+    /* .nested-tab-nav .tab-button {
+        width: 100%;
+    } */
 
     .day-section {
         padding: 15px; /* Reduce content padding */
