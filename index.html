@@ -1172,7 +1172,7 @@ int main() {
 }
 
             </code></pre>
-            <h3>Output</h3>
+            <h3>Expected Output</h3>
             <code>
 Enter array size: 5
 Array contents:
@@ -1255,9 +1255,60 @@ int *ptr = &a;   // ptr now holds the address of a
     </div>
 
     <div id="tuesday-content-week4" class="day-content day-section">
-        <h2>Techie Tuesday</h2>
-        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+    <h2>Techie Tuesday</h2>
+    <div class="content-block">
+        <h3>What is a String in C?</h3>
+        <p>A string is a sequence of characters terminated by a null character '\0'.
+In C, strings are represented as arrays of characters.
+Think of a string as a sentence or word stored in memory.
+</p>
     </div>
+
+    <div class="content-block">
+        <h3>Example</h3>
+        <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    char name[] = "Welcome";
+    printf("Hello, %s!\n", name);
+    return 0;
+}
+</code></pre>  </div>
+    <div class="content-block">
+        <h3>Output</h3>
+        <code>
+Hello, Welcome!
+        </code>
+        <p>"Welcome" is a string stored in a character array.</p>
+    </div>
+    <div class="content-block">
+        <h3>Pointers with Strings in C</h3>
+        <p>A pointer to a string is a pointer that stores the address of the first character of the string.
+It’s a more memory-efficient and flexible way to handle strings than using character arrays.
+</p>
+    </div>
+    <div class="content-block">
+        <h3>Example</h3>
+        <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    char *greet = "Welcome!";
+    printf("%s\n", greet);
+    return 0;
+}
+</code></pre>  </div>
+    <div class="content-block">
+        <h3>Output</h3>
+        <code>
+Welcome!
+        </code>
+        <p><strong>Explanation:</strong></p>
+        <ul>
+            <li>char *greet ➡ Pointer to the string "Welcome!"</li>
+            <li>%s in printf prints the full string starting from the pointer.</li>
+        </ul>
+    </div>
+</div>
 
     <div id="wednesday-content-week4" class="day-content day-section">
         <h2>Syntax Snapshots Wednesday</h2>
