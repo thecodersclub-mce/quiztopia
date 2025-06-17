@@ -12,6 +12,7 @@ This repository contains the front-end code for **MINDMASH**, an application des
 * **C Programming Series Content (Homepage - `index.html`)**:
     * **Structured Weekly Content**: Navigate through C programming content organized by weeks.
     * **Daily Learning Modules**: Each week breaks down into daily sections (Monday, Tuesday, etc.), offering focused learning.
+    * **Dynamic Content Access**: Weeks and individual days can be configured to display content as **blurred and jumbled text** if they are disabled (e.g., "Coming Soon" or "Access Closed"). This provides a clear visual cue while allowing users to still click the navigation buttons.
     * **Responsive Tab Navigation**: Week and day selection buttons are fully responsive, gracefully adapting to different screen sizes and maintaining a consistent, sleek appearance on both desktop and mobile devices.
     * **Code Snippets & Examples**: Content includes clearly formatted code blocks for hands-on learning.
 
@@ -94,7 +95,7 @@ Both the quiz and feedback forms submit data to a Google Sheet via a deployed Go
     * Replace the placeholder URL with the **Web app URL** you copied from your Google Apps Script deployment for the Quiz form's Google Sheet.
     * Do the **same for `feedback.html`**, replacing its `scriptUrl` with the **Web app URL** for the Feedback form's Google Sheet.
 
-### 3. Dynamic Form Status Control
+### 3. Dynamic Form & Content Status Control
 
 * **For the Quiz form (`quiz.html`)**:
     * Open `quiz.html`.
@@ -104,6 +105,11 @@ Both the quiz and feedback forms submit data to a Google Sheet via a deployed Go
     * Open `feedback.html`.
     * Find the line: `const formControlStatus = "disable";`
     * Change `"disable"` to `"enable"` to make the feedback form active.
+* **For the C Programming Series Content (`index.html`)**:
+    * Open `index.html`.
+    * Locate the JavaScript section that defines `disabledWeekId` and `disabledDays`.
+    * Adjust `let disabledWeekId = '';` to specify a week ID (e.g., `'week4'`) to disable an entire week's content.
+    * Modify `const disabledDays = {};` to include specific days within an enabled week (e.g., `{'week1': ['tuesday', 'thursday']}`) to show those day's content as blurred and jumbled.
 
 ### 4. Leaderboard Data Management
 
@@ -118,7 +124,7 @@ The leaderboard data in `leaderboard.html` is currently **static HTML**. This me
 
 ## 💻 Local Development
 
-You can open `index.html`, `quiz.html`, `feedback.html`, and `leaderboard.html` directly in your web browser to test them. Remember that for form submissions to work, you *must* have completed the Google Apps Script setup and updated the `scriptUrl` in `quiz.html` and `feedback.html`.
+You can open `index.html`, `quiz.html`, `feedback.html`, and `leaderboard.html` directly in your web browser to test them. Remember that for form submissions and dynamic content status to work, you *must* have completed the Google Apps Script setup and updated the relevant JavaScript variables in the HTML files.
 
 ---
 
