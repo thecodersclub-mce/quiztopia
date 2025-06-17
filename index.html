@@ -26,11 +26,11 @@
     justify-content: center;
     background: #E0E0E0;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; /* To contain potential inner shadows */
     padding: 5px;
     box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 10px;
-    flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line */
 }
 
 /* Nested Tab Navigation (Monday, Tuesday, etc.) */
@@ -39,40 +39,30 @@
     justify-content: center;
     background: #e3f2fd; /* Lighter blue background for nested tabs */
     border-radius: 6px;
-    overflow: hidden;
+    overflow: hidden; /* To contain potential inner shadows */
     padding: 5px;
     box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 15px; /* Space above nested tabs */
     margin-bottom: 15px; /* Space below nested tabs */
-    flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+    flex-wrap: wrap; /* Allows buttons to wrap to the next line */
 }
 
 /* General Tab Button Styling */
 .tab-button {
-    flex: 1; /* Allows buttons to grow and shrink */
-    min-width: 80px; /* Minimum width to prevent squishing */
+    flex: 0 0 auto; /* Do not grow, do not shrink automatically, base on content/width */
+    min-width: 80px; /* Minimum width to prevent squishing on larger screens */
     padding: 8px 12px;
     border: none;
     cursor: pointer;
     background: linear-gradient(to right, #F5F5F5, #E0E0E0);
     color: #333;
     font-size: 14px;
-    border-radius: 6px 6px 0 0; /* Match leaderboard: top rounded, bottom sharp for inactive */
+    border-radius: 6px; /* **CHANGED: Uniform rounded corners for all buttons** */
     transition: 0.3s;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 0 2px; /* Match leaderboard: Small gap between buttons */
-    white-space: nowrap; /* Prevent text wrapping */
+    margin: 2px; /* Consistent margin around each button for clean wrapping */
+    white-space: nowrap; /* Prevent text wrapping inside buttons */
     box-sizing: border-box; /* Include padding and border in sizing */
-}
-
-.tab-button:first-child {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-}
-
-.tab-button:last-child {
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
 }
 
 .tab-button:hover {
@@ -85,7 +75,7 @@
     color: white;
     font-weight: bold;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
-    border-radius: 6px; /* Match leaderboard: Active button looks like a solid block */
+    /* border-radius: 6px; - This is now the default, so no need to repeat unless you want a different active radius */
 }
 
 /* Styling for disabled buttons */
@@ -94,7 +84,7 @@
     color: #666666;
     cursor: not-allowed;
     box-shadow: none;
-    border-radius: 6px; /* Ensure disabled buttons also look solid */
+    /* border-radius: 6px; - This is now the default */
 }
 
 .tab-button.disabled:hover {
@@ -137,10 +127,9 @@
 
 .content-block {
     margin-bottom: 20px;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 0; /* Ensures content aligns with wrapper's edge */
+    padding-right: 0; /* Ensures content aligns with wrapper's edge */
 }
-
 
 /* Headings within content block - ensure they have no left margin/padding */
 .content-block h3,
@@ -151,7 +140,6 @@
     padding-left: 0;
     text-align: left;
 }
-
 
 .content-block p {
     margin-bottom: 10px;
@@ -224,7 +212,6 @@
     margin-right: 5px; /* Space between the number and the start of the list item text */
 }
 
-
 code {
     display: block;
     background-color: #e6f7ff;
@@ -263,48 +250,22 @@ pre code {
         margin: 10px auto 15px auto;
     }
 
-    /* Make week and day buttons appear like the leaderboard buttons on mobile */
+    /* Make week and day buttons appear like distinct buttons that wrap */
     .main-tab-nav, .nested-tab-nav {
-        flex-direction: row;
-        justify-content: center; /* Center the buttons */
-        padding: 5px;
-        /* Gap is usually preferred over margin for flex items, but for "button group" feel,
-           we'll manage spacing with button margins for consistent look. */
+        justify-content: center; /* Center the buttons within the container */
+        padding: 5px 0; /* Adjust padding to give more room for wrapping */
     }
 
     .tab-button {
-        flex: 1; /* Allow buttons to grow and shrink equally */
-        min-width: unset; /* Remove fixed min-width for better wrapping */
+        flex: 0 0 auto; /* Do not auto-grow/shrink */
+        width: calc(50% - 4px); /* Two buttons per row for main tabs, accounting for margin */
+        margin: 2px; /* Consistent margin around each button */
         font-size: 11px; /* Smaller font size for buttons */
         padding: 6px 8px;
-        margin: 0 1px; /* Very small gap between buttons to create group feel */
-        border-radius: 6px 6px 0 0; /* Ensure top rounded, bottom sharp for inactive */
     }
 
-    /* Override for active button on mobile to have full rounded corners */
-    .tab-button.active {
-        border-radius: 6px;
-    }
-
-    /* Adjust first and last child for continuous button group */
-    .tab-button:first-child {
-        border-top-left-radius: 6px;
-        border-bottom-left-radius: 6px;
-    }
-
-    .tab-button:last-child {
-        border-top-right-radius: 6px;
-        border-bottom-right-radius: 6px;
-    }
-
-    /* For main tab navigation, let them be 2 per row */
-    .main-tab-nav .tab-button {
-        flex: 1 1 calc(50% - 2px); /* Two buttons per row, accounting for margin */
-    }
-
-    /* For nested tab navigation, let them be 3 per row (or adjust as needed) */
     .nested-tab-nav .tab-button {
-        flex: 1 1 calc(33.33% - 2px); /* Three buttons per row, accounting for margin */
+        width: calc(33.33% - 4px); /* Three buttons per row for day tabs */
     }
 
     .day-section {
@@ -382,9 +343,6 @@ pre code {
         padding: 12px;
     }
 }
-
-/* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
-/* No specific media query needed here as base styles handle larger screens */
 </style>
 </head>
 <body>
