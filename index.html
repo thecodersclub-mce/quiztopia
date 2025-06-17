@@ -1277,95 +1277,165 @@ int *ptr = &a;   // ptr now holds the address of a
     </footer>
 
     <script>
-        // Define a variable to store the ID of the disabled week
-        // Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
-        let disabledWeekId = ''; // Example: Week 4 is disabled
+        // Configuration for week accessibility
+// Set 'true' to enable a week, 'false' to disable it.
+// 'disableAllWeeks: true' overrides individual week settings and disables everything.
+const weekConfiguration = {
+    disableAllWeeks: false, // Set this to true to disable all weeks
+    week1: true,   // Set to true to enable Week 1
+    week2: true,   // Set to true to enable Week 2
+    week3: true,  // Set to false to disable Week 3
+    week4: true,  // Set to false to disable Week 4
+    week5: true   // Set to false to disable Week 5
+};
 
-        // Function to show content for a specific week
-        function showWeek(weekId, clickedButton) {
-            // Check if the clicked week is disabled
-            if (weekId === disabledWeekId) {
-                alert('This week is currently disabled for content viewing.');
-                return; // Prevent further execution
-            }
+/**
+ * Function to show content for a specific week.
+ * It checks the weekConfiguration before displaying content.
+ * @param {string} weekId - The ID of the week to show (e.g., 'week1', 'week2').
+ * @param {HTMLElement} clickedButton - The button element that was clicked.
+ */
+function showWeek(weekId, clickedButton) {
+    // If 'disableAllWeeks' is true OR the specific week is configured as disabled,
+    // prevent showing content and return.
+    if (weekConfiguration.disableAllWeeks || !weekConfiguration[weekId]) {
+        // Optionally, you can provide an alert here, but applying the 'disabled' class
+        // and removing the onclick handler on load is usually sufficient to prevent interaction.
+        // alert('This week is currently disabled for content viewing.');
+        return;
+    }
 
-            // Hide all week content sections
-            const weekContents = document.querySelectorAll('.week-content');
-            weekContents.forEach(content => {
-                content.classList.remove('active-content');
-            });
+    // Hide all week content sections
+    const allWeekContents = document.querySelectorAll('.week-content');
+    allWeekContents.forEach(content => {
+        content.classList.remove('active-content');
+    });
 
-            // Deactivate all main tab buttons
-            const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
-            mainTabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
+    // Deactivate all main tab buttons
+    const allMainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+    allMainTabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
 
-            // Show the selected week's content
-            const selectedWeekContent = document.getElementById(weekId);
-            selectedWeekContent.classList.add('active-content');
+    // Show the selected week's content
+    const selectedWeekContent = document.getElementById(weekId);
+    if (selectedWeekContent) {
+        selectedWeekContent.classList.add('active-content');
 
-            // Activate the clicked week button
-            if (clickedButton) {
-                clickedButton.classList.add('active');
-            }
-
-            // Special handling to show Monday content by default for the *currently active* week
-            // This ensures that when you click 'Week 2', its Monday content shows
-            const defaultDayId = 'monday-content-' + weekId; // Construct the correct default day ID
-            const defaultDayButton = selectedWeekContent.querySelector(`.nested-tab-nav .tab-button[onclick*="${defaultDayId}"]`);
-            if (defaultDayButton) {
-                showDay(defaultDayId, defaultDayButton, weekId);
-            } else {
-                // If there's no Monday content for a given week (e.g., 'Coming Soon'), hide all daily content
-                const dayContents = selectedWeekContent.querySelectorAll('.day-content');
-                dayContents.forEach(content => content.classList.remove('active-content'));
-                const dayButtons = selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button');
-                dayButtons.forEach(button => button.classList.remove('active'));
-            }
+        // Activate the clicked week button
+        if (clickedButton) {
+            clickedButton.classList.add('active');
         }
 
-        // Function to show content for a specific day within a week
-        function showDay(dayIdWithWeek, clickedButton, weekId) {
-            const weekContentDiv = document.getElementById(weekId);
-            // Hide all day content sections within the current week
-            const dayContents = weekContentDiv.querySelectorAll('.day-content');
-            dayContents.forEach(content => {
-                content.classList.remove('active-content');
-            });
+        // --- Special handling to show Monday content by default for the *currently active* week ---
+        const defaultDayId = `monday-content-${weekId}`; // Construct the correct default day ID
+        const defaultDayButton = selectedWeekContent.querySelector(`.nested-tab-nav .tab-button[onclick*="${defaultDayId}"]`);
 
-            // Deactivate all nested day tab buttons within the current week
-            const dayTabButtons = weekContentDiv.querySelectorAll('.nested-tab-nav .tab-button');
-            dayTabButtons.forEach(button => {
-                button.classList.remove('active');
-            });
+        if (defaultDayButton) {
+            // Use showDay to activate Monday and its button
+            showDay(defaultDayId, defaultDayButton, weekId);
+        } else {
+            // If there's no Monday content for a given week (e.g., 'Coming Soon'),
+            // ensure all daily content and buttons within this week are hidden/deactivated.
+            const dayContents = selectedWeekContent.querySelectorAll('.day-content');
+            dayContents.forEach(content => content.classList.remove('active-content'));
+            const dayButtons = selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button');
+            dayButtons.forEach(button => button.classList.remove('active'));
+        }
+    }
+}
 
-            // Show the selected day's content
-            document.getElementById(dayIdWithWeek).classList.add('active-content');
+/**
+ * Function to show content for a specific day within a week.
+ * @param {string} dayIdWithWeek - The full ID of the day content (e.g., 'monday-content-week1').
+ * @param {HTMLElement} clickedButton - The button element that was clicked.
+ * @param {string} weekId - The ID of the parent week (e.g., 'week1').
+ */
+function showDay(dayIdWithWeek, clickedButton, weekId) {
+    const weekContentDiv = document.getElementById(weekId);
+    if (!weekContentDiv) return; // Should not happen if showWeek calls it correctly
 
-            // Activate the clicked day button
-            if (clickedButton) {
-                clickedButton.classList.add('active');
+    // Hide all day content sections within the current week
+    const dayContents = weekContentDiv.querySelectorAll('.day-content');
+    dayContents.forEach(content => {
+        content.classList.remove('active-content');
+    });
+
+    // Deactivate all nested day tab buttons within the current week
+    const dayTabButtons = weekContentDiv.querySelectorAll('.nested-tab-nav .tab-button');
+    dayTabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Show the selected day's content
+    const selectedDayContent = document.getElementById(dayIdWithWeek);
+    if (selectedDayContent) {
+        selectedDayContent.classList.add('active-content');
+    }
+
+    // Activate the clicked day button
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+}
+
+/**
+ * Initializes the state of the main week buttons on page load,
+ * applying 'disabled' styles and controlling clickability based on configuration.
+ * It also automatically displays the content for the first enabled week.
+ */
+function initializeWeekButtons() {
+    const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+    let firstEnabledWeekId = null; // To keep track of the first week that is enabled
+
+    mainTabButtons.forEach(button => {
+        // Extract weekId (e.g., 'week1') from the button's text content
+        const weekName = button.textContent.replace(' ', '').toLowerCase(); // "Week 1" -> "week1"
+
+        // Determine if the button should be disabled
+        if (weekConfiguration.disableAllWeeks || !weekConfiguration[weekName]) {
+            button.classList.add('disabled');
+            button.removeAttribute('onclick'); // Remove onclick to disable interaction
+        } else {
+            // Ensure the button is enabled and its onclick is correctly set
+            button.classList.remove('disabled');
+            // Re-add onclick attribute if it was removed, or ensure it's there
+            if (!button.hasAttribute('onclick')) {
+                button.setAttribute('onclick', `showWeek('${weekName}', this)`);
+            }
+            // Store the first enabled week ID found
+            if (firstEnabledWeekId === null) {
+                firstEnabledWeekId = weekName;
             }
         }
+    });
 
-        // Function to apply disabled state to week buttons
-        function applyDisabledWeeks() {
-            const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
-            mainTabButtons.forEach(button => {
-                const weekIdMatch = button.onclick.toString().match(/'(week\d+)'/);
-                if (weekIdMatch && weekIdMatch[1] === disabledWeekId) {
-                    button.classList.add('disabled');
-                    button.removeAttribute('onclick'); // Remove onclick to disable interaction
-                }
-            });
+    // After setting up all buttons, show the first enabled week's content.
+    // If all weeks are disabled by 'disableAllWeeks', it will default to showing Week 1 button as active
+    // but its content won't be shown due to the check in showWeek().
+    if (firstEnabledWeekId) {
+        const initialButton = document.querySelector(`.main-tab-nav .tab-button[onclick*="${firstEnabledWeekId}"]`);
+        if (initialButton) {
+            showWeek(firstEnabledWeekId, initialButton);
         }
+    } else if (weekConfiguration.disableAllWeeks) {
+        // If all weeks are disabled, make sure no content is visible and no button is active
+        // but visually, the first button can still be present (just disabled).
+        const allWeekContents = document.querySelectorAll('.week-content');
+        allWeekContents.forEach(content => content.classList.remove('active-content'));
+        const allMainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+        allMainTabButtons.forEach(button => button.classList.remove('active'));
+    } else {
+        // Fallback: If no week is explicitly enabled in config, default to week1 (it will be disabled if config.week1 is false)
+        const week1Button = document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]');
+        if (week1Button) {
+            showWeek('week1', week1Button);
+        }
+    }
+}
 
-        // Initialize by showing Week 1 and its Monday content on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            applyDisabledWeeks(); // Apply disabled styles and behavior first
-            showWeek('week1', document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]'));
-        });
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', initializeWeekButtons);
     </script>
 
 </body>
