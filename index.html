@@ -262,28 +262,34 @@ pre code {
         margin: 10px auto 15px auto;
     }
 
-    /* Make week and day buttons stack vertically */
-    .main-tab-nav, .nested-tab-nav {
-        flex-direction: column; /* This will stack them vertically */
-        justify-content: flex-start; /* Align items to the start */
-        align-items: stretch; /* Make items take full width */
+    /* For both main and nested tab navigation, allow horizontal wrapping */
+    .main-tab-nav,
+    .nested-tab-nav {
+        flex-direction: row; /* Ensure they are in a row (default for flex, but good to be explicit) */
+        justify-content: center; /* Center buttons horizontally */
+        flex-wrap: wrap; /* Allow buttons to wrap to the next line within their row */
         padding: 5px;
+        /* No need for align-items: stretch here, as we want them to take calculated width */
     }
 
     .tab-button {
-        flex: none; /* Remove flex growing/shrinking properties */
-        min-width: unset; /* Remove fixed min-width */
-        width: 100%; /* Make each button take full width */
-        margin: 5px 0; /* Add vertical margin between stacked buttons, remove horizontal */
-        font-size: 14px; /* Adjust font size as desired for stacked buttons */
-        padding: 10px 12px; /* Adjust padding as desired */
+        /* Allow buttons to grow/shrink and wrap, without taking full width */
+        flex: 1 1 auto; /* This makes them flexible */
+        min-width: 80px; /* Give them a minimum width so they don't get too small */
+        max-width: calc(50% - 4px); /* For Week buttons: try to fit 2 per row (adjust as needed) */
+        margin: 2px; /* Small margin for consistent spacing when wrapping */
+        font-size: 11px; /* Smaller font size for buttons on mobile */
+        padding: 6px 8px; /* Adjusted padding */
     }
 
-    /* No specific override needed for nested-tab-nav .tab-button if main .tab-button is 100% */
-    /* .nested-tab-nav .tab-button {
-        width: 100%;
-    } */
+    /* Specifically for weekday buttons, you might want more or fewer per row */
+    .nested-tab-nav .tab-button {
+        max-width: calc(33.33% - 4px); /* For Day buttons: try to fit 3 per row (adjust as needed) */
+        /* You can adjust min-width here if you want them to be able to shrink more or less */
+        min-width: 65px; /* A bit smaller min-width for day buttons if you want more per row */
+    }
 
+    /* Content and other elements responsiveness remain similar to previous good suggestions */
     .day-section {
         padding: 15px; /* Reduce content padding */
     }
