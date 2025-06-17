@@ -253,6 +253,7 @@ pre code {
 }
 
 /* --- Mobile Responsiveness for Content and Buttons --- */
+/* --- Mobile Responsiveness for Content and Buttons --- */
 
 /* Small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
@@ -262,41 +263,49 @@ pre code {
         margin: 10px auto 15px auto;
     }
 
-    /* For both main and nested tab navigation, allow horizontal wrapping */
+    /* For both main and nested tab navigation */
     .main-tab-nav,
     .nested-tab-nav {
-        flex-direction: row;
+        flex-direction: row; /* Ensure horizontal flow */
         justify-content: center;
-        flex-wrap: wrap;
+        flex-wrap: nowrap; /* PREVENT WRAPPING for buttons */
         padding: 5px;
     }
 
+    /* General Tab Button Styling for Mobile */
     .tab-button {
-        flex: 1 1 auto;
-        min-width: 80px; /* Base min-width */
-        margin: 2px; /* Small margin for consistent spacing when wrapping */
-        font-size: 11px;
-        padding: 6px 8px;
+        flex: 1 1 auto; /* Allows buttons to grow and shrink */
+        min-width: 0; /* Allow them to shrink as much as needed */
+        margin: 2px; /* Small margin for consistent spacing */
+        font-size: 11px; /* Base font size for mobile */
+        padding: 6px 4px; /* Reduced horizontal padding to save space */
+        white-space: nowrap; /* Prevent text wrapping inside buttons */
+        overflow: hidden; /* Hide overflowing text if it gets too small */
+        text-overflow: ellipsis; /* Add ellipsis for hidden text */
     }
 
     /* --- Specific Adjustments for Week Buttons --- */
     .main-tab-nav .tab-button {
-        /* This forces 2 buttons per row. With 5 buttons, this means:
-           Row 1: Week 1, Week 2
-           Row 2: Week 3, Week 4
-           Row 3: Week 5
-        */
-        max-width: calc(50% - 4px); /* (100% / 2 buttons) - margin */
+        /*
+         * To keep all 5 'Week' buttons on a single row,
+         * we set a flex-basis that ensures they take roughly 1/5th of the space.
+         * The `min-width: 0` above allows extreme shrinking if necessary.
+         */
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Potentially smaller font for weeks to fit 5 */
+        padding: 6px 2px; /* Even tighter padding for weeks */
     }
 
     /* --- Specific Adjustments for Weekday Buttons --- */
     .nested-tab-nav .tab-button {
-        /* This forces 4 buttons per row. With 5 buttons, this means:
-           Row 1: Monday, Tuesday, Wednesday, Thursday
-           Row 2: Friday
-        */
-        max-width: calc(25% - 4px); /* (100% / 4 buttons) - margin */
-        min-width: 60px; /* A bit smaller min-width to help fit 4 per row */
+        /*
+         * To keep all 5 'Day' buttons on a single row,
+         * similar to weeks, allow them to take roughly 1/5th of the space.
+         * `min-width: 0` is crucial here.
+         */
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Smallest font size for weekdays to fit 5 */
+        padding: 6px 2px; /* Tighter padding for weekdays */
     }
 
     /* Content and other elements responsiveness (no change needed here for this specific request) */
