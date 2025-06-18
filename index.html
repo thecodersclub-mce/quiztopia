@@ -438,135 +438,138 @@ pre code {
         </div>
 
         <div id="week1" class="week-content">
-            <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                Content for Week 1
-            </p>
-            <div class="nested-tab-nav">
-                <button class="tab-button" onclick="showDay('monday-content-week1', this, 'week1')">Monday</button>
-                <button class="tab-button" onclick="showDay('tuesday-content-week1', this, 'week1')">Tuesday</button>
-                <button class="tab-button" onclick="showDay('wednesday-content-week1', this, 'week1')">Wednesday</button>
-                <button class="tab-button" onclick="showDay('thursday-content-week1', this, 'week1')">Thursday</button>
-                <button class="tab-button" onclick="showDay('friday-content-week1', this, 'week1')">Friday</button>
-            </div>
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 1
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week1', this, 'week1')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week1', this, 'week1')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week1', this, 'week1')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week1', this, 'week1')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week1', this, 'week1')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week1', this, 'week1')">Saturday</button>
+    </div>
 
-            <div id="monday-content-week1" class="day-content day-section">
-                <h2>Monday Maverick</h2>
-                <div class="content-block">
-                    <h3>What Are Header Files?</h3>
-                    <ul>
-                        <li>They contain function declarations, macros, constants, and data type definitions.</li>
-                        <li>Included in source files using the #include directive to share code across multiple files.</li>
-                        <li>Facilitate modularity, code reuse, and separation of interface from implementation.</li>
-                    </ul>
-                </div>
-            </div>
+    <div id="monday-content-week1" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>What Are Header Files?</h3>
+            <ul>
+                <li>They contain function declarations, macros, constants, and data type definitions.</li>
+                <li>Included in source files using the #include directive to share code across multiple files.</li>
+                <li>Facilitate modularity, code reuse, and separation of interface from implementation.</li>
+            </ul>
+        </div>
+    </div>
 
-            <div id="tuesday-content-week1" class="day-content day-section">
-                <h2>Techie Tuesday</h2>
-                <div class="content-block">
-                    <h3>Variables</h3>
-                    <p>Variables are named locations in memory that are used to hold a value that may be modified by the program.</p>
-                    <p>The syntax for declaring a variable is:</p>
-                    <pre><code>Data_type variableName;</code></pre>
-                    <p>Valid Examples:</p>
-                    <pre><code>
+    <div id="tuesday-content-week1" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <div class="content-block">
+            <h3>Variables</h3>
+            <p>Variables are named locations in memory that are used to hold a value that may be modified by the program.</p>
+            <p>The syntax for declaring a variable is:</p>
+            <pre><code>Data_type variableName;</code></pre>
+            <p>Valid Examples:</p>
+            <pre><code>
 int age = 21;
 float salary = 4564.50;
 int marks;
 int acc_type;
 char ch = 'y';
 char name[20] = "apollo";
-                    </code></pre>
-                    <p>Invalid Examples:</p>
-                    <pre><code>
+            </code></pre>
+            <p>Invalid Examples:</p>
+            <pre><code>
 int 5marks;
 int @host;
 int acc no$;
-                    </code></pre>
-                    <h3>Rules for framing a variable</h3>
-                    <ul>
-                        <li>The first character in the variable name must be an alphabet.</li>
-                        <li>Alphabets can be followed by a number of digits or underscores _.</li>
-                        <li>No commas or blank spaces are allowed within a variable name.</li>
-                        <li>No special characters other than underscore (_) can be used in a variable name.</li>
-                        <li>The variable name should not be a keyword.</li>
-                        <li>Variable names are case sensitive.</li>
-                        <li>It should not be of length more than 31 characters.</li>
-                    </ul>
-                </div>
-            </div>
+            </code></pre>
+            <h3>Rules for framing a variable</h3>
+            <ul>
+                <li>The first character in the variable name must be an alphabet.</li>
+                <li>Alphabets can be followed by a number of digits or underscores _.</li>
+                <li>No commas or blank spaces are allowed within a variable name.</li>
+                <li>No special characters other than underscore (_) can be used in a variable name.</li>
+                <li>The variable name should not be a keyword.</li>
+                <li>Variable names are case sensitive.</li>
+                <li>It should not be of length more than 31 characters.</li>
+            </ul>
+        </div>
+    </div>
 
-            <div id="wednesday-content-week1" class="day-content day-section">
-                <h2>Syntax Snapshots Wednesday</h2>
-                <div class="content-block">
-                    <h3>Basic Syntax of a C Program</h3>
-                    <pre><code>
-#include &lt;stdio.h&gt;  // Preprocessor directive
+    <div id="wednesday-content-week1" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+            <h3>Basic Syntax of a C Program</h3>
+            <pre><code>
+#include &lt;stdio.h&gt; // Preprocessor directive
 
 // main function - entry point of the program
 int main() {
     // Print output to the screen
     printf("Hello, World!\\n");
 
-    return 0;  // Exit the program
+    return 0; // Exit the program
 }
-                    </code></pre>
-                    <h3>Explanation of Each Part</h3>
-                    <ol>
-                        <li>Every C program must have a main() function.</li>
-                        <li>Statements must end with a semicolon ;</li>
-                        <li>C is case-sensitive.</li>
-                        <li>Code is typically written in .c files and compiled using tools like gcc.</li>
-                    </ol>
-                </div>
-            </div>
+            </code></pre>
+            <h3>Explanation of Each Part</h3>
+            <ol>
+                <li>Every C program must have a main() function.</li>
+                <li>Statements must end with a semicolon ;</li>
+                <li>C is case-sensitive.</li>
+                <li>Code is typically written in .c files and compiled using tools like gcc.</li>
+            </ol>
+        </div>
+    </div>
 
-            <div id="thursday-content-week1" class="day-content day-section">
-                <h2>Te Ta Thursday</h2>
-                <div class="content-block">
-                    <pre><code>
+    <div id="thursday-content-week1" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+            <pre><code>
 #include &lt;stdio.h&gt;
 #define ADD(a, b) ((a) + (b))
 int main() { printf("%d\\n", ADD(5, 7)); return 0; }
-                    </code></pre>
-<h3>Output</h3>
-<code>
-12</code>  <h3>Explanation</h3>
-                    <ol>
-                        <li>#define ADD(a, b) ((a) + (b))
-                        This line defines a macro named ADD that takes two arguments, a and b. The macro expands to the expression ((a) + (b)), which calculates the sum of a and b.
-                        The parentheses around a and b are used to ensure that the macro works correctly even if the arguments are expressions themselves.<br>
-                        </li>
-                        <li>printf("%d\n", ADD(5, 7));
-                        Here, the ADD macro is used to calculate the sum of 5 and 7. The macro expands to ((5) + (7)), which evaluates to 12. The result is then passed to printf(), which prints the value to the console.</li>
-                    </ol>
-                    <h3>How it works</h3>
-                    <ol>
-                        <li>The preprocessor expands the ADD macro to ((5) + (7))</li>
-                        <li>The compiler evaluates the expression ((5) + (7)) to 12.</li>
-                        <li>The printf() function prints the result, 12, to the console.</li>
-                    </ol>
-                    <p>
-                        Using macros like ADD can be useful for simple calculations, but be cautious when using complex macros, as they can lead to unexpected behavior.
-                    </p>
-                </div>
-            </div>
+            </code></pre>
+            <h3>Output</h3>
+            <code>
+12
+            </code>
+            <h3>Explanation</h3>
+            <ol>
+                <li>#define ADD(a, b) ((a) + (b))
+                This line defines a macro named ADD that takes two arguments, a and b. The macro expands to the expression ((a) + (b)), which calculates the sum of a and b.
+                The parentheses around a and b are used to ensure that the macro works correctly even if the arguments are expressions themselves.<br>
+                </li>
+                <li>printf("%d\n", ADD(5, 7));
+                Here, the ADD macro is used to calculate the sum of 5 and 7. The macro expands to ((5) + (7)), which evaluates to 12. The result is then passed to printf(), which prints the value to the console.</li>
+            </ol>
+            <h3>How it works</h3>
+            <ol>
+                <li>The preprocessor expands the ADD macro to ((5) + (7))</li>
+                <li>The compiler evaluates the expression ((5) + (7)) to 12.</li>
+                <li>The printf() function prints the result, 12, to the console.</li>
+            </ol>
+            <p>
+                Using macros like ADD can be useful for simple calculations, but be cautious when using complex macros, as they can lead to unexpected behavior.
+            </p>
+        </div>
+    </div>
 
-            <div id="friday-content-week1" class="day-content day-section">
-                <h2>Function Friday</h2>
-                <div class="content-block">
-                    <h3>Functions:</h3>
-                    <p>
-                        Functions are blocks of code designed to perform specific tasks. They enhance modularity, code reuse, and readability.
-                    </p>
-                    <h3>Types of Functions</h3>
-                    <ol>
-                        <li>Library Functions: Predefined in header files (printf(),scanf(),strlen(), etc.).</li>
-                        <li>User-Defined Functions: Created by the programmer for specific tasks.</li>
-                        <li>Recursive Functions: Functions that call themselves.</li>
-                    </ol>
-                    <h3>Basic Function Syntax</h3>
-                    <pre><code>
+    <div id="friday-content-week1" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+            <h3>Functions:</h3>
+            <p>
+                Functions are blocks of code designed to perform specific tasks. They enhance modularity, code reuse, and readability.
+            </p>
+            <h3>Types of Functions</h3>
+            <ol>
+                <li>Library Functions: Predefined in header files (printf(),scanf(),strlen(), etc.).</li>
+                <li>User-Defined Functions: Created by the programmer for specific tasks.</li>
+                <li>Recursive Functions: Functions that call themselves.</li>
+            </ol>
+            <h3>Basic Function Syntax</h3>
+            <pre><code>
 #include &lt;stdio.h&gt;
 // Function declaration
 int add(int a, int b);
@@ -579,105 +582,154 @@ int main() {
 int add(int a, int b) {
     return a + b;
 }
-                    </code></pre>
-                    <h3>Function Components Explained</h3>
-                    <ul>
-                        <li>Function Declaration: Specifies return type, function name, and parameters.</li>
-                        <li>Function Definition: Contains the actual implementation.</li>
-                        <li>Function Call: Invokes the function with arguments.</li>
-                    </ul>
-                    <h3>Function Advantages</h3>
-                    <ul>
-                        <li>Encourages code reusability.</li>
-                        <li>Breaks problems into smaller manageable chunks.</li>
-                        <li>Improves readability and maintainability.</li>
-                    </ul>
-                    <h3>Fun Fact</h3>
-                    <p>In C, functions must be declared before they are used, unless included in header files.</p>
-                </div>
-            </div>
+            </code></pre>
+            <h3>Function Components Explained</h3>
+            <ul>
+                <li>Function Declaration: Specifies return type, function name, and parameters.</li>
+                <li>Function Definition: Contains the actual implementation.</li>
+                <li>Function Call: Invokes the function with arguments.</li>
+            </ul>
+            <h3>Function Advantages</h3>
+            <ul>
+                <li>Encourages code reusability.</li>
+                <li>Breaks problems into smaller manageable chunks.</li>
+                <li>Improves readability and maintainability.</li>
+            </ul>
+            <h3>Fun Fact</h3>
+            <p>In C, functions must be declared before they are used, unless included in header files.</p>
+        </div>
+    </div>
+    <div id="saturday-content-week1" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="content-block">
+            <h3>1. How can a C programmer separate function declarations and avoid multiple inclusions?</h3>
+            <ol>
+                <li>Use one .c file for everything.</li>
+                <li><strong>Use .h files with include guards or #pragma once.</strong></li>
+                <li>Only use standard headers.</li>
+                <li>Avoid using headers completely.</li>
+            </ol>
+            <h3>2. Which of the following variable names are valid in C?</h3>
+            <ol>
+                <li>int 2cool4school;</li>
+                <li><strong>float _temperature;</strong></li>
+                <li>char full name[50];</li>
+                <li><strong>double classAverage;</strong></li>
+                <li>int break;</li>
+            </ol>
+            <h3>3. What is required in every C program to serve as the entry point?</h3>
+            <ol>
+                <li><strong>main() function</strong></li>
+                <li>int main()</li>
+                <li>char full name[50];</li>
+                <li>void main()</li>
+                <li>Return type of main (int)</li>
+            </ol>
+            <h3>4. What does the #define directive do in C?</h3>
+            <ol>
+                <li>Declares a variable</li>
+                <li><strong>Defines a macro</strong></li>
+                <li>Includes a library</li>
+                <li>Defines a function</li>
+            </ol>
+            <h3>5. Which of the following scenarios best demonstrates the advantage of using functions in C?</h3>
+            <ol>
+                <li>Writing all logic inside main() without breaking it into smaller tasks.</li>
+                <li><strong>Using separate functions for repeated calculations to improve modularity.</strong></li>
+                <li>Avoiding function entirely and using global variables for efficiency</li>
+                <li>Copy-pasting code snippets multiple times instead of defining reusable functions.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<div id="week2" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 2
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week2', this, 'week2')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week2', this, 'week2')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week2', this, 'week2')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week2', this, 'week2')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week2', this, 'week2')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week2', this, 'week2')">Saturday</button>
+    </div>
+
+    <div id="monday-content-week2" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>Introduction to Control Structures</h3>
+            <p>Control structures allow you to change the flow of program execution based on conditions.</p>
         </div>
 
-        <div id="week2" class="week-content">
-            <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                Content for Week 2
-            </p>
-            <div class="nested-tab-nav">
-                <button class="tab-button" onclick="showDay('monday-content-week2', this, 'week2')">Monday</button>
-                <button class="tab-button" onclick="showDay('tuesday-content-week2', this, 'week2')">Tuesday</button>
-                <button class="tab-button" onclick="showDay('wednesday-content-week2', this, 'week2')">Wednesday</button>
-                <button class="tab-button" onclick="showDay('thursday-content-week2', this, 'week2')">Thursday</button>
-                <button class="tab-button" onclick="showDay('friday-content-week2', this, 'week2')">Friday</button>
-            </div>
+        <div class="content-block">
+            <h3>Types</h3>
+            <ul>
+                <li>Decision-making (conditional).</li>
+                <li>Looping (iterative).</li>
+                <li>Jumping (branching).</li>
+            </ul>
+        </div>
 
-            <div id="monday-content-week2" class="day-content day-section">
-                <h2>Monday Maverick</h2>
-                <div class="content-block">
-                    <h3>Introduction to Control Structures</h3>
-                    <p>Control structures allow you to change the flow of program execution based on conditions.</p>
-                </div>
-
-                <div class="content-block"> 
-                    <h3>Types</h3>
-                    <ul>
-                        <li>Decision-making (conditional).</li>
-                        <li>Looping (iterative).</li> 
-                        <li>Jumping (branching).</li> 
-                    </ul>
-                </div>
-
-                <div class="content-block"> 
-                    <h3>Explanation</h3>
-                    <ul>
-                        <li>Decision-Making Structures: Used to execute a block of code only if a condition is true.</li>
-                        <li>Looping Structures: Used to repeat a block of code multiple times.</li> 
-                        <li>Jumping Statements: Used to alter the normal flow of a program.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div id="tuesday-content-week2" class="day-content day-section">
-    <h2>Techie Tuesday</h2>
-    <div class="content-block">
-        <h3>Conditional Statements in C</h3>
-        <p>Conditional statements are used to make decisions in a program. Based on whether a condition is true or false, different blocks of code will be executed.</p>
-
-        <h3>Types</h3> 
-        <ol>
-            <li>if Statement</li>
-            <li>if...else Statement</li>
-            <li>else if Ladder</li>
-            <li>switch Statement</li>
-        </ol>
-
+        <div class="content-block">
+            <h3>Explanation</h3>
+            <ul>
+                <li>Decision-Making Structures: Used to execute a block of code only if a condition is true.</li>
+                <li>Looping Structures: Used to repeat a block of code multiple times.</li>
+                <li>Jumping Statements: Used to alter the normal flow of a program.</li>
+            </ul>
+        </div>
     </div>
-    
-    <div class="content-block">
-        <h3>Detailed Explanation of Types</h3> <ol>
-            <li>
-                <h4>if Statement:</h4> <p>Used when you want to execute a block of code only if a condition is true.</p>
-                <h5>Syntax</h5> <pre><code>
+
+    <div id="tuesday-content-week2" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <div class="content-block">
+            <h3>Conditional Statements in C</h3>
+            <p>Conditional statements are used to make decisions in a program. Based on whether a condition is true or false, different blocks of code will be executed.</p>
+
+            <h3>Types</h3>
+            <ol>
+                <li>if Statement</li>
+                <li>if...else Statement</li>
+                <li>else if Ladder</li>
+                <li>switch Statement</li>
+            </ol>
+
+        </div>
+
+        <div class="content-block">
+            <h3>Detailed Explanation of Types</h3>
+            <ol>
+                <li>
+                    <h4>if Statement:</h4>
+                    <p>Used when you want to execute a block of code only if a condition is true.</p>
+                    <h5>Syntax</h5>
+                    <pre><code>
 if (condition) {
     //code to execute if condition is true
 }
-                </code></pre>
-            </li>
-            <li>
-                <h4>if...else Statement:</h4> <p>Used when you want to choose between two blocks of code.</p>
-                <h5>Syntax</h5>
-                <pre><code>
+                    </code></pre>
+                </li>
+                <li>
+                    <h4>if...else Statement:</h4>
+                    <p>Used when you want to choose between two blocks of code.</p>
+                    <h5>Syntax</h5>
+                    <pre><code>
 if (condition) {
     //code to execute if condition is true
 }
 else {
     //code if false
 }
-                </code></pre>
-            </li>
-            <li>
-                <h4>else if Ladder:</h4> <p>Used when you have multiple conditions to check in sequence.</p>
-                <h5>Syntax</h5>
-                <pre><code>
+                    </code></pre>
+                </li>
+                <li>
+                    <h4>else if Ladder:</h4>
+                    <p>Used when you have multiple conditions to check in sequence.</p>
+                    <h5>Syntax</h5>
+                    <pre><code>
 if (condition) {
     //code to execute if condition is true
 }
@@ -690,12 +742,13 @@ else if (condition n) {
 else {
     //default code
 }
-                </code></pre>
-            </li>
-            <li>
-                <h4>switch Statement:</h4> <p>Used to replace multiple else if blocks when comparing a single variable against many values.</p>
-                <h5>Syntax</h5>
-                <pre><code>
+                    </code></pre>
+                </li>
+                <li>
+                    <h4>switch Statement:</h4>
+                    <p>Used to replace multiple else if blocks when comparing a single variable against many values.</p>
+                    <h5>Syntax</h5>
+                    <pre><code>
 switch (expression) {
 case value1:
     //code
@@ -707,85 +760,88 @@ default:
     //code
     break;
 }
-                </code></pre>
-            </li>
-        </ol>
+                    </code></pre>
+                </li>
+            </ol>
+        </div>
     </div>
-</div>
 
-            <div id="wednesday-content-week2" class="day-content day-section">
-                <h2>Syntax Snapshots Wednesday</h2>
-                <div class="content-block">
-                    <h3>Syntax of if Statement in C</h3>
-                    <pre><code>
+    <div id="wednesday-content-week2" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+            <h3>Syntax of if Statement in C</h3>
+            <pre><code>
 if (condition) {
     //Code to execute if condition is true
 }
-                    </code></pre>
-                    <h3>Example C program using if</h3>
-                     <pre><code>
+            </code></pre>
+            <h3>Example C program using if</h3>
+            <pre><code>
 #include &lt;stdio.h&gt;
+
 int main() {
     int number;
-    printf("Enter a number: ");
-    scanf("%d"<&number);
-
-//if condition checks if the number is positive
-if (number > 0 ) {
-printf("The number is positive.\n");
+    printf("Enter an integer: ");
+    scanf("%d", &number);
+    if (number > 0) {
+        printf("%d is a positive number.\n", number);
+    }
+    return 0;
 }
-return 0;
-}                 </code></pre>
-                  <h3>Output</h3>
-                  <code>
+            </code></pre>
+            <h3>Output</h3>
+            <code>
 Enter a number:
 8
 The number is positive.
             </code>
-            </div>
-            </div>
+        </div>
+    </div>
 
- <div id="thursday-content-week2" class="day-content day-section">
-                <h2>Te Ta Thursday</h2>
-                <div class="content-block">
-                    <ol>
-                        <li><h4>Switch Statement with Enumerations</h4>
-                        Using switch statements with enumerations to handle different cases.
-                        </li>
-                        <pre><code>
+    <div id="thursday-content-week2" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+            <ol>
+                <li>
+                    <h4>Switch Statement with Enumerations</h4>
+                    Using switch statements with enumerations to handle different cases.
+                </li>
+                <pre><code>
 typedef enum {
- RED,
- GREEN,
-BLUE
+    RED,
+    GREEN,
+    BLUE
 } Color;
 
 void printColor(Color c) {
- switch(c){
-  case RED:
-    printf("Red\n");
-    break;
-  //..
+    switch(c){
+        case RED:
+            printf("Red\n");
+            break;
+        //..
+    }
 }
-}                </code></pre>
-                  <h3>Expected Output</h3>
-                  <code>
+                </code></pre>
+                <h3>Expected Output</h3>
+                <code>
 Red
-            </code>
+                </code>
 
-<li><h4>Nested Loops with Labels</h4>
-                        Using labels to control nested loopexecution.
-                        </li>
-                        <pre><code>
+                <li>
+                    <h4>Nested Loops with Labels</h4>
+                    Using labels to control nested loopexecution.
+                </li>
+                <pre><code>
 outer:
 for(int i = 0; i < 5; i++) {
-  for(int j = 0; j < 5; j++) {  
-     if (i == 3) break outer;
-     printf("%d %d\n",i,j);
+    for(int j = 0; j < 5; j++) {
+        if (i == 3) break outer;
+        printf("%d %d\n",i,j);
+    }
 }
-}
-           </code></pre>
-                  <h3>Expected Output</h3>
-                  <code>
+                </code></pre>
+                <h3>Expected Output</h3>
+                <code>
 0 0
 0 1
 0 2
@@ -801,106 +857,171 @@ for(int i = 0; i < 5; i++) {
 2 2
 2 3
 2 4
-            </code>
+                </code>
 
-<li><h4>Break and Continue Statements</h4>
-                        Controlling loop execution with break and continue.
-                        </li>
-                        <pre><code>
+                <li>
+                    <h4>Break and Continue Statements</h4>
+                    Controlling loop execution with break and continue.
+                </li>
+                <pre><code>
 for ( int i = 0; i < 5; i++) {
- if (i == 3) 
-  continue; //Skips 3
- if (i == 4)
-  break; //Stop at 4
- printf("%d\n",i);
+    if (i == 3)
+        continue; //Skips 3
+    if (i == 4)
+        break; //Stop at 4
+    printf("%d\n",i);
 }
-           </code></pre>
-                  <h3>Expected Output</h3>
-                  <code>
+                </code></pre>
+                <h3>Expected Output</h3>
+                <code>
 0
 1
 2
-            </code>
-<li><h4>if-else Statements with Conditional Operators</h4>
-                        Simplifying if-else with conditional operators.
-                        </li>
-                        <pre><code>
+                </code>
+                <li>
+                    <h4>if-else Statements with Conditional Operators</h4>
+                    Simplifying if-else with conditional operators.
+                </li>
+                <pre><code>
 int x=5;
 int result = (x>10) ? 1 : 0; //result = 0
 printf("%d\n",result);
-           </code></pre>
-                  <h3>Expected Output</h3>
-                  <code>
+                </code></pre>
+                <h3>Expected Output</h3>
+                <code>
 0
-            </code>
-                    </ol>
-                </div>
-            </div>
+                </code>
+            </ol>
+        </div>
+    </div>
 
-            <div id="friday-content-week2" class="day-content day-section">
-                <h2>Function Friday</h2>
-                <div class="content-block">
-                    <h3>do...while Loop</h3>
-                    <p>
-                        Executes a block of code at least once, and then continues to repeat the block as long as a specified condition remains true.
-                    </p>
-                    <h4>Syntax</h4>
-                    <pre><code>
+    <div id="friday-content-week2" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+            <h3>do...while Loop</h3>
+            <p>
+                Executes a block of code at least once, and then continues to repeat the block as long as a specified condition remains true.
+            </p>
+            <h4>Syntax</h4>
+            <pre><code>
 do {
-  // Code to execute
+    // Code to execute
 } while (condition);
-                    </code></pre>
-                    <h3>Example</h3>
-<pre><code>
+            </code></pre>
+            <h3>Example</h3>
+            <pre><code>
 #include &lt;stdio.h&gt;
 int main() {
-int x = 5;
-do {
-  printf("Value: "%d\n"),x);
-  x--;
-} while (x > 0);    
-return 0;
-}                </code></pre>
-<h3>Output</h3>
-<code>
+    int x = 5;
+    do {
+        printf("Value: %d\n",x); // Corrected printf format string
+        x--;
+    } while (x > 0);
+    return 0;
+}
+            </code></pre>
+            <h3>Output</h3>
+            <code>
 Value: 5
 Value: 4
 Value: 3
 Value: 2
 Value: 1
             </code>
-<h3>Simulating for-each Loop in C</h3>
-                    <p>
-                        C doesn'thave a direct for-each, but arrays can be traversed using a for loop.
-                    </p>
-                    </code></pre>
-                    <h3>Example</h3>
-<pre><code>
+            <h3>Simulating for-each Loop in C</h3>
+            <p>
+                C doesn't have a direct for-each, but arrays can be traversed using a for loop.
+            </p>
+            <pre><code>
 #include &lt;stdio.h&gt;
 int main() {
 int numbers[] = {10, 20, 30, 40};
 int size = sizeof(numbers) / sizeof(numbers[0]);
 for(int i = 0; i < size; i++) {
 printf("Value: %d\n", numbers[i]);
-}    
+}
 return 0;
-}                </code></pre>
-<h3>Output</h3>
-<code>
+}
+            </code></pre>
+            <h3>Output</h3>
+            <code>
 Value: 10
 Value: 20
 Value: 30
 Value: 40
-            </code>  
-<h3>Code Explanation</h3>
-                    <ul>
-                        <li>Defines an array numbers[]</li>
-                        <li>Calculates the array size using sizeof(numbers) / sizeof(numbers[o])</li> 
-                        <li>Iterates through elements, printing each value dynamically</li> 
-                    </ul>         
-            </div>
-            </div>
+            </code>
+            <h3>Code Explanation</h3>
+            <ul>
+                <li>Defines an array numbers[]</li>
+                <li>Calculates the array size using sizeof(numbers) / sizeof(numbers[0])</li>
+                <li>Iterates through elements, printing each value dynamically</li>
+            </ul>
         </div>
+    </div>
+    <div id="saturday-content-week2" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="content-block">
+            <h3>1.What does a control structure do in programming?</h3>
+            <ol>
+                <li>It stores data in memory.</li>
+                <li><strong>It defines the order in which instructions are executed.</strong></li>
+                <li>It displays output to the user.</li>
+                <li>It converts high-level code to machine code.</li>
+            </ol>
+            <h3>2. What will be printed when the following program is executed?</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 5, b = 10;
+
+    if (a < b)
+        if (a != 5)
+            printf("A is not five\n");
+        else
+            printf("A is five\n");
+    else
+        printf("A is not greater than B\n");
+
+    return 0;
+}
+            </code></pre>
+            <ol>
+                <li>A is not five.</li>
+                <li><strong>A is five.</strong></li>
+                <li>A is not greater than B.</li>
+                <li>Compilation Error</li>
+            </ol>
+            <h3>3. How can a C program use an if statement to check if a number entered by the user is positive?</h3>
+            <h5><strong>Sample code / the answer may differ according to your idea</strong></h5>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int number;
+    printf("Enter an integer: ");
+    scanf("%d", &number);
+    if (number > 0) {
+        printf("%d is a positive number.\n", number);
+    }
+    return 0;
+}
+            </code></pre>
+            <h3>4. What is the purpose of using enumerations with switch statements in C?</h3>
+            <ol>
+                <li>To simplify code readability.</li>
+                <li>To improve code performance.</li>
+                <li><strong>To handle different cases based on a specific value.</strong></li>
+                <li>To reduce memory usage.</li>
+            </ol>
+            <h3>5.Imagine you have a vending machine that requires a customer to press a button at least once to check if an item is available. If the item is available, they can continue pressing to get more items. Which loop structure in C works similarly to this vending machine process?</h3>
+            <ol>
+                <li>for loop.</li>
+                <li>while loop.</li>
+                <li><strong>do...while loop.</strong></li>
+                <li>switch statement.</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
         <div id="week3" class="week-content">
     <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
@@ -912,6 +1033,7 @@ Value: 40
         <button class="tab-button" onclick="showDay('wednesday-content-week3', this, 'week3')">Wednesday</button>
         <button class="tab-button" onclick="showDay('thursday-content-week3', this, 'week3')">Thursday</button>
         <button class="tab-button" onclick="showDay('friday-content-week3', this, 'week3')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week3', this, 'week3')">Saturday</button>
     </div>
 
     <div id="monday-content-week3" class="day-content day-section">
@@ -1154,7 +1276,7 @@ int n;
 scanf("%d", &n);  // Get array size from user
 int arr[n];       // Declare a variable-length array
             </code></pre>
-<h3>Example</h3>
+
             <pre><code>
 int main() {
     int n;
@@ -1207,6 +1329,70 @@ Array contents:
             </ul>
         </div>
     </div>
+<div id="saturday-content-week3" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="content-block">
+            <h3>1. Define what a "function" is in C programming, and explain how its use contributes to better code quality.</h3>
+            <h5><strong>Expected answer</strong></h5>
+<p>A function in C is a block of code that performs a specific task. It promotes modularity and code reuse, making programs easier to debug, read, and maintain by breaking complex problems into smaller parts.</p>
+            <h3>2. Which of the following statements about arrays in C is TRUE, considering pointer behavior, memory allocation, and function interactions?</h3>
+            <ol>
+                <li>The name of an array can be incremented like a pointer, because it points to the base address of the array.</li>
+                <li>When an array is passed to a function, the entire array is copied and operated on as a separate entity.</li>
+                <li>Arrays in C can have dynamic lengths declared using variables in standard C90.</li>
+                <li><strong>The expression *(arr + i) is equivalent to arr[i] in terms of accessing array elements.</strong></li>
+            </ol>
+            <h3>3. What concept is primarily demonstrated by the output of the following C program involving a variable and a pointer?</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 10; 
+    int *ptr;            
+    ptr = &a;           
+    printf("Value of a: %d\n", a);
+    printf("Address of a: %p\n", &a);
+    printf("Value stored in ptr (address of a): %p\n", ptr);
+    printf("Value pointed to by ptr (value of a): %d\n", *ptr);
+    return 0;
+}
+            </code></pre>
+<ol>
+                <li><strong>The program shows how to use a pointer to access the address and value of a variable.</strong></li>
+                <li>The program swaps two integers using pointers.</li>
+                <li>The program performs dynamic memory allocation using malloc.</li>
+                <li>The program uses arrays to store multiple integer values.</li>
+                <li>The program demonstrates pointer arithmetic with arrays.</li>
+            </ol>
+            <h3>4. Why is the size parameter typically necessary when an array is passed to a function in C, as shown in the printArray example?</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int numbers[5] = {1, 2, 3, 4, 5};
+    printArray(numbers, 5);
+    return 0;
+}
+            </code></pre>
+<ol>
+                <li>The program shows how to use a pointer to access the address and value of a variable.</li>
+                <li>To ensure the array elements are passed by value instead of by reference.</li>
+                <li><strong>Because when an array decays to a pointer, the function loses information about its original size.</strong></li>
+                <li>To allow the function to modify the array's dimensions dynamically.</li>
+            </ol>
+            <h3>5. What is the primary advantage of using function pointers in C? s</h3>
+            <ol>
+                <li>They allow defining arrays with dynamic sizes at runtime.</li>
+                <li><strong>They enable runtime function selection and dynamic invocation.</strong></li>
+                <li>They eliminate the need for manual memory allocation.</li>
+                <li>They are used to declare fixed-size arrays.</li>
+            </ol>
+        </div>
+    </div>
 </div>
 
         <div id="week4" class="week-content">
@@ -1219,6 +1405,7 @@ Array contents:
         <button class="tab-button" onclick="showDay('wednesday-content-week4', this, 'week4')">Wednesday</button>
         <button class="tab-button" onclick="showDay('thursday-content-week4', this, 'week4')">Thursday</button>
         <button class="tab-button" onclick="showDay('friday-content-week4', this, 'week4')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week4', this, 'week4')">Saturday</button>
     </div>
 
     <div id="monday-content-week4" class="day-content day-section">
@@ -1312,7 +1499,83 @@ Welcome!
 
     <div id="wednesday-content-week4" class="day-content day-section">
         <h2>Syntax Snapshots Wednesday</h2>
-        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+        <div class="content-block">
+        <h3>C Program using String Function (strlen)</h3>
+        <p>A string is a sequence of characters terminated by a null character '\0'.
+In C, strings are represented as arrays of characters.
+Think of a string as a sentence or word stored in memory.
+</p>
+    </div>
+    <div class="content-block">
+        <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char str[100];
+    
+    printf("Enter a string: ");
+    gets(str);  // Note: gets() is unsafe, use fgets() in real programs
+
+    int length = strlen(str);  // Using string function
+
+    printf("Length of the string is: %d\n", length);
+    
+    return 0;
+}
+
+</code></pre>  
+</div>
+    <div class="content-block">
+        <h3>Output</h3>
+        <code>
+Hello, Welcome!Enter a string: Hello
+Length of the string is: 5
+
+---
+
+Enter a string: C Programming
+Length of the string is: 13
+
+---
+
+Enter a string: 
+Length of the string is: 0
+        </code>
+<p><strong>Explanation:</strong> strlen() is a string function that returns the length of the string.</p>
+    </div>
+
+    <div class="content-block">
+        <h3>C Program using String Pointer</h3>
+    </div>
+    <div class="content-block">
+        <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    char str[] = "Hello, World!";
+    char *ptr = str;
+
+    printf("String using pointer:\n");
+    while (*ptr != '\0') {
+        printf("%c", *ptr);
+        ptr++;
+    }
+
+    return 0;
+}
+</code></pre>  </div>
+    <div class="content-block">
+        <h3>Output</h3>
+        <code>
+String using pointer:
+Hello, World!
+        </code>
+        <p><strong>Explanation:</strong></p>
+        <ul>
+            <li>char *ptr = str; assigns a pointer to the beginning of the string.
+</li>
+            <li>while (*ptr != '\0') traverses the string using the pointer.</li>
+        </ul>
+    </div>
     </div>
 
     <div id="thursday-content-week4" class="day-content day-section">
@@ -1355,9 +1618,9 @@ Welcome!
 let disabledWeekId = ''; // Example: Week 4 is disabled
 // Define an array of disabled days for a given week (e.g., ['tuesday', 'thursday'] for week1)
 const disabledDays = {
-    'week1': ['tuesday','wednesday', 'thursday'], // Example: Tuesday and Thursday are disabled for Week 1
-    'week2': ['tuesday','wednesday', 'thursday'],
-    'week3': ['tuesday','wednesday', 'thursday'],
+    'week1': ['tuesday','thursday'], // Example: Tuesday and Thursday are disabled for Week 1
+    'week2': ['tuesday', 'thursday'],
+    'week3': ['tuesday', 'thursday'],
 };
 // --- END CONTROL KEYWORD ---
 
