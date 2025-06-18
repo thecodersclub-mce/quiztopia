@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css"> 
     <style>
        /* General Container for all content */
-.content-container-wrapper {
+    .content-container-wrapper {
     width: 90%;
     max-width: 900px; /* Increased max-width for better content display */
     margin-top: 20px;
@@ -283,10 +283,9 @@ pre code {
 /* Small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .content-container-wrapper {
-        width: calc(100% - 20px); /* 100% minus 10px left and 10px right margin */
+        width: 95%; /* Slightly more width on small screens */
         padding: 10px;
-        /* CHANGE THIS LINE: */
-        margin: 10px 10px 70px 10px; /* Sets 10px on left and right */
+        margin: 10px auto 70px auto;
     }
 
     /* For both main and nested tab navigation */
