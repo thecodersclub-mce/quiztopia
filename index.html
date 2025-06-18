@@ -283,9 +283,10 @@ pre code {
 /* Small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .content-container-wrapper {
-        width: 95%; /* Slightly more width on small screens */
+        width: calc(100% - 20px); /* 100% minus 10px left and 10px right margin */
         padding: 10px;
-        margin: 10px 15px 70px 0px;
+        /* CHANGE THIS LINE: */
+        margin: 10px 10px 70px 10px; /* Sets 10px on left and right */
     }
 
     /* For both main and nested tab navigation */
