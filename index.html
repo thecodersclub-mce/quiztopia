@@ -1580,7 +1580,50 @@ Hello, World!
 
     <div id="thursday-content-week4" class="day-content day-section">
         <h2>Te Ta Thursday</h2>
-        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+        <div class="content-block">
+        <h3>Pointer Arithmetic with Strings:</h3>
+        <p>You can use pointer arithmetic to traverse strings.</p>
+    </div>
+    <div class="content-block">
+<h3>Example:</h3>
+        <pre><code>
+char str[] = "Hello";
+char *ptr = str;
+while (*ptr != '\0') {
+    printf("%c", *ptr);
+    ptr++;
+}
+</code></pre>  
+</div>
+    <div class="content-block">
+        <h3>Expected Output:</h3>
+        <code>
+Hello
+        </code>
+<p>This concept is powerful, but it requires careful handling to avoid buffer overflows and other issues.</p>
+    </div>
+
+    <div class="content-block">
+        <h3>String Literal vs. Character Array:</h3>
+<p>In C, string literals and character arrays are not exactly the same.</p>
+    </div>
+    <div class="content-block">
+<h3>Example:</h3>
+        <pre><code>
+char *str1 = "Hello"; // string literal (read-only)
+char str2[] = "Hello"; // character array (modifiable)
+
+// str1[0] = 'h'; // would cause a segmentation fault
+str2[0] = 'h'; // okay
+</code></pre>  </div>
+    <div class="content-block">
+        <h3>What may be in the output:</h3>
+        <code>
+str1: Hello
+str2: hello
+        </code>
+        <p>This distinction is important to understand when working with strings in C.</p>
+    </div>
     </div>
 
     <div id="friday-content-week4" class="day-content day-section">
