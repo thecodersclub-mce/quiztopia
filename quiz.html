@@ -391,13 +391,13 @@
 
                     <div class="form-group no-select">
                         <p><strong>3. What concept is primarily demonstrated by the output of the following C program involving a variable and a pointer?</strong></p>
-                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+                        <pre class="code-block"><code>#include <stdio.h>
 int main() {
-    int a = 10;        
-    int *ptr;          
-    ptr = &amp;a;           
+    int a = 10;     
+    int *ptr;       
+    ptr = &a;       
     printf("Value of a: %d\n", a);
-    printf("Address of a: %p\n", &amp;a);
+    printf("Address of a: %p\n", &a);
     printf("Value stored in ptr (address of a): %p\n", ptr);
     printf("Value pointed to by ptr (value of a): %d\n", *ptr);
     return 0;
@@ -415,7 +415,7 @@ int main() {
                     </div>
 <div class="form-group no-select">
                         <p><strong>4. Why is the size parameter typically necessary when an array is passed to a function in C, as shown in the printArray example?</strong></p>
-                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+                        <pre class="code-block"><code>#include <stdio.h>
 void printArray(int arr[], int size) {
     for (int i = 0; i < size; i++) {
         printf("%d ", arr[i]);
@@ -432,7 +432,7 @@ int main() {
                             <label><input type="radio" id="q4_b" name="Question3" value="B. To ensure the array elements are passed by value instead of by reference."> B. To ensure the array elements are passed by value instead of by reference.</label>
                             <label><input type="radio" id="q4_c" name="Question4" value="C. Because when an array decays to a pointer, the function loses information about its original size."> C. Because when an array decays to a pointer, the function loses information about its original size.</label>
                             <label><input type="radio" id="q4_d" name="Question4" value="D. To allow the function to modify the array's dimensions dynamically."> D. To allow the function to modify the array's dimensions dynamically.</label>
-                    </div>
+                        </div>
                     </div>
                     <div class="form-group no-select">
                         <p><strong>5. What is the primary advantage of using function pointers in C?</strong></p>
@@ -532,6 +532,16 @@ int main() {
 
         document.addEventListener('DOMContentLoaded', () => {
             setLinkStatus(); // Call the main function to set the quiz status based on the keyword
+            
+            // --- NEW CODE TO DISABLE COPY/PASTE ---
+            const inputsToRestrict = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
+
+            inputsToRestrict.forEach(input => {
+                input.addEventListener('copy', (e) => e.preventDefault());
+                input.addEventListener('cut', (e) => e.preventDefault());
+                input.addEventListener('paste', (e) => e.preventDefault());
+            });
+            // --- END NEW CODE ---
         });
 
         function setLinkStatus() {
