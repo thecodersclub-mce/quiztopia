@@ -1628,7 +1628,81 @@ str2: hello
 
     <div id="friday-content-week4" class="day-content day-section">
         <h2>Function Friday</h2>
-        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+        <div class="content-block">
+        <h3>Finding a Character in a String - using Pointers:</h3>
+        <p>This program shows how to write a simple function to search for a character in a string using pointers.</p>
+    </div>
+    <div class="content-block">
+<h3>Example:</h3>
+        <pre><code>
+#include &lt;stdio.h&gt;
+int findChar(char *text, char target) {
+    int index = 0;
+    while (*text != '\0') {
+        if (*text == target) {
+            return index; // Found it!
+        }
+        text++;
+        index++;
+    }
+    return -1; // Not found
+}
+
+int main() {
+    char myWord[] = "apple";
+    char charToFind = 'p';
+
+    int position = findChar(myWord, charToFind);
+
+    if (position != -1) {
+        printf("'%c' is at index %d\n", charToFind, position);
+    } else {
+        printf("'%c' not found\n", charToFind);
+    }
+    return 0;
+}
+
+</code></pre>  
+</div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>
+'p' is at index 1
+        </code>
+    </div>
+
+    <div class="content-block">
+        <h3>Finding a Character in a String - using strchr():</h3>
+    </div>
+    <div class="content-block">
+<p>This program demonstrates using the built-in strchr() function for the same task, showing its simplicity.</p>
+<h3>Example:</h3>
+        <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char mySentence[] = "orange";
+    char searchFor = 'a';
+
+    // strchr returns a pointer to the char if found, or NULL
+    char *found = strchr(mySentence, searchFor);
+
+    if (found != NULL) {
+        // Calculate index by subtracting pointers
+        int index = found - mySentence;
+        printf("'%c' is at index %d\n", searchFor, index);
+    } else {
+        printf("'%c' not found\n", searchFor);
+    }
+    return 0;
+}
+</code></pre>  </div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>
+'a' is at index 3
+        </code>
+    </div>
     </div>
 <div id="saturday-content-week4" class="day-content day-section">
         <h2>Mindmash</h2>
@@ -1638,6 +1712,8 @@ str2: hello
     </div>
     </div>
 </div>
+
+        <!--  <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p> -->
 
         <div id="week5" class="week-content">
             <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
