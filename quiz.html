@@ -375,74 +375,91 @@
                     <h3>Quiz Questions</h3>
 
                     <div class="form-group">
-                        <p class="no-select"><strong>1. Define what a "function" is in C programming, and explain how its use contributes to better code quality.</strong></p>
-                        <textarea id="q1_ans" name="Question1" required placeholder="Type your answer here..."></textarea>
-                    </div>
+    <p class="no-select"><strong>1. What is the output of the following code?</strong></p>
+    <pre class="code-block"><code>#include &lt;stdio.h&gt;
+int a = 10;
+int *p = &amp;a;
+printf("%d", *p);
+</code></pre>
+    <div class="radio-group">
+        <label for="q1_a"><input type="radio" id="q1_a" name="Question1" value="A. 10" required> A. 10</label>
+        <label for="q1_b"><input type="radio" id="q1_b" name="Question1" value="B. Address of a."> B. Address of a.</label>
+        <label for="q1_c"><input type="radio" id="q1_c" name="Question1" value="C. Garbage value."> C. Garbage value.</label>
+        <label for="q1_d"><input type="radio" id="q1_d" name="Question1" value="D. Compile-time error."> D. Compile-time error.</label>
+    </div>
+</div>
 
-                    <div class="form-group no-select">
-                        <p><strong>2. Which of the following statements about arrays in C is TRUE, considering pointer behavior, memory allocation, and function interactions?</strong></p>
-                        <div class="radio-group">
-                            <label><input type="radio" id="q2_a" name="Question2" value="A. The name of an array can be incremented like a pointer, because it points to the base address of the array." required> A. The name of an array can be incremented like a pointer, because it points to the base address of the array.</label>
-                            <label><input type="radio" id="q2_b" name="Question2" value="B. When an array is passed to a function, the entire array is copied and operated on as a separate entity."> B. When an array is passed to a function, the entire array is copied and operated on as a separate entity.</label>
-                            <label><input type="radio" id="q2_c" name="Question2" value="C. Arrays in C can have dynamic lengths declared using variables in standard C90."> C. Arrays in C can have dynamic lengths declared using variables in standard C90.</label>
-                            <label><input type="radio" id="q2_d" name="Question2" value="D. The expression *(arr + i) is equivalent to arr[i] in terms of accessing array elements."> D. The expression *(arr + i) is equivalent to arr[i] in terms of accessing array elements.</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group no-select">
-                        <p><strong>3. What concept is primarily demonstrated by the output of the following C program involving a variable and a pointer?</strong></p>
-                        <pre class="code-block"><code>#include <stdio.h>
+<div class="form-group no-select">
+    <p class="no-select"><strong>2. What will be the output of the following C code?</strong></p>
+    <pre class="code-block"><code>
+#include &lt;stdio.h&gt;
 int main() {
-    int a = 10;     
-    int *ptr;       
-    ptr = &a;       
-    printf("Value of a: %d\n", a);
-    printf("Address of a: %p\n", &a);
-    printf("Value stored in ptr (address of a): %p\n", ptr);
-    printf("Value pointed to by ptr (value of a): %d\n", *ptr);
+    char str1[] = "Hello";
+    char *str2 = "Hello";
+
+    str1[0] = 'H';
+    str2[0] = 'H';
+
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n", str2);
+
     return 0;
 }
 </code></pre>
-                        <div class="radio-group">
-                            <label><input type="radio" id="q3_a" name="Question3" value="A. The program shows how to use a pointer to access the address and value of a variable." required> A. The program shows how to use a pointer to access the address and value of a variable.</label>
-                            <label><input type="radio" id="q3_b" name="Question3" value="B. The program swaps two integers using pointers."> B. The program swaps two integers using pointers.</label>
-                            <label><input type="radio" id="q3_c" name="Question3" value="C. The program performs dynamic memory allocation using malloc."> C. The program performs dynamic memory allocation using malloc.</label>
-                            <label><input type="radio" id="q3_d" name="Question3" value="D. The program uses arrays to store multiple integer values."> D. The program uses arrays to store multiple integer values.
-</label>
-                            <label><input type="radio" id="q3_e" name="Question3" value="E. The program demonstrates pointer arithmetic with arrays."> E. The program demonstrates pointer arithmetic with arrays.</label>
+    <div class="radio-group">
+        <label for="q2_a"><input type="radio" id="q2_a" name="Question2" value="A. str1: Hello&#10;str2: Hello" required> A. str1: Hello<br>str2: Hello</label>
+        <label for="q2_b"><input type="radio" id="q2_b" name="Question2" value="B. str1: Hello&#10;Segmentation Fault"> B. str1: Hello<br>Segmentation Fault</label>
+        <label for="q2_c"><input type="radio" id="q2_c" name="Question2" value="C. str1: Hello
+str2: hello
+"> C. str1: Hello<br>str2: hello</label>
+        <label for="q2_d"><input type="radio" id="q2_d" name="Question2" value="D. Compile-time error."> D. Compile-time error.</label>
+    </div>
+</div>
 
-                        </div>
-                    </div>
 <div class="form-group no-select">
-                        <p><strong>4. Why is the size parameter typically necessary when an array is passed to a function in C, as shown in the printArray example?</strong></p>
-                        <pre class="code-block"><code>#include <stdio.h>
-void printArray(int arr[], int size) {
-    for (int i = 0; i < size; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
-}
+    <p><strong>3. In this C program, what technique is used to display the string on screen?</strong></p>
+    <pre class="code-block"><code>
+#include &lt;stdio.h&gt;
 int main() {
-    int numbers[5] = {1, 2, 3, 4, 5};
-    printArray(numbers, 5);
+    char str[] = "Hello, World!";
+    char *ptr = str;
+
+    printf("String using pointer:\n");
+    while (*ptr != '\0') {
+        printf("%c", *ptr);
+        ptr++;
+    }
+
     return 0;
-}</code></pre>
-                        <div class="radio-group">
-                            <label><input type="radio" id="q4_a" name="Question4" value="A. Because the function needs to make a new copy of the array of the exact same size." required> A. The program shows how to use a pointer to access the address and value of a variable.</label>
-                            <label><input type="radio" id="q4_b" name="Question3" value="B. To ensure the array elements are passed by value instead of by reference."> B. To ensure the array elements are passed by value instead of by reference.</label>
-                            <label><input type="radio" id="q4_c" name="Question4" value="C. Because when an array decays to a pointer, the function loses information about its original size."> C. Because when an array decays to a pointer, the function loses information about its original size.</label>
-                            <label><input type="radio" id="q4_d" name="Question4" value="D. To allow the function to modify the array's dimensions dynamically."> D. To allow the function to modify the array's dimensions dynamically.</label>
-                        </div>
-                    </div>
-                    <div class="form-group no-select">
-                        <p><strong>5. What is the primary advantage of using function pointers in C?</strong></p>
-                        <div class="radio-group">
-                            <label><input type="radio" id="q5_a" name="Question5" value="A. They allow defining arrays with dynamic sizes at runtime." required> A. They allow defining arrays with dynamic sizes at runtime.</label>
-                            <label><input type="radio" id="q5_b" name="Question5" value="B. They enable runtime function selection and dynamic invocation." > B. They enable runtime function selection and dynamic invocation.</label>
-                            <label><input type="radio" id="q5_c" name="Question5" value="C. They eliminate the need for manual memory allocation."> C. They eliminate the need for manual memory allocation.</label>
-                            <label><input type="radio" id="q5_d" name="Question5" value="D. They are used to declare fixed-size arrays."> D. They are used to declare fixed-size arrays.</label>
-                        </div>
-                    </div>
+}
+
+</code></pre>
+    <div class="radio-group">
+        <label for="q3_a"><input type="radio" id="q3_a" name="Question3" value="A. It prints the string using a string pointer and while loop." required> A. It prints the string using a string pointer and while loop.</label>
+        <label for="q3_b"><input type="radio" id="q3_b" name="Question3" value="B. It uses strlen() function to display the string."> B. It uses strlen() function to display the string.</label>
+        <label for="q3_c"><input type="radio" id="q3_c" name="Question3" value="C. It copies the string using strcpy() before printing."> C. It copies the string using strcpy() before printing.</label>
+        <label for="q3_d"><input type="radio" id="q3_d" name="Question3" value="D. It sorts the string characters alphabetically before printing."> D. It sorts the string characters alphabetically before printing.</label>
+    </div>
+</div>
+
+<div class="form-group no-select">
+    <p><strong>4. What happens when an array is passed to a function in C?</strong></p>
+    <div class="radio-group">
+        <label for="q4_a"><input type="radio" id="q4_a" name="Question4" value="A. The entire array is copied and passed to the function." required> A. The entire array is copied and passed to the function.</label>
+        <label for="q4_b"><input type="radio" id="q4_b" name="Question4" value="B. The array decays into a pointer to the first element."> B. The array decays into a pointer to the first element.</label>
+        <label for="q4_c"><input type="radio" id="q4_c" name="Question4" value="C. The function receives a reference to the original array."> C. The function receives a reference to the original array.</label>
+        <label for="q4_d"><input type="radio" id="q4_d" name="Question4" value="D. The array is not passed at all, and the function uses a default value."> D. The array is not passed at all, and the function uses a default value.</label>
+    </div>
+</div>
+<div class="form-group no-select">
+    <p><strong><p><strong>5. Given <code>char word[] = "grape";</code> and <code>char target = 'e';</code> what index would <code>findChar(word, target)</code> return?</strong></p></p>
+    <div class="radio-group">
+        <label for="q5_a"><input type="radio" id="q5_a" name="Question5" value="A. 4." required> A. 4</label>
+        <label for="q5_b"><input type="radio" id="q5_b" name="Question5" value="B. 3"> B. 3</label>
+        <label for="q5_c"><input type="radio" id="q5_c" name="Question5" value="C. 0"> C. 0</label>
+        <label for="q5_d"><input type="radio" id="q5_d" name="Question5" value="D. -1"> D. -1</label>
+    </div>
+</div>
                     <p><strong>After submission wait until you see a tick</strong></p>
                     <button type="submit" class="submit-button">Submit Quiz</button>
                 </div>
@@ -476,7 +493,7 @@ int main() {
     <script>
         // --- CONTROL KEYWORD HERE ---
         // Change this variable to "disable" or "enable"
-        const linkControlStatus = "disable"; // Set to "enable" to activate links
+        const linkControlStatus = "enable"; // Set to "enable" to activate links
         // --- END CONTROL KEYWORD ---
 
         // Object to store original text content for jumbling/unjumbling
@@ -577,7 +594,7 @@ int main() {
                     unjumbleText(element);
                 });
 
-                statusElement.innerHTML = 'MINDMASH - WEEK 3 QUIZ<br>fill within 15/6/25 6.14 PM IST!';
+                statusElement.innerHTML = 'MINDMASH - WEEK 4 QUIZ<br>fill within 22/6/25 6.59 PM IST!';
                 statusElement.style.color = '#008000'; // Green for active
             } else { // Assumes "disable" or any other value means disabled
                 // Quiz is Disabled
