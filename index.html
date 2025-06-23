@@ -1710,9 +1710,83 @@ int main() {
         <!--  <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p> -->
 
         <div id="week5" class="week-content">
-            <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
+            <!-- <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
                 Week 5 Content - COMING SOON!
-            </p>
+            </p> -->
+
+<p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 5
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week5', this, 'week5')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week5', this, 'week5')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week5', this, 'week5')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week5', this, 'week5')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week5', this, 'week5')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week5', this, 'week5')">Saturday</button>
+    </div>
+
+    <div id="monday-content-week5" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>Structures in C</h3>
+            <p>A structure in C is a user-defined data type that allows you to combine variables of different types under one name.</p>
+        </div>
+        <div class="content-block">
+            <h3>Syntax:</h3>
+            <pre><code>struct Student {
+    int id;
+    char name[50];
+    float marks;
+};</code></pre>
+        </div>
+
+        <div class="content-block">
+            <h3>How to Declare and Use:</h3>
+            <pre><code>struct Student s1;
+
+s1.id = 101;
+strcpy(s1.name, "John");
+s1.marks = 89.5;
+
+printf("%d %s %.2f", s1.id, s1.name, s1.marks);</code></pre>
+        </div>
+        <div class="content-block">
+            <h3>Expected Output::</h3>
+            <code>101 John 89.50</code>
+     </div>
+    </div>
+<div id="tuesday-content-week5" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <div class="content-block">
+        <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+        </div>
+</div>
+<div id="wednesday-content-week5" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+        <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+        </div>
+</div>
+<div id="thursday-content-week5" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+        <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+        </div>
+</div>
+<div id="friday-content-week5" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+        <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+        </div>
+</div>
+<div id="saturday-content-week5" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="button-container" style="text-align: center; padding: 15px;">
+<p style="text-align: center; font-style: italic; color: #555;">Quiz goes live on <strong>28/6/25</strong> at <strong>6.00 PM IST</strong>!</p>
+<button class="nav-button" onclick="window.location.href='quiz.html';">Quiz</button>     </div>
+    </div>
+
         </div>
     </div>
 
