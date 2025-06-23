@@ -442,7 +442,7 @@ pre code {
 
         <div id="week1" class="week-content">
     <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-        Content for Week 1
+        Content for Week 1 - Basics and Syntax
     </p>
     <div class="nested-tab-nav">
         <button class="tab-button" onclick="showDay('monday-content-week1', this, 'week1')">Monday</button>
@@ -648,7 +648,7 @@ int add(int a, int b) {
 
 <div id="week2" class="week-content">
     <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-        Content for Week 2
+        Content for Week 2 - Control Structures
     </p>
     <div class="nested-tab-nav">
         <button class="tab-button" onclick="showDay('monday-content-week2', this, 'week2')">Monday</button>
@@ -1028,7 +1028,7 @@ int main() {
 
         <div id="week3" class="week-content">
     <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-        Content for Week 3
+        Content for Week 3 - Functions and Arrays Control Structure 
     </p>
     <div class="nested-tab-nav">
         <button class="tab-button" onclick="showDay('monday-content-week3', this, 'week3')">Monday</button>
@@ -1382,7 +1382,7 @@ int main() {
                 <li><strong>Because when an array decays to a pointer, the function loses information about its original size.</strong></li>
                 <li>To allow the function to modify the array's dimensions dynamically.</li>
             </ol>
-            <h3>5. What is the primary advantage of using function pointers in C? s</h3>
+            <h3>5. What is the primary advantage of using function pointers in C?</h3>
             <ol>
                 <li>They allow defining arrays with dynamic sizes at runtime.</li>
                 <li><strong>They enable runtime function selection and dynamic invocation.</strong></li>
@@ -1395,7 +1395,7 @@ int main() {
 
         <div id="week4" class="week-content">
     <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-        Content for Week 4
+        Content for Week 4 -Pointers and Strings
     </p>
     <div class="nested-tab-nav">
         <button class="tab-button" onclick="showDay('monday-content-week4', this, 'week4')">Monday</button>
@@ -1700,10 +1700,78 @@ int main() {
     </div>
 <div id="saturday-content-week4" class="day-content day-section">
         <h2>Mindmash</h2>
-        <div class="button-container" style="text-align: center; padding: 15px;">
-<p style="text-align: center; font-style: italic; color: #555;">Wait for Updates!</p>
-<!-- <button class="nav-button" onclick="window.location.href='quiz.html';">Quiz</button> -->
-    </div>
+        <div class="content-block">
+            <h3>1. What is the output of the following code?</h3>
+            <pre><code>int a = 10;
+int *p = &a;
+printf("%d", *p);</code></pre>
+<ol>
+                <li><strong>10</strong></li>
+                <li>Address of a.</li>
+                <li>Garbage value.</li>
+                <li>Compile-time error.</li>
+            </ol>
+
+            <h3>2. What will be the output of the following C code?</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char str1[] = "Hello";
+    char *str2 = "Hello";
+
+    str1[0] = 'H';
+    str2[0] = 'H';
+
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n", str2);
+
+    return 0;
+}</code></pre>
+<ol>
+                <li>str1: Hello<br>
+str2: Hello</li>
+                <li><strong>str1: Hello<br>
+Segmentation Fault</strong></li>
+                <li>str1: Hello<br>
+str2: hello</li>
+                <li>Compile-time error.</li>
+            </ol>
+            <h3>3. In this C program, what technique is used to display the string on screen?</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char str[] = "Hello, World!";
+    char *ptr = str;
+
+    printf("String using pointer:\n");
+    while (*ptr != '\0') {
+        printf("%c", *ptr);
+        ptr++;
+    }
+
+    return 0;
+}</code></pre>
+            <ol>
+            <li><strong>It prints the string using a string pointer and while loop.</strong></li>
+            <li>It uses strlen() function to display the string.</li>
+            <li>It copies the string using strcpy() before printing.</li>
+            <li>It sorts the string characters alphabetically before printing.</li>
+            </ol>
+
+            <h3>4. What happens when an array is passed to a function in C?</h3>
+<ol>
+                <li>The entire array is copied and passed to the function.</li>
+                <li><strong>The array decays into a pointer to the first element.</strong></li>
+                <li>To allow the function to modify the array's dimensions dynamically.</li>
+                <li>The function receives a reference to the original array.</li>
+                <li>The array is not passed at all, and the function uses a default value.</li>
+            </ol>
+            <h3>5. Given <strong>char word[] = "grape";</strong> and <strong>char target = 'e';</strong> what index would <strong>findChar(word, target)</strong> return?</h3>
+            <ol>
+                <li><strong>4</strong></li>
+                <li>3</li>
+                <li>0</li>
+                <li>-1</li>
+            </ol></div>   
+
     </div>
 </div>
 
@@ -1715,7 +1783,7 @@ int main() {
             </p> -->
 
 <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-        Content for Week 5
+        Content for Week 5 - Structures and File Handling
     </p>
     <div class="nested-tab-nav">
         <button class="tab-button" onclick="showDay('monday-content-week5', this, 'week5')">Monday</button>
