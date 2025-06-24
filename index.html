@@ -375,6 +375,43 @@ pre code {
         font-size: 0.8em;
         padding: 8px;
     }
+.table-responsive {
+                overflow-x: auto; /* Enable horizontal scrolling for the table container */
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            }
+
+            .content-block table {
+                /* Remove fixed table-layout if it causes issues with content-driven width */
+                table-layout: auto;
+                width: auto; /* Allow table to grow beyond 100% of container if needed */
+                min-width: 400px; /* Ensure a minimum width to prevent columns from squishing too much */
+            }
+            
+            /* Remove the block display and data-label pseudo-elements for a traditional scrollable table */
+            .content-block table,
+            .content-block thead,
+            .content-block tbody,
+            .content-block th,
+            .content-block td,
+            .content-block tr {
+                display: table; /* Revert to default table display properties */
+            }
+
+            .content-block thead tr {
+                position: static; /* Revert position */
+                top: auto;
+                left: auto;
+            }
+
+            .content-block td {
+                border: 1px solid #ddd; /* Re-add borders */
+                padding-left: 12px; /* Revert padding */
+                text-align: left; /* Revert text alignment */
+            }
+
+            .content-block td::before {
+                content: none; /* Remove the data-label pseudo-element */
+            }
 }
 /* Medium devices (tablets, 601px to 900px) */
 @media only screen and (min-width: 601px) and (max-width: 900px) {
@@ -436,58 +473,6 @@ pre code {
 
 .content-block tr:hover {
     background-color: #e0e0e0;
-}
-
-/* Responsive Table (Optional: for smaller screens, if table data is too wide) */
-@media only screen and (max-width: 600px) {
-    .content-block table,
-    .content-block thead,
-    .content-block tbody,
-    .content-block th,
-    .content-block td,
-    .content-block tr {
-        display: block;
-    }
-
-    .content-block thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    .content-block tr {
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    .content-block td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        text-align: right;
-    }
-
-    .content-block td::before {
-        /* For responsive tables: column headers as labels */
-        position: absolute;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: bold;
-        color: #00408f;
-    }
-
-    /* Assign data-label to each td in HTML for this to work effectively */
-    .content-block td:nth-of-type(1)::before { content: attr(data-label); }
-    .content-block td:nth-of-type(2)::before { content: attr(data-label); }
-    .content-block td:nth-of-type(3)::before { content: attr(data-label); }
-    .content-block td:nth-of-type(4)::before { content: attr(data-label); }
-    /* Add more as needed for more columns */
 }
 
 /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
