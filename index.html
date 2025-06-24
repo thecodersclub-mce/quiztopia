@@ -375,43 +375,6 @@ pre code {
         font-size: 0.8em;
         padding: 8px;
     }
-.table-responsive {
-                overflow-x: auto; /* Enable horizontal scrolling for the table container */
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            }
-
-            .content-block table {
-                /* Remove fixed table-layout if it causes issues with content-driven width */
-                table-layout: auto;
-                width: auto; /* Allow table to grow beyond 100% of container if needed */
-                min-width: 400px; /* Ensure a minimum width to prevent columns from squishing too much */
-            }
-            
-            /* Remove the block display and data-label pseudo-elements for a traditional scrollable table */
-            .content-block table,
-            .content-block thead,
-            .content-block tbody,
-            .content-block th,
-            .content-block td,
-            .content-block tr {
-                display: table; /* Revert to default table display properties */
-            }
-
-            .content-block thead tr {
-                position: static; /* Revert position */
-                top: auto;
-                left: auto;
-            }
-
-            .content-block td {
-                border: 1px solid #ddd; /* Re-add borders */
-                padding-left: 12px; /* Revert padding */
-                text-align: left; /* Revert text alignment */
-            }
-
-            .content-block td::before {
-                content: none; /* Remove the data-label pseudo-element */
-            }
 }
 /* Medium devices (tablets, 601px to 900px) */
 @media only screen and (min-width: 601px) and (max-width: 900px) {
@@ -443,14 +406,15 @@ pre code {
         padding: 12px;
     }
 }
-/* Table Styling */
+/* Table Styling - General (applies to all screen sizes unless overridden) */
 .content-block table {
-    width: 100%;
+    width: 100%; /* Default to 100% width */
     border-collapse: collapse;
     margin-top: 15px;
     margin-bottom: 20px;
     font-size: 0.95em;
-    table-layout: fixed; /* Ensures columns are sized based on content but don't overflow */
+    /* Remove table-layout: fixed; here. It can constrain the table too much on small screens.
+       Let the table content dictate its width within the scrollable container. */
 }
 
 .content-block th,
@@ -475,6 +439,161 @@ pre code {
     background-color: #e0e0e0;
 }
 
+/* --- Mobile Responsiveness for Content and Buttons --- */
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .content-container-wrapper {
+        width: 95%; /* Slightly more width on small screens */
+        padding: 10px;
+        margin: 10px auto 70px auto;
+    }
+
+    /* For both main and nested tab navigation */
+    .main-tab-nav,
+    .nested-tab-nav {
+        flex-direction: row; /* Ensure horizontal flow */
+        justify-content: center;
+        flex-wrap: nowrap; /* PREVENT WRAPPING for buttons */
+        padding: 5px;
+        /* Add overflow-x here to enable horizontal scrolling for buttons if they exceed */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    /* General Tab Button Styling for Mobile */
+    .tab-button {
+        flex: 1 1 auto; /* Allows buttons to grow and shrink */
+        min-width: 0; /* Allow them to shrink as much as needed */
+        margin: 2px; /* Small margin for consistent spacing */
+        font-size: 11px; /* Base font size for mobile */
+        padding: 6px 4px; /* Reduced horizontal padding to save space */
+        white-space: nowrap; /* Prevent text wrapping inside buttons */
+        overflow: hidden; /* Hide overflowing text if it gets too small */
+        text-overflow: ellipsis; /* Add ellipsis for hidden text */
+    }
+
+    /* --- Specific Adjustments for Week Buttons --- */
+    .main-tab-nav .tab-button {
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Potentially smaller font for weeks to fit 5 */
+        padding: 6px 2px; /* Even tighter padding for weeks */
+    }
+
+    /* --- Specific Adjustments for Weekday Buttons --- */
+    .nested-tab-nav .tab-button {
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Smallest font size for weekdays to fit 5 */
+        padding: 6px 2px; /* Tighter padding for weekdays */
+    }
+
+    /* Content and other elements responsiveness */
+    .day-section {
+        padding: 15px;
+    }
+
+    .day-section h2 {
+        font-size: 1.4em;
+    }
+
+    .content-block h3,
+    .content-block h4 {
+        font-size: 1.1em;
+        margin-bottom: 2px;
+    }
+
+    .content-block p,
+    .content-block ul li,
+    .content-block ol li {
+        font-size: 0.9em;
+    }
+
+    .content-block ul li {
+        padding-left: 15px;
+    }
+    .content-block ul li::before {
+        margin-right: 4px;
+        font-size: 0.9em;
+    }
+
+    .content-block ol li {
+        padding-left: 25px;
+    }
+    .content-block ol li::before {
+        width: 20px;
+        margin-right: 3px;
+        font-size: 0.9em;
+    }
+
+    code {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+
+    /* --- Table Responsiveness for Mobile --- */
+    .table-responsive {
+        overflow-x: auto; /* Enable horizontal scrolling for the table container */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    .content-block table {
+        /* On small screens, allow the table to take its natural width,
+           which will then be contained by the .table-responsive wrapper. */
+        width: 100%; /* Start with 100% width */
+        min-width: 400px; /* Set a minimum width for the table itself.
+                             Adjust this based on your table content.
+                             This prevents extreme squishing of columns.*/
+        table-layout: auto; /* Allow column widths to adjust based on content */
+    }
+
+    /* Remove the problematic display changes for table elements on mobile */
+    .content-block table,
+    .content-block thead,
+    .content-block tbody,
+    .content-block th,
+    .content-block td,
+    .content-block tr {
+        display: table-cell; /* Revert to default table display properties, adjusted below */
+    }
+
+    .content-block tr {
+        display: table-row; /* Ensure rows display as table rows */
+    }
+
+    .content-block thead {
+        display: table-header-group; /* Ensure thead displays correctly */
+    }
+
+    .content-block tbody {
+        display: table-row-group; /* Ensure tbody displays correctly */
+    }
+
+    .content-block th,
+    .content-block td {
+        display: table-cell; /* Ensure th and td display as table cells */
+    }
+
+    .content-block thead tr {
+        position: static; /* Revert position */
+        top: auto;
+        left: auto;
+    }
+
+    /* Ensure padding and text alignment are standard for a scrollable table */
+    .content-block td {
+        border: 1px solid #ddd; /* Re-add borders */
+        padding: 8px; /* Slightly reduced padding for mobile table cells */
+        text-align: left; /* Keep text alignment left */
+    }
+
+    .content-block th {
+        padding: 8px; /* Slightly reduced padding for mobile table headers */
+    }
+
+    .content-block td::before {
+        content: none; /* Crucial: Remove the data-label pseudo-element */
+    }
+}
 /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
 /* No specific media query needed here as base styles handle larger screens */
     </style>
@@ -1906,7 +2025,8 @@ printf("%d %s %.2f", s1.id, s1.name, s1.marks);</code></pre>
 
         <div class="content-block">
             <h3>How to Declare and Use:</h3>
-      <table>
+        <div class="table-responsive">
+        <table class="content-block-table">
       <thead>
       <tr>
        <th>Operation</th>
@@ -1935,11 +2055,12 @@ printf("%d %s %.2f", s1.id, s1.name, s1.marks);</code></pre>
      <td data-label="Function"><code>fseek(), ftell()</code></td>
      </tr>
      </tbody>
-     </table>  
+     </table></div>
      </div>
         <div class="content-block">
             <h3>File Modes in fopen()</h3>
-<table>
+      <div class="table-responsive">
+     <table class="content-block-table">
       <thead>
       <tr>
        <th>Mode</th>
@@ -1972,7 +2093,7 @@ printf("%d %s %.2f", s1.id, s1.name, s1.marks);</code></pre>
      <td data-label="Description">Append & Read</td>
      </tr>
      </tbody>
-     </table> 
+     </table></div>
      </div>    
       </div>
         <div class="content-block">
