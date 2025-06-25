@@ -2012,103 +2012,150 @@ printf("%d %s %.2f", s1.id, s1.name, s1.marks);</code></pre>
      </div>
     </div>
 <div id="tuesday-content-week5" class="day-content day-section">
-        <h2>Techie Tuesday</h2>
-        <div class="content-block">
-            <h3>File Handling in C Programming:</h3>
-            <p>File handling in C allows you to create, open, read, write, and close files — making your programs more powerful by storing and retrieving data from files instead of just using memory!</p>
-        </div>
-        <div class="content-block">
-            <h3>Header File Required:</h3>
-            <pre><code>#include &lt;stdio.h&gt;</code></pre>
-<p>This must be included to use file functions like fopen(), fclose(), fprintf(), fscanf(), etc.</p>
-        </div>
+    <h2>Techie Tuesday</h2>
+    <div class="content-block">
+        <h3>File Handling in C Programming:</h3>
+        <p>File handling in C allows you to create, open, read, write, and close files — making your programs more powerful by storing and retrieving data from files instead of just using memory!</p>
+    </div>
+    <div class="content-block">
+        <h3>Header File Required:</h3>
+        <pre><code>#include &lt;stdio.h&gt;</code></pre>
+        <p>This must be included to use file functions like fopen(), fclose(), fprintf(), fscanf(), etc.</p>
+    </div>
 
-        <div class="content-block">
-            <h3>How to Declare and Use:</h3>
+    <div class="content-block">
+        <h3>How to Declare and Use:</h3>
         <div class="table-responsive">
-        <table class="content-block-table">
-      <thead>
-      <tr>
-       <th>Operation</th>
-       <th>Function</th>
-     </tr>
-     </thead>
-     <tbody>
-     <tr>
-     <td data-label="Operation">Create/Open</td>
-     <td data-label="Function"><code>fopen()</code></td>
-     </tr>
-     <tr>
-     <td data-label="Operation">Close</td>
-     <td data-label="Function"><code>fclose()</code></td>
-     </tr>
-     <tr>
-     <td data-label="Operation">Read</td>
-     <td data-label="Function"><code>fscanf(), fgets()</code></td>
-     </tr>
-     <tr>
-     <td data-label="Operation">Write</td>
-     <td data-label="Function"><code>fprintf(), fputs()</code></td>
-     </tr>
-     <tr>
-     <td data-label="Operation">Move cursor</td>
-     <td data-label="Function"><code>fseek(), ftell()</code></td>
-     </tr>
-     </tbody>
-     </table></div>
-     </div>
-        <div class="content-block">
-            <h3>File Modes in fopen()</h3>
-      <div class="table-responsive">
-     <table class="content-block-table">
-      <thead>
-      <tr>
-       <th>Mode</th>
-       <th>Description</th>
-     </tr>
-     </thead>
-     <tbody>
-     <tr>
-     <td data-label="Mode">"r"</td>
-     <td data-label="Description">Read</td>
-     </tr>
-     <tr>
-     <td data-label="Mode">"w"</td>
-     <td data-label="Description">Write (overwrite)</td>
-     </tr>
-     <tr>
-     <td data-label="Mode">"a"</td>
-     <td data-label="Description">Append (add at end)</td>
-     </tr>
-     <tr>
-     <td data-label="Mode">"r+"</td>
-     <td data-label="Description">Read & Write</td>
-     </tr>
-     <tr>
-     <td data-label="Mode">"w+"</td>
-     <td data-label="Description">Write & Read (overwrite)</td>
-     </tr>
-     <tr>
-     <td data-label="Mode">"a+"</td>
-     <td data-label="Description">Append & Read</td>
-     </tr>
-     </tbody>
-     </table></div>
-     </div>    
-      </div>
-        <div class="content-block">
-            <h3>Always Remember:</h3>
-            <ul>
+            <table class="content-block-table">
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Operation">Create/Open</td>
+                        <td data-label="Function"><code>fopen()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Close</td>
+                        <td data-label="Function"><code>fclose()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Read</td>
+                        <td data-label="Function"><code>fscanf(), fgets()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Write</td>
+                        <td data-label="Function"><code>fprintf(), fputs()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Move cursor</td>
+                        <td data-label="Function"><code>fseek(), ftell()</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="content-block">
+        <h3>File Modes in fopen()</h3>
+        <div class="table-responsive">
+            <table class="content-block-table">
+                <thead>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Mode">"r"</td>
+                        <td data-label="Description">Read</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"w"</td>
+                        <td data-label="Description">Write (overwrite)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"a"</td>
+                        <td data-label="Description">Append (add at end)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"r+"</td>
+                        <td data-label="Description">Read & Write</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"w+"</td>
+                        <td data-label="Description">Write & Read (overwrite)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"a+"</td>
+                        <td data-label="Description">Append & Read</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="content-block">
+        <h3>Always Remember:</h3>
+        <ul>
             <li>Check if the file opened successfully (if (fp == NULL))</li>
-            <li>Always fclose(fp) to avoid memory leaks.</li></ul>
-     </div>
+            <li>Always fclose(fp) to avoid memory leaks.</li>
+        </ul>
+    </div></div>
 
-</div>
 <div id="wednesday-content-week5" class="day-content day-section">
         <h2>Syntax Snapshots Wednesday</h2>
-        <div class="content-block">
-        <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
-        </div>
+                <div class="content-block">
+        <!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p> -->
+            <h3>C Program for File Handling (Write + Read):</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    FILE *fptr;
+    char data[100];
+
+    // Writing to the file
+    fptr = fopen("myfile.txt", "w"); // open in write mode
+    if (fptr == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Enter some text to write into the file: ");
+    fgets(data, sizeof(data), stdin);
+    fprintf(fptr, "%s", data);
+    fclose(fptr);
+    printf("Data written to file successfully.\n");
+
+    // Reading from the file
+    fptr = fopen("myfile.txt", "r"); // open in read mode
+    if (fptr == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Reading from the file:\n");
+    while (fgets(data, sizeof(data), fptr) != NULL) {
+        printf("%s", data);
+    }
+    fclose(fptr);
+
+    return 0;
+}</code></pre>
+</div>
+<div class="content-block">
+<h3>Output:</h3>
+<code>
+Enter some text to write into the file: Hello, C programming!
+Data written to file successfully.
+Reading from the file:
+Hello, C programming!
+</code></div>
+<div class="content-block">
+<h3>Content in myfile.txt :</h3>
+<code>Hello, C programming!</code>
+</div>
 </div>
 <div id="thursday-content-week5" class="day-content day-section">
         <h2>Te Ta Thursday</h2>
