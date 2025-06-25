@@ -657,23 +657,19 @@ pre code {
         <div class="content-block">
             <h3>Variables:</h3>
             <p>Variables are named locations in memory that are used to hold a value that may be modified by the program.</p>
-            <p>The syntax for declaring a variable is:</p>
+            <p>The <strong>syntax</strong> for declaring a variable is:</p>
             <pre><code>Data_type variableName;</code></pre>
-            <p>Valid Examples:</p>
-            <pre><code>
-int age = 21;
+            <h3>Valid Examples:</h3>
+            <pre><code>int age = 21;
 float salary = 4564.50;
 int marks;
 int acc_type;
 char ch = 'y';
-char name[20] = "apollo";
-            </code></pre>
-            <p>Invalid Examples:</p>
-            <pre><code>
-int 5marks;
+char name[20] = "apollo";</code></pre>
+            <h3>Invalid Examples:</h3>
+            <pre><code>int 5marks;
 int @host;
-int acc no$;
-            </code></pre>
+int acc no$;</code></pre>
             <h3>Rules for framing a variable:</h3>
             <ul>
                 <li>The first character in the variable name must be an alphabet.</li>
@@ -700,8 +696,9 @@ int main() {
     printf("Hello, World!\\n");
 
     return 0; // Exit the program
-}
-            </code></pre>
+}</code></pre>
+<h3>Output:</h3>
+<code>Hello, World!</code>
             <h3>Explanation of Each Part:</h3>
             <ol>
                 <li>Every C program must have a main() function.</li>
@@ -715,15 +712,11 @@ int main() {
     <div id="thursday-content-week1" class="day-content day-section">
         <h2>Te Ta Thursday</h2>
         <div class="content-block">
-            <pre><code>
-#include &lt;stdio.h&gt;
+            <pre><code>#include &lt;stdio.h&gt;
 #define ADD(a, b) ((a) + (b))
-int main() { printf("%d\\n", ADD(5, 7)); return 0; }
-            </code></pre>
-            <h3>Output</h3>
-            <code>
-12
-            </code>
+int main() { printf("%d\\n", ADD(5, 7)); return 0; }</code></pre>
+            <h3>Output:</h3>
+            <code>12</code>
             <h3>Explanation:</h3>
             <ol>
                 <li>#define ADD(a, b) ((a) + (b))
@@ -759,8 +752,7 @@ int main() { printf("%d\\n", ADD(5, 7)); return 0; }
                 <li>Recursive Functions: Functions that call themselves.</li>
             </ol>
             <h3>Basic Function Syntax:</h3>
-            <pre><code>
-#include &lt;stdio.h&gt;
+            <pre><code>#include &lt;stdio.h&gt;
 // Function declaration
 int add(int a, int b);
 int main() {
@@ -771,8 +763,9 @@ int main() {
 // Function definition
 int add(int a, int b) {
     return a + b;
-}
-            </code></pre>
+}</code></pre>
+<h3>Output:</h3>
+<code>Sum: 12</code>
             <h3>Function Components Explained:</h3>
             <ul>
                 <li>Function Declaration: Specifies return type, function name, and parameters.</li>
@@ -877,7 +870,6 @@ int add(int a, int b) {
         <div class="content-block">
             <h3>Conditional Statements in C:</h3>
             <p>Conditional statements are used to make decisions in a program. Based on whether a condition is true or false, different blocks of code will be executed.</p>
-
             <h3>Types:</h3>
             <ol>
                 <li>if Statement</li>
@@ -885,7 +877,6 @@ int add(int a, int b) {
                 <li>else if Ladder</li>
                 <li>switch Statement</li>
             </ol>
-
         </div>
 
         <div class="content-block">
@@ -895,31 +886,26 @@ int add(int a, int b) {
                     <h4>if Statement:</h4>
                     <p>Used when you want to execute a block of code only if a condition is true.</p>
                     <h5>Syntax:</h5>
-                    <pre><code>
-if (condition) {
+                    <pre><code>if (condition) {
     //code to execute if condition is true
-}
-                    </code></pre>
+}</code></pre>
                 </li>
                 <li>
                     <h4>if...else Statement:</h4>
                     <p>Used when you want to choose between two blocks of code.</p>
                     <h5>Syntax:</h5>
-                    <pre><code>
-if (condition) {
+                    <pre><code>if (condition) {
     //code to execute if condition is true
 }
 else {
     //code if false
-}
-                    </code></pre>
+}</code></pre>
                 </li>
                 <li>
                     <h4>else if Ladder:</h4>
                     <p>Used when you have multiple conditions to check in sequence.</p>
                     <h5>Syntax:</h5>
-                    <pre><code>
-if (condition) {
+                    <pre><code>if (condition) {
     //code to execute if condition is true
 }
 else if (condition) {
@@ -930,15 +916,13 @@ else if (condition n) {
 }
 else {
     //default code
-}
-                    </code></pre>
+}</code></pre>
                 </li>
                 <li>
                     <h4>switch Statement:</h4>
                     <p>Used to replace multiple else if blocks when comparing a single variable against many values.</p>
                     <h5>Syntax:</h5>
-                    <pre><code>
-switch (expression) {
+                    <pre><code>switch (expression) {
 case value1:
     //code
     break;
@@ -948,8 +932,7 @@ case value2:
 default:
     //code
     break;
-}
-                    </code></pre>
+}</code></pre>
                 </li>
             </ol>
         </div>
@@ -959,14 +942,11 @@ default:
         <h2>Syntax Snapshots Wednesday</h2>
         <div class="content-block">
             <h3>Syntax of if Statement in C:</h3>
-            <pre><code>
-if (condition) {
+            <pre><code>if (condition) {
     //Code to execute if condition is true
-}
-            </code></pre>
+}</code></pre>
             <h3>Example C program using if:</h3>
-            <pre><code>
-#include &lt;stdio.h&gt;
+            <pre><code>#include &lt;stdio.h&gt;
 
 int main() {
     int number;
@@ -976,14 +956,11 @@ int main() {
         printf("%d is a positive number.\n", number);
     }
     return 0;
-}
-            </code></pre>
+}</code></pre>
             <h3>Output:</h3>
-            <code>
-Enter a number:
+            <code>Enter a number:
 8
-The number is positive.
-            </code>
+The number is positive.</code>
         </div>
     </div>
 
@@ -995,8 +972,7 @@ The number is positive.
                     <h4>Switch Statement with Enumerations:</h4>
                     Using switch statements with enumerations to handle different cases.
                 </li>
-                <pre><code>
-typedef enum {
+                <pre><code>typedef enum {
     RED,
     GREEN,
     BLUE
@@ -1009,29 +985,22 @@ void printColor(Color c) {
             break;
         //..
     }
-}
-                </code></pre>
+}</code></pre>
                 <h3>Expected Output:</h3>
-                <code>
-Red
-                </code>
-
+                <code>Red</code>
                 <li>
                     <h4>Nested Loops with Labels:</h4>
                     Using labels to control nested loopexecution.
                 </li>
-                <pre><code>
-outer:
+                <pre><code>outer:
 for(int i = 0; i < 5; i++) {
     for(int j = 0; j < 5; j++) {
         if (i == 3) break outer;
         printf("%d %d\n",i,j);
     }
-}
-                </code></pre>
+}</code></pre>
                 <h3>Expected Output:</h3>
-                <code>
-0 0
+                <code>0 0
 0 1
 0 2
 0 3
@@ -1045,28 +1014,23 @@ for(int i = 0; i < 5; i++) {
 2 1
 2 2
 2 3
-2 4
-                </code>
+2 4</code>
 
                 <li>
                     <h4>Break and Continue Statements:</h4>
                     Controlling loop execution with break and continue.
                 </li>
-                <pre><code>
-for ( int i = 0; i < 5; i++) {
+                <pre><code>for ( int i = 0; i < 5; i++) {
     if (i == 3)
         continue; //Skips 3
     if (i == 4)
         break; //Stop at 4
     printf("%d\n",i);
-}
-                </code></pre>
+}</code></pre>
                 <h3>Expected Output:</h3>
-                <code>
-0
+                <code>0
 1
-2
-                </code>
+2</code>
                 <li>
                     <h4>if-else Statements with Conditional Operators:</h4>
                     Simplifying if-else with conditional operators.
@@ -1077,9 +1041,7 @@ int result = (x>10) ? 1 : 0; //result = 0
 printf("%d\n",result);
                 </code></pre>
                 <h3>Expected Output</h3>
-                <code>
-0
-                </code>
+                <code>0</code>
             </ol>
         </div>
     </div>
@@ -1110,13 +1072,11 @@ int main() {
 }
             </code></pre>
             <h3>Output:</h3>
-            <code>
-Value: 5
+            <code>Value: 5
 Value: 4
 Value: 3
 Value: 2
-Value: 1
-            </code>
+Value: 1</code>
             <h3>Simulating for-each Loop in C:</h3>
             <p>
                 C doesn't have a direct for-each, but arrays can be traversed using a for loop.
@@ -1134,12 +1094,10 @@ return 0;
 }
             </code></pre>
             <h3>Output:</h3>
-            <code>
-Value: 10
+            <code>Value: 10
 Value: 20
 Value: 30
-Value: 40
-            </code>
+Value: 40</code>
             <h3>Code Explanation:</h3>
             <ul>
                 <li>Defines an array numbers[]</li>
@@ -1234,18 +1192,15 @@ int main() {
         </div>
 
         <div class="content-block">
-            <h3>Syntax</h3>
-            <pre><code>
-return_type function_name(parameters) {
+            <h3>Syntax:</h3>
+            <pre><code>return_type function_name(parameters) {
     // code
-}
-            </code></pre>
+}</code></pre>
         </div>
 
         <div class="content-block">
             <h3>Example:</h3>
-            <pre><code>
-#include &lt;stdio.h&gt;
+            <pre><code>#include &lt;stdio.h&gt;
 
 // Function declaration
 int add(int a, int b);
@@ -1259,14 +1214,11 @@ int main() {
 // Function definition
 int add(int a, int b) {
     return a + b;
-}
-            </code></pre>
+}</code></pre>
         </div>
         <div class="content-block">
             <h3>Output:</h3>
-            <code>
-Sum is: 15
-            </code>
+            <code>Sum is: 15</code>
         </div>
     </div>
 
@@ -1291,21 +1243,17 @@ int main() {
     int arr[5] = {1, 2, 3, 4, 5};  // Declaration and initialization
     printf("Element at index 2: %d\n", arr[2]);
     return 0;
-}
-                </code></pre>
+}</code></pre>
             </div>
             <div class="content-block">
                 <h3>Output:</h3>
-                <code>
-Element at index 2: 3
-                </code>
+                <code>Element at index 2: 3</code>
             </div>
 <div class="content-block">
-                <h3>Control Structures for Arrays in C </h3>
+                <h3>Control Structures for Arrays in C:</h3>
                 <p>Control structures like loops are used to traverse and manipulate arrays in C.</p>
                 <h3>Example with for loop:</h3>
-                <pre><code>
-#include &lt;stdio.h&gt;
+                <pre><code>#include &lt;stdio.h&gt;
 int main() {
     int arr[5] = {1, 2, 3, 4, 5};    
     // Loop through array and print each element
@@ -1320,13 +1268,11 @@ int main() {
 
  <div class="content-block">
                 <h3>Output:</h3>
-                <code>
-Element at index 0: 1
+                <code>Element at index 0: 1
 Element at index 1: 2
 Element at index 2: 3
 Element at index 3: 4
-Element at index 4: 5
-                </code>
+Element at index 4: 5</code>
             </div>
         </div>
     </div>
@@ -1360,12 +1306,10 @@ int main() {
         </div>
         <div class="content-block">
             <h3>Output:</h3>
-            <code>
-Value of a: 10
+            <code>Value of a: 10
 Address of a: 0x7ffee0b01234  (This will be a hexadecimal address)
 Value stored in ptr (address of a): 0x7ffee0b01234 (This will be the same as Address of a)
-Value pointed to by ptr (value of a): 10
-            </code>
+Value pointed to by ptr (value of a): 10</code>
         </div>
     </div>
 
@@ -1378,8 +1322,7 @@ Value pointed to by ptr (value of a): 10
 
         <div class="content-block">
             <h3>Example program:</h3>
-            <pre><code>
-#include &lt;stdio.h&gt;
+            <pre><code>#include &lt;stdio.h&gt;
 
 // Function to print array elements
 void printArray(int arr[], int size) {
@@ -1394,15 +1337,12 @@ int main() {
     printArray(numbers, 5);
     return 0;
 }
-
-            </code></pre>
+</code></pre>
 <p>In this example, arr in the printArray function is essentially a pointer to the first element of the numbers array. The size parameter is necessary because the function doesn't know the size of the array otherwise.</p>
         </div>
         <div class="content-block">
             <h3>Output:</h3>
-            <code>
-1 2 3 4 5 
-            </code>
+            <code>1 2 3 4 5</code>
         </div>
     </div>
 
@@ -1439,9 +1379,7 @@ int main() {
 
             </code></pre>
             <h3>Output:</h3>
-            <code>
-Hello, Function Pointers!
-            </code>
+            <code>Hello, Function Pointers!</code>
             <h3>Why use function pointers?</h3>
             <ul>
                 <li>Enables callback functions in programs like sorting algorithms.</li>
@@ -1480,8 +1418,7 @@ int main() {
 
             </code></pre>
             <h3>Expected Output:</h3>
-            <code>
-Enter array size: 5
+            <code>Enter array size: 5
 Array contents:
 1 2 3 4 5
 
@@ -1495,8 +1432,7 @@ Array contents:
 
 Enter array size: 10
 Array contents:
-1 2 3 4 5 6 7 8 9 10
-            </code>
+1 2 3 4 5 6 7 8 9 10</code>
             <h3>Why use VLAs?</h3>
             <ul>
                 <li>Allows dynamic array sizing at runtime.</li>
@@ -1637,19 +1573,16 @@ Think of a string as a sentence or word stored in memory.
     </div>
     <div class="content-block">
         <h3>Example:</h3>
-        <pre><code>
-#include &lt;stdio.h&gt;
+        <pre><code>#include &lt;stdio.h&gt;
 int main() {
     char name[] = "Welcome";
     printf("Hello, %s!\n", name);
     return 0;
-}
-</code></pre>  </div>
+}</code></pre> 
+</div>
     <div class="content-block">
         <h3>Output:</h3>
-        <code>
-Hello, Welcome!
-        </code>
+        <code>Hello, Welcome!</code>
         <p>"Welcome" is a string stored in a character array.</p>
     </div>
     <div class="content-block">
@@ -1660,20 +1593,16 @@ It’s a more memory-efficient and flexible way to handle strings than using cha
     </div>
     <div class="content-block">
         <h3>Example:</h3>
-        <pre><code>
-#include &lt;stdio.h&gt;
+        <pre><code>#include &lt;stdio.h&gt;
 int main() {
     char *greet = "Welcome!";
     printf("%s\n", greet);
     return 0;
-}
-</code></pre>  
+}</code></pre>  
 </div>
     <div class="content-block">
         <h3>Output:</h3>
-        <code>
-Welcome!
-        </code>
+        <code>Welcome!</code>
         <p><strong>Explanation:</strong></p>
         <ul>
             <li>char *greet ➡ Pointer to the string "Welcome!"</li>
@@ -1708,8 +1637,7 @@ int main() {
 </div>
     <div class="content-block">
         <h3>Output:</h3>
-        <code>
-Hello, Welcome!Enter a string: Hello
+        <code>Hello, Welcome!Enter a string: Hello
 Length of the string is: 5
 
 ---
@@ -1720,8 +1648,7 @@ Length of the string is: 13
 ---
 
 Enter a string: 
-Length of the string is: 0
-        </code>
+Length of the string is: 0</code>
 <p><strong>Explanation:</strong> strlen() is a string function that returns the length of the string.</p>
     </div>
 
@@ -1729,8 +1656,7 @@ Length of the string is: 0
         <h3>C Program using String Pointer:</h3>
     </div>
     <div class="content-block">
-        <pre><code>
-#include &lt;stdio.h&gt;
+        <pre><code>#include &lt;stdio.h&gt;
 int main() {
     char str[] = "Hello, World!";
     char *ptr = str;
@@ -1742,14 +1668,11 @@ int main() {
     }
 
     return 0;
-}
-</code></pre>  </div>
+}</code></pre>  </div>
     <div class="content-block">
         <h3>Output:</h3>
-        <code>
-String using pointer:
-Hello, World!
-        </code>
+        <code>String using pointer:
+Hello, World!</code>
         <p><strong>Explanation:</strong></p>
         <ul>
             <li>char *ptr = str; assigns a pointer to the beginning of the string.
@@ -1778,9 +1701,7 @@ while (*ptr != '\0') {
 </div>
     <div class="content-block">
         <h3>Expected Output:</h3>
-        <code>
-Hello
-        </code>
+        <code>Hello</code>
 <p>This concept is powerful, but it requires careful handling to avoid buffer overflows and other issues.</p>
     </div>
 
@@ -1799,10 +1720,8 @@ str2[0] = 'h'; // okay
 </code></pre>  </div>
     <div class="content-block">
         <h3>What may be in the output:</h3>
-        <code>
-str1: Hello
-str2: hello
-        </code>
+        <code>str1: Hello
+str2: hello</code>
         <p>This distinction is important to understand when working with strings in C.</p>
     </div>
     </div>
@@ -1847,9 +1766,7 @@ int main() {
 </div>
     <div class="content-block">
         <h3>Output:</h3>
-        <code>
-'p' is at index 1
-        </code>
+        <code>'p' is at index 1</code>
     </div>
 
     <div class="content-block">
@@ -1880,9 +1797,7 @@ int main() {
 </code></pre>  </div>
     <div class="content-block">
         <h3>Output:</h3>
-        <code>
-'a' is at index 3
-        </code>
+        <code>'a' is at index 3</code>
     </div>
     </div>
 <div id="saturday-content-week4" class="day-content day-section">
@@ -2146,8 +2061,7 @@ int main() {
 </div>
 <div class="content-block">
 <h3>Output:</h3>
-<code>
-Enter some text to write into the file: Hello, C programming!
+<code>Enter some text to write into the file: Hello, C programming!
 Data written to file successfully.
 Reading from the file:
 Hello, C programming!
