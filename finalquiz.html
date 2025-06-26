@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mindmash Final Quiz - C Programming Series</title>
+    <link rel="icon" href="TCC.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .content-container {
+            /* Override previous height/centering to allow form content to flow naturally */
+            height: auto; /* Allow height to adjust based on content */
+            min-height: calc(100vh - 100px); /* Ensure content takes up most of the screen, accounting for header/footer */
+            justify-content: flex-start; /* Align content to the top */
+            padding-bottom: 50px; /* Add padding to prevent content from being hidden by the fixed footer */
+            box-sizing: border-box; /* Include padding in the element's total width and height */
+        }
+
+        .quiz-form-wrapper {
+            width: 90%; /* Adjust width for better responsiveness */
+            max-width: 700px; /* Limit max-width for larger screens */
+            margin: 20px auto; /* Center the form wrapper */
+            padding: 25px;
+            background-color: #ffffff; /* White background for the form area */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Softer, larger shadow */
+            box-sizing: border-box;
+        }
+
+        .quiz-form-wrapper h2 {
+            text-align: center;
+            color: #00408f;
+            margin-bottom: 25px;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left; /* Align labels and inputs to the left */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600; /* Slightly bolder labels */
+            color: #333;
+            font-size: 15px;
+        }
+
+        /* Common styling for all input types (text, email, textarea, select) */
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%; /* Take full width of parent */
+            padding: 12px;
+            border: 1px solid #c0c0c0; /* Lighter border */
+            border-radius: 6px;
+            box-sizing: border-box; /* Include padding in width */
+            font-size: 15px;
+            transition: border-color 0.3s ease;
+        }
+
+        /* Specific styling for <select> dropdowns to add the custom arrow */
+        .form-group select {
+            -webkit-appearance: none; /* Remove default browser styling for select */
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20256%20512%22%3E%3Cpath%20fill%3D%22%23666%22%20d%3D%22M192%20256L64%20128v256l128-128z%22%2F%3E%3C%2Fsvg%3E'); /* Custom dropdown arrow */
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 12px;
+            padding-right: 30px; /* Make space for the custom arrow */
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #00408f; /* Highlight on focus */
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 5px rgba(0, 64, 143, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-direction: column; /* Stack radio/checkbox options vertically */
+            gap: 8px; /* Space between options */
+        }
+
+        .radio-group label, .checkbox-group label {
+            display: flex; /* Use flex to align input and text */
+            align-items: center; /* Vertically align them */
+            margin-bottom: 0; /* Remove default margin for labels */
+            font-weight: normal; /* Normal weight for option text */
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .radio-group input[type="radio"],
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px; /* Space between radio/checkbox and its label text */
+            width: 18px; /* Standardize size */
+            height: 18px; /* Standardize size */
+            cursor: pointer;
+        }
+
+        /* Styling for quiz questions paragraph */
+        .form-group p {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 12px;
+            font-size: 16px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #00408f; /* Use your primary blue */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            margin-top: 20px;
+        }
+
+        .submit-button:hover {
+            background-color: #1E88E5; /* Lighter blue on hover */
+        }
+
+        .submit-button:active {
+            transform: scale(0.98);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+            margin: 30px 0;
+        }
+
+        /* Responsive adjustments for quiz form */
+        @media only screen and (max-width: 768px) {
+            .quiz-form-wrapper {
+                width: 95%; /* Make it slightly wider on tablets */
+                padding: 20px;
+            }
+            .quiz-form-wrapper h2 {
+                font-size: 22px;
+            }
+            .form-group label, .form-group input, .form-group textarea, .radio-group label, .checkbox-group label, .form-group select {
+                font-size: 14px;
+            }
+            .submit-button {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            .quiz-form-wrapper {
+                padding: 15px;
+            }
+            .quiz-form-wrapper h2 {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+            .form-group label, .form-group input, .form-group textarea, .radio-group label, .checkbox-group label, .form-group select {
+                font-size: 13px;
+            }
+            .form-group p {
+                font-size: 14px;
+            }
+            .submit-button {
+                font-size: 15px;
+                padding: 10px;
+            }
+        }
+
+        /* --- New CSS for Anti-Copying --- */
+        .no-select {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+        }
+        /* Allow selection for input fields within no-select, if needed */
+        .no-select input, .no-select textarea, .no-select select {
+            pointer-events: auto;
+            user-select: auto;
+        }
+
+        /* --- New CSS for the QUIZ QUESTIONS SECTION (Blurring, Jumbling & Overlay Container) --- */
+        #quizQuestionsSection {
+            position: relative; /* Essential for positioning the absolute overlay */
+        }
+
+        #quizQuestionsSection.quiz-disabled-overlay {
+            /* These apply to the content *behind* the overlay */
+            opacity: 0.5; /* Makes the section semi-transparent */
+            filter: blur(3px); /* Applies a blur effect */
+            pointer-events: none; /* Disables all click/hover events on the section content */
+            transition: opacity 0.5s ease-in-out, filter 0.5s ease-in-out; /* Smooth transition */
+        }
+        /* Override pointer-events for input fields within the disabled section to allow JS to disable them */
+        #quizQuestionsSection.quiz-disabled-overlay input,
+        #quizQuestionsSection.quiz-disabled-overlay textarea,
+        #quizQuestionsSection.quiz-disabled-overlay select {
+            pointer-events: auto; /* Allows JS to disable them properly */
+        }
+
+        /* --- New CSS for the White Opaque Overlay --- */
+        #quizOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+            z-index: 5; /* Puts it above the blurred content */
+            display: flex; /* Make it a flex container */
+            align-items: center; /* Center content vertically */
+            justify-content: center; /* Center content horizontally */
+            opacity: 0; /* Hidden by default */
+            visibility: hidden; /* Also hidden by default for accessibility/layout */
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth transition */
+        }
+
+        /* --- New CSS for Submission Success Message --- */
+        #submissionSuccessMessage {
+            position: fixed; /* Stays in place relative to the viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Ensures it's on top of all other content */
+            opacity: 0; /* Initially hidden */
+            visibility: hidden; /* Also hidden by default for accessibility/layout */
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out; /* Smooth fade in/out */
+        }
+
+        /* Class to show the success message */
+        #submissionSuccessMessage.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .success-content {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9); /* Initial scale for a subtle zoom-in effect */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Animation for the content when shown */
+        #submissionSuccessMessage.show .success-content {
+            transform: scale(1); /* Scales up to normal size */
+        }
+
+        .success-content p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #008000; /* Green text for success */
+            margin-top: 15px;
+        }
+
+        /* New CSS for the Font Awesome icon */
+        .success-icon-fa {
+            font-size: 80px; /* Adjust size as needed */
+            color: #008000; /* Green color for the icon */
+            margin-bottom: 10px; /* Space between icon and text */
+            animation: fadeInScale 0.6s forwards; /* Simple fade-in and scale animation */
+        }
+
+        /* New keyframe for the Font Awesome icon */
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.7); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Styling for the new <pre><code> block */
+        .code-block {
+            background-color: #f4f4f4; /* Light grey background */
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+        }
+
+        /* Crucial: Style for <code> inside <pre> */
+        .code-block code {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-size: 0.9em; /* Slightly smaller font size */
+            color: #333; /* Darker text color */
+            display: block; /* Ensures it takes up full width of pre and respects line breaks */
+            white-space: pre-wrap; /* Ensures line breaks in code are respected */
+        }
+    </style>
+</head>
+<body>
+    <div class="blue-container">
+        <div class="left-aligned">
+            <a href="https://mce-madurai.ac.in/" target="_blank">
+                <img src="MCE_tab.png" alt="Logo" class="favicon-logo">
+            </a>
+            <div class="titles">
+                <h1 class="college-name">Mangayarkarasi College of Engineering</h1>
+                <h2 class="site-title">The Coders Club</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container" style="text-align: right; padding: 15px;">
+        <button class="nav-button" onclick="window.location.href='index.html';">Back to Homepage</button>
+        <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
+        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
+        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+    </div>
+
+    <div class="content-container">
+        <center><h4 id="status"></h4></center>
+
+        <div class="quiz-form-wrapper">
+            <h2>MINDMASH</h2>
+            <form id="quizForm" method="POST" action="https://script.google.com/macros/s/AKfycbxv8SoMuCJ-OgnwFy5KatXccNBIzPfjLn6YJ0MkZNeDshqdaRjJfyOONsRnupxrWSxf/exec">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="Name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="Email" required placeholder="your.email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <select id="department" name="Department" required>
+                        <option value="">Select your Department</option>
+                        <option value="CSE">CSE</option>
+                        <option value="CSE (AI&ML)">CSE (AI&ML)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <select id="year" name="Year" required>
+                        <option value="">Select your Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                    </select>
+                </div>
+
+                <hr>
+
+                <div id="quizQuestionsSection">
+                    <div id="quizOverlay">
+                    </div>
+                    <h3>Quiz Questions</h3>
+
+                    <div class="form-group">
+                        <p class="no-select"><strong>1. What is the output of the following code?</strong></p>
+                        <pre class="code-block"><code>#include <stdio.h>
+int a = 10;
+int *p = &a;
+printf("%d", *p);
+</code></pre>
+                        <div class="radio-group">
+                            <label for="q1_a"><input type="radio" id="q1_a" name="Question1" value="A. 10" required> A. 10</label>
+                            <label for="q1_b"><input type="radio" id="q1_b" name="Question1" value="B. Address of a." required> B. Address of a.</label>
+                            <label for="q1_c"><input type="radio" id="q1_c" name="Question1" value="C. Garbage value." required> C. Garbage value.</label>
+                            <label for="q1_d"><input type="radio" id="q1_d" name="Question1" value="D. Compile-time error." required> D. Compile-time error.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>2. What will be the output of the following C code?</strong></p>
+                        <pre class="code-block"><code>
+#include <stdio.h>
+int main() {
+    char str1[] = "Hello";
+    char *str2 = "Hello";
+
+    str1[0] = 'H';
+    str2[0] = 'H';
+
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n", str2);
+
+    return 0;
+}
+</code></pre>
+                        <div class="radio-group">
+                            <label for="q2_a"><input type="radio" id="q2_a" name="Question2" value="A. str1: Hello
+str2: Hello" required> A. str1: Hello<br>str2: Hello</label>
+                            <label for="q2_b"><input type="radio" id="q2_b" name="Question2" value="B. str1: Hello
+Segmentation Fault" required> B. str1: Hello<br>Segmentation Fault</label>
+                            <label for="q2_c"><input type="radio" id="q2_c" name="Question2" value="C. str1: Hello
+str2: hello" required> C. str1: Hello<br>str2: hello</label>
+                            <label for="q2_d"><input type="radio" id="q2_d" name="Question2" value="D. Compile-time error." required> D. Compile-time error.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>3. In this C program, what technique is used to display the string on screen?</strong></p>
+                        <pre class="code-block"><code>
+#include <stdio.h>
+int main() {
+    char str[] = "Hello, World!";
+    char *ptr = str;
+
+    printf("String using pointer:\n");
+    while (*ptr != '\0') {
+        printf("%c", *ptr);
+        ptr++;
+    }
+
+    return 0;
+}
+
+</code></pre>
+                        <div class="radio-group">
+                            <label for="q3_a"><input type="radio" id="q3_a" name="Question3" value="A. It prints the string using a string pointer and while loop." required> A. It prints the string using a string pointer and while loop.</label>
+                            <label for="q3_b"><input type="radio" id="q3_b" name="Question3" value="B. It uses strlen() function to display the string." required> B. It uses strlen() function to display the string.</label>
+                            <label for="q3_c"><input type="radio" id="q3_c" name="Question3" value="C. It copies the string using strcpy() before printing." required> C. It copies the string using strcpy() before printing.</label>
+                            <label for="q3_d"><input type="radio" id="q3_d" name="Question3" value="D. It sorts the string characters alphabetically before printing." required> D. It sorts the string characters alphabetically before printing.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>4. What happens when an array is passed to a function in C?</strong></p>
+                        <div class="radio-group">
+                            <label for="q4_a"><input type="radio" id="q4_a" name="Question4" value="A. The entire array is copied and passed to the function." required> A. The entire array is copied and passed to the function.</label>
+                            <label for="q4_b"><input type="radio" id="q4_b" name="Question4" value="B. The array decays into a pointer to the first element." required> B. The array decays into a pointer to the first element.</label>
+                            <label for="q4_c"><input type="radio" id="q4_c" name="Question4" value="C. The function receives a reference to the original array." required> C. The function receives a reference to the original array.</label>
+                            <label for="q4_d"><input type="radio" id="q4_d" name="Question4" value="D. The array is not passed at all, and the function uses a default value." required> D. The array is not passed at all, and the function uses a default value.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>5. Given `char word[] = "grape";` and `char target = 'e';` what index would `findChar(word, target)` return, assuming `findChar` returns the index of the first occurrence or -1 if not found?</strong></p>
+                        <div class="radio-group">
+                            <label for="q5_a"><input type="radio" id="q5_a" name="Question5" value="A. 4" required> A. 4</label>
+                            <label for="q5_b"><input type="radio" id="q5_b" name="Question5" value="B. 3" required> B. 3</label>
+                            <label for="q5_c"><input type="radio" id="q5_c" name="Question5" value="C. 0" required> C. 0</label>
+                            <label for="q5_d"><input type="radio" id="q5_d" name="Question5" value="D. -1" required> D. -1</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="no-select"><strong>6. Which of the following is NOT a valid C data type?</strong></p>
+                        <div class="radio-group">
+                            <label for="q6_a"><input type="radio" id="q6_a" name="Question6" value="A. long double" required> A. long double</label>
+                            <label for="q6_b"><input type="radio" id="q6_b" name="Question6" value="B. character" required> B. character</label>
+                            <label for="q6_c"><input type="radio" id="q6_c" name="Question6" value="C. float" required> C. float</label>
+                            <label for="q6_d"><input type="radio" id="q6_d" name="Question6" value="D. boolean" required> D. boolean</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>7. What is the output of `printf("%d", 10 / 3);`?</strong></p>
+                        <div class="radio-group">
+                            <label for="q7_a"><input type="radio" id="q7_a" name="Question7" value="A. 3.33" required> A. 3.33</label>
+                            <label for="q7_b"><input type="radio" id="q7_b" name="Question7" value="B. 3" required> B. 3</label>
+                            <label for="q7_c"><input type="radio" id="q7_c" name="Question7" value="C. 4" required> C. 4</label>
+                            <label for="q7_d"><input type="radio" id="q7_d" name="Question7" value="D. 3.0" required> D. 3.0</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>8. Which operator is used to get the address of a variable?</strong></p>
+                        <div class="radio-group">
+                            <label for="q8_a"><input type="radio" id="q8_a" name="Question8" value="A. *" required> A. *</label>
+                            <label for="q8_b"><input type="radio" id="q8_b" name="Question8" value="B. &" required> B. &</label>
+                            <label for="q8_c"><input type="radio" id="q8_c" name="Question8" value="C. ->" required> C. -></label>
+                            <label for="q8_d"><input type="radio" id="q8_d" name="Question8" value="D. ." required> D. .</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>9. What is the output of the following C code?</strong></p>
+                        <pre class="code-block"><code>
+#include <stdio.h>
+int main() {
+    int i = 0;
+    for (; i < 5; i++) {
+        if (i == 2) continue;
+        printf("%d ", i);
+    }
+    return 0;
+}
+                        </code></pre>
+                        <div class="radio-group">
+                            <label for="q9_a"><input type="radio" id="q9_a" name="Question9" value="A. 0 1 2 3 4" required> A. 0 1 2 3 4</label>
+                            <label for="q9_b"><input type="radio" id="q9_b" name="Question9" value="B. 0 1 3 4" required> B. 0 1 3 4</label>
+                            <label for="q9_c"><input type="radio" id="q9_c" name="Question9" value="C. 0 1" required> C. 0 1</label>
+                            <label for="q9_d"><input type="radio" id="q9_d" name="Question9" value="D. Compile-time error" required> D. Compile-time error</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>10. Which of the following is the correct way to declare a pointer `p` to an integer variable `x`?</strong></p>
+                        <div class="radio-group">
+                            <label for="q10_a"><input type="radio" id="q10_a" name="Question10" value="A. int p = &x;" required> A. `int p = &x;`</label>
+                            <label for="q10_b"><input type="radio" id="q10_b" name="Question10" value="B. int *p = x;" required> B. `int *p = x;`</label>
+                            <label for="q10_c"><input type="radio" id="q10_c" name="Question10" value="C. int *p = &x;" required> C. `int *p = &x;`</label>
+                            <label for="q10_d"><input type="radio" id="q10_d" name="Question10" value="D. int p = *x;" required> D. `int p = *x;`</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>11. In C, what is the value of `sizeof(int)` on most 64-bit systems?</strong></p>
+                        <input type="text" id="q11_text" name="Question11" required>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>12. What is the name of the function used to allocate dynamic memory in C?</strong></p>
+                        <input type="text" id="q12_text" name="Question12" required>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>13. Write a short C code snippet to swap the values of two integer variables, `a` and `b`, without using a third variable.</strong></p>
+                        <textarea id="q13_textarea" name="Question13" rows="6" required></textarea>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>14. What is the ASCII value of the character 'A'?</strong></p>
+                        <input type="text" id="q14_text" name="Question14" required>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>15. Briefly explain the difference between `calloc()` and `malloc()` in C.</strong></p>
+                        <textarea id="q15_textarea" name="Question15" rows="6" required></textarea>
+                    </div>
+
+                    <p><strong>After submission wait until you see a tick</strong></p>
+                    <button type="submit" class="submit-button">Submit Quiz</button>
+                </div>
+            </form>
+
+            <div id="submissionSuccessMessage">
+                <div class="success-content">
+                    <i class="fas fa-check-circle success-icon-fa"></i> <p>Quiz Submitted Successfully!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by The Coders Club</p>
+        <a href="https://www.instagram.com/the_mce.coders_club?igsh=Z245eDZmdWhkcmRn" target="_blank">
+            <img src="IG.png" alt="Instagram" class="social-logo">
+        </a>
+        <a href="https://www.linkedin.com/in/thecodersclub-mce/" target="_blank">
+            <img src="LINKEDLN.png" alt="LinkedIn" class="social-logo">
+        </a>
+        <a href="https://www.youtube.com/@TheCodersClub_MCE" target="_blank">
+            <img src="YT.png" alt="YouTube" class="social-logo">
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb6HMGKKAwEe8OdjAF0X" target="_blank">
+            <img src="WP.svg" alt="WhatsApp" class="social-logo">
+        </a>
+    </footer>
+
+    <script>
+        // --- CONTROL KEYWORD HERE ---
+        // Change this variable to "disable" or "enable"
+        const linkControlStatus = "disable"; // Set to "enable" to activate links
+        // --- END CONTROL KEYWORD ---
+
+        // Object to store original text content for jumbling/unjumbling
+        const originalTextStore = {};
+
+        // Function to shuffle characters in a string
+        function shuffleString(str) {
+            let a = str.split("");
+            for (let i = a.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a.join("");
+        }
+
+        // Function to jumble the text content of an element
+        function jumbleText(element) {
+            // Check if element has any text content to jumble and is not just whitespace
+            if (element && element.textContent && element.textContent.trim().length > 0) {
+                // Use a unique key for storage, preferring element ID or generating one
+                const elementKey = element.id || 'jumble-' + Math.random().toString(36).substring(2, 9);
+                if (!element.id) { // Assign ID if it didn't exist for consistent lookup
+                    element.id = elementKey;
+                }
+
+                // Store original text if not already stored
+                if (!originalTextStore[elementKey]) {
+                    originalTextStore[elementKey] = element.textContent;
+                }
+                element.textContent = shuffleString(element.textContent);
+            }
+        }
+
+        // Function to unjumble the text content of an element
+        function unjumbleText(element) {
+            if (element && element.id && originalTextStore[element.id]) {
+                element.textContent = originalTextStore[element.id];
+                // Optionally delete from store if you don't need it after unjumbling
+                // delete originalTextStore[element.id];
+            }
+        }
+
+        // Function for showing the submission success animation
+        function showSuccessAnimation() {
+            const successMessage = document.getElementById('submissionSuccessMessage');
+            successMessage.classList.add('show'); // Add 'show' class to display the overlay
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show'); // Remove 'show' class to hide the overlay
+            }, 3000); // The animation will be visible for 3 seconds
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setLinkStatus(); // Call the main function to set the quiz status based on the keyword
+            
+            // --- NEW CODE TO DISABLE COPY/PASTE ---
+            const inputsToRestrict = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
+
+            inputsToRestrict.forEach(input => {
+                input.addEventListener('copy', (e) => e.preventDefault());
+                input.addEventListener('cut', (e) => e.preventDefault());
+                input.addEventListener('paste', (e) => e.preventDefault());
+            });
+            // --- END NEW CODE ---
+        });
+
+        function setLinkStatus() {
+            const statusElement = document.getElementById('status');
+
+            const quizQuestionsSection = document.getElementById('quizQuestionsSection');
+            const quizOverlay = document.getElementById('quizOverlay');
+            const quizForm = document.getElementById('quizForm');
+            const submitButton = quizForm.querySelector('.submit-button');
+
+            // Select elements whose text needs to be jumbled
+            const elementsToJumble = quizQuestionsSection.querySelectorAll('h3, p, .radio-group label, .checkbox-group label');
+
+            if (linkControlStatus === "enable") {
+                // Quiz is Enabled
+                // Hide overlay first for smooth transition
+                quizOverlay.style.opacity = '0';
+
+                // After overlay fades out, remove its visibility and disable class from quiz section
+                setTimeout(() => {
+                    quizOverlay.style.visibility = 'hidden';
+                    quizQuestionsSection.classList.remove('quiz-disabled-overlay');
+                }, 500); // Matches CSS transition duration
+
+                // Enable relevant form elements inside the quiz questions section
+                quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
+                    input.disabled = false;
+                });
+                submitButton.disabled = false; // Ensure submit button is enabled
+
+                // Unjumble text for questions and options
+                elementsToJumble.forEach(element => {
+                    unjumbleText(element);
+                });
+
+                statusElement.innerHTML = 'MINDMASH - FINAL QUIZ<br>fill within 30/6/25 6.00 PM IST!';
+                statusElement.style.color = '#008000'; // Green for active
+            } else { // Assumes "disable" or any other value means disabled
+                // Quiz is Disabled
+                // Show overlay immediately or with a slight delay
+                quizOverlay.style.visibility = 'visible';
+                quizOverlay.style.opacity = '1';
+
+                // Add the disabled styling to the quiz questions section for blur and opacity
+                quizQuestionsSection.classList.add('quiz-disabled-overlay');
+
+                // Disable relevant form elements inside the quiz questions section
+                quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
+                    input.disabled = true;
+                });
+                submitButton.disabled = true; // Ensure submit button is disabled
+
+                // Jumble text for questions and options
+                elementsToJumble.forEach(element => {
+                    jumbleText(element);
+                });
+
+                statusElement.innerHTML = 'MINDMASH - FINAL QUIZ<br>Quiz goes live on 28/6/25 at 6.00 PM IST!';
+                statusElement.style.color = '#CC0000'; // Red for closed
+            }
+        }
+
+        // Handle form submission to Google Sheet via Google Apps Script
+        const quizForm = document.getElementById('quizForm');
+        quizForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Check if the form is disabled by the linkControlStatus
+            if (this.querySelector('.submit-button').disabled) {
+                alert('The quiz is currently closed.');
+                return; // Stop submission if disabled
+            }
+
+            const formData = new FormData(quizForm);
+            const data = {};
+            for (let [key, value] of formData.entries()) {
+                if (key.endsWith('[]')) { // Handle checkbox arrays
+                    const originalKey = key.slice(0, -2);
+                    if (!data[originalKey]) {
+                        data[originalKey] = [];
+                    }
+                    data[originalKey].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+
+            // Convert checkbox arrays to comma-separated strings for easier GSheet logging
+            for (const key in data) {
+                if (Array.isArray(data[key])) {
+                    data[key] = data[key].join(', ');
+                }
+            }
+
+            // Replace 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE' with your deployed Apps Script URL
+            const scriptUrl = 'https://script.google.com/macros/s/AKfycbxv8SoMuCJ-OgnwFy5KatXccNBIzPfjLn6YJ0MkZNeDshqdaRjJfyOONsRnupxrWSxf/exec';
+            fetch(scriptUrl, {
+                method: 'POST',
+                mode: 'no-cors', // Important for sending data to Apps Script
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(data).toString()
+            })
+            .then(response => {
+                // If the fetch completes (even with no-cors), we assume the data was sent.
+                // Therefore, we can show the success animation.
+                showSuccessAnimation(); // CALL THE NEW ANIMATION FUNCTION HERE
+                quizForm.reset(); // Clear the form
+            })
+            .catch(error => {
+                console.error('Error submitting quiz:', error);
+                alert('There was an error submitting the quiz. Please try again.');
+            });
+        });
+    </script>
+</body>
+</html>
