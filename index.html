@@ -2073,8 +2073,60 @@ Hello, C programming!</code></div>
 <div id="thursday-content-week5" class="day-content day-section">
         <h2>Te Ta Thursday</h2>
         <div class="content-block">
-        <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
-        </div>
+        <h3>Structures in C:</h3>
+        <p>Imagine you have a collection of data that you want to store together, like a person's details. You can create a struct to hold this data:</p>
+        <pre><code>struct Person {
+    int age;
+    char name[20];
+};</code></pre>
+</div>
+<div class="content-block">
+<h3>Some cool things about structures:</h3>
+<ul>
+<li><strong>Structure Padding:</strong> When you define a structure, the compiler might add some extra space (padding) between members to ensure they're aligned properly in memory.<br>
+<p>For example:</p>
+<pre><code>struct Example {
+    char a; // 1 byte
+    int b;  // 4 bytes
+}; // The total size might be 8 bytes due to padding</code></pre></li>
+<li><strong>Bit Fields:</strong> You can specify the number of bits for a structure member, which is useful when working with limited memory:<br>
+<pre><code>struct PackedData {
+    unsigned int flag: 1;
+    unsigned int mode: 2;
+};</code></pre></li>
+<li><strong>Nested Structures:</strong> You can define a structure within another structure:<br>
+<pre><code>struct Address {
+    char street[20];
+    char city[10];
+};
+
+struct Person {
+    int age;
+    char name[20];
+    struct Address address;
+};</code></pre></li>
+</ul>
+</div>
+<div class="content-block">
+<h3>File Handling in C:</h3>
+<p>File handling allows you to read and write data to files. Here are some key functions:</p>
+<ul>
+  <li><strong>fopen():</strong> Opens a file.</li>
+  <li><strong>fread()</strong> and <strong>fwrite():</strong> Read and write data to files.</li>
+  <li><strong>fclose():</strong> Closes a file.</li>
+</ul>
+</div>
+<div class="content-block">
+<h3>Example:</h3>
+<pre><code>FILE *file = fopen("example.txt", "w");
+if (file != NULL) {
+    fprintf(file, "Hello, world!");
+    fclose(file);
+}</code></pre></div>
+<div class="content-block">
+<h3>Expected Output in example.txt :<h3>
+<code>Hello, world!</code></div>
+
 </div>
 <div id="friday-content-week5" class="day-content day-section">
         <h2>Function Friday</h2>
