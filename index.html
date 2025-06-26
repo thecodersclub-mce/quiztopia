@@ -2131,8 +2131,87 @@ if (file != NULL) {
 <div id="friday-content-week5" class="day-content day-section">
         <h2>Function Friday</h2>
         <div class="content-block">
-        <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+        <!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p> -->
+        <h3>Store and Retrieve Structured Data Using File Handling:</h3>
+        <p>This program helps you save a student's info—like their name, ID, and marks—into a file. Then it opens the file and shows you what was saved, kind of like writing something down and reading it later.</p>
         </div>
+        <div class="content-block">
+        <h3>Example:</h3>
+        <pre><code>#include &lt;stdio.h&gt;
+struct Student {
+    int id;
+    char name[50];
+    float marks;
+};
+
+// Function to get user input and write to file
+void writeStudentToFile() {
+    struct Student s;
+    
+    printf("Enter Student ID: ");
+    scanf("%d", &s.id);
+    
+    printf("Enter Student Name: ");
+    scanf(" %[^\n]", s.name);  // reads string with spaces
+    
+    printf("Enter Marks: ");
+    scanf("%f", &s.marks);
+
+    FILE *fp = fopen("student.txt", "w");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fprintf(fp, "%d\n%s\n%.2f\n", s.id, s.name, s.marks);
+    fclose(fp);
+    printf("Student data saved successfully.\n\n");
+}
+
+// Function to read from file and display
+void readStudentFromFile() {
+    struct Student s;
+    FILE *fp = fopen("student.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fscanf(fp, "%d\n", &s.id);
+    fgets(s.name, sizeof(s.name), fp);
+    fscanf(fp, "%f", &s.marks);
+
+    // Remove trailing newline from name (if any)
+    if (s.name[strlen(s.name) - 1] == '\n') {
+        s.name[strlen(s.name) - 1] = '\0';
+    }
+
+    fclose(fp);
+
+    printf("Student Data from File:\n");
+    printf("ID: %d\n", s.id);
+    printf("Name: %s\n", s.name);
+    printf("Marks: %.2f\n", s.marks);
+}
+
+int main() {
+    writeStudentToFile();
+    readStudentFromFile();
+    return 0;
+}</code></pre></div>
+    <div class="content-block">
+    <h3>Output:</h3>
+<code>Enter Student ID: 105
+Enter Student Name: Dave
+Enter Marks: 92.5
+Student data saved successfully.
+
+Student Data from File:
+ID: 105
+Name: Dave
+Marks: 92.50</code>
+</div>
 </div>
 <div id="saturday-content-week5" class="day-content day-section">
         <h2>Mindmash</h2>
@@ -2171,6 +2250,7 @@ const disabledDays = {
     //'week3': ['monday','tuesday','wednesday','thursday','friday','saturday'],
    // 'week4': ['monday','tuesday','wednesday','thursday','friday'],
    // 'week5': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+      'week5': ['friday'],
 };
 // --- END CONTROL KEYWORD ---
 
