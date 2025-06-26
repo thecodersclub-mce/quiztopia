@@ -184,6 +184,24 @@
                 padding: 10px;
             }
         }
+        /* Small devices (phones, 600px and down) */
+        @media only screen and (max-width: 600px) {
+            /* ... other mobile styles ... */
+            .content-access-button {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+            /* REDUCE SIZE OF NAVIGATION BUTTONS FOR MOBILE VIEW */
+            .nav-button {
+                padding: 6px 8px; /* Smaller padding */
+                font-size: 0.75em; /* Smaller font size */
+                margin: 2px; /* Reduce margin between buttons */
+            }
+            .button-container {
+                padding: 10px; /* Adjust padding for the button container */
+                text-align: center; /* Center buttons if they wrap */
+            }
+        }
 
         /* --- New CSS for Anti-Copying --- */
         .no-select {
@@ -330,6 +348,7 @@
 
     <div class="button-container" style="text-align: right; padding: 15px;">
         <button class="nav-button" onclick="window.location.href='index.html';">Back to Homepage</button>
+        <button class="nav-button" onclick="window.location.href='weeklycontent.html';">Weekly Content</button>
         <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
         <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
         <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>

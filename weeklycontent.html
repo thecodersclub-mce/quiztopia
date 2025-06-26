@@ -1,0 +1,2459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C Programming Series - The Coders Club</title>
+    <link rel="icon" href="TCC.png" type="image/png">
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+       /* General Container for all content */
+    .content-container-wrapper {
+    width: 90%;
+    max-width: 900px; /* Increased max-width for better content display */
+    margin-top: 20px;
+    margin-right: auto;
+    margin-bottom: 70px;
+    margin-left: auto; /* General top/bottom margin */
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 70px; /* Space before footer */
+}
+
+/* Main Tab Navigation (Week 1, Week 2, etc.) */
+.main-tab-nav {
+    display: flex;
+    justify-content: center;
+    background: #E0E0E0;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 5px;
+    box-shadow: inset 0px 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+}
+
+/* Nested Tab Navigation (Monday, Tuesday, etc.) */
+.nested-tab-nav {
+    display: flex;
+    justify-content: center;
+    background: #e3f2fd; /* Lighter blue background for nested tabs */
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 5px;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 15px; /* Space above nested tabs */
+    margin-bottom: 15px; /* Space below nested tabs */
+    flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+}
+
+/* General Tab Button Styling */
+.tab-button {
+    flex: 1; /* Allows buttons to grow and shrink */
+    min-width: 80px; /* Minimum width to prevent squishing */
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(to right, #F5F5F5, #E0E0E0);
+    color: #333;
+    font-size: 14px;
+    border-radius: 6px; /* Uniform rounded corners */
+    transition: 0.3s;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 2px; /* Adjusted margin for consistent spacing when wrapping */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.tab-button:hover {
+    background: #1E88E5;
+    color: white;
+}
+
+.tab-button.active {
+    background: #00408f;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Styling for disabled buttons */
+.tab-button.disabled {
+    background: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.tab-button.disabled:hover {
+    background: #cccccc;
+    color: #666666;
+}
+
+/* Content sections */
+.week-content, .day-content {
+    display: none; /* Hidden by default */
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    text-align: left; /* Ensure text alignment is natural */
+}
+
+.active-content {
+    display: block; /* Shown when active */
+}
+
+/* Styling for daily content sections within weeks */
+.day-section {
+    margin-top: 20px; /* Space between the daily tabs and content */
+    padding: 20px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.day-section h2 {
+    color: #00408f;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+}
+
+.content-block {
+    margin-bottom: 20px;
+    /* Ensure no extra padding/margin on the content block itself
+        that might throw off the alignment for its children */
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Headings within content block - ensure they have no left margin/padding */
+.content-block h3,
+.content-block h4 {
+    color: #1E88E5;
+    /* Adjust margin-bottom to control space before the list */
+    margin-bottom: 3px; /* Reduced for tighter spacing */
+    margin-left: 0; /* Crucial: Align heading text to the very left of .content-block */
+    padding-left: 0; /* Crucial: Align heading text to the very left of .content-block */
+    text-align: left; /* Ensure text is left-aligned */
+}
+
+.content-block p {
+    margin-bottom: 10px;
+    line-height: 1.6; /* Improved readability for text */
+}
+
+/* ---------------------------------------------------- */
+/* Unordered Lists (UL) - Circle Bullets */
+/* ---------------------------------------------------- */
+.content-block ul {
+    list-style: none; /* Remove default bullets */
+    margin-left: 0; /* Align the list's left edge with the heading */
+    padding-left: 0; /* Remove browser's default padding */
+    margin-top: 0; /* Pull list closer to the heading */
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.content-block ul li {
+    margin-bottom: 5px;
+    position: relative; /* Needed for ::before positioning */
+    line-height: 1.6; /* Ensure consistent line spacing */
+    
+    /* Padding to create space for the circle bullet and gap */
+    padding-left: 18px; /* Space for the circle bullet + small gap */
+}
+
+/* Custom Circle Bullet using ::before pseudo-element for UL */
+.content-block ul li::before {
+    content: "•"; /* Unicode character for a solid circle */
+    color: #00408f; /* Matching blue */
+    font-weight: bold; /* Make it more prominent */
+    font-size: 1em; /* Ensure the bullet size matches the text */
+    
+    position: absolute; /* Position the bullet absolutely relative to the list item */
+    left: 0; /* Align it to the very left edge of the LI's content area */
+    top: 0; /* Align with the top of the text */
+    margin-right: 8px; /* Space between the bullet and the start of the list item text */
+}
+
+/* ---------------------------------------------------- */
+/* Ordered Lists (OL) - Numbered Bullets */
+/* ---------------------------------------------------- */
+.content-block ol {
+    list-style: none; /* Crucial: Remove default numbers to use custom counters */
+    margin-left: 0; /* Align the list's left edge with the heading */
+    padding-left: 0; /* Remove browser's default padding */
+    margin-top: 0; /* Pull list closer to the heading */
+    margin-bottom: 10px;
+    text-align: left;
+
+    /* Initialize the counter for ordered lists */
+    counter-reset: custom-numbered-list;
+}
+
+.content-block ol li {
+    margin-bottom: 5px;
+    line-height: 1.6; /* Ensure consistent line spacing */
+    position: relative; /* Needed for positioning the ::before pseudo-element */
+    
+    /* Padding to create space for the number (e.g., "10.") and gap.
+        Adjust this based on the max number of items you expect (e.g., if you go to 100, you need more space). */
+    padding-left: 30px; /* Space for the number and text content */
+}
+
+/* Custom Numbered Bullet using ::before pseudo-element for OL */
+.content-block ol li::before {
+    /* Increment the counter for each list item */
+    counter-increment: custom-numbered-list;
+    /* Display the counter value followed by a period */
+    content: counter(custom-numbered-list) ".";
+    
+    color: #00408f; /* Matching blue */
+    font-weight: bold;
+    font-size: 1em; /* Ensure the number size matches the text */
+    
+    position: absolute; /* Position the number absolutely relative to the list item */
+    left: 0; /* Align it to the very left edge of the LI's content area */
+    top: 0; /* Align with the top of the text */
+    text-align: right; /* Right-align the number within its allotted width */
+    width: 25px; /* Fixed width for numbers (e.g., "1." and "10." align right within this width) */
+    margin-right: 5px; /* Space between the number and the start of the list item text */
+}
+
+code {
+    display: block;
+    background-color: #e6f7ff;
+    color: #333;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+    font-size: 0.95em;
+    white-space: pre-wrap; /* Ensures line breaks are respected */
+    word-wrap: break-word; /* Breaks long words if necessary */
+}
+
+pre code {
+    padding: 0;
+    background: none;
+    color: inherit;
+    font-size: 1em;
+    white-space: pre;
+}
+
+.example-label {
+    font-weight: bold;
+    color: #00408f;
+    margin-top: 15px;
+    display: block;
+}
+
+/* Add this to your existing CSS file or style block */
+
+.week-content.content-disabled-overlay,
+.day-content.content-disabled-overlay {
+    position: relative;
+    filter: blur(10px); /* Increased blur amount from 5px to 10px */
+    pointer-events: none; /* Disables all mouse events on the blurred content */
+    user-select: none; /* Prevents text selection */
+    opacity: 0.6; /* Optional: Make it slightly faded */
+}
+
+/* Optional: Add an actual overlay on top if you want a more distinct disabled look */
+.week-content.content-disabled-overlay::before,
+.day-content.content-disabled-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent white overlay */
+    z-index: 1; /* Make sure it's above the blurred content */
+}
+/* --- Mobile Responsiveness for Content and Buttons --- */
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .content-container-wrapper {
+        width: 95%; /* Slightly more width on small screens */
+        padding: 10px;
+        margin: 10px auto 70px auto;
+    }
+
+    /* For both main and nested tab navigation */
+    .main-tab-nav,
+    .nested-tab-nav {
+        flex-direction: row; /* Ensure horizontal flow */
+        justify-content: center;
+        flex-wrap: nowrap; /* PREVENT WRAPPING for buttons */
+        padding: 5px;
+    }
+
+    /* General Tab Button Styling for Mobile */
+    .tab-button {
+        flex: 1 1 auto; /* Allows buttons to grow and shrink */
+        min-width: 0; /* Allow them to shrink as much as needed */
+        margin: 2px; /* Small margin for consistent spacing */
+        font-size: 11px; /* Base font size for mobile */
+        padding: 6px 4px; /* Reduced horizontal padding to save space */
+        white-space: nowrap; /* Prevent text wrapping inside buttons */
+        overflow: hidden; /* Hide overflowing text if it gets too small */
+        text-overflow: ellipsis; /* Add ellipsis for hidden text */
+    }
+
+    /* --- Specific Adjustments for Week Buttons --- */
+    .main-tab-nav .tab-button {
+        /*
+         * To keep all 5 'Week' buttons on a single row,
+         * we set a flex-basis that ensures they take roughly 1/5th of the space.
+         * The `min-width: 0` above allows extreme shrinking if necessary.
+         */
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Potentially smaller font for weeks to fit 5 */
+        padding: 6px 2px; /* Even tighter padding for weeks */
+    }
+
+    /* --- Specific Adjustments for Weekday Buttons --- */
+    .nested-tab-nav .tab-button {
+        /*
+         * To keep all 5 'Day' buttons on a single row,
+         * similar to weeks, allow them to take roughly 1/5th of the space.
+         * `min-width: 0` is crucial here.
+         */
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Smallest font size for weekdays to fit 5 */
+        padding: 6px 2px; /* Tighter padding for weekdays */
+    }
+
+    /* Content and other elements responsiveness (no change needed here for this specific request) */
+    .day-section {
+        padding: 15px;
+    }
+
+    .day-section h2 {
+        font-size: 1.4em;
+    }
+
+    .content-block h3,
+    .content-block h4 {
+        font-size: 1.1em;
+        margin-bottom: 2px;
+    }
+
+    .content-block p,
+    .content-block ul li,
+    .content-block ol li {
+        font-size: 0.9em;
+    }
+
+    .content-block ul li {
+        padding-left: 15px;
+    }
+    .content-block ul li::before {
+        margin-right: 4px;
+        font-size: 0.9em;
+    }
+
+    .content-block ol li {
+        padding-left: 25px;
+    }
+    .content-block ol li::before {
+        width: 20px;
+        margin-right: 3px;
+        font-size: 0.9em;
+    }
+
+    code {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+    /* ... other mobile styles ... */
+            .content-access-button {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+            /* REDUCE SIZE OF NAVIGATION BUTTONS FOR MOBILE VIEW */
+            .nav-button {
+                padding: 6px 8px; /* Smaller padding */
+                font-size: 0.75em; /* Smaller font size */
+                margin: 2px; /* Reduce margin between buttons */
+            }
+            .button-container {
+                padding: 10px; /* Adjust padding for the button container */
+                text-align: center; /* Center buttons if they wrap */
+            }
+}
+/* Medium devices (tablets, 601px to 900px) */
+@media only screen and (min-width: 601px) and (max-width: 900px) {
+    .content-container-wrapper {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .tab-button {
+        font-size: 13px;
+        padding: 7px 10px;
+        min-width: 90px; /* Slightly larger min-width for tablets */
+    }
+
+    .day-section {
+        padding: 20px;
+    }
+
+    .day-section h2 {
+        font-size: 1.6em;
+    }
+
+    .content-block h3 {
+        font-size: 1.3em;
+    }
+
+    code {
+        font-size: 0.9em;
+        padding: 12px;
+    }
+}
+/* Table Styling - General (applies to all screen sizes unless overridden) */
+.content-block table {
+    width: 100%; /* Default to 100% width */
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    /* Remove table-layout: fixed; here. It can constrain the table too much on small screens.
+       Let the table content dictate its width within the scrollable container. */
+}
+
+.content-block th,
+.content-block td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    word-wrap: break-word; /* Prevents long words from breaking layout */
+}
+
+.content-block th {
+    background-color: #00408f;
+    color: white;
+    font-weight: bold;
+}
+
+.content-block tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.content-block tr:hover {
+    background-color: #e0e0e0;
+}
+
+/* --- Mobile Responsiveness for Content and Buttons --- */
+
+/* Small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .content-container-wrapper {
+        width: 95%; /* Slightly more width on small screens */
+        padding: 10px;
+        margin: 10px auto 70px auto;
+    }
+
+    /* For both main and nested tab navigation */
+    .main-tab-nav,
+    .nested-tab-nav {
+        flex-direction: row; /* Ensure horizontal flow */
+        justify-content: center;
+        flex-wrap: nowrap; /* PREVENT WRAPPING for buttons */
+        padding: 5px;
+        /* Add overflow-x here to enable horizontal scrolling for buttons if they exceed */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    /* General Tab Button Styling for Mobile */
+    .tab-button {
+        flex: 1 1 auto; /* Allows buttons to grow and shrink */
+        min-width: 0; /* Allow them to shrink as much as needed */
+        margin: 2px; /* Small margin for consistent spacing */
+        font-size: 11px; /* Base font size for mobile */
+        padding: 6px 4px; /* Reduced horizontal padding to save space */
+        white-space: nowrap; /* Prevent text wrapping inside buttons */
+        overflow: hidden; /* Hide overflowing text if it gets too small */
+        text-overflow: ellipsis; /* Add ellipsis for hidden text */
+    }
+
+    /* --- Specific Adjustments for Week Buttons --- */
+    .main-tab-nav .tab-button {
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Potentially smaller font for weeks to fit 5 */
+        padding: 6px 2px; /* Even tighter padding for weeks */
+    }
+
+    /* --- Specific Adjustments for Weekday Buttons --- */
+    .nested-tab-nav .tab-button {
+        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
+        font-size: 10px; /* Smallest font size for weekdays to fit 5 */
+        padding: 6px 2px; /* Tighter padding for weekdays */
+    }
+
+    /* Content and other elements responsiveness */
+    .day-section {
+        padding: 15px;
+    }
+
+    .day-section h2 {
+        font-size: 1.4em;
+    }
+
+    .content-block h3,
+    .content-block h4 {
+        font-size: 1.1em;
+        margin-bottom: 2px;
+    }
+
+    .content-block p,
+    .content-block ul li,
+    .content-block ol li {
+        font-size: 0.9em;
+    }
+
+    .content-block ul li {
+        padding-left: 15px;
+    }
+    .content-block ul li::before {
+        margin-right: 4px;
+        font-size: 0.9em;
+    }
+
+    .content-block ol li {
+        padding-left: 25px;
+    }
+    .content-block ol li::before {
+        width: 20px;
+        margin-right: 3px;
+        font-size: 0.9em;
+    }
+
+    code {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+
+    /* --- Table Responsiveness for Mobile --- */
+    .table-responsive {
+        overflow-x: auto; /* Enable horizontal scrolling for the table container */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    .content-block table {
+        /* On small screens, allow the table to take its natural width,
+           which will then be contained by the .table-responsive wrapper. */
+        width: 100%; /* Start with 100% width */
+        min-width: 400px; /* Set a minimum width for the table itself.
+                             Adjust this based on your table content.
+                             This prevents extreme squishing of columns.*/
+        table-layout: auto; /* Allow column widths to adjust based on content */
+    }
+
+    /* Remove the problematic display changes for table elements on mobile */
+    .content-block table,
+    .content-block thead,
+    .content-block tbody,
+    .content-block th,
+    .content-block td,
+    .content-block tr {
+        display: table-cell; /* Revert to default table display properties, adjusted below */
+    }
+
+    .content-block tr {
+        display: table-row; /* Ensure rows display as table rows */
+    }
+
+    .content-block thead {
+        display: table-header-group; /* Ensure thead displays correctly */
+    }
+
+    .content-block tbody {
+        display: table-row-group; /* Ensure tbody displays correctly */
+    }
+
+    .content-block th,
+    .content-block td {
+        display: table-cell; /* Ensure th and td display as table cells */
+    }
+
+    .content-block thead tr {
+        position: static; /* Revert position */
+        top: auto;
+        left: auto;
+    }
+
+    /* Ensure padding and text alignment are standard for a scrollable table */
+    .content-block td {
+        border: 1px solid #ddd; /* Re-add borders */
+        padding: 8px; /* Slightly reduced padding for mobile table cells */
+        text-align: left; /* Keep text alignment left */
+    }
+
+    .content-block th {
+        padding: 8px; /* Slightly reduced padding for mobile table headers */
+    }
+
+    .content-block td::before {
+        content: none; /* Crucial: Remove the data-label pseudo-element */
+    }
+}
+/* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
+/* No specific media query needed here as base styles handle larger screens */
+    </style>
+</head>
+<body>
+
+    <div class="blue-container">
+        <div class="left-aligned">
+            <a href="https://mce-madurai.ac.in/" target="_blank">
+                <img src="MCE_tab.png" alt="Logo" class="favicon-logo">
+            </a>
+            <div class="titles">
+                <h1 class="college-name">Mangayarkarasi College of Engineering</h1>
+                <h2 class="site-title">The Coders Club</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="button-container" style="text-align: right; padding: 15px;">
+        <button class="nav-button" onclick="window.location.href='index.html';">Back to Homepage</button>
+        <button class="nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
+        <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
+        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
+        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+    </div>
+
+    <div class="content-container-wrapper">
+        <div class="main-tab-nav">
+            <button class="tab-button" onclick="showWeek('week1', this)">Week 1</button>
+            <button class="tab-button" onclick="showWeek('week2', this)">Week 2</button>
+            <button class="tab-button" onclick="showWeek('week3', this)">Week 3</button>
+            <button class="tab-button" onclick="showWeek('week4', this)">Week 4</button>
+            <button class="tab-button" onclick="showWeek('week5', this)">Week 5</button>
+        </div>
+
+        <div id="week1" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 1 - Basics and Syntax
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week1', this, 'week1')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week1', this, 'week1')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week1', this, 'week1')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week1', this, 'week1')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week1', this, 'week1')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week1', this, 'week1')">Saturday</button>
+    </div>
+
+    <div id="monday-content-week1" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>What Are Header Files?</h3>
+            <ul>
+                <li>They contain function declarations, macros, constants, and data type definitions.</li>
+                <li>Included in source files using the #include directive to share code across multiple files.</li>
+                <li>Facilitate modularity, code reuse, and separation of interface from implementation.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="tuesday-content-week1" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <div class="content-block">
+            <h3>Variables:</h3>
+            <p>Variables are named locations in memory that are used to hold a value that may be modified by the program.</p>
+            <p>The <strong>syntax</strong> for declaring a variable is:</p>
+            <pre><code>Data_type variableName;</code></pre>
+            <h3>Valid Examples:</h3>
+            <pre><code>int age = 21;
+float salary = 4564.50;
+int marks;
+int acc_type;
+char ch = 'y';
+char name[20] = "apollo";</code></pre>
+            <h3>Invalid Examples:</h3>
+            <pre><code>int 5marks;
+int @host;
+int acc no$;</code></pre>
+            <h3>Rules for framing a variable:</h3>
+            <ul>
+                <li>The first character in the variable name must be an alphabet.</li>
+                <li>Alphabets can be followed by a number of digits or underscores _.</li>
+                <li>No commas or blank spaces are allowed within a variable name.</li>
+                <li>No special characters other than underscore (_) can be used in a variable name.</li>
+                <li>The variable name should not be a keyword.</li>
+                <li>Variable names are case sensitive.</li>
+                <li>It should not be of length more than 31 characters.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="wednesday-content-week1" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+            <h3>Basic Syntax of a C Program:</h3>
+            <pre><code>
+#include &lt;stdio.h&gt; // Preprocessor directive
+
+// main function - entry point of the program
+int main() {
+    // Print output to the screen
+    printf("Hello, World!\\n");
+
+    return 0; // Exit the program
+}</code></pre>
+<h3>Output:</h3>
+<code>Hello, World!</code>
+            <h3>Explanation of Each Part:</h3>
+            <ol>
+                <li>Every C program must have a main() function.</li>
+                <li>Statements must end with a semicolon ;</li>
+                <li>C is case-sensitive.</li>
+                <li>Code is typically written in .c files and compiled using tools like gcc.</li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="thursday-content-week1" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+            <pre><code>#include &lt;stdio.h&gt;
+#define ADD(a, b) ((a) + (b))
+int main() { printf("%d\\n", ADD(5, 7)); return 0; }</code></pre>
+            <h3>Output:</h3>
+            <code>12</code>
+            <h3>Explanation:</h3>
+            <ol>
+                <li>#define ADD(a, b) ((a) + (b))
+                This line defines a macro named ADD that takes two arguments, a and b. The macro expands to the expression ((a) + (b)), which calculates the sum of a and b.
+                The parentheses around a and b are used to ensure that the macro works correctly even if the arguments are expressions themselves.<br>
+                </li>
+                <li>printf("%d\n", ADD(5, 7));
+                Here, the ADD macro is used to calculate the sum of 5 and 7. The macro expands to ((5) + (7)), which evaluates to 12. The result is then passed to printf(), which prints the value to the console.</li>
+            </ol>
+            <h3>How it works:</h3>
+            <ol>
+                <li>The preprocessor expands the ADD macro to ((5) + (7))</li>
+                <li>The compiler evaluates the expression ((5) + (7)) to 12.</li>
+                <li>The printf() function prints the result, 12, to the console.</li>
+            </ol>
+            <p>
+                Using macros like ADD can be useful for simple calculations, but be cautious when using complex macros, as they can lead to unexpected behavior.
+            </p>
+        </div>
+    </div>
+
+    <div id="friday-content-week1" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+            <h3>Functions:</h3>
+            <p>
+                Functions are blocks of code designed to perform specific tasks. They enhance modularity, code reuse, and readability.
+            </p>
+            <h3>Types of Functions:</h3>
+            <ol>
+                <li>Library Functions: Predefined in header files (printf(),scanf(),strlen(), etc.).</li>
+                <li>User-Defined Functions: Created by the programmer for specific tasks.</li>
+                <li>Recursive Functions: Functions that call themselves.</li>
+            </ol>
+            <h3>Basic Function Syntax:</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+// Function declaration
+int add(int a, int b);
+int main() {
+    int result = add(5, 7);
+    printf("Sum: %d\\n", result);
+    return 0;
+}
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}</code></pre>
+<h3>Output:</h3>
+<code>Sum: 12</code>
+            <h3>Function Components Explained:</h3>
+            <ul>
+                <li>Function Declaration: Specifies return type, function name, and parameters.</li>
+                <li>Function Definition: Contains the actual implementation.</li>
+                <li>Function Call: Invokes the function with arguments.</li>
+            </ul>
+            <h3>Function Advantages:</h3>
+            <ul>
+                <li>Encourages code reusability.</li>
+                <li>Breaks problems into smaller manageable chunks.</li>
+                <li>Improves readability and maintainability.</li>
+            </ul>
+            <p><strong>Fun Fact:</strong> In C, functions must be declared before they are used, unless included in header files.</p>
+        </div>
+    </div>
+    <div id="saturday-content-week1" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="content-block">
+            <h3>1. How can a C programmer separate function declarations and avoid multiple inclusions?</h3>
+            <ol>
+                <li>Use one .c file for everything.</li>
+                <li><strong>Use .h files with include guards or #pragma once.</strong></li>
+                <li>Only use standard headers.</li>
+                <li>Avoid using headers completely.</li>
+            </ol>
+            <h3>2. Which of the following variable names are valid in C?</h3>
+            <ol>
+                <li>int 2cool4school;</li>
+                <li><strong>float _temperature;</strong></li>
+                <li>char full name[50];</li>
+                <li><strong>double classAverage;</strong></li>
+                <li>int break;</li>
+            </ol>
+            <h3>3. What is required in every C program to serve as the entry point?</h3>
+            <ol>
+                <li><strong>main() function</strong></li>
+                <li>int main()</li>
+                <li>char full name[50];</li>
+                <li>void main()</li>
+                <li>Return type of main (int)</li>
+            </ol>
+            <h3>4. What does the #define directive do in C?</h3>
+            <ol>
+                <li>Declares a variable</li>
+                <li><strong>Defines a macro</strong></li>
+                <li>Includes a library</li>
+                <li>Defines a function</li>
+            </ol>
+            <h3>5. Which of the following scenarios best demonstrates the advantage of using functions in C?</h3>
+            <ol>
+                <li>Writing all logic inside main() without breaking it into smaller tasks.</li>
+                <li><strong>Using separate functions for repeated calculations to improve modularity.</strong></li>
+                <li>Avoiding function entirely and using global variables for efficiency</li>
+                <li>Copy-pasting code snippets multiple times instead of defining reusable functions.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<div id="week2" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 2 - Control Structures
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week2', this, 'week2')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week2', this, 'week2')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week2', this, 'week2')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week2', this, 'week2')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week2', this, 'week2')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week2', this, 'week2')">Saturday</button>
+    </div>
+
+    <div id="monday-content-week2" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>Introduction to Control Structures:</h3>
+            <p>Control structures allow you to change the flow of program execution based on conditions.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Types:</h3>
+            <ul>
+                <li>Decision-making (conditional).</li>
+                <li>Looping (iterative).</li>
+                <li>Jumping (branching).</li>
+            </ul>
+        </div>
+
+        <div class="content-block">
+            <h3>Explanation:</h3>
+            <ul>
+                <li>Decision-Making Structures: Used to execute a block of code only if a condition is true.</li>
+                <li>Looping Structures: Used to repeat a block of code multiple times.</li>
+                <li>Jumping Statements: Used to alter the normal flow of a program.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="tuesday-content-week2" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <div class="content-block">
+            <h3>Conditional Statements in C:</h3>
+            <p>Conditional statements are used to make decisions in a program. Based on whether a condition is true or false, different blocks of code will be executed.</p>
+            <h3>Types:</h3>
+            <ol>
+                <li>if Statement</li>
+                <li>if...else Statement</li>
+                <li>else if Ladder</li>
+                <li>switch Statement</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>Detailed Explanation of Types:</h3>
+            <ol>
+                <li>
+                    <h4>if Statement:</h4>
+                    <p>Used when you want to execute a block of code only if a condition is true.</p>
+                    <h5>Syntax:</h5>
+                    <pre><code>if (condition) {
+    //code to execute if condition is true
+}</code></pre>
+                </li>
+                <li>
+                    <h4>if...else Statement:</h4>
+                    <p>Used when you want to choose between two blocks of code.</p>
+                    <h5>Syntax:</h5>
+                    <pre><code>if (condition) {
+    //code to execute if condition is true
+}
+else {
+    //code if false
+}</code></pre>
+                </li>
+                <li>
+                    <h4>else if Ladder:</h4>
+                    <p>Used when you have multiple conditions to check in sequence.</p>
+                    <h5>Syntax:</h5>
+                    <pre><code>if (condition) {
+    //code to execute if condition is true
+}
+else if (condition) {
+    //code
+}
+else if (condition n) {
+    //code
+}
+else {
+    //default code
+}</code></pre>
+                </li>
+                <li>
+                    <h4>switch Statement:</h4>
+                    <p>Used to replace multiple else if blocks when comparing a single variable against many values.</p>
+                    <h5>Syntax:</h5>
+                    <pre><code>switch (expression) {
+case value1:
+    //code
+    break;
+case value2:
+    //code
+    break;
+default:
+    //code
+    break;
+}</code></pre>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <div id="wednesday-content-week2" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+            <h3>Syntax of if Statement in C:</h3>
+            <pre><code>if (condition) {
+    //Code to execute if condition is true
+}</code></pre>
+            <h3>Example C program using if:</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int number;
+    printf("Enter an integer: ");
+    scanf("%d", &number);
+    if (number > 0) {
+        printf("%d is a positive number.\n", number);
+    }
+    return 0;
+}</code></pre>
+            <h3>Output:</h3>
+            <code>Enter a number:
+8
+The number is positive.</code>
+        </div>
+    </div>
+
+    <div id="thursday-content-week2" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+            <ol>
+                <li>
+                    <h4>Switch Statement with Enumerations:</h4>
+                    Using switch statements with enumerations to handle different cases.
+                </li>
+                <pre><code>typedef enum {
+    RED,
+    GREEN,
+    BLUE
+} Color;
+
+void printColor(Color c) {
+    switch(c){
+        case RED:
+            printf("Red\n");
+            break;
+        //..
+    }
+}</code></pre>
+                <h3>Expected Output:</h3>
+                <code>Red</code>
+                <li>
+                    <h4>Nested Loops with Labels:</h4>
+                    Using labels to control nested loopexecution.
+                </li>
+                <pre><code>outer:
+for(int i = 0; i < 5; i++) {
+    for(int j = 0; j < 5; j++) {
+        if (i == 3) break outer;
+        printf("%d %d\n",i,j);
+    }
+}</code></pre>
+                <h3>Expected Output:</h3>
+                <code>0 0
+0 1
+0 2
+0 3
+0 4
+1 0
+1 1
+1 2
+1 3
+1 4
+2 0
+2 1
+2 2
+2 3
+2 4</code>
+
+                <li>
+                    <h4>Break and Continue Statements:</h4>
+                    Controlling loop execution with break and continue.
+                </li>
+                <pre><code>for ( int i = 0; i < 5; i++) {
+    if (i == 3)
+        continue; //Skips 3
+    if (i == 4)
+        break; //Stop at 4
+    printf("%d\n",i);
+}</code></pre>
+                <h3>Expected Output:</h3>
+                <code>0
+1
+2</code>
+                <li>
+                    <h4>if-else Statements with Conditional Operators:</h4>
+                    Simplifying if-else with conditional operators.
+                </li>
+                <pre><code>
+int x=5;
+int result = (x>10) ? 1 : 0; //result = 0
+printf("%d\n",result);
+                </code></pre>
+                <h3>Expected Output</h3>
+                <code>0</code>
+            </ol>
+        </div>
+    </div>
+
+    <div id="friday-content-week2" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+            <h3>do...while Loop:</h3>
+            <p>
+                Executes a block of code at least once, and then continues to repeat the block as long as a specified condition remains true.
+            </p>
+            <h4>Syntax:</h4>
+            <pre><code>
+do {
+    // Code to execute
+} while (condition);
+            </code></pre>
+            <h3>Example:</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int x = 5;
+    do {
+        printf("Value: %d\n",x); // Corrected printf format string
+        x--;
+    } while (x > 0);
+    return 0;
+}
+            </code></pre>
+            <h3>Output:</h3>
+            <code>Value: 5
+Value: 4
+Value: 3
+Value: 2
+Value: 1</code>
+            <h3>Simulating for-each Loop in C:</h3>
+            <p>
+                C doesn't have a direct for-each, but arrays can be traversed using a for loop.
+            </p>
+<h3>Example:</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+int numbers[] = {10, 20, 30, 40};
+int size = sizeof(numbers) / sizeof(numbers[0]);
+for(int i = 0; i < size; i++) {
+printf("Value: %d\n", numbers[i]);
+}
+return 0;
+}
+            </code></pre>
+            <h3>Output:</h3>
+            <code>Value: 10
+Value: 20
+Value: 30
+Value: 40</code>
+            <h3>Code Explanation:</h3>
+            <ul>
+                <li>Defines an array numbers[]</li>
+                <li>Calculates the array size using sizeof(numbers) / sizeof(numbers[0])</li>
+                <li>Iterates through elements, printing each value dynamically</li>
+            </ul>
+        </div>
+    </div>
+    <div id="saturday-content-week2" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="content-block">
+            <h3>1.What does a control structure do in programming?</h3>
+            <ol>
+                <li>It stores data in memory.</li>
+                <li><strong>It defines the order in which instructions are executed.</strong></li>
+                <li>It displays output to the user.</li>
+                <li>It converts high-level code to machine code.</li>
+            </ol>
+            <h3>2. What will be printed when the following program is executed?</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 5, b = 10;
+
+    if (a < b)
+        if (a != 5)
+            printf("A is not five\n");
+        else
+            printf("A is five\n");
+    else
+        printf("A is not greater than B\n");
+
+    return 0;
+}
+            </code></pre>
+            <ol>
+                <li>A is not five.</li>
+                <li><strong>A is five.</strong></li>
+                <li>A is not greater than B.</li>
+                <li>Compilation Error</li>
+            </ol>
+            <h3>3. How can a C program use an if statement to check if a number entered by the user is positive?</h3>
+            <h5><strong>Sample code / the answer may differ according to your idea</strong></h5>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int number;
+    printf("Enter an integer: ");
+    scanf("%d", &number);
+    if (number > 0) {
+        printf("%d is a positive number.\n", number);
+    }
+    return 0;
+}
+            </code></pre>
+            <h3>4. What is the purpose of using enumerations with switch statements in C?</h3>
+            <ol>
+                <li>To simplify code readability.</li>
+                <li>To improve code performance.</li>
+                <li><strong>To handle different cases based on a specific value.</strong></li>
+                <li>To reduce memory usage.</li>
+            </ol>
+            <h3>5.Imagine you have a vending machine that requires a customer to press a button at least once to check if an item is available. If the item is available, they can continue pressing to get more items. Which loop structure in C works similarly to this vending machine process?</h3>
+            <ol>
+                <li>for loop.</li>
+                <li>while loop.</li>
+                <li><strong>do...while loop.</strong></li>
+                <li>switch statement.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+        <div id="week3" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 3 - Functions and Arrays Control Structure 
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week3', this, 'week3')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week3', this, 'week3')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week3', this, 'week3')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week3', this, 'week3')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week3', this, 'week3')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week3', this, 'week3')">Saturday</button>
+    </div>
+
+    <div id="monday-content-week3" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>What is a function?</h3>
+            <p>A function is a block of code that performs a specific task. It improves modularity and reusability.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Syntax:</h3>
+            <pre><code>return_type function_name(parameters) {
+    // code
+}</code></pre>
+        </div>
+
+        <div class="content-block">
+            <h3>Example:</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+
+// Function declaration
+int add(int a, int b);
+
+int main() {
+    int sum = add(5, 10);  // Function call
+    printf("Sum is: %d", sum);
+    return 0;
+}
+
+// Function definition
+int add(int a, int b) {
+    return a + b;
+}</code></pre>
+        </div>
+        <div class="content-block">
+            <h3>Output:</h3>
+            <code>Sum is: 15</code>
+        </div>
+    </div>
+
+    <div id="tuesday-content-week3" class="day-content day-section">
+        <h2>Techie Tuesday</h2>
+        <div class="content-block">
+            <h3>Arrays in C:</h3>
+            <p>An array in C is a collection of elements, all of the same type, stored in contiguous memory locations.</p>
+            <div class="content-block">
+                <h3>Syntax:</h3>
+                <pre><code>
+data_type array_name[size];
+// Example: int myArray[10];
+                </code></pre>
+                <p>Type: The data type of the array elements (e.g., int, float).<br>Size: The number of elements the array can store.</p>
+            </div>
+            <div class="content-block">
+                <h3>Example:</h3>
+                <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};  // Declaration and initialization
+    printf("Element at index 2: %d\n", arr[2]);
+    return 0;
+}</code></pre>
+            </div>
+            <div class="content-block">
+                <h3>Output:</h3>
+                <code>Element at index 2: 3</code>
+            </div>
+<div class="content-block">
+                <h3>Control Structures for Arrays in C:</h3>
+                <p>Control structures like loops are used to traverse and manipulate arrays in C.</p>
+                <h3>Example with for loop:</h3>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int arr[5] = {1, 2, 3, 4, 5};    
+    // Loop through array and print each element
+    for (int i = 0; i < 5; i++) {
+        printf("Element at index %d: %d\n", i, arr[i]);
+    }
+    return 0;
+}
+                </code></pre>
+<p>This code prints all the elements of the array arr.</p>
+            </div>
+
+ <div class="content-block">
+                <h3>Output:</h3>
+                <code>Element at index 0: 1
+Element at index 1: 2
+Element at index 2: 3
+Element at index 3: 4
+Element at index 4: 5</code>
+            </div>
+        </div>
+    </div>
+
+    <div id="wednesday-content-week3" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+            <h3>Let see about pointers in C program:</h3>
+            <p>A pointer is a variable that stores the address of another variable. Pointers are powerful tools that enable efficient memory access, dynamic memory management, and are essential in data structures like linked lists and trees.</p>
+        </div>
+        <div class="content-block">
+            <h3>Example program:</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;          // Declare an integer variable
+    int *ptr;            // Declare a pointer to int
+
+    ptr = &a;            // Store address of variable 'a' in pointer 'ptr'
+
+    // Print the value and address
+    printf("Value of a: %d\n", a);
+    printf("Address of a: %p\n", &a);
+    printf("Value stored in ptr (address of a): %p\n", ptr);
+    printf("Value pointed to by ptr (value of a): %d\n", *ptr);
+
+    return 0;
+}
+            </code></pre>
+        </div>
+        <div class="content-block">
+            <h3>Output:</h3>
+            <code>Value of a: 10
+Address of a: 0x7ffee0b01234  (This will be a hexadecimal address)
+Value stored in ptr (address of a): 0x7ffee0b01234 (This will be the same as Address of a)
+Value pointed to by ptr (value of a): 10</code>
+        </div>
+    </div>
+
+    <div id="thursday-content-week3" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+            <h3>Passing Arrays to Functions:</h3>
+            <p>One lesser-known aspect is how arrays are passed to functions in C. When an array is passed to a function, it decays into a pointer to the first element. This means the function receives a pointer, not the entire array.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Example program:</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+
+// Function to print array elements
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int numbers[5] = {1, 2, 3, 4, 5};
+    printArray(numbers, 5);
+    return 0;
+}
+</code></pre>
+<p>In this example, arr in the printArray function is essentially a pointer to the first element of the numbers array. The size parameter is necessary because the function doesn't know the size of the array otherwise.</p>
+        </div>
+        <div class="content-block">
+            <h3>Output:</h3>
+            <code>1 2 3 4 5</code>
+        </div>
+    </div>
+
+    <div id="friday-content-week3" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+            <h3>Function Pointers in C:</h3>
+            <p>A function pointer stores the address of a function and allows dynamic invocation.</p>
+            <h4>Syntax:</h4>
+            <pre><code>
+// Function pointer declaration
+void (*funcPtr)();
+
+// Assign function address to pointer
+funcPtr = &greet;
+
+// Call function using pointer
+funcPtr();
+
+            </code></pre>
+            <h3>Example:</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+// Function to display a message
+void greet() {
+    printf("Hello, Function Pointers!\n");
+}
+int main() {
+    void (*funcPtr)(); // Declare function pointer
+    funcPtr = &greet;  // Assign function address
+    funcPtr();         // Call function using pointer
+    return 0;
+}
+
+            </code></pre>
+            <h3>Output:</h3>
+            <code>Hello, Function Pointers!</code>
+            <h3>Why use function pointers?</h3>
+            <ul>
+                <li>Enables callback functions in programs like sorting algorithms.</li>
+                <li>Used in event-driven programming and function abstraction.</li>
+            </ul>
+<h3>Deeper Dive:</h3>
+            <ul>
+                <li>Function pointers allow runtime function selection, making programs more flexible.</li>
+                <li>They are essential for implementing state machines, commonly used in embedded systems.</li>
+            </ul>
+<h3>Variable-Length Arrays (VLA):</h3>
+            <p>Unlike fixed-size arrays, VLAs allow defining arrays with dynamic sizes at runtime (supported in modern C versions).</p>
+
+<h3>Syntax:</h3>
+<pre><code>
+int n;
+scanf("%d", &n);  // Get array size from user
+int arr[n];       // Declare a variable-length array
+            </code></pre>
+<h3>Example:</h3>
+            <pre><code>
+int main() {
+    int n;
+    printf("Enter array size: ");
+    scanf("%d", &n);
+    int arr[n];  // Variable-length array
+    for (int i = 0; i < n; i++) {
+        arr[i] = i + 1;
+    }
+    printf("Array contents:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+
+            </code></pre>
+            <h3>Expected Output:</h3>
+            <code>Enter array size: 5
+Array contents:
+1 2 3 4 5
+
+---
+
+Enter array size: 3
+Array contents:
+1 2 3
+
+---
+
+Enter array size: 10
+Array contents:
+1 2 3 4 5 6 7 8 9 10</code>
+            <h3>Why use VLAs?</h3>
+            <ul>
+                <li>Allows dynamic array sizing at runtime.</li>
+                <li>Useful when the required array size is unknown before execution.</li>
+            </ul>
+<h3>Deeper Dive:</h3>
+            <ul>
+                <li>Simpler Syntax Compared to malloc.</li>
+                <li>Eliminates the need for manual memory allocation & deallocation.</li>
+            </ul>
+<h3>When Should You Use VLAs?</h3>
+            <ul>
+                <li>When you need simple runtime array sizing for small arrays.</li>
+                <li>When writing temporary arrays that won’t persist beyond function scope</li>
+            </ul>
+        </div>
+    </div>
+<div id="saturday-content-week3" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="content-block">
+            <h3>1. Define what a "function" is in C programming, and explain how its use contributes to better code quality.</h3>
+            <h5><strong>Expected answer</strong></h5>
+<p>A function in C is a block of code that performs a specific task. It promotes modularity and code reuse, making programs easier to debug, read, and maintain by breaking complex problems into smaller parts.</p>
+            <h3>2. Which of the following statements about arrays in C is TRUE, considering pointer behavior, memory allocation, and function interactions?</h3>
+            <ol>
+                <li>The name of an array can be incremented like a pointer, because it points to the base address of the array.</li>
+                <li>When an array is passed to a function, the entire array is copied and operated on as a separate entity.</li>
+                <li>Arrays in C can have dynamic lengths declared using variables in standard C90.</li>
+                <li><strong>The expression *(arr + i) is equivalent to arr[i] in terms of accessing array elements.</strong></li>
+            </ol>
+            <h3>3. What concept is primarily demonstrated by the output of the following C program involving a variable and a pointer?</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+int main() {
+    int a = 10; 
+    int *ptr;            
+    ptr = &a;           
+    printf("Value of a: %d\n", a);
+    printf("Address of a: %p\n", &a);
+    printf("Value stored in ptr (address of a): %p\n", ptr);
+    printf("Value pointed to by ptr (value of a): %d\n", *ptr);
+    return 0;
+}
+            </code></pre>
+<ol>
+                <li><strong>The program shows how to use a pointer to access the address and value of a variable.</strong></li>
+                <li>The program swaps two integers using pointers.</li>
+                <li>The program performs dynamic memory allocation using malloc.</li>
+                <li>The program uses arrays to store multiple integer values.</li>
+                <li>The program demonstrates pointer arithmetic with arrays.</li>
+            </ol>
+            <h3>4. Why is the size parameter typically necessary when an array is passed to a function in C, as shown in the printArray example?</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+int main() {
+    int numbers[5] = {1, 2, 3, 4, 5};
+    printArray(numbers, 5);
+    return 0;
+}
+            </code></pre>
+<ol>
+                <li>The program shows how to use a pointer to access the address and value of a variable.</li>
+                <li>To ensure the array elements are passed by value instead of by reference.</li>
+                <li><strong>Because when an array decays to a pointer, the function loses information about its original size.</strong></li>
+                <li>To allow the function to modify the array's dimensions dynamically.</li>
+            </ol>
+            <h3>5. What is the primary advantage of using function pointers in C?</h3>
+            <ol>
+                <li>They allow defining arrays with dynamic sizes at runtime.</li>
+                <li><strong>They enable runtime function selection and dynamic invocation.</strong></li>
+                <li>They eliminate the need for manual memory allocation.</li>
+                <li>They are used to declare fixed-size arrays.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+        <div id="week4" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 4 - Pointers and Strings
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week4', this, 'week4')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week4', this, 'week4')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week4', this, 'week4')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week4', this, 'week4')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week4', this, 'week4')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week4', this, 'week4')">Saturday</button>
+    </div>
+
+    <div id="monday-content-week4" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>What is a Pointer?</h3>
+            <p>A pointer is a variable that stores the memory address of another variable.</p>
+        </div>
+
+        <div class="content-block">
+            <h3>Syntax:</h3>
+            <pre><code>
+data_type *pointer_name;
+            </code></pre>
+        </div>
+
+        <div class="content-block">
+            <h3>Examples:</h3>
+            <pre><code>
+int *ptr;        // pointer to an int
+float *fptr;     // pointer to a float
+char *cptr;      // pointer to a char
+double *dptr;    // pointer to a double          
+</code></pre>
+<p><strong>Note:</strong> Even though * is used in the declaration, the pointer itself just stores an address.</p>
+        </div>
+        <div class="content-block">
+            <h3>Example:</h3>
+            <pre><code>
+int a = 10;
+int *ptr = &a;   // ptr now holds the address of a
+        </code></pre>
+        </div>
+    </div>
+
+    <div id="tuesday-content-week4" class="day-content day-section">
+    <h2>Techie Tuesday</h2>
+    <div class="content-block">
+        <h3>What is a String in C?</h3>
+        <p>A string is a sequence of characters terminated by a null character '\0'.
+In C, strings are represented as arrays of characters.
+Think of a string as a sentence or word stored in memory.
+</p>
+    </div>
+    <div class="content-block">
+        <h3>Example:</h3>
+        <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char name[] = "Welcome";
+    printf("Hello, %s!\n", name);
+    return 0;
+}</code></pre> 
+</div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>Hello, Welcome!</code>
+        <p>"Welcome" is a string stored in a character array.</p>
+    </div>
+    <div class="content-block">
+        <h3>Pointers with Strings in C:</h3>
+        <p>A pointer to a string is a pointer that stores the address of the first character of the string.
+It’s a more memory-efficient and flexible way to handle strings than using character arrays.
+</p>
+    </div>
+    <div class="content-block">
+        <h3>Example:</h3>
+        <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char *greet = "Welcome!";
+    printf("%s\n", greet);
+    return 0;
+}</code></pre>  
+</div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>Welcome!</code>
+        <p><strong>Explanation:</strong></p>
+        <ul>
+            <li>char *greet ➡ Pointer to the string "Welcome!"</li>
+            <li>%s in printf prints the full string starting from the pointer.</li>
+        </ul>
+    </div>
+</div>
+
+    <div id="wednesday-content-week4" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+        <div class="content-block">
+        <h3>C Program using String Function (strlen):</h3>
+    </div>
+    <div class="content-block">
+        <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char str[100];
+    
+    printf("Enter a string: ");
+    gets(str);  // Note: gets() is unsafe, use fgets() in real programs
+
+    int length = strlen(str);  // Using string function
+
+    printf("Length of the string is: %d\n", length);
+    
+    return 0;
+}
+
+</code></pre>  
+</div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>Hello, Welcome!Enter a string: Hello
+Length of the string is: 5
+
+---
+
+Enter a string: C Programming
+Length of the string is: 13
+
+---
+
+Enter a string: 
+Length of the string is: 0</code>
+<p><strong>Explanation:</strong> strlen() is a string function that returns the length of the string.</p>
+    </div>
+
+    <div class="content-block">
+        <h3>C Program using String Pointer:</h3>
+    </div>
+    <div class="content-block">
+        <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char str[] = "Hello, World!";
+    char *ptr = str;
+
+    printf("String using pointer:\n");
+    while (*ptr != '\0') {
+        printf("%c", *ptr);
+        ptr++;
+    }
+
+    return 0;
+}</code></pre>  </div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>String using pointer:
+Hello, World!</code>
+        <p><strong>Explanation:</strong></p>
+        <ul>
+            <li>char *ptr = str; assigns a pointer to the beginning of the string.
+</li>
+            <li>while (*ptr != '\0') traverses the string using the pointer.</li>
+        </ul>
+    </div>
+    </div>
+
+    <div id="thursday-content-week4" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+        <h3>Pointer Arithmetic with Strings:</h3>
+        <p>You can use pointer arithmetic to traverse strings.</p>
+    </div>
+    <div class="content-block">
+<h3>Example:</h3>
+        <pre><code>
+char str[] = "Hello";
+char *ptr = str;
+while (*ptr != '\0') {
+    printf("%c", *ptr);
+    ptr++;
+}
+</code></pre>  
+</div>
+    <div class="content-block">
+        <h3>Expected Output:</h3>
+        <code>Hello</code>
+<p>This concept is powerful, but it requires careful handling to avoid buffer overflows and other issues.</p>
+    </div>
+
+    <div class="content-block">
+        <h3>String Literal vs. Character Array:</h3>
+<p>In C, string literals and character arrays are not exactly the same.</p>
+    </div>
+    <div class="content-block">
+<h3>Example:</h3>
+        <pre><code>
+char *str1 = "Hello"; // string literal (read-only)
+char str2[] = "Hello"; // character array (modifiable)
+
+// str1[0] = 'h'; // would cause a segmentation fault
+str2[0] = 'h'; // okay
+</code></pre>  </div>
+    <div class="content-block">
+        <h3>What may be in the output:</h3>
+        <code>str1: Hello
+str2: hello</code>
+        <p>This distinction is important to understand when working with strings in C.</p>
+    </div>
+    </div>
+
+    <div id="friday-content-week4" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+        <h3>Finding a Character in a String - using Pointers:</h3>
+        <p>This program shows how to write a simple function to search for a character in a string using pointers.</p>
+    </div>
+    <div class="content-block">
+<h3>Example:</h3>
+        <pre><code>
+#include &lt;stdio.h&gt;
+int findChar(char *text, char target) {
+    int index = 0;
+    while (*text != '\0') {
+        if (*text == target) {
+            return index; // Found it!
+        }
+        text++;
+        index++;
+    }
+    return -1; // Not found
+}
+
+int main() {
+    char myWord[] = "apple";
+    char charToFind = 'p';
+
+    int position = findChar(myWord, charToFind);
+
+    if (position != -1) {
+        printf("'%c' is at index %d\n", charToFind, position);
+    } else {
+        printf("'%c' not found\n", charToFind);
+    }
+    return 0;
+}
+
+</code></pre>  
+</div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>'p' is at index 1</code>
+    </div>
+
+    <div class="content-block">
+        <h3>Finding a Character in a String - using strchr():</h3>
+    </div>
+    <div class="content-block">
+<p>This program demonstrates using the built-in strchr() function for the same task, showing its simplicity.</p>
+<h3>Example:</h3>
+        <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char mySentence[] = "orange";
+    char searchFor = 'a';
+
+    // strchr returns a pointer to the char if found, or NULL
+    char *found = strchr(mySentence, searchFor);
+
+    if (found != NULL) {
+        // Calculate index by subtracting pointers
+        int index = found - mySentence;
+        printf("'%c' is at index %d\n", searchFor, index);
+    } else {
+        printf("'%c' not found\n", searchFor);
+    }
+    return 0;
+}
+</code></pre>  </div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>'a' is at index 3</code>
+    </div>
+    </div>
+<div id="saturday-content-week4" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="content-block">
+            <h3>1. What is the output of the following code?</h3>
+            <pre><code>int a = 10;
+int *p = &a;
+printf("%d", *p);</code></pre>
+<ol>
+                <li><strong>10</strong></li>
+                <li>Address of a.</li>
+                <li>Garbage value.</li>
+                <li>Compile-time error.</li>
+            </ol>
+
+            <h3>2. What will be the output of the following C code?</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char str1[] = "Hello";
+    char *str2 = "Hello";
+
+    str1[0] = 'H';
+    str2[0] = 'H';
+
+    printf("str1: %s\n", str1);
+    printf("str2: %s\n", str2);
+
+    return 0;
+}</code></pre>
+<ol>
+                <li>str1: Hello<br>
+str2: Hello</li>
+                <li><strong>str1: Hello<br>
+Segmentation Fault</strong></li>
+                <li>str1: Hello<br>
+str2: hello</li>
+                <li>Compile-time error.</li>
+            </ol>
+            <h3>3. In this C program, what technique is used to display the string on screen?</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    char str[] = "Hello, World!";
+    char *ptr = str;
+
+    printf("String using pointer:\n");
+    while (*ptr != '\0') {
+        printf("%c", *ptr);
+        ptr++;
+    }
+
+    return 0;
+}</code></pre>
+            <ol>
+            <li><strong>It prints the string using a string pointer and while loop.</strong></li>
+            <li>It uses strlen() function to display the string.</li>
+            <li>It copies the string using strcpy() before printing.</li>
+            <li>It sorts the string characters alphabetically before printing.</li>
+            </ol>
+
+            <h3>4. What happens when an array is passed to a function in C?</h3>
+<ol>
+                <li>The entire array is copied and passed to the function.</li>
+                <li><strong>The array decays into a pointer to the first element.</strong></li>
+                <li>To allow the function to modify the array's dimensions dynamically.</li>
+                <li>The function receives a reference to the original array.</li>
+                <li>The array is not passed at all, and the function uses a default value.</li>
+            </ol>
+            <h3>5. Given <strong>char word[] = "grape";</strong> and <strong>char target = 'e';</strong> what index would <strong>findChar(word, target)</strong> return?</h3>
+            <ol>
+                <li><strong>4</strong></li>
+                <li>3</li>
+                <li>0</li>
+                <li>-1</li>
+            </ol></div>   
+
+    </div>
+</div>
+
+        <!--  <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p> -->
+
+        <div id="week5" class="week-content">
+            <!-- <p style="text-align: center; font-weight: bold; font-size: 1.5em; color: #00408f; padding: 50px;">
+                Week 5 Content - COMING SOON!
+            </p> -->
+
+<p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 5 - Structures and File Handling
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week5', this, 'week5')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week5', this, 'week5')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week5', this, 'week5')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week5', this, 'week5')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week5', this, 'week5')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week5', this, 'week5')">Saturday</button>
+    </div>
+
+    <div id="monday-content-week5" class="day-content day-section">
+        <h2>Monday Maverick</h2>
+        <div class="content-block">
+            <h3>Structures in C:</h3>
+            <p>A structure in C is a user-defined data type that allows you to combine variables of different types under one name.</p>
+        </div>
+        <div class="content-block">
+            <h3>Syntax:</h3>
+            <pre><code>struct Student {
+    int id;
+    char name[50];
+    float marks;
+};</code></pre>
+        </div>
+
+        <div class="content-block">
+            <h3>How to Declare and Use:</h3>
+            <pre><code>struct Student s1;
+
+s1.id = 101;
+strcpy(s1.name, "John");
+s1.marks = 89.5;
+
+printf("%d %s %.2f", s1.id, s1.name, s1.marks);</code></pre>
+        </div>
+        <div class="content-block">
+            <h3>Expected Output:</h3>
+            <code>101 John 89.50</code>
+     </div>
+    </div>
+<div id="tuesday-content-week5" class="day-content day-section">
+    <h2>Techie Tuesday</h2>
+    <div class="content-block">
+        <h3>File Handling in C Programming:</h3>
+        <p>File handling in C allows you to create, open, read, write, and close files — making your programs more powerful by storing and retrieving data from files instead of just using memory!</p>
+    </div>
+    <div class="content-block">
+        <h3>Header File Required:</h3>
+        <pre><code>#include &lt;stdio.h&gt;</code></pre>
+        <p>This must be included to use file functions like fopen(), fclose(), fprintf(), fscanf(), etc.</p>
+    </div>
+
+    <div class="content-block">
+        <h3>How to Declare and Use:</h3>
+        <div class="table-responsive">
+            <table class="content-block-table">
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Function</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Operation">Create/Open</td>
+                        <td data-label="Function"><code>fopen()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Close</td>
+                        <td data-label="Function"><code>fclose()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Read</td>
+                        <td data-label="Function"><code>fscanf(), fgets()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Write</td>
+                        <td data-label="Function"><code>fprintf(), fputs()</code></td>
+                    </tr>
+                    <tr>
+                        <td data-label="Operation">Move cursor</td>
+                        <td data-label="Function"><code>fseek(), ftell()</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="content-block">
+        <h3>File Modes in fopen()</h3>
+        <div class="table-responsive">
+            <table class="content-block-table">
+                <thead>
+                    <tr>
+                        <th>Mode</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Mode">"r"</td>
+                        <td data-label="Description">Read</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"w"</td>
+                        <td data-label="Description">Write (overwrite)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"a"</td>
+                        <td data-label="Description">Append (add at end)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"r+"</td>
+                        <td data-label="Description">Read & Write</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"w+"</td>
+                        <td data-label="Description">Write & Read (overwrite)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Mode">"a+"</td>
+                        <td data-label="Description">Append & Read</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="content-block">
+        <h3>Always Remember:</h3>
+        <ul>
+            <li>Check if the file opened successfully (if (fp == NULL))</li>
+            <li>Always fclose(fp) to avoid memory leaks.</li>
+        </ul>
+    </div></div>
+
+<div id="wednesday-content-week5" class="day-content day-section">
+        <h2>Syntax Snapshots Wednesday</h2>
+                <div class="content-block">
+        <!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p> -->
+            <h3>C Program for File Handling (Write + Read):</h3>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    FILE *fptr;
+    char data[100];
+
+    // Writing to the file
+    fptr = fopen("myfile.txt", "w"); // open in write mode
+    if (fptr == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Enter some text to write into the file: ");
+    fgets(data, sizeof(data), stdin);
+    fprintf(fptr, "%s", data);
+    fclose(fptr);
+    printf("Data written to file successfully.\n");
+
+    // Reading from the file
+    fptr = fopen("myfile.txt", "r"); // open in read mode
+    if (fptr == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+
+    printf("Reading from the file:\n");
+    while (fgets(data, sizeof(data), fptr) != NULL) {
+        printf("%s", data);
+    }
+    fclose(fptr);
+
+    return 0;
+}</code></pre>
+</div>
+<div class="content-block">
+<h3>Output:</h3>
+<code>Enter some text to write into the file: Hello, C programming!
+Data written to file successfully.
+Reading from the file:
+Hello, C programming!</code></div>
+<div class="content-block">
+<h3>Content in myfile.txt :</h3>
+<code>Hello, C programming!</code>
+</div>
+</div>
+<div id="thursday-content-week5" class="day-content day-section">
+        <h2>Te Ta Thursday</h2>
+        <div class="content-block">
+        <h3>Structures in C:</h3>
+        <p>Imagine you have a collection of data that you want to store together, like a person's details. You can create a struct to hold this data:</p>
+        <pre><code>struct Person {
+    int age;
+    char name[20];
+};</code></pre>
+</div>
+<div class="content-block">
+<h3>Some cool things about structures:</h3>
+<ul>
+<li><strong>Structure Padding:</strong> When you define a structure, the compiler might add some extra space (padding) between members to ensure they're aligned properly in memory.<br>
+<p>For example:</p>
+<pre><code>struct Example {
+    char a; // 1 byte
+    int b;  // 4 bytes
+}; // The total size might be 8 bytes due to padding</code></pre></li>
+<li><strong>Bit Fields:</strong> You can specify the number of bits for a structure member, which is useful when working with limited memory:<br>
+<pre><code>struct PackedData {
+    unsigned int flag: 1;
+    unsigned int mode: 2;
+};</code></pre></li>
+<li><strong>Nested Structures:</strong> You can define a structure within another structure:<br>
+<pre><code>struct Address {
+    char street[20];
+    char city[10];
+};
+
+struct Person {
+    int age;
+    char name[20];
+    struct Address address;
+};</code></pre></li>
+</ul>
+</div>
+<div class="content-block">
+<h3>File Handling in C:</h3>
+<p>File handling allows you to read and write data to files. Here are some key functions:</p>
+<ul>
+  <li><strong>fopen():</strong> Opens a file.</li>
+  <li><strong>fread()</strong> and <strong>fwrite():</strong> Read and write data to files.</li>
+  <li><strong>fclose():</strong> Closes a file.</li>
+</ul>
+</div>
+<div class="content-block">
+<h3>Example:</h3>
+<pre><code>FILE *file = fopen("example.txt", "w");
+if (file != NULL) {
+    fprintf(file, "Hello, world!");
+    fclose(file);
+}</code></pre></div>
+<div class="content-block">
+<h3>Expected Output in example.txt :<h3>
+<code>Hello, world!</code></div>
+
+</div>
+<div id="friday-content-week5" class="day-content day-section">
+        <h2>Function Friday</h2>
+        <div class="content-block">
+        <!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p> -->
+        <h3>Store and Retrieve Structured Data Using File Handling:</h3>
+        <p>This program helps you save a student's info—like their name, ID, and marks—into a file. Then it opens the file and shows you what was saved, kind of like writing something down and reading it later.</p>
+        </div>
+        <div class="content-block">
+        <h3>Example:</h3>
+        <pre><code>#include &lt;stdio.h&gt;
+struct Student {
+    int id;
+    char name[50];
+    float marks;
+};
+
+// Function to get user input and write to file
+void writeStudentToFile() {
+    struct Student s;
+    
+    printf("Enter Student ID: ");
+    scanf("%d", &s.id);
+    
+    printf("Enter Student Name: ");
+    scanf(" %[^\n]", s.name);  // reads string with spaces
+    
+    printf("Enter Marks: ");
+    scanf("%f", &s.marks);
+
+    FILE *fp = fopen("student.txt", "w");
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fprintf(fp, "%d\n%s\n%.2f\n", s.id, s.name, s.marks);
+    fclose(fp);
+    printf("Student data saved successfully.\n\n");
+}
+
+// Function to read from file and display
+void readStudentFromFile() {
+    struct Student s;
+    FILE *fp = fopen("student.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fscanf(fp, "%d\n", &s.id);
+    fgets(s.name, sizeof(s.name), fp);
+    fscanf(fp, "%f", &s.marks);
+
+    // Remove trailing newline from name (if any)
+    if (s.name[strlen(s.name) - 1] == '\n') {
+        s.name[strlen(s.name) - 1] = '\0';
+    }
+
+    fclose(fp);
+
+    printf("Student Data from File:\n");
+    printf("ID: %d\n", s.id);
+    printf("Name: %s\n", s.name);
+    printf("Marks: %.2f\n", s.marks);
+}
+
+int main() {
+    writeStudentToFile();
+    readStudentFromFile();
+    return 0;
+}</code></pre></div>
+    <div class="content-block">
+    <h3>Output:</h3>
+<code>Enter Student ID: 105
+Enter Student Name: Dave
+Enter Marks: 92.5
+Student data saved successfully.
+
+Student Data from File:
+ID: 105
+Name: Dave
+Marks: 92.50</code>
+</div>
+</div>
+<div id="saturday-content-week5" class="day-content day-section">
+        <h2>Mindmash</h2>
+        <div class="button-container" style="text-align: center; padding: 15px;">
+<p style="text-align: center; font-style: italic; color: #555;">Quiz goes live on <strong>28/6/25</strong> at <strong>6.00 PM IST</strong>!</p>
+<button class="nav-button" onclick="window.location.href='quiz.html';">Quiz</button>     </div>
+    </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by The Coders Club</p>
+        <a href="https://www.instagram.com/the_mce.coders_club?igsh=Z245eDZmdWhkcmRn" target="_blank">
+            <img src="IG.png" alt="Instagram" class="social-logo">
+        </a>
+        <a href="https://www.linkedin.com/in/thecodersclub-mce/" target="_blank">
+            <img src="LINKEDLN.png" alt="LinkedIn" class="social-logo">
+        </a>
+        <a href="https://www.youtube.com/@TheCodersClub_MCE" target="_blank">
+            <img src="YT.png" alt="YouTube" class="social-logo">
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb6HMGKKAwEe8OdjAF0X" target="_blank">
+            <img src="WP.svg" alt="WhatsApp" class="social-logo">
+        </a>
+    </footer>
+
+    <script>// --- CONTROL KEYWORD HERE ---
+// Define a variable to store the ID of the disabled week
+// Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
+let disabledWeekId = ''; // Example: Week 4 is disabled
+// Define an array of disabled days for a given week (e.g., ['tuesday', 'thursday'] for week1)
+const disabledDays = {
+    //'week1': ['monday','tuesday','wednesday','thursday','friday','saturday'], // Example: Tuesday and Thursday are disabled for Week 1
+    //'week2': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+    //'week3': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+   // 'week4': ['monday','tuesday','wednesday','thursday','friday'],
+   // 'week5': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+      'week5': ['friday'],
+};
+// --- END CONTROL KEYWORD ---
+
+// Object to store original text content for jumbling/unjumbling
+const originalTextStore = {};
+
+// Function to shuffle characters in a string
+function shuffleString(str) {
+    let a = str.split("");
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a.join("");
+}
+
+// Function to jumble the text content of an element
+function jumbleText(element) {
+    // Check if element has any text content to jumble and is not just whitespace
+    if (element && element.textContent && element.textContent.trim().length > 0) {
+        // Use a unique key for storage, preferring element ID or generating one
+        const elementKey = element.id || 'jumble-' + Math.random().toString(36).substring(2, 9);
+        if (!element.id) { // Assign ID if it didn't exist for consistent lookup
+            element.id = elementKey;
+        }
+
+        // Store original text if not already stored
+        if (!originalTextStore[elementKey]) {
+            originalTextStore[elementKey] = element.textContent;
+        }
+        element.textContent = shuffleString(element.textContent);
+    }
+}
+
+// Function to unjumble the text content of an element
+function unjumbleText(element) {
+    if (element && element.id && originalTextStore[element.id]) {
+        element.textContent = originalTextStore[element.id];
+        // Optionally delete from store if you don't need it after unjumbling
+        // delete originalTextStore[element.id];
+    }
+}
+
+// Function to show content for a specific week
+function showWeek(weekId, clickedButton) {
+    // Hide all week content sections
+    const weekContents = document.querySelectorAll('.week-content');
+    weekContents.forEach(content => {
+        content.classList.remove('active-content');
+        content.classList.remove('content-disabled-overlay'); // Ensure this is removed when not disabled
+    });
+
+    // Deactivate all main tab buttons
+    const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+    mainTabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Show the selected week's content
+    const selectedWeekContent = document.getElementById(weekId);
+    selectedWeekContent.classList.add('active-content');
+
+    // Activate the clicked week button
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+
+    // Check if the current week is disabled
+    if (weekId === disabledWeekId) {
+        selectedWeekContent.classList.add('content-disabled-overlay');
+        // Jumble text for questions and options within the entire disabled week
+        selectedWeekContent.querySelectorAll('h3, p, h4, span, .radio-group label, .checkbox-group label').forEach(element => { // Adjust selectors as needed
+            jumbleText(element);
+        });
+
+        // Ensure day buttons for a disabled week do not have 'active' class
+        selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
+            button.classList.remove('active');
+        });
+
+        // Hide all day content within the disabled week, and also apply blur
+        selectedWeekContent.querySelectorAll('.day-content').forEach(content => {
+            content.classList.remove('active-content'); // Hide any active day content
+            content.classList.add('content-disabled-overlay'); // Apply blur to all day contents
+            content.querySelectorAll('h4, p, span').forEach(element => { // Jumble text within day content
+                jumbleText(element);
+            });
+        });
+
+    } else { // Week is enabled
+        selectedWeekContent.classList.remove('content-disabled-overlay');
+        // Unjumble text for questions and options within the entire enabled week
+        selectedWeekContent.querySelectorAll('h3, p, h4, span, .radio-group label, .checkbox-group label').forEach(element => { // Adjust selectors as needed
+            unjumbleText(element);
+        });
+
+        // Re-add onclick handler for nested day buttons for enabled week
+        selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
+            const dayIdMatch = button.textContent.trim().toLowerCase(); // Assuming button text is the day name
+            const originalDayId = dayIdMatch + '-content-' + weekId; // Reconstruct the ID
+            button.setAttribute('onclick', `showDay('${originalDayId}', this, '${weekId}')`);
+            // No 'disabled' class or onclick removal for buttons based on individual day status here.
+            // showDay will handle the content blur.
+        });
+
+        // Special handling to show Monday content by default for the *currently active* week
+        const defaultDayId = 'monday-content-' + weekId;
+        const defaultDayButton = selectedWeekContent.querySelector(`.nested-tab-nav .tab-button[onclick*="${defaultDayId}"]`);
+        if (defaultDayButton) {
+            showDay(defaultDayId, defaultDayButton, weekId);
+        } else {
+            const dayContents = selectedWeekContent.querySelectorAll('.day-content');
+            dayContents.forEach(content => {
+                content.classList.remove('active-content');
+                content.classList.remove('content-disabled-overlay'); // Ensure removed if no default day
+                content.querySelectorAll('h4, p, span').forEach(element => {
+                    unjumbleText(element); // Unjumble if no default day content is shown
+                });
+            });
+            const dayButtons = selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button');
+            dayButtons.forEach(button => button.classList.remove('active'));
+        }
+    }
+}
+
+// Function to show content for a specific day within a week
+function showDay(dayIdWithWeek, clickedButton, weekId) {
+    const weekContentDiv = document.getElementById(weekId);
+
+    // Hide and un-blur/unjumble all day content sections within the current week first
+    const dayContents = weekContentDiv.querySelectorAll('.day-content');
+    dayContents.forEach(content => {
+        content.classList.remove('active-content');
+        content.classList.remove('content-disabled-overlay'); // Always remove before potentially adding it back
+        content.querySelectorAll('h4, p, span').forEach(element => { // Adjust selectors as needed
+            unjumbleText(element); // Always unjumble previous content
+        });
+    });
+
+    // Deactivate all nested day tab buttons within the current week
+    const dayTabButtons = weekContentDiv.querySelectorAll('.nested-tab-nav .tab-button');
+    dayTabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Extract just the day name from dayIdWithWeek (e.g., 'monday' from 'monday-content-week1')
+    const dayName = dayIdWithWeek.split('-')[0];
+
+    const targetDayContent = document.getElementById(dayIdWithWeek);
+
+    // Show the selected day's content
+    targetDayContent.classList.add('active-content');
+
+    // Activate the clicked day button
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+
+    // Check if the specific day is disabled for this week OR if the entire week is disabled
+    if ((disabledDays[weekId] && disabledDays[weekId].includes(dayName)) || weekId === disabledWeekId) {
+        // Apply blur to the day's content if it's disabled or its parent week is disabled
+        targetDayContent.classList.add('content-disabled-overlay');
+        // Jumble the text contents within this specific disabled day
+        targetDayContent.querySelectorAll('h4, p, span').forEach(element => { // Adjust selectors as needed
+            jumbleText(element);
+        });
+    } else {
+        // Unjumble text if the day is enabled
+        targetDayContent.querySelectorAll('h4, p, span').forEach(element => { // Adjust selectors as needed
+            unjumbleText(element);
+        });
+    }
+}
+
+// Function to apply initial setup (no disabled button styles)
+function applyInitialWeekSetup() {
+    // No "disabled" class or onclick removal needed for main tab buttons now.
+    // They will always be clickable.
+}
+
+// Initialize by showing Week 1 and its Monday content on page load
+document.addEventListener('DOMContentLoaded', () => {
+    applyInitialWeekSetup(); // Apply initial setup
+    showWeek('week1', document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]'));
+});
+    </script>
+
+</body>
+</html>
