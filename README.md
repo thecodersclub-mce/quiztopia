@@ -3,7 +3,7 @@
 
 # 🧠 C Programming Series Application
 
-This repository contains the front-end code for **C Programming Series Application**, an application designed by The Coders Club. It serves as a comprehensive platform for a C Programming Series, featuring structured weekly content, interactive quizzes, a feedback mechanism, and a dynamic leaderboard.
+This repository contains the front-end code for **C Programming Series**, an application designed by The Coders Club. It serves as a comprehensive platform for a C Programming Series, featuring structured weekly content, interactive quizzes, a feedback mechanism, and a dynamic leaderboard.
 
 -----
 
