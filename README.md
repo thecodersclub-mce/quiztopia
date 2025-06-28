@@ -1,7 +1,7 @@
 ---
 ---
 
-# 🧠 MINDMASH Application: C Programming Series & Quizzes
+# 🧠 C Programming Series & Quizzes
 
 This repository contains the front-end code for **MINDMASH**, an application designed by The Coders Club. It serves as a comprehensive platform for a C Programming Series, featuring structured weekly content, interactive quizzes, a feedback mechanism, and a dynamic leaderboard.
 
