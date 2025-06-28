@@ -1,4 +1,4 @@
-/* General Styles */
+/* General Styles (UNCHANGED from your last provided code) */
 html, body {
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ html, body {
     box-sizing: border-box;
 }
 
-/* Header */
+/* Header (UNCHANGED) */
 .blue-container {
     width: 100%;
     background-color: #00408f;
@@ -21,13 +21,34 @@ html, body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: white;
 }
-/* Centered Content */
+.nav-button {
+    background-color: rgba(200, 205, 210, 0.2); /* Soft cool grey with transparency */
+    color: #003060; /* Darker, richer blue text for good contrast */
+    border: 1px solid rgba(0, 40, 80, 0.15); /* Subtle blue border */
+    padding: 8px 12px;
+    font-size: 0.95em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Hover effect for secondary menu buttons */
+.nav-button:hover {
+    background-color: rgba(0, 64, 143, 0.08); /* A very light tint of the main blue on hover */
+    border-color: rgba(0, 64, 143, 0.3); /* More prominent border on hover */
+    color: #001530; /* Even darker blue on hover */
+}
+/* Centered Content (UNCHANGED) */
 .content-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centers both vertically and horizontally */
-    height: 80vh; /* Adjusted height to avoid footer overlap */
+    justify-content: center;
+    height: 80vh;
     width: 100%;
     text-align: center;
 }
@@ -44,7 +65,7 @@ html, body {
     height: auto;
 }
 
-/* Titles */
+/* Titles (UNCHANGED) */
 .titles {
     display: flex;
     flex-direction: column;
@@ -62,7 +83,7 @@ html, body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-/* Label & Button Section */
+/* Label & Button Section (UNCHANGED) */
 .label-button-container {
     display: flex;
     flex-direction: column;
@@ -82,14 +103,14 @@ html, body {
     margin-bottom: 8px;
 }
 
-/* Button Row */
+/* Button Row (UNCHANGED) */
 .button-row {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-/* Buttons */
+/* Buttons (General button styles - UNCHANGED, but .nav-button will override) */
 button {
     background-color: #00408f;
     color: white;
@@ -109,33 +130,55 @@ button:hover {
 button:active {
     transform: scale(0.98);
 }
-/* Footer */
+
+/* --- Secondary Menu (Button Container and Buttons) Styles --- */
+/* (These specific styles should override the general button styles for .nav-button) */
+.button-container {
+    /* Lighter blue "Liquid Glass" effect */
+    background-image: linear-gradient(135deg, rgba(220, 240, 255, 0.9), rgba(190, 220, 250, 0.8));
+    backdrop-filter: blur(15px) saturate(1.8);
+    -webkit-backdrop-filter: blur(15px) saturate(1.8);
+    border: 1px solid rgba(180, 210, 240, 0.7);
+    
+    display: flex;
+    justify-content: center; /* Center buttons horizontally by default */
+    align-items: center;
+    padding: 10px 0;
+    flex-wrap: nowrap; /* Keep all buttons on one line by default */
+    gap: 10px; /* Space between buttons */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    overflow-x: hidden; /* Hide horizontal scrollbar always */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Footer (UNCHANGED) */
 footer {
     width: 100%;
     background-color: #00408f;
     color: white;
     text-align: center;
-    padding: 3px 0; /* Reduced vertical padding even more */
-    font-size: 10px; /* Smaller font size for text */
-    height: 30px; /* Set a fixed, smaller height for the footer */
+    padding: 3px 0;
+    font-size: 10px;
+    height: 30px;
     position: fixed;
     bottom: 0;
     left: 0;
     display: flex;
-    align-items: center; /* Centers items vertically */
-    justify-content: center; /* Centers text and logo horizontally */
-    z-index: 100; /* Ensure footer stays on top */
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
 }
 
-/* Social media logos in footer */
+/* Social media logos in footer (UNCHANGED) */
 .social-logo {
-    width: 18px; /* Consistent size for all social logos */
-    height: 18px; /* Consistent size for all social logos */
-    margin: 0 4px; /* Space between logos */
-    vertical-align: middle; /* Align with text */
+    width: 18px;
+    height: 18px;
+    margin: 0 4px;
+    vertical-align: middle;
 }
 
-/* Responsive styles for medium screens (Samsung phones, tablets) */
+/* Responsive styles for medium screens (Samsung phones, tablets) (UNCHANGED) */
 @media only screen and (max-width: 768px) {
     body {
         font-size: 14px;
@@ -152,7 +195,7 @@ footer {
     .label-button-container h3 {
         font-size: 16px;
     }
-    button {
+    button { 
         font-size: 12px;
         padding: 10px 15px;
     }
@@ -161,29 +204,62 @@ footer {
     }
 }
 
-/* Responsive styles for smaller screens (Samsung phones) */
+/* --- UPDATED: Media queries for Secondary Menu Mobile View (Forced Single Row & Readable Font) --- */
+
+/* For screens up to 600px wide (most phones in landscape, some tablets) */
+@media only screen and (max-width: 600px) {
+    .button-container {
+        padding: 8px 3px; /* Minimal horizontal padding on container */
+        flex-wrap: nowrap; /* Force buttons onto a single line */
+        justify-content: space-evenly; /* Distribute space evenly */
+        gap: 0px; /* No gap between buttons for maximum space */
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+    }
+
+    .nav-button {
+        padding: 5px 8px; /* Good padding */
+        font-size: 0.8em; /* Readable font size */
+        flex-shrink: 1; /* Allow buttons to shrink to fit */
+        flex-basis: 0; /* Allow flexbox to calculate width from a base of zero */
+        min-width: unset; /* Remove any minimum width constraint */
+    }
+}
+
+/* For even smaller screens (typical phone portrait, e.g., iPhone SE, older Androids) */
 @media only screen and (max-width: 480px) {
     body {
-        font-size: 14px;
+        font-size: 13px; /* Overall base font slightly smaller */
     }
     .favicon-logo {
-        width: 30px;
+        width: 25px;
     }
     .college-name {
-        font-size: 16px;
+        font-size: 14px;
     }
     .site-title {
-        font-size: 14px;
+        font-size: 12px;
     }
     .label-button-container h3 {
-        font-size: 14px;
-        padding: 6px 10px;
-    }
-    button {
         font-size: 12px;
-        padding: 8px 12px;
+        padding: 5px 8px;
+    }
+    button { /* General buttons on content area */
+        font-size: 11px;
+        padding: 7px 10px;
     }
     .button-row {
-        gap: 15px;
+        gap: 10px;
+    }
+
+    /* Secondary menu specific overrides for very small screens */
+    .button-container {
+        padding: 5px 2px; /* Very tight padding on the container */
+        gap: 0px; /* No gap */
+    }
+    .nav-button {
+        padding: 4px 6px; /* Reduced padding */
+        font-size: 0.75em; /* As large as possible, but will still be a compromise */
+        border-radius: 3px;
+        line-height: 1.1; /* Slightly compact line height */
     }
 }

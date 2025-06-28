@@ -60,7 +60,6 @@
             border-collapse: collapse;
             margin-top: 15px;
             font-size: 0.95em;
-            /* No min-width here; table-responsive handles it for mobile */
             box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow for tables */
             border-radius: 8px; /* Rounded corners for the table */
             overflow: hidden; /* Ensures rounded corners apply to content within */
@@ -88,6 +87,7 @@
             background-color: #e0e0e0;
         }
 
+        /* Default link style within tables */
         .content-block-table td a {
             color: #00408f;
             text-decoration: none;
@@ -96,6 +96,13 @@
 
         .content-block-table td a:hover {
             text-decoration: underline;
+        }
+
+        /* NEW: Specific styles for "Meet Our Board Members" table */
+        .board-members-table th,
+        .board-members-table td {
+            padding: 8px; /* Reduced padding */
+            font-size: 0.85em; /* Smaller font size */
         }
 
         /* New CSS for Feedback Section */
@@ -162,6 +169,23 @@
             background-color: #45a049;
         }
 
+        /* NEW: Style for the "Currently Open" text itself */
+        .current-status-highlight {
+            color: #fff; /* White text for contrast */
+            background-color: #28a745; /* A clear green background */
+            padding: 3px 8px; /* Some padding around the text */
+            border-radius: 4px; /* Slightly rounded corners */
+            font-weight: bold; /* Make the text bold */
+            text-decoration: none; /* Remove underline by default */
+            display: inline-block; /* Allows padding and background */
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .current-status-highlight:hover {
+            background-color: #218838; /* Darker green on hover */
+            text-decoration: none; /* Keep no underline on hover */
+        }
+
         /* Responsive adjustments for content sections */
 
         /* Medium devices (tablets, 601px to 900px) */
@@ -178,6 +202,12 @@
             .content-block-table th, .content-block-table td {
                 font-size: 0.9em;
                 padding: 10px;
+            }
+            /* Adjustments for board members table on medium screens */
+            .board-members-table th,
+            .board-members-table td {
+                padding: 7px; /* Further reduced padding */
+                font-size: 0.8em; /* Further smaller font size */
             }
             .feedback-comment {
                 font-size: 1em;
@@ -218,6 +248,12 @@
                 font-size: 0.8em;
                 padding: 8px;
             }
+            /* Adjustments for board members table on small screens */
+            .board-members-table th,
+            .board-members-table td {
+                padding: 5px; /* Significantly reduced padding */
+                font-size: 0.75em; /* Even smaller font size */
+            }
             .feedback-section {
                 padding: 15px;
             }
@@ -242,7 +278,6 @@
                 text-align: center; /* Center buttons if they wrap */
             }
         }
-
     </style>
 </head>
 <body>
@@ -259,13 +294,13 @@
         </div>
     </div>
 
-    <div class="button-container" style="text-align: right; padding: 15px;">
-        <button class="nav-button" onclick="window.location.href='weeklycontent.html';">Weekly Content</button>
-        <button class="nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
-        <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
-        <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
-        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
-    </div>
+<div class="button-container">
+    <button class="nav-button" onclick="window.location.href='weeklycontent.html';">Weekly Content</button>
+    <button class="nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
+    <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
+    <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
+    <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+</div>
 
     <div class="content-container-wrapper">
         <h2 style="color: #00408f; text-align: center; margin-bottom: 20px; font-size: 2em;">
@@ -323,58 +358,58 @@
                 Get to know the dedicated individuals leading The Coders Club and their roles in this series!
             </p>
             <div class="table-responsive">
-                <table class="content-block-table">
+                <table class="content-block-table **board-members-table**">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Club Role</th>
-                            <th>Department/Year</th>
-                            <th>Role in this Series</th>
+                            <th>Dept/Year</th>
+                            <th>Series Role</th>
                             <th>LinkedIn</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Yogeshwaran s</td>
+                            <td>Yogeshwaran S</td>
                             <td>President</td>
-                            <td>CSE, 3rd Year</td>
+                            <td>CSE, 3rd</td>
                             <td>Te Ta Thursday</td>
-                            <td><a href="https://www.linkedin.com/in/yogeshwaran-s-7634872a0/" target="_blank">View Profile</a></td>
+                            <td><a href="https://www.linkedin.com/in/yogeshwaran-s-7634872a0/" target="_blank">Profile</a></td>
                         </tr>
                         <tr>
                             <td>Mahalakshmi T</td>
                             <td>Vice-President</td>
-                            <td>CSE, 2nd Year</td>
+                            <td>CSE, 2nd</td>
                             <td>Monday Maverick</td>
-                            <td><a href="https://www.linkedin.com/in/t-maha-laksmi-167bb2283/" target="_blank">View Profile</a></td>
+                            <td><a href="https://www.linkedin.com/in/t-maha-laksmi-167bb2283/" target="_blank">Profile</a></td>
                         </tr>
                         <tr>
                             <td>Ananth S</td>
                             <td>Secretary</td>
-                            <td>CSE, 3rd Year</td>
+                            <td>CSE, 3rd</td>
                             <td>Function Friday</td>
-                            <td><a href="https://www.linkedin.com/in/ananth-techie/" target="_blank">View Profile</a></td>
+                            <td><a href="https://www.linkedin.com/in/ananth-techie/" target="_blank">Profile</a></td>
                         </tr>
                         <tr>
                             <td>Balachander M</td>
                             <td>Treasurer</td>
-                            <td>CSE, 3rd Year</td>
+                            <td>CSE, 3rd</td>
                             <td>Syntax Snapshots Wednesday</td>
-                            <td><a href="https://www.linkedin.com/in/bala-chander-93b69336b/" target="_blank">View Profile</a></td>
+                            <td><a href="https://www.linkedin.com/in/bala-chander-93b69336b/" target="_blank">Profile</a></td>
                         </tr>
                         <tr>
                             <td>Renugadevi K</td>
                             <td>Event Manager</td>
-                            <td>CSE, 3rd Year</td>
+                            <td>CSE, 3rd</td>
                             <td>Techie Tuesday</td>
-                            <td><a href="https://www.linkedin.com/in/renugadevi-k-4766b3366/" target="_blank">View Profile</a></td>
+                            <td><a href="https://www.linkedin.com/in/renugadevi-k-4766b3366/" target="_blank">Profile</a></td>
                         </tr>
                         <tr>
                             <td>Mohammed Arif J</td>
                             <td>Public Relations Manager</td>
-                            <td>CSE, 2nd Year</td>
+                            <td>CSE, 2nd</td>
                             <td>Quiz Preparation</td>
-                            <td><a href="https://www.linkedin.com/in/mohammedarif-j27/" target="_blank">View Profile</a></td>
+                            <td><a href="https://www.linkedin.com/in/mohammedarif-j27/" target="_blank">Profile</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -386,6 +421,46 @@
             <div id="feedbackDisplay" class="feedback-display">
             </div>
         </div>
+        <div class="content-block">
+            <h3>Other Series:</h3>
+            <div class="table-responsive">
+                <table class="content-block-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Duration</th>
+                            <th>Access Content</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> <td>C Programming series</td>
+                            <td>May - June 2025</td>
+                            <td><a href="https://thecodersclub-mce.github.io/c-programming-series/" target="_blank" class="current-status-highlight">Currently Open</a></td> <td>Ongoing</td>
+                        </tr>
+                        <tr>
+                            <td>DSA</td>
+                            <td>July - August 2025</td>
+                            <td><a href="link_to_dsa_content" target="_blank">N/A</a></td>
+                            <td>Upcoming</td>
+                        </tr>
+                        <tr>
+                            <td>Frontend</td>
+                            <td>September - October 2025</td>
+                            <td><a href="link_to_frontend_content" target="_blank">N/A</a></td>
+                            <td>Upcoming</td>
+                        </tr>
+                        <tr>
+                            <td>Database</td>
+                            <td>November - December 2025</td>
+                            <td><a href="link_to_database_content" target="_blank">N/A</a></td>
+                            <td>Upcoming</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
     <footer>
         <p>Created by The Coders Club</p>
@@ -406,7 +481,7 @@
     <script>
         // JavaScript for Feedback Animation
         // --- FEATURE FLAG ---
-        const enableFeedbackAnimation = false; // Set to 'false' to hide the animation, 'true' to show it.
+        const enableFeedbackAnimation = true; // Set to 'false' to hide the animation, 'true' to show it.
         // --------------------
 
         const feedbacks = [
