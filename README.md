@@ -1,17 +1,25 @@
----
----
+-----
+-----
 
-# 🧠 MINDMASH Application: C Programming Series & Quizzes
+# 🧠 C Programming Series Application
 
-This repository contains the front-end code for **MINDMASH**, an application designed by The Coders Club. It serves as a comprehensive platform for a C Programming Series, featuring structured weekly content, interactive quizzes, a feedback mechanism, and a dynamic leaderboard.
+This repository contains the front-end code for **C Programming Series**, an application designed by The Coders Club. It serves as a comprehensive platform for a C Programming Series, featuring structured weekly content, interactive quizzes, a feedback mechanism, and a dynamic leaderboard.
 
 -----
 
 ## ✨ Features
 
-  * **C Programming Series Content (Homepage - `index.html`)**:
+  * **C Programming Series Overview (Homepage - `index.html`)**:
 
-      * **Structured Weekly Content**: Navigate through C programming content organized by weeks.
+      * Provides a welcoming introduction to the C Programming Series.
+      * **Weekly Topics Overview Table**: Summarizes the topics covered in each week, including their access status.
+      * **Meet Our Board Members**: Introduces the dedicated individuals leading The Coders Club and their roles.
+      * **What Our Participants Say**: Features testimonials from previous participants.
+      * **Other Series**: Information on other programming series offered or upcoming.
+
+  * **C Programming Series Detailed Content (`weeklycontent.html`)**:
+
+      * **Structured Weekly Content**: Navigates users through C programming content organized by weeks.
       * **Daily Learning Modules**: Each week breaks down into daily sections (Monday, Tuesday, etc.), offering focused learning.
       * **Dynamic Content Access**: Weeks and individual days can be configured to display content as **blurred and jumbled text** if they are disabled (e.g., "Coming Soon" or "Access Closed"). This provides a clear visual cue while allowing users to still click the navigation buttons.
       * **Responsive Tab Navigation**: Week and day selection buttons are fully responsive, gracefully adapting to different screen sizes and maintaining a consistent, sleek appearance on both desktop and mobile devices.
@@ -19,8 +27,8 @@ This repository contains the front-end code for **MINDMASH**, an application des
 
   * **Interactive Quiz Forms**:
 
-      * **Weekly Quiz (`quiz.html`)**: For regular, weekly assessments.
-      * **Final Quiz (`finalquiz.html`)**: For a comprehensive final assessment.
+      * **Weekly Quiz (`quiz.html`)**: For regular, weekly assessments based on the content of a single week.
+      * **Final Quiz (`finalquiz.html`)**: A comprehensive final assessment covering content from Week 1 to Week 5, structurally similar to the weekly quiz.
       * Both quiz forms allow users to answer multiple-choice, multi-select, and open-ended questions.
       * **No Hint Text**: All text input fields and text areas (including Name and Email) are intentionally left blank, providing no hints or placeholder text.
       * Each quiz can be **enabled or disabled** via a simple JavaScript variable for active control.
@@ -42,6 +50,12 @@ This repository contains the front-end code for **MINDMASH**, an application des
   * **Submission Success Animation**: A pleasant tick mark animation appears upon successful form submission for both quiz and feedback.
 
   * **Google Sheets Integration**: Submits quiz and feedback form data directly to Google Sheets using a Google Apps Script web app (requires user setup).
+
+  * **Custom Styling (`styles.css`)**:
+
+      * **Consistent Theme**: Centralized styling ensures a cohesive look and feel across all pages.
+      * **"Liquid Glass" Secondary Menu**: Features a uniquely styled secondary navigation menu (`.button-container` and `.nav-button`) with a transparent, gradient "liquid glass" effect.
+      * **Enhanced Responsiveness**: The secondary menu is specifically optimized to display all navigation buttons on a **single horizontal row** across various mobile screen sizes, maintaining a readable font size and preventing horizontal scrollbars. This may result in minor clipping of content on the very narrowest devices, a deliberate trade-off for the desired compact layout.
 
 -----
 
@@ -123,8 +137,8 @@ Both the quiz and feedback forms submit data to a Google Sheet via a deployed Go
       * Open `feedback.html`.
       * Find the line: `const formControlStatus = "disable";`
       * Change `"disable"` to `"enable"` to make the feedback form active.
-  * **For the C Programming Series Content (`index.html`)**:
-      * Open `index.html`.
+  * **For the C Programming Series Content (`weeklycontent.html`)**:
+      * Open `weeklycontent.html`.
       * Locate the JavaScript section that defines `disabledWeekId` and `disabledDays`.
       * Adjust `let disabledWeekId = '';` to specify a week ID (e.g., `'week4'`) to disable an entire week's content.
       * Modify `const disabledDays = {};` to include specific days within an enabled week (e.g., `{'week1': ['tuesday', 'thursday']}`) to show those day's content as blurred and jumbled.
@@ -142,15 +156,16 @@ The leaderboard data in `leaderboard.html` is currently **static HTML**. This me
 
 ## 💻 Local Development
 
-You can open `index.html`, `quiz.html`, `finalquiz.html`, `feedback.html`, and `leaderboard.html` directly in your web browser to test them. Remember that for form submissions and dynamic content status to work, you *must* have completed the Google Apps Script setup and updated the relevant JavaScript variables in the HTML files.
+You can open `index.html`, `weeklycontent.html`, `quiz.html`, `finalquiz.html`, `feedback.html`, and `leaderboard.html` directly in your web browser to test them. Remember that for form submissions and dynamic content status to work, you *must* have completed the Google Apps Script setup and updated the relevant JavaScript variables in the HTML files.
 
 -----
 
 ## 📄 File Structure
 
-  * `index.html`: The **homepage** featuring the C Programming Series weekly and daily content.
+  * `index.html`: The **homepage** featuring the C Programming Series overview, board members, testimonials, and other series.
+  * `weeklycontent.html`: Contains the detailed **C Programming Series weekly and daily learning content**.
   * `quiz.html`: The interactive **Weekly Quiz** application page.
-  * `finalquiz.html`: The interactive **Final Quiz** application page.
+  * `finalquiz.html`: The interactive **Final Quiz** application page for the entire series.
   * `feedback.html`: The Feedback form page.
   * `leaderboard.html`: Displays the quiz results with weekly and department-wise filtering.
   * `styles.css`: Contains the common CSS styling for all pages.
@@ -173,5 +188,3 @@ This project is open-sourced under the MIT License.
 ## 📧 Contact
 
 For any questions or suggestions, please contact The Coders Club.
-
------
