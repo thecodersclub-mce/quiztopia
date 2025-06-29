@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,12 @@
             padding-bottom: 50px; /* Add padding to prevent content from being hidden by the fixed footer */
             box-sizing: border-box; /* Include padding in the element's total width and height */
         }
-
+        .active-nav-button {
+    background-color: #0056b3; /* A slightly darker blue to indicate active state */
+    color: white;
+    border-bottom: 3px solid #f0f0f0; /* Add a subtle underline */
+    /* You can add more styles like a bolder font, different shadow, etc. */
+        }
         .quiz-form-wrapper { /* Renamed to feedback-form-wrapper for clarity, but kept for compatibility */
             width: 90%; /* Adjust width for better responsiveness */
             max-width: 700px; /* Limit max-width for larger screens */
@@ -328,7 +334,7 @@
         <button class="nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
         <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
         <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
-        <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
+        <button class="nav-button active-nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
     </div>
 
     <div class="content-container">
@@ -516,7 +522,7 @@
                     unjumbleText(element);
                 });
 
-                statusElement.innerHTML = 'C PROGRAMMING SERIES - FEEDBACK OPEN<br>Please share your valuable thoughts!';
+                statusElement.innerHTML = 'MINDMASH - FEEDBACK OPEN<br>Please share your valuable thoughts!';
                 statusElement.style.color = '#008000'; // Green for active
             } else { // Assumes "disable" or any other value means disabled
                 // Form is Disabled
@@ -534,7 +540,7 @@
                     jumbleText(element);
                 });
 
-                statusElement.innerHTML = 'C PROGRAMMING SERIES - FEEDBACK<br>form enables after this series end';
+                statusElement.innerHTML = 'MINDMASH - FEEDBACK<br>form enables after this series end';
                 statusElement.style.color = '#CC0000'; // Red for closed
             }
             // Navigation buttons (Back to Quiz, Leaderboard) are NOT managed by formControlStatus
