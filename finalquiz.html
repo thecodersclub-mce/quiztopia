@@ -147,6 +147,11 @@
             background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
             margin: 30px 0;
         }
+        .active-nav-button {
+            background-color: #0056b3; /* A slightly darker blue to indicate active state */
+            color: white;
+         border-bottom: 3px solid #f0f0f0; /* Add a subtle underline */
+        }
         /* Small devices (phones, 600px and down) */
         @media only screen and (max-width: 600px) {
             /* ... other mobile styles ... */
@@ -350,7 +355,7 @@
         <button class="nav-button" onclick="window.location.href='index.html';">Home</button>
         <button class="nav-button" onclick="window.location.href='weeklycontent.html';">Weekly Content</button>
         <button class="nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
-        <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
+        <button class="nav-button active-nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
         <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
         <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
     </div>
