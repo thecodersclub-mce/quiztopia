@@ -16,7 +16,12 @@
             padding-bottom: 50px; /* Add padding to prevent content from being hidden by the fixed footer */
             box-sizing: border-box; /* Include padding in the element's total width and height */
         }
-
+        /* Styles for active navigation button */
+        .active-nav-button {
+            background-color: #0056b3; /* A slightly darker blue to indicate active state */
+            color: white;
+            border-bottom: 3px solid #f0f0f0; /* Add a subtle underline */
+        }
         .quiz-form-wrapper {
             width: 90%; /* Adjust width for better responsiveness */
             max-width: 700px; /* Limit max-width for larger screens */
@@ -442,7 +447,7 @@
     <div class="button-container">
         <button class="nav-button" onclick="window.location.href='index.html';">Home</button>
         <button class="nav-button" onclick="window.location.href='weeklycontent.html';">Weekly Content</button>
-        <button class="nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
+        <button class="nav-button active-nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
         <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
         <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
         <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
