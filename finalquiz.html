@@ -396,178 +396,400 @@
                     <h3>Quiz Questions</h3>
 
                     <div class="form-group">
-                        <p class="no-select"><strong>1. What is the output of the following code?</strong></p>
-                        <pre class="code-block"><code>#include <stdio.h>
-int a = 10;
-int *p = &a;
-printf("%d", *p);
-</code></pre>
+                        <p class="no-select"><strong>1. What are header files in C programming?</strong></p>
                         <div class="radio-group">
-                            <label for="q1_a"><input type="radio" id="q1_a" name="Question1" value="A. 10" required> A. 10</label>
-                            <label for="q1_b"><input type="radio" id="q1_b" name="Question1" value="B. Address of a." required> B. Address of a.</label>
-                            <label for="q1_c"><input type="radio" id="q1_c" name="Question1" value="C. Garbage value." required> C. Garbage value.</label>
-                            <label for="q1_d"><input type="radio" id="q1_d" name="Question1" value="D. Compile-time error." required> D. Compile-time error.</label>
+                            <label for="q1_a"><input type="radio" id="q1_a" name="Question1" value="A. Files that contain the main function" required> A. Files that contain the main function</label>
+                            <label for="q1_b"><input type="radio" id="q1_b" name="Question1" value="B. Files that are executed before the program runs" required> B. Files that are executed before the program runs</label>
+                            <label for="q1_c"><input type="radio" id="q1_c" name="Question1" value="C. Files that contain function declarations and macros" required> C. Files that contain function declarations and macros</label>
+                            <label for="q1_d"><input type="radio" id="q1_d" name="Question1" value="D. Files used for memory allocation" required> D. Files used for memory allocation</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p class="no-select"><strong>2. What will be the output of the following C code?</strong></p>
-                        <pre class="code-block"><code>
-#include <stdio.h>
+                        <p class="no-select"><strong>2. Which of the following appears valid at first glance but is actually an invalid variable declaration in C?</strong></p>
+                        <div class="radio-group">
+                            <label for="q2_a"><input type="radio" id="q2_a" name="Question2" value="A. char str[20] = "Hello";" required> A. `char str[20] = "Hello";`</label>
+                            <label for="q2_b"><input type="radio" id="q2_b" name="Question2" value="B. int @salary = 5000;" required> B. `int @salary = 5000;`</label>
+                            <label for="q2_c"><input type="radio" id="q2_c" name="Question2" value="C. float salary2025 = 99999.99;" required> C. `float salary2025 = 99999.99;`</label>
+                            <label for="q2_d"><input type="radio" id="q2_d" name="Question2" value="D. int NumberOfStudents = 50;" required> D. `int NumberOfStudents = 50;`</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>3. What could be the outcome when the following C program is compiled and executed?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt; // Preprocessor directive
+
+// main function - entry point of the program
 int main() {
-    char str1[] = "Hello";
-    char *str2 = "Hello";
+   // Print output to the screen
+   printf("Hello, World!\\n");
 
-    str1[0] = 'H';
-    str2[0] = 'H';
-
-    printf("str1: %s\n", str1);
-    printf("str2: %s\n", str2);
-
-    return 0;
+   return 0; // Exit the program
 }
 </code></pre>
                         <div class="radio-group">
-                            <label for="q2_a"><input type="radio" id="q2_a" name="Question2" value="A. str1: Hello
-str2: Hello" required> A. str1: Hello<br>str2: Hello</label>
-                            <label for="q2_b"><input type="radio" id="q2_b" name="Question2" value="B. str1: Hello
-Segmentation Fault" required> B. str1: Hello<br>Segmentation Fault</label>
-                            <label for="q2_c"><input type="radio" id="q2_c" name="Question2" value="C. str1: Hello
-str2: hello" required> C. str1: Hello<br>str2: hello</label>
-                            <label for="q2_d"><input type="radio" id="q2_d" name="Question2" value="D. Compile-time error." required> D. Compile-time error.</label>
+                            <label for="q3_a"><input type="radio" id="q3_a" name="Question3" value="A. It prints Hello, World! to the screen." required> A. It prints Hello, World! to the screen.</label>
+                            <label for="q3_b"><input type="radio" id="q3_b" name="Question3" value="B. It throws a compilation error due to missing semicolon." required> B. It throws a compilation error due to missing semicolon.</label>
+                            <label for="q3_c"><input type="radio" id="q3_c" name="Question3" value="C. It prints Hello, World!\n as-is, including \n." required> C. It prints Hello, World!\n as-is, including \n.</label>
+                            <label for="q3_d"><input type="radio" id="q3_d" name="Question3" value="D. It waits for user input before printing anything." required> D. It waits for user input before printing anything.</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>3. In this C program, what technique is used to display the string on screen?</strong></p>
-                        <pre class="code-block"><code>
-#include <stdio.h>
-int main() {
-    char str[] = "Hello, World!";
-    char *ptr = str;
+                        <p><strong>4. A programmer wants to create a custom data type to represent a person's details, including their name, age, and address. What feature of C programming would be most suitable for this purpose?</strong></p>
+                        <div class="radio-group">
+                            <label for="q4_a"><input type="radio" id="q4_a" name="Question4" value="A) Arrays" required> A) Arrays</label>
+                            <label for="q4_b"><input type="radio" id="q4_b" name="Question4" value="B) Pointers" required> B) Pointers</label>
+                            <label for="q4_c"><input type="radio" id="q4_c" name="Question4" value="C) Structures" required> C) Structures</label>
+                            <label for="q4_d"><input type="radio" id="q4_d" name="Question4" value="D) Functions" required> D) Functions</label>
+                        </div>
+                    </div>
 
-    printf("String using pointer:\n");
-    while (*ptr != '\0') {
-        printf("%c", *ptr);
-        ptr++;
-    }
+                    <div class="form-group no-select">
+                        <p><strong>5. Which of the following is *NOT* a valid category of functions in C?</strong></p>
+                        <div class="radio-group">
+                            <label for="q5_a"><input type="radio" id="q5_a" name="Question5" value="A) Library Functions" required> A) Library Functions</label>
+                            <label for="q5_b"><input type="radio" id="q5_b" name="Question5" value="B) User-Defined Functions" required> B) User-Defined Functions</label>
+                            <label for="q5_c"><input type="radio" id="q5_c" name="Question5" value="C) Recursive Functions" required> C) Recursive Functions</label>
+                            <label for="q5_d"><input type="radio" id="q5_d" name="Question5" value="D) Loop-Control Functions" required> D) Loop-Control Functions</label>
+                        </div>
+                    </div>
 
-    return 0;
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>6. Which of the following is NOT a control structure in C?</strong></p>
+                        <div class="radio-group">
+                            <label for="q6_a"><input type="radio" id="q6_a" name="Question6" value="A. if-else" required> A. `if-else`</label>
+                            <label for="q6_b"><input type="radio" id="q6_b" name="Question6" value="B. for loop" required> B. `for` loop</label>
+                            <label for="q6_c"><input type="radio" id="q6_c" name="Question6" value="C. switch" required> C. `switch`</label>
+                            <label for="q6_d"><input type="radio" id="q6_d" name="Question6" value="D. print" required> D. `print`</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>7. Which of the following code snippets will cause an error or unexpected behavior in C?</strong></p>
+                        <pre class="code-block"><code>A. int num = 5;
+if (num == 5); {
+   printf("Number is 5");
 }
 
+B. int x = 10;
+if (x > 0)
+   printf("Positive");
+else
+   printf("Negative");
+
+C. int option = 3;
+switch(option) {
+   case 1: printf("One"); break;
+   case 2: printf("Two"); break;
+   default: printf("Other");
+}
+
+D. int a = 15;
+if (a < 10)
+   printf("Less than 10");
+else if (a < 20)
+   printf("Less than 20");
+else
+   printf("20 or more");
 </code></pre>
                         <div class="radio-group">
-                            <label for="q3_a"><input type="radio" id="q3_a" name="Question3" value="A. It prints the string using a string pointer and while loop." required> A. It prints the string using a string pointer and while loop.</label>
-                            <label for="q3_b"><input type="radio" id="q3_b" name="Question3" value="B. It uses strlen() function to display the string." required> B. It uses strlen() function to display the string.</label>
-                            <label for="q3_c"><input type="radio" id="q3_c" name="Question3" value="C. It copies the string using strcpy() before printing." required> C. It copies the string using strcpy() before printing.</label>
-                            <label for="q3_d"><input type="radio" id="q3_d" name="Question3" value="D. It sorts the string characters alphabetically before printing." required> D. It sorts the string characters alphabetically before printing.</label>
+                            <label for="q7_a"><input type="radio" id="q7_a" name="Question7" value="A" required> A</label>
+                            <label for="q7_b"><input type="radio" id="q7_b" name="Question7" value="B" required> B</label>
+                            <label for="q7_c"><input type="radio" id="q7_c" name="Question7" value="C" required> C</label>
+                            <label for="q7_d"><input type="radio" id="q7_d" name="Question7" value="D" required> D</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>4. What happens when an array is passed to a function in C?</strong></p>
+                        <p><strong>8. What could be a possible behavior when this C program runs?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+   int number;
+   printf("Enter an integer: ");
+   scanf("%d", &number);
+   if (number > 0) {
+       printf("%d is a positive number.\n", number);
+   }
+   return 0;
+}
+</code></pre>
                         <div class="radio-group">
-                            <label for="q4_a"><input type="radio" id="q4_a" name="Question4" value="A. The entire array is copied and passed to the function." required> A. The entire array is copied and passed to the function.</label>
-                            <label for="q4_b"><input type="radio" id="q4_b" name="Question4" value="B. The array decays into a pointer to the first element." required> B. The array decays into a pointer to the first element.</label>
-                            <label for="q4_c"><input type="radio" id="q4_c" name="Question4" value="C. The function receives a reference to the original array." required> C. The function receives a reference to the original array.</label>
-                            <label for="q4_d"><input type="radio" id="q4_d" name="Question4" value="D. The array is not passed at all, and the function uses a default value." required> D. The array is not passed at all, and the function uses a default value.</label>
+                            <label for="q8_a"><input type="radio" id="q8_a" name="Question8" value="A. It reads a number, checks if it’s positive, and prints a message only if it is." required> A. It reads a number, checks if it’s positive, and prints a message only if it is.</label>
+                            <label for="q8_b"><input type="radio" id="q8_b" name="Question8" value="B. It reads a number and always prints whether it's positive or negative." required> B. It reads a number and always prints whether it's positive or negative.</label>
+                            <label for="q8_c"><input type="radio" id="q8_c" name="Question8" value="C. It automatically assigns a default value to number without user input." required> C. It automatically assigns a default value to number without user input.</label>
+                            <label for="q8_d"><input type="radio" id="q8_d" name="Question8" value="D. It displays a syntax error because scanf is used incorrectly." required> D. It displays a syntax error because scanf is used incorrectly.</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>5. Given `char word[] = "grape";` and `char target = 'e';` what index would `findChar(word, target)` return, assuming `findChar` returns the index of the first occurrence or -1 if not found?</strong></p>
+                        <p><strong>9. A structure in C has a char member followed by an int member. However, the total size of the structure is larger than the sum of the sizes of its members. What is the likely reason for this discrepancy?</strong></p>
                         <div class="radio-group">
-                            <label for="q5_a"><input type="radio" id="q5_a" name="Question5" value="A. 4" required> A. 4</label>
-                            <label for="q5_b"><input type="radio" id="q5_b" name="Question5" value="B. 3" required> B. 3</label>
-                            <label for="q5_c"><input type="radio" id="q5_c" name="Question5" value="C. 0" required> C. 0</label>
-                            <label for="q5_d"><input type="radio" id="q5_d" name="Question5" value="D. -1" required> D. -1</label>
+                            <label for="q9_a"><input type="radio" id="q9_a" name="Question9" value="A) The structure is packed tightly in memory." required> A) The structure is packed tightly in memory.</label>
+                            <label for="q9_b"><input type="radio" id="q9_b" name="Question9" value="B) The structure is aligned to a 4-byte boundary." required> B) The structure is aligned to a 4-byte boundary.</label>
+                            <label for="q9_c"><input type="radio" id="q9_c" name="Question9" value="C) The structure has extra padding for memory alignment." required> C) The structure has extra padding for memory alignment.</label>
+                            <label for="q9_d"><input type="radio" id="q9_d" name="Question9" value="D) The structure is compressed to reduce its size." required> D) The structure is compressed to reduce its size.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>10. What is the main characteristic of a do...while loop compared to a while loop?</strong></p>
+                        <div class="radio-group">
+                            <label for="q10_a"><input type="radio" id="q10_a" name="Question10" value="A) It checks the condition before executing the loop body" required> A) It checks the condition before executing the loop body</label>
+                            <label for="q10_b"><input type="radio" id="q10_b" name="Question10" value="B) It never executes if the condition is false" required> B) It never executes if the condition is false</label>
+                            <label for="q10_c"><input type="radio" id="q10_c" name="Question10" value="C) It executes the loop body at least once before checking the condition" required> C) It executes the loop body at least once before checking the condition</label>
+                            <label for="q10_d"><input type="radio" id="q10_d" name="Question10" value="D) It cannot use break statements" required> D) It cannot use break statements</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>11. Which keyword is used to return a value from a function?</strong></p>
+                        <div class="radio-group">
+                            <label for="q11_a"><input type="radio" id="q11_a" name="Question11" value="A. return" required> A. return</label>
+                            <label for="q11_b"><input type="radio" id="q11_b" name="Question11" value="B. send" required> B. send</label>
+                            <label for="q11_c"><input type="radio" id="q11_c" name="Question11" value="C. break" required> C. break</label>
+                            <label for="q11_d"><input type="radio" id="q11_d" name="Question11" value="D. exit" required> D. exit</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p class="no-select"><strong>12. What will be the output of the following C code?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+int main() {
+   int arr[5] = {1, 2, 3};
+   printf("%d %d %d %d %d", arr[0], arr[1], arr[2], arr[3], arr[4]);
+   return 0;
+}
+</code></pre>
+                        <div class="radio-group">
+                            <label for="q12_a"><input type="radio" id="q12_a" name="Question12" value="A. 1 2 3 0 0" required> A. 1 2 3 0 0</label>
+                            <label for="q12_b"><input type="radio" id="q12_b" name="Question12" value="B. 1 2 3 garbage garbage" required> B. 1 2 3 garbage garbage</label>
+                            <label for="q12_c"><input type="radio" id="q12_c" name="Question12" value="C. Compilation error" required> C. Compilation error</label>
+                            <label for="q12_d"><input type="radio" id="q12_d" name="Question12" value="D. 1 2 3 4 5" required> D. 1 2 3 4 5</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>13. Which of the following best describes what the pointer `ptr` does in the program?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+   int a = 10;          // Declare an integer variable
+   int *ptr;            // Declare a pointer to int
+
+   ptr = &a;            // Store address of variable 'a' in pointer 'ptr'
+
+   // Print the value and address
+   printf("Value of a: %d\n", a);
+   printf("Address of a: %p\n", &a);
+   printf("Value stored in ptr (address of a): %p\n", ptr);
+   printf("Value pointed to by ptr (value of a): %d\n", *ptr);
+
+   return 0;
+}
+</code></pre>
+                        <div class="radio-group">
+                            <label for="q13_a"><input type="radio" id="q13_a" name="Question13" value="A. It stores the value of a, not its address." required> A. It stores the value of a, not its address.</label>
+                            <label for="q13_b"><input type="radio" id="q13_b" name="Question13" value="B. It holds the address of a and can be used to access or modify a's value." required> B. It holds the address of a and can be used to access or modify a's value.</label>
+                            <label for="q13_c"><input type="radio" id="q13_c" name="Question13" value="C. It points to a completely unrelated memory location." required> C. It points to a completely unrelated memory location.</label>
+                            <label for="q13_d"><input type="radio" id="q13_d" name="Question13" value="D. It causes a segmentation fault when dereferenced." required> D. It causes a segmentation fault when dereferenced.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>14. A programmer wants to store a flag that can have one of three possible values (0, 1, or 2) in a structure. What feature of C structures can be used to optimize memory usage in this case?</strong></p>
+                        <div class="radio-group">
+                            <label for="q14_a"><input type="radio" id="q14_a" name="Question14" value="A) Bitwise operations" required> A) Bitwise operations</label>
+                            <label for="q14_b"><input type="radio" id="q14_b" name="Question14" value="B) Bit fields" required> B) Bit fields</label>
+                            <label for="q14_c"><input type="radio" id="q14_c" name="Question14" value="C) Unions" required> C) Unions</label>
+                            <label for="q14_d"><input type="radio" id="q14_d" name="Question14" value="D) Enumerations" required> D) Enumerations</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>15. What is the correct way to declare a pointer to a function that returns int and takes two int parameters?</strong></p>
+                        <div class="radio-group">
+                            <label for="q15_a"><input type="radio" id="q15_a" name="Question15" value="A) int *func(int, int);" required> A) `int *func(int, int);`</label>
+                            <label for="q15_b"><input type="radio" id="q15_b" name="Question15" value="B) int (*func)(int, int);" required> B) `int (*func)(int, int);`</label>
+                            <label for="q15_c"><input type="radio" id="q15_c" name="Question15" value="C) int (*func(int, int));" required> C) `int (*func(int, int));`</label>
+                            <label for="q15_d"><input type="radio" id="q15_d" name="Question15" value="D) (*int func)(int, int);" required> D) `(*int func)(int, int);`</label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <p class="no-select"><strong>6. Which of the following is NOT a valid C data type?</strong></p>
+                        <p class="no-select"><strong>16. What is the output of this code?</strong></p>
+                        <pre class="code-block"><code>int a = 10;
+int *p = &a;
+printf("%d", *p);
+</code></pre>
                         <div class="radio-group">
-                            <label for="q6_a"><input type="radio" id="q6_a" name="Question6" value="A. long double" required> A. long double</label>
-                            <label for="q6_b"><input type="radio" id="q6_b" name="Question6" value="B. character" required> B. character</label>
-                            <label for="q6_c"><input type="radio" id="q6_c" name="Question6" value="C. float" required> C. float</label>
-                            <label for="q6_d"><input type="radio" id="q6_d" name="Question6" value="D. boolean" required> D. boolean</label>
+                            <label for="q16_a"><input type="radio" id="q16_a" name="Question16" value="A. Address of a" required> A. Address of a</label>
+                            <label for="q16_b"><input type="radio" id="q16_b" name="Question16" value="B. 10" required> B. 10</label>
+                            <label for="q16_c"><input type="radio" id="q16_c" name="Question16" value="C. Compilation error" required> C. Compilation error</label>
+                            <label for="q16_d"><input type="radio" id="q16_d" name="Question16" value="D. 0" required> D. 0</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p class="no-select"><strong>7. What is the output of `printf("%d", 10 / 3);`?</strong></p>
-                        <div class="radio-group">
-                            <label for="q7_a"><input type="radio" id="q7_a" name="Question7" value="A. 3.33" required> A. 3.33</label>
-                            <label for="q7_b"><input type="radio" id="q7_b" name="Question7" value="B. 3" required> B. 3</label>
-                            <label for="q7_c"><input type="radio" id="q7_c" name="Question7" value="C. 4" required> C. 4</label>
-                            <label for="q7_d"><input type="radio" id="q7_d" name="Question7" value="D. 3.0" required> D. 3.0</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group no-select">
-                        <p class="no-select"><strong>8. Which operator is used to get the address of a variable?</strong></p>
-                        <div class="radio-group">
-                            <label for="q8_a"><input type="radio" id="q8_a" name="Question8" value="A. *" required> A. *</label>
-                            <label for="q8_b"><input type="radio" id="q8_b" name="Question8" value="B. &" required> B. &</label>
-                            <label for="q8_c"><input type="radio" id="q8_c" name="Question8" value="C. ->" required> C. -></label>
-                            <label for="q8_d"><input type="radio" id="q8_d" name="Question8" value="D. ." required> D. .</label>
-                        </div>
-                    </div>
-
-                    <div class="form-group no-select">
-                        <p class="no-select"><strong>9. What is the output of the following C code?</strong></p>
-                        <pre class="code-block"><code>
-#include <stdio.h>
+                        <p class="no-select"><strong>17. What will be the output of the following C code?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
 int main() {
-    int i = 0;
-    for (; i < 5; i++) {
-        if (i == 2) continue;
-        printf("%d ", i);
-    }
-    return 0;
+   char msg[] = "Techie";
+   char *ptr = msg;
+   ptr += 3;
+   printf("%s", ptr);
+   return 0;
 }
-                        </code></pre>
+</code></pre>
                         <div class="radio-group">
-                            <label for="q9_a"><input type="radio" id="q9_a" name="Question9" value="A. 0 1 2 3 4" required> A. 0 1 2 3 4</label>
-                            <label for="q9_b"><input type="radio" id="q9_b" name="Question9" value="B. 0 1 3 4" required> B. 0 1 3 4</label>
-                            <label for="q9_c"><input type="radio" id="q9_c" name="Question9" value="C. 0 1" required> C. 0 1</label>
-                            <label for="q9_d"><input type="radio" id="q9_d" name="Question9" value="D. Compile-time error" required> D. Compile-time error</label>
+                            <label for="q17_a"><input type="radio" id="q17_a" name="Question17" value="A. Techie" required> A. Techie</label>
+                            <label for="q17_b"><input type="radio" id="q17_b" name="Question17" value="B. chie" required> B. chie</label>
+                            <label for="q17_c"><input type="radio" id="q17_c" name="Question17" value="C. hie" required> C. hie</label>
+                            <label for="q17_d"><input type="radio" id="q17_d" name="Question17" value="D. Compilation error" required> D. Compilation error</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p class="no-select"><strong>10. Which of the following is the correct way to declare a pointer `p` to an integer variable `x`?</strong></p>
+                        <p><strong>18. What will happen if the file "myfile.txt" cannot be opened in write mode in the given program?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+   char str[100];
+
+   printf("Enter a string: ");
+   gets(str);  // Note: gets() is unsafe, use fgets() in real programs
+
+   int length = strlen(str);  // Using string function
+
+   printf("Length of the string is: %d\n", length);
+
+   return 0;
+}
+</code></pre>
                         <div class="radio-group">
-                            <label for="q10_a"><input type="radio" id="q10_a" name="Question10" value="A. int p = &x;" required> A. `int p = &x;`</label>
-                            <label for="q10_b"><input type="radio" id="q10_b" name="Question10" value="B. int *p = x;" required> B. `int *p = x;`</label>
-                            <label for="q10_c"><input type="radio" id="q10_c" name="Question10" value="C. int *p = &x;" required> C. `int *p = &x;`</label>
-                            <label for="q10_d"><input type="radio" id="q10_d" name="Question10" value="D. int p = *x;" required> D. `int p = *x;`</label>
+                            <label for="q18_a"><input type="radio" id="q18_a" name="Question18" value="A. The program will skip writing and directly read from the file." required> A. The program will skip writing and directly read from the file.</label>
+                            <label for="q18_b"><input type="radio" id="q18_b" name="Question18" value="B. The program will crash without any message." required> B. The program will crash without any message.</label>
+                            <label for="q18_c"><input type="radio" id="q18_c" name="Question18" value="C. The program will display "Error opening file!" and exit." required> C. The program will display "Error opening file!" and exit.</label>
+                            <label for="q18_d"><input type="radio" id="q18_d" name="Question18" value="D. The program will create a backup file and continue." required> D. The program will create a backup file and continue.</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>11. In C, what is the value of `sizeof(int)` on most 64-bit systems?</strong></p>
-                        <input type="text" id="q11_text" name="Question11" required>
+                        <p><strong>19. A programmer wants to represent a person's address as part of their overall details. What feature of C structures can be used to group the address details (street, city, state, zip) together within the person's structure?</strong></p>
+                        <div class="radio-group">
+                            <label for="q19_a"><input type="radio" id="q19_a" name="Question19" value="A) Nested structures" required> A) Nested structures</label>
+                            <label for="q19_b"><input type="radio" id="q19_b" name="Question19" value="B) Arrays of structures" required> B) Arrays of structures</label>
+                            <label for="q19_c"><input type="radio" id="q19_c" name="Question19" value="C) Pointers to structures" required> C) Pointers to structures</label>
+                            <label for="q19_d"><input type="radio" id="q19_d" name="Question19" value="D) Functions that return structures" required> D) Functions that return structures</label>
+                        </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>12. What is the name of the function used to allocate dynamic memory in C?</strong></p>
-                        <input type="text" id="q12_text" name="Question12" required>
+                        <p><strong>20. What does the expression `found - str` do after `char *found = strchr(str, 'a');`?</strong></p>
+                        <div class="radio-group">
+                            <label for="q20_a"><input type="radio" id="q20_a" name="Question20" value="A) Adds an offset to the character pointer" required> A) Adds an offset to the character pointer</label>
+                            <label for="q20_b"><input type="radio" id="q20_b" name="Question20" value="B) Returns the memory address of 'a'" required> B) Returns the memory address of 'a'</label>
+                            <label for="q20_c"><input type="radio" id="q20_c" name="Question20" value="C) Computes the index of 'a' in the string" required> C) Computes the index of 'a' in the string</label>
+                            <label for="q20_d"><input type="radio" id="q20_d" name="Question20" value="D) Returns a null pointer" required> D) Returns a null pointer</label>
+                        </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>13. Write a short C code snippet to swap the values of two integer variables, `a` and `b`, without using a third variable.</strong></p>
-                        <textarea id="q13_textarea" name="Question13" rows="6" required></textarea>
+                        <p class="no-select"><strong>21. How can you access structure members?</strong></p>
+                        <div class="radio-group">
+                            <label for="q21_a"><input type="radio" id="q21_a" name="Question21" value="A. Using the comma , operator" required> A. Using the comma `,` operator</label>
+                            <label for="q21_b"><input type="radio" id="q21_b" name="Question21" value="B. Using the dot . operator" required> B. Using the dot `.` operator</label>
+                            <label for="q21_c"><input type="radio" id="q21_c" name="Question21" value="C. Using the star * operator" required> C. Using the star `*` operator</label>
+                            <label for="q21_d"><input type="radio" id="q21_d" name="Question21" value="D. Using the at @ operator" required> D. Using the at `@` operator</label>
+                        </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>14. What is the ASCII value of the character 'A'?</strong></p>
-                        <input type="text" id="q14_text" name="Question14" required>
+                        <p><strong>22. What will happen when the following code is executed?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+int main() {
+   FILE *fp = fopen("data.txt", "r+");
+   if (fp == NULL) {
+       printf("Error opening file.\n");
+       return 1;
+   }
+   fprintf(fp, "Hello World!");
+   fclose(fp);
+   return 0;
+}
+</code></pre>
+                        <p class="no-select">Assume the file data.txt does not exist before running the program.</p>
+                        <div class="radio-group">
+                            <label for="q22_a"><input type="radio" id="q22_a" name="Question22" value="A. The program creates data.txt and writes "Hello World!"" required> A. The program creates data.txt and writes "Hello World!"</label>
+                            <label for="q22_b"><input type="radio" id="q22_b" name="Question22" value="B. The program prints "Error opening file."" required> B. The program prints "Error opening file."</label>
+                            <label for="q22_c"><input type="radio" id="q22_c" name="Question22" value="C. The program throws a compile-time error" required> C. The program throws a compile-time error</label>
+                            <label for="q22_d"><input type="radio" id="q22_d" name="Question22" value="D. The program opens the file in append mode and adds "Hello World!" at the end" required> D. The program opens the file in append mode and adds "Hello World!" at the end</label>
+                        </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>15. Briefly explain the difference between `calloc()` and `malloc()` in C.</strong></p>
-                        <textarea id="q15_textarea" name="Question15" rows="6" required></textarea>
+                        <p><strong>23. What will happen if "myfile.txt" does not exist when the program tries to open it in read mode?</strong></p>
+                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
+int main() {
+   FILE *fptr;
+   char data[100];
+
+   // Writing to the file
+   fptr = fopen("myfile.txt", "w"); // open in write mode
+   if (fptr == NULL) {
+       printf("Error opening file!\n");
+       return 1;
+   }
+
+   printf("Enter some text to write into the file: ");
+   fgets(data, sizeof(data), stdin);
+   fprintf(fptr, "%s", data);
+   fclose(fptr);
+   printf("Data written to file successfully.\n");
+
+   // Reading from the file
+   fptr = fopen("myfile.txt", "r"); // open in read mode
+   if (fptr == NULL) {
+       printf("Error opening file!\n");
+       return 1;
+   }
+
+   printf("Reading from the file:\n");
+   while (fgets(data, sizeof(data), fptr) != NULL) {
+       printf("%s", data);
+   }
+   fclose(fptr);
+
+   return 0;
+}
+</code></pre>
+                        <div class="radio-group">
+                            <label for="q23_a"><input type="radio" id="q23_a" name="Question23" value="A. It creates a new empty file named "myfile.txt"." required> A. It creates a new empty file named "myfile.txt".</label>
+                            <label for="q23_b"><input type="radio" id="q23_b" name="Question23" value="B. It reads from a temporary file instead." required> B. It reads from a temporary file instead.</label>
+                            <label for="q23_c"><input type="radio" id="q23_c" name="Question23" value="C. It returns NULL and prints an error message." required> C. It returns NULL and prints an error message.</label>
+                            <label for="q23_d"><input type="radio" id="q23_d" name="Question23" value="D. It appends default text into the file." required> D. It appends default text into the file.</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>24. A programmer wants to read data from a file in C. What is the first step in this process?</strong></p>
+                        <div class="radio-group">
+                            <label for="q24_a"><input type="radio" id="q24_a" name="Question24" value="A) Reading data from the file using fread()" required> A) Reading data from the file using `fread()`</label>
+                            <label for="q24_b"><input type="radio" id="q24_b" name="Question24" value="B) Closing the file using fclose()" required> B) Closing the file using `fclose()`</label>
+                            <label for="q24_c"><input type="radio" id="q24_c" name="Question24" value="C) Opening the file using fopen()" required> C) Opening the file using `fopen()`</label>
+                            <label for="q24_d"><input type="radio" id="q24_d" name="Question24" value="D) Writing data to the file using fwrite()" required> D) Writing data to the file using `fwrite()`</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group no-select">
+                        <p><strong>25. Why is `fgets()` used for reading the student name instead of `scanf("%s", s.name)`?</strong></p>
+                        <div class="radio-group">
+                            <label for="q25_a"><input type="radio" id="q25_a" name="Question25" value="A) Because scanf("%s") reads newline characters" required> A) Because `scanf("%s")` reads newline characters</label>
+                            <label for="q25_b"><input type="radio" id="q25_b" name="Question25" value="B) Because fgets() is faster than scanf()" required> B) Because `fgets()` is faster than `scanf()`</label>
+                            <label for="q25_c"><input type="radio" id="q25_c" name="Question25" value="C) Because fgets() can read names with spaces" required> C) Because `fgets()` can read names with spaces</label>
+                            <label for="q25_d"><input type="radio" id="q25_d" name="Question25" value="D) Because scanf() automatically closes the file" required> D) Because `scanf()` automatically closes the file</label>
+                        </div>
                     </div>
 
                     <p><strong>After submission wait until you see a tick</strong></p>
@@ -704,7 +926,7 @@ int main() {
                     unjumbleText(element);
                 });
 
-                statusElement.innerHTML = 'MINDMASH - FINAL QUIZ<br>fill within 30/6/25 6.00 PM IST!';
+                statusElement.innerHTML = 'MINDMASH - FINAL QUIZ OF THIS SERIES<br>fill within 30/6/25 6.00 PM IST!';
                 statusElement.style.color = '#008000'; // Green for active
             } else { // Assumes "disable" or any other value means disabled
                 // Quiz is Disabled
@@ -726,7 +948,7 @@ int main() {
                     jumbleText(element);
                 });
 
-                statusElement.innerHTML = 'MINDMASH - FINAL QUIZ<br>Quiz goes live on 28/6/25 at 6.00 PM IST!';
+                statusElement.innerHTML = 'MINDMASH - FINAL QUIZ OF THIS SERIES<br>Quiz goes live on 29/6/25 at 6.00 PM IST!';
                 statusElement.style.color = '#CC0000'; // Red for closed
             }
         }
