@@ -7,7 +7,13 @@
     <link rel="icon" href="TCC.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* INLINE CSS FOR C PROGRAMMING SERIES CONTENT AND TABLES */
+        /* Styles for active navigation button */
+.active-nav-button {
+    background-color: #0056b3; /* A slightly darker blue to indicate active state */
+    color: white;
+    border-bottom: 3px solid #f0f0f0; /* Add a subtle underline */
+    /* You can add more styles like a bolder font, different shadow, etc. */
+}
 
         /* General Container for all new content */
         .content-container-wrapper {
@@ -295,7 +301,7 @@
     </div>
 
 <div class="button-container">
-    <button class="nav-button" onclick="window.location.href='index.html';">Home</button>
+        <button class="nav-button active-nav-button" onclick="window.location.href='index.html';">Home</button>
         <button class="nav-button" onclick="window.location.href='weeklycontent.html';">Weekly Content</button>
         <button class="nav-button" onclick="window.location.href='quiz.html';">Week 5 Quiz</button>
         <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
