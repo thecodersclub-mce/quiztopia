@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,7 +172,7 @@
     margin-bottom: 5px;
     position: relative; /* Needed for ::before positioning */
     line-height: 1.6; /* Ensure consistent line spacing */
-    
+
     /* Padding to create space for the circle bullet and gap */
     padding-left: 18px; /* Space for the circle bullet + small gap */
 }
@@ -182,7 +183,7 @@
     color: #00408f; /* Matching blue */
     font-weight: bold; /* Make it more prominent */
     font-size: 1em; /* Ensure the bullet size matches the text */
-    
+
     position: absolute; /* Position the bullet absolutely relative to the list item */
     left: 0; /* Align it to the very left edge of the LI's content area */
     top: 0; /* Align with the top of the text */
@@ -208,7 +209,7 @@
     margin-bottom: 5px;
     line-height: 1.6; /* Ensure consistent line spacing */
     position: relative; /* Needed for positioning the ::before pseudo-element */
-    
+
     /* Padding to create space for the number (e.g., "10.") and gap.
         Adjust this based on the max number of items you expect (e.g., if you go to 100, you need more space). */
     padding-left: 30px; /* Space for the number and text content */
@@ -220,11 +221,11 @@
     counter-increment: custom-numbered-list;
     /* Display the counter value followed by a period */
     content: counter(custom-numbered-list) ".";
-    
+
     color: #00408f; /* Matching blue */
     font-weight: bold;
     font-size: 1em; /* Ensure the number size matches the text */
-    
+
     position: absolute; /* Position the number absolutely relative to the list item */
     left: 0; /* Align it to the very left edge of the LI's content area */
     top: 0; /* Align with the top of the text */
@@ -301,6 +302,9 @@ pre code {
         justify-content: center;
         flex-wrap: nowrap; /* PREVENT WRAPPING for buttons */
         padding: 5px;
+        /* Add overflow-x here to enable horizontal scrolling for buttons if they exceed */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
 
     /* General Tab Button Styling for Mobile */
@@ -329,11 +333,6 @@ pre code {
 
     /* --- Specific Adjustments for Weekday Buttons --- */
     .nested-tab-nav .tab-button {
-        /*
-         * To keep all 5 'Day' buttons on a single row,
-         * similar to weeks, allow them to take roughly 1/5th of the space.
-         * `min-width: 0` is crucial here.
-         */
         flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
         font-size: 10px; /* Smallest font size for weekdays to fit 5 */
         padding: 6px 2px; /* Tighter padding for weekdays */
@@ -382,20 +381,53 @@ pre code {
         padding: 8px;
     }
     /* ... other mobile styles ... */
-            .content-access-button {
-                padding: 6px 10px;
-                font-size: 0.8em;
-            }
-            /* REDUCE SIZE OF NAVIGATION BUTTONS FOR MOBILE VIEW */
-            .nav-button {
-                padding: 6px 8px; /* Smaller padding */
-                font-size: 0.75em; /* Smaller font size */
-                margin: 2px; /* Reduce margin between buttons */
-            }
-            .button-container {
-                padding: 10px; /* Adjust padding for the button container */
-                text-align: center; /* Center buttons if they wrap */
-            }
+    .content-access-button {
+        padding: 6px 10px;
+        font-size: 0.8em;
+    }
+    /* REDUCE SIZE OF NAVIGATION BUTTONS FOR MOBILE VIEW */
+    .nav-button {
+        padding: 6px 8px; /* Smaller padding */
+        font-size: 0.75em; /* Smaller font size */
+        margin: 2px; /* Reduce margin between buttons */
+    }
+    .button-container {
+        padding: 10px; /* Adjust padding for the button container */
+        text-align: center; /* Center buttons if they wrap */
+    }
+
+    /* --- Quiz Specific Mobile Styles --- */
+    .quiz-container {
+        padding: 10px; /* Reduce padding for the entire quiz container */
+        margin-top: 15px; /* Adjust top margin */
+    }
+
+    .quiz-container h3 {
+        font-size: 1.2em; /* Smaller font for quiz title */
+        margin-bottom: 10px;
+    }
+
+    .question-block {
+        margin-bottom: 15px; /* Space between questions */
+    }
+
+    .question-block p {
+        font-size: 1em; /* Adjust question text size */
+        margin-bottom: 8px;
+    }
+
+    .quiz-option {
+        padding: 8px 10px; /* Smaller padding for options */
+        font-size: 0.9em; /* Smaller font size for options */
+        margin-bottom: 6px; /* Space between options */
+        min-height: 35px; /* Ensure a decent tap target size */
+    }
+
+    .quiz-feedback {
+        font-size: 0.9em; /* Smaller font for feedback */
+        padding: 6px 10px; /* Smaller padding for feedback */
+        margin-top: 8px; /* Adjust top margin for feedback */
+    }
 }
 /* Medium devices (tablets, 601px to 900px) */
 @media only screen and (min-width: 601px) and (max-width: 900px) {
@@ -435,7 +467,7 @@ pre code {
     margin-bottom: 20px;
     font-size: 0.95em;
     /* Remove table-layout: fixed; here. It can constrain the table too much on small screens.
-       Let the table content dictate its width within the scrollable container. */
+        Let the table content dictate its width within the scrollable container. */
 }
 
 .content-block th,
@@ -559,11 +591,11 @@ pre code {
 
     .content-block table {
         /* On small screens, allow the table to take its natural width,
-           which will then be contained by the .table-responsive wrapper. */
+            which will then be contained by the .table-responsive wrapper. */
         width: 100%; /* Start with 100% width */
         min-width: 400px; /* Set a minimum width for the table itself.
-                             Adjust this based on your table content.
-                             This prevents extreme squishing of columns.*/
+                            Adjust this based on your table content.
+                            This prevents extreme squishing of columns.*/
         table-layout: auto; /* Allow column widths to adjust based on content */
     }
 
@@ -617,6 +649,95 @@ pre code {
 }
 /* Large devices (desktops, 901px and up - uses existing styles for max-width 900px and up) */
 /* No specific media query needed here as base styles handle larger screens */
+.quiz-container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.quiz-container h3 {
+    color: #00408f;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 10px;
+}
+
+.question-block {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #cccccc;
+}
+
+.question-block:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.question-block p {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.options label { /* This specific style is no longer strictly needed but keeping for reference if old radio buttons exist */
+    display: block;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #555;
+}
+
+/* NEW STYLES FOR TOUCHABLE OPTIONS */
+.quiz-option {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    background-color: #fff;
+    color: #333;
+}
+
+.quiz-option:hover {
+    background-color: #eef;
+    border-color: #007BFF;
+    color: #007BFF;
+}
+
+.quiz-option.selected {
+    background-color: #007BFF; /* Blue background for selected */
+    color: white;
+    border-color: #00408f;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+.quiz-feedback {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none; /* Hidden by default */
+}
+
+.quiz-feedback.correct {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.quiz-feedback.incorrect {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
     </style>
 </head>
 <body>
@@ -648,6 +769,7 @@ pre code {
             <button class="tab-button" onclick="showWeek('week3', this)">Week 3</button>
             <button class="tab-button" onclick="showWeek('week4', this)">Week 4</button>
             <button class="tab-button" onclick="showWeek('week5', this)">Week 5</button>
+            <button class="tab-button" onclick="showWeek('week6', this)">Week 6</button>
         </div>
 
         <div id="week1" class="week-content">
@@ -2154,7 +2276,7 @@ if (file != NULL) {
 <div id="friday-content-week5" class="day-content day-section">
         <h2>Function Friday</h2>
         <div class="content-block">
-        <!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p> -->
+        <!--  -->
         <h3>Store and Retrieve Structured Data Using File Handling:</h3>
         <p>This program helps you save a student's info—like their name, ID, and marks—into a file. Then it opens the file and shows you what was saved, kind of like writing something down and reading it later.</p>
         </div>
@@ -2397,9 +2519,114 @@ int main() {
             </div>
    
  </div>
+</div>
 
+<div id="week6" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 6 - Brainstorming
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week6', this, 'week6')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week6', this, 'week6')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week6', this, 'week6')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week6', this, 'week6')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week6', this, 'week6')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week6', this, 'week6')">Saturday</button>
+    </div>
+
+<div id="monday-content-week6" class="day-content day-section">
+    <h2>How to Build Logic in Programming & File Handling Q&A</h2>
+    <div class="content-block">
+        <h3>How to Build Logic in Programming:</h3>
+        <ul>
+            <li><strong>Understand the problem clearly:</strong> Read the question 2-3 times. Break it into small parts. Don't rush to code.</li>
+            <li><strong>Think in steps, not code:</strong> Imagine solving it in real life. Write down the steps in simple language before jumping to code.</li>
+            <li><strong>Start with simple problems:</strong> Practice basics like:
+                <ul>
+                    <li>Find the largest of 3 numbers.</li>
+                    <li>Reverse a string.</li>
+                    <li>Check if a number is prime.</li>
+                </ul>
+            </li>
+            <li><strong>Dry run your logic:</strong> Go through each line and see what it’s doing. This helps you understand how the logic flows.</li>
+            <li><strong>Practice daily:</strong> Logic building improves with consistency. The more problems you solve, the better you get.</li>
+        </ul>
+    </div>
+
+    <div class="quiz-container">
+        <h3>File Handling in C – Interview Based Questions:</h3>
+        <div class="question-block">
+            <p>1. What is the difference between getc() and fgetc()?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. getc() is a function, while fgetc() is a macro</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. getc() reads from files, fgetc() reads from stdin only</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. getc() can be a macro, while fgetc() is always a function</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. There is no difference between them</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+
+        <div class="question-block">
+            <p>2. What is the difference between putc() and fputc()?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q2" data-value="a">A. putc() is a macro, while fputc() is a function</div>
+                <div class="quiz-option" data-question="q2" data-value="b">B. putc() can only write to stdout</div>
+                <div class="quiz-option" data-question="q2" data-value="c">C. fputc() is faster than putc()</div>
+                <div class="quiz-option" data-question="q2" data-value="d">D. There is no difference</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
+</div>
+<div id="tuesday-content-week6" class="day-content day-section">
+    <h2>Memory Management & Dynamic Allocation</h2>
+    <div class="content-block">
+        <h3>Pointers and Memory Fundamentals:</h3>
+        <p>This section covers fundamental concepts related to memory management in C, essential for understanding dynamic allocation.</p>
+        <ul>
+            <li><strong>Memory Layout:</strong> Stack, Heap, Data, Text segments.</li>
+            <li><strong>Pointers:</strong> Variables that store memory addresses.</li>
+            <li><strong>"sizeof" Operator:</strong> Used to determine the size of types or variables.</li>
+        </ul>
+    </div>
+
+    <div class="quiz-container">
+        <h3>File Handling in C – Interview Based Questions:</h3>
+        <div class="question-block">
+            <p>1. What is the size of int on a 32-bit system?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 2 bytes</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 4 bytes</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 8 bytes</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Depends on compiler</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p>2. Which function is used to dynamically allocate memory in C?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q2" data-value="a">A. calloc()</div>
+                <div class="quiz-option" data-question="q2" data-value="b">B. malloc()</div>
+                <div class="quiz-option" data-question="q2" data-value="c">C. realloc()</div>
+                <div class="quiz-option" data-question="q2" data-value="d">D. All of the above</div>
+            </div>
+            <div class="quiz-feedback"></div>
         </div>
     </div>
+</div>
+<div id="wednesday-content-week6" class="day-content day-section">
+    <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+</div>
+<div id="thursday-content-week6" class="day-content day-section">
+    <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+</div>
+<div id="friday-content-week6" class="day-content day-section">
+<p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+</div>
+
+</div>  <!-- add week6 content before these -->  
+
+
+</div>
 
     <footer>
         <p>Created by The Coders Club</p>
@@ -2416,19 +2643,18 @@ int main() {
             <img src="WP.svg" alt="WhatsApp" class="social-logo">
         </a>
     </footer>
-
-    <script>
+<script>
     // --- CONTROL KEYWORD HERE ---
     // Define a variable to store the ID of the disabled week
     // Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
     let disabledWeekId = 'null'; // Example: Week 4 is disabled
     // Define an array of disabled days for a given week (e.g., ['tuesday', 'thursday'] for week1)
     const disabledDays = {
-       'week1': ['monday','tuesday','wednesday','thursday','friday','saturday'], // Example: Tuesday and Thursday are disabled for Week 1
-       'week2': ['monday','tuesday','wednesday','thursday','friday','saturday'],
-       'week3': ['monday','tuesday','wednesday','thursday','friday','saturday'],
-       'week4': ['monday','tuesday','wednesday','thursday','friday','saturday'],
-       'week5': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+        //'week1': ['monday','tuesday','wednesday','thursday','friday','saturday'], // Example: Tuesday and Thursday are disabled for Week 1
+        //'week2': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+        //'week3': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+        //'week4': ['monday','tuesday','wednesday','thursday','friday','saturday'],
+        //'week5': ['monday','tuesday','wednesday','thursday','friday','saturday'],
     };
     // --- END CONTROL KEYWORD ---
 
@@ -2500,7 +2726,7 @@ int main() {
         if (weekId === disabledWeekId) {
             selectedWeekContent.classList.add('content-disabled-overlay');
             // Jumble text for questions and options within the entire disabled week
-            selectedWeekContent.querySelectorAll('h3, p, h4, span, .radio-group label, .checkbox-group label, li').forEach(element => { // Added 'li' for lists
+            selectedWeekContent.querySelectorAll('h3, p, h4, span, .quiz-option, li').forEach(element => { // Updated .radio-group label to .quiz-option
                 jumbleText(element);
             });
 
@@ -2513,7 +2739,7 @@ int main() {
             selectedWeekContent.querySelectorAll('.day-content').forEach(content => {
                 content.classList.remove('active-content'); // Hide any active day content
                 content.classList.add('content-disabled-overlay'); // Apply blur to all day contents
-                content.querySelectorAll('h4, p, span, li').forEach(element => { // Jumble text within day content, added 'li'
+                content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
                     jumbleText(element);
                 });
             });
@@ -2521,7 +2747,7 @@ int main() {
         } else { // Week is enabled
             selectedWeekContent.classList.remove('content-disabled-overlay');
             // Unjumble text for questions and options within the entire enabled week
-            selectedWeekContent.querySelectorAll('h3, p, h4, span, .radio-group label, .checkbox-group label, li').forEach(element => { // Added 'li'
+            selectedWeekContent.querySelectorAll('h3, p, h4, span, .quiz-option, li').forEach(element => { // Updated .radio-group label to .quiz-option
                 unjumbleText(element);
             });
 
@@ -2548,7 +2774,7 @@ int main() {
                 dayContents.forEach(content => {
                     content.classList.remove('active-content');
                     content.classList.remove('content-disabled-overlay'); // Ensure removed if no default day
-                    content.querySelectorAll('h4, p, span, li').forEach(element => { // Added 'li'
+                    content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
                         unjumbleText(element); // Unjumble if no default day content is shown
                     });
                 });
@@ -2567,7 +2793,7 @@ int main() {
         dayContents.forEach(content => {
             content.classList.remove('active-content');
             content.classList.remove('content-disabled-overlay'); // Always remove before potentially adding it back
-            content.querySelectorAll('h4, p, span, li').forEach(element => { // Added 'li'
+            content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
                 unjumbleText(element); // Always unjumble previous content
             });
         });
@@ -2599,7 +2825,7 @@ int main() {
             if (targetDayContent) {
                 targetDayContent.classList.add('content-disabled-overlay');
                 // Jumble the text contents within this specific disabled day
-                targetDayContent.querySelectorAll('h4, p, span, li').forEach(element => { // Added 'li'
+                targetDayContent.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
                     jumbleText(element);
                 });
             }
@@ -2613,7 +2839,7 @@ int main() {
         } else {
             // Unjumble text if the day is enabled
             if (targetDayContent) {
-                targetDayContent.querySelectorAll('h4, p, span, li').forEach(element => { // Added 'li'
+                targetDayContent.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
                     unjumbleText(element);
                 });
             }
@@ -2671,12 +2897,6 @@ int main() {
                 // Manually trigger the showWeek function
                 showWeek(weekIdFromHash, weekButton);
 
-                // No need to manually activate the first day here, showWeek now handles that default
-                // unless you specifically want to link to a day like #week1-tuesday
-                // If you want to link to a specific day from external page, you would need
-                // to add that logic here, e.g., if hash is #week1-tuesday, parse it.
-                // For now, it defaults to Monday of the linked week, which is usually desired.
-
             } else if (weekButton && weekButton.classList.contains('disabled')) {
                 // If the linked week is disabled, show the default week and log a message
                 console.warn(`Attempted to link to disabled week: ${weekIdFromHash}. Showing Week 1 instead.`);
@@ -2694,8 +2914,109 @@ int main() {
             const defaultWeekButton = document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]');
             showWeek('week1', defaultWeekButton);
         }
+
+
+        // --- Quiz Logic - Instant Feedback with Clickable Options ---
+        // Nested structure for answers: answers[weekId][dayName][questionId]
+        const answers = {
+            'week6': {
+                'monday': {
+                    'q1': 'c', // Monday Q1: getc() can be a macro, while fgetc() is always a function
+                    'q2': 'a'  // Monday Q2: putc() is a macro, while fputc() is a function
+                },
+                'tuesday': {
+                    'q1': 'b', // Tuesday Q1: malloc()
+                    'q2': 'd'  // Tuesday Q2: It deallocates memory previously allocated...
+                },
+                'wednesday': {
+                    'q1': 'b', // Wednesday Q1: struct
+                    'q2': 'a'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
+                },
+                // Add more days here as needed:
+                // 'thursday': {
+                //     'q1': 'your_answer_for_thursday_q1',
+                //     'q2': 'your_answer_for_thursday_q2'
+                // },
+                // 'friday': { /* ... */ },
+                // 'saturday': { /* ... */ }
+            },
+            // Add other weeks here if they have quizzes, e.g.:
+            // 'week1': {
+            //     'monday': {
+            //         'q1': 'answer_for_week1_monday_q1',
+            //         'q2': 'answer_for_week1_monday_q2'
+            //     }
+            // }
+        };
+
+        // checkAnswer function now takes weekId, dayName, questionName, selectedValue, AND the specific feedbackElement
+        function checkAnswer(weekId, dayName, questionName, selectedValue, feedbackElement) {
+            feedbackElement.style.display = 'block'; // Show feedback area
+
+            // Clear previous feedback classes
+            feedbackElement.classList.remove('correct', 'incorrect');
+
+            const correctAnswer = answers[weekId]?.[dayName]?.[questionName]; // Safely access nested answer
+
+            if (selectedValue === correctAnswer) {
+                feedbackElement.textContent = 'Correct!';
+                feedbackElement.classList.add('correct');
+            } else {
+                let correctDisplay = correctAnswer;
+                // If the answer value is a single letter (a,b,c,d), format it as "option A"
+                if (correctAnswer && ['a', 'b', 'c', 'd'].includes(correctAnswer.toLowerCase())) {
+                    correctDisplay = `option ${correctAnswer.toUpperCase()}`;
+                } else if (!correctAnswer) {
+                    correctDisplay = " (Answer not found in script, please check)"; // Fallback for missing answers
+                }
+                feedbackElement.textContent = `Incorrect. The correct answer is ${correctDisplay}.`;
+                feedbackElement.classList.add('incorrect');
+            }
+        }
+
+        // Get ALL 'quiz-option' divs on the page, regardless of the day
+        const quizOptions = document.querySelectorAll('.quiz-container .quiz-option');
+
+        quizOptions.forEach(optionDiv => {
+            optionDiv.addEventListener('click', (event) => {
+                const clickedOption = event.target;
+                const questionName = clickedOption.getAttribute('data-question'); // e.g., 'q1'
+                const selectedValue = clickedOption.getAttribute('data-value'); // e.g., 'c'
+
+                // Find the closest parent day-content div to get weekId and dayName
+                const dayContentDiv = clickedOption.closest('.day-content');
+                if (!dayContentDiv) {
+                    console.error("Clicked quiz option is not within a .day-content div.");
+                    return;
+                }
+                const dayContentId = dayContentDiv.id; // e.g., 'monday-content-week6'
+                const parts = dayContentId.split('-');
+                // Assuming ID format is 'dayname-content-weekX'
+                const dayName = parts[0]; // 'monday'
+                const weekId = parts[2]; // 'week6'
+
+                // Find the specific quiz-feedback element within the current question-block
+                const feedbackElement = clickedOption.closest('.question-block').querySelector('.quiz-feedback');
+                if (!feedbackElement) {
+                    console.error("Quiz feedback element not found within the question block.");
+                    return;
+                }
+
+                // Deselect all other options for this specific question (within the same question-block)
+                clickedOption.closest('.options').querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+
+                // Select the clicked option
+                clickedOption.classList.add('selected');
+
+                // Provide feedback using the dynamically found elements and parsed IDs
+                checkAnswer(weekId, dayName, questionName, selectedValue, feedbackElement);
+            });
+        });
+        // --- END Quiz Logic ---
+
     });
 </script>
-
 </body>
 </html>
