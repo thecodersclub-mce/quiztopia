@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .active-nav-button {
-    background-color: #0056b3; /* A slightly darker blue to indicate active state */
-    color: white;
-    border-bottom: 3px solid #f0f0f0; /* Add a subtle underline */
-    }
+            background-color: #0056b3; /* A slightly darker blue to indicate active state */
+            color: white;
+            border-bottom: 3px solid #f0f0f0; /* Add a subtle underline */
+        }
         
         /* Mini Window Styling (for leaderboard page) */
         .mini-window {
@@ -29,6 +29,7 @@
         }
 
         /* Wrapper for Table Tabs */
+        /* This wrapper might not be strictly needed for two separate sections but good for consistency */
         .table-tabs-wrapper {
             width: 100%;
             text-align: center;
@@ -160,6 +161,24 @@
             margin-bottom: 10px;
             font-size: 1.2em;
         }
+        
+        /* New styling for leaderboard sections */
+        .leaderboard-section {
+            margin-bottom: 40px; /* Space between Brain Cache and Mindmash sections */
+            border: 2px solid #007BFF; /* Consistent border */
+            border-radius: 12px;
+            padding: 15px;
+            background-color: #e6f7ff; /* Light background for the whole section */
+        }
+        .leaderboard-section h2 {
+            color: #00408f;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #00408f;
+            padding-bottom: 10px;
+        }
+
+
         /* Small devices (phones, 600px and down) */
         @media only screen and (max-width: 600px) {
             /* ... other mobile styles ... */
@@ -228,216 +247,317 @@
     </div>
 
     <div class="mini-window">
-        <div class="tab-nav">
-            <button class="tab-button" onclick="switchWeekTab('week1', event)">Week 1</button>
-            <button class="tab-button" onclick="switchWeekTab('week2', event)">Week 2</button>
-            <button class="tab-button" onclick="switchWeekTab('week3', event)">Week 3</button>
-            <button class="tab-button" onclick="switchWeekTab('week4', event)">Week 4</button>
-            <button class="tab-button" onclick="switchWeekTab('week5', event)">Week 5</button>
+        <div id="brain-cache-section" class="leaderboard-section">
+            <h2>Brain Cache (5 Questions Quiz) Leaderboard</h2>
+            <div class="tab-nav">
+                <button class="tab-button" onclick="switchWeekTab('week1', event, 'brain-cache')">Week 1</button>
+                <button class="tab-button" onclick="switchWeekTab('week2', event, 'brain-cache')">Week 2</button>
+                <button class="tab-button" onclick="switchWeekTab('week3', event, 'brain-cache')">Week 3</button>
+                <button class="tab-button" onclick="switchWeekTab('week4', event, 'brain-cache')">Week 4</button>
+                <button class="tab-button" onclick="switchWeekTab('week5', event, 'brain-cache')">Week 5</button>
+            </div>
+
+            <div class="table-wrapper">
+                <div id="week1" class="tab-content">
+                    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                        Results for Week 1 Quiz
+                    </p>
+                    <div class="tab-nav">
+                        <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week1')">CSE 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week1')">CSE (AI/ML) 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week1')">CSE 3rd Year</button>
+                    </div>
+
+                    <div id="cse2_week1" class="tab-content">
+                        <h3>2ND YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Karthikeyan B S</td><td>5</td></tr>
+                            <tr><td>2</td><td>Sathyaraj K</td><td>5</td></tr>
+                            <tr><td>3</td><td>Nagajothi M</td><td>5</td></tr>
+                            <tr><td>4</td><td>Azmath Fouziya M</td><td>5</td></tr>
+                            <tr><td>5</td><td>Jerusha Grace J T</td><td>4</td></tr>
+                            <tr><td>6</td><td>Anitha M</td><td>4</td></tr>
+                            <tr><td>7</td><td>Prithika J</td><td>4</td></tr>
+                            <tr><td>8</td><td>Uma Ghayathri I</td><td>3</td></tr>
+                            <tr><td>9</td><td>Madhumitha P R</td><td>1</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="aiml2_week1" class="tab-content">
+                        <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Suriya Sri</td><td>5</td></tr>
+                            <tr><td>2</td><td>Dharshini S</td><td>5</td></tr>
+                            <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
+                            <tr><td>4</td><td>Harishma K</td><td>3</td></tr>
+                            <tr><td>5</td><td>Dhanyalakshmi B</td><td>2</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="cse3_week1" class="tab-content">
+                        <h3>3RD YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
+                            <tr><td>2</td><td>Anushma S</td><td>5</td></tr>
+                            <tr><td>3</td><td>Dharani S</td><td>4</td></tr>
+                            <tr><td>4</td><td>Murugalakshmi T</td><td>3</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="week2" class="tab-content">
+                    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                        Results for Week 2 Quiz
+                    </p>
+                    <div class="tab-nav">
+                        <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week2')">CSE 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week2')">CSE (AI/ML) 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week2')">CSE 3rd Year</button>
+                    </div>
+
+                    <div id="cse2_week2" class="tab-content">
+                        <h3>2ND YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Jerusha Grace J T</td><td>5</td></tr>
+                            <tr><td>2</td><td>Asmath Fouziya M</td><td>5</td></tr>
+                            <tr><td>3</td><td>Sathyaraj K</td><td>4</td></tr>
+                            <tr><td>4</td><td>Sridhar V</td><td>4</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="aiml2_week2" class="tab-content">
+                        <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Gladiyas Asin D</td><td>5</td></tr>
+                            <tr><td>2</td><td>Suriya Sri</td><td>5</td></tr>
+                            <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="cse3_week2" class="tab-content">
+                        <h3>3RD YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Janany N</td><td>5</td></tr>
+                            <tr><td>2</td><td>Amirtha Varshni R</td><td>4</td></tr>
+                            <tr><td>3</td><td>Dharani S</td><td>4</td></tr>
+                            <tr><td>4</td><td>Murugalakshmi T</td><td>4</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="week3" class="tab-content">
+                    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                        Results for Week 3 Quiz
+                    </p>
+                    <div class="tab-nav">
+                        <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week3')">CSE 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week3')">CSE (AI/ML) 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week3')">CSE 3rd Year</button>
+                    </div>
+
+                    <div id="cse2_week3" class="tab-content">
+                        <h3>2ND YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Jerusha Grace J T</td><td>5</td></tr>
+                            <tr><td>2</td><td>Prithika J</td><td>5</td></tr>
+                            <tr><td>3</td><td>Asmath Fouziya M</td><td>5</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="aiml2_week3" class="tab-content">
+                        <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Mahalakshmi J</td><td>5</td></tr>
+                            <tr><td>2</td><td>Gladiyas Asin D</td><td>5</td></tr>
+                            <tr><td>3</td><td>Ishwarya G</td><td>5</td></tr>
+                            <tr><td>4</td><td>Suriya Sri S</td><td>5</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="cse3_week3" class="tab-content">
+                        <h3>3RD YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
+                            <tr><td>2</td><td>Dharani S</td><td>5</td></tr>
+                            <tr><td>3</td><td>Murugalakshmi T</td><td>5</td></tr>
+                            <tr><td>4</td><td>Janany N</td><td>3</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="week4" class="tab-content">
+                    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                        Results for Week 4 Quiz
+                    </p>
+                    <div class="tab-nav">
+                        <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week4')">CSE 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week4')">CSE (AI/ML) 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week4')">CSE 3rd Year</button>
+                    </div>
+
+                    <div id="cse2_week4" class="tab-content">
+                        <h3>2ND YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Asmath Fouziya M</td><td>5</td></tr>
+                            <tr><td>2</td><td>Sandhiya</td><td>1</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="aiml2_week4" class="tab-content">
+                        <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Gladiyas Asin D</td><td>4</td></tr>
+                            <tr><td>2</td><td>Suriya Sri </td><td>4</td></tr>
+                            <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
+                            <tr><td>4</td><td>Sivanesh S </td><td>2</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="cse3_week4" class="tab-content">
+                        <h3>3RD YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
+                            <tr><td>2</td><td>Janany N</td><td>5</td></tr>
+                            <tr><td>3</td><td>Murugalakshmi T</td><td>4</td></tr>
+                            <tr><td>4</td><td>Dharani S</td><td>2</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="week5" class="tab-content">
+                    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                        Results for Week 5 Quiz - Wait for Updates!
+                    </p>
+                    <div class="tab-nav">
+                        <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week5')">CSE 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week5')">CSE (AI/ML) 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week5')">CSE 3rd Year</button>
+                    </div>
+
+                    <div id="cse2_week5" class="tab-content">
+                        <h3>2ND YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Asmath Fouziya M</td><td>5</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="aiml2_week5" class="tab-content">
+                        <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Ragavi L</td><td>5</td></tr>
+                            <tr><td>2</td><td>Suriya Sri S</td><td>4</td></tr>
+                            <tr><td>3</td><td>Ishwarya G</td><td>4</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="cse3_week5" class="tab-content">
+                        <h3>3RD YEAR CSE DEPARTMENT</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Amirtha Varshni</td><td>5</td></tr>
+                            <tr><td>2</td><td>Anushma</td><td>2</td></tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="table-wrapper">
-            <div id="week1" class="tab-content">
-                <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                    Results for Week 1 Quiz
-                </p>
-                <div class="tab-nav">
-                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week1')">CSE 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week1')">CSE (AI/ML) 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week1')">CSE 3rd Year</button>
+        <div id="mindmash-section" class="leaderboard-section">
+            <h2>Mindmash (25 Questions Quiz) Leaderboard</h2>
+            <div class="tab-nav">
+                <button class="tab-button" onclick="switchWeekTab('mindmash-week1', event, 'mindmash')">Quiz 1</button>
+                <!-- <button class="tab-button" onclick="switchWeekTab('mindmash-quiz2', event, 'mindmash')">Quiz 2</button> -->
                 </div>
 
-                <div id="cse2_week1" class="tab-content">
-                    <h3>2ND YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Karthikeyan B S</td><td>5</td></tr>
-                        <tr><td>2</td><td>Sathyaraj K</td><td>5</td></tr>
-                        <tr><td>3</td><td>Nagajothi M</td><td>5</td></tr>
-                        <tr><td>4</td><td>Azmath Fouziya M</td><td>5</td></tr>
-                        <tr><td>5</td><td>Jerusha Grace J T</td><td>4</td></tr>
-                        <tr><td>6</td><td>Anitha M</td><td>4</td></tr>
-                        <tr><td>7</td><td>Prithika J</td><td>4</td></tr>
-                        <tr><td>8</td><td>Uma Ghayathri I</td><td>3</td></tr>
-                        <tr><td>9</td><td>Madhumitha P R</td><td>1</td></tr>
-                    </table>
+            <div class="table-wrapper">
+                <div id="mindmash-week1" class="tab-content">
+                    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                        Results for Mindmash 1 Quiz
+                    </p>
+                    <div class="tab-nav">
+                        <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'mindmash-week1')">CSE 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'mindmash-week1')">CSE (AI/ML) 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'mindmash-week1')">CSE 3rd Year</button>
+                    </div>
+                    
+                    <div id="cse2_mindmash-week1" class="tab-content">
+                        <h3>2ND YEAR CSE DEPARTMENT</h3>
+                       <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Asmath Fouziya M</td><td>24</td></tr>
+                        </table> 
+                    </div>
+
+                    <div id="aiml2_mindmash-week1" class="tab-content">
+                        <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
+                       <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Ragavi L</td><td>19</td></tr>
+                        </table>
+                    </div>
+
+                    <div id="cse3_mindmash-week1" class="tab-content">
+                        <h3>3RD YEAR CSE DEPARTMENT</h3>
+                       <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Amirtha Varshni R</td><td>24</td></tr>
+                            <tr><td>2</td><td>Dharani S</td><td>15</td></tr>
+                        </table>
+                    </div>
                 </div>
 
-                <div id="aiml2_week1" class="tab-content">
-                    <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Suriya Sri</td><td>5</td></tr>
-                        <tr><td>2</td><td>Dharshini S</td><td>5</td></tr>
-                        <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
-                        <tr><td>4</td><td>Harishma K</td><td>3</td></tr>
-                        <tr><td>5</td><td>Dhanyalakshmi B</td><td>2</td></tr>
-                    </table>
-                </div>
+                <!-- <div id="mindmash-week2" class="tab-content">
+                    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+                        Results for Mindmash Week 2 Quiz
+                    </p>
+                    <div class="tab-nav">
+                        <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'mindmash-week2')">CSE 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'mindmash-week2')">CSE (AI/ML) 2nd Year</button>
+                        <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'mindmash-week2')">CSE 3rd Year</button>
+                    </div>
+                    
+                    <div id="cse2_mindmash-week2" class="tab-content">
+                        <h3>2ND YEAR CSE DEPARTMENT (Mindmash)</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Mindmash CSE2 P4</td><td>21</td></tr>
+                            <tr><td>2</td><td>Mindmash CSE2 P5</td><td>19</td></tr>
+                        </table>
+                    </div>
 
-                <div id="cse3_week1" class="tab-content">
-                    <h3>3RD YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
-                        <tr><td>2</td><td>Anushma S</td><td>5</td></tr>
-                        <tr><td>3</td><td>Dharani S</td><td>4</td></tr>
-                        <tr><td>4</td><td>Murugalakshmi T</td><td>3</td></tr>
-                    </table>
-                </div>
-            </div>
+                    <div id="aiml2_mindmash-week2" class="tab-content">
+                        <h3>2ND YEAR CSE (AI/ML) DEPARTMENT (Mindmash)</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Mindmash AIML2 P4</td><td>23</td></tr>
+                            <tr><td>2</td><td>Mindmash AIML2 P5</td><td>20</td></tr>
+                        </table>
+                    </div>
 
-            <div id="week2" class="tab-content">
-                <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                    Results for Week 2 Quiz
-                </p>
-                <div class="tab-nav">
-                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week2')">CSE 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week2')">CSE (AI/ML) 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week2')">CSE 3rd Year</button>
-                </div>
-
-                <div id="cse2_week2" class="tab-content">
-                    <h3>2ND YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Jerusha Grace J T</td><td>5</td></tr>
-                        <tr><td>2</td><td>Asmath Fouziya M</td><td>5</td></tr>
-                        <tr><td>3</td><td>Sathyaraj K</td><td>4</td></tr>
-                        <tr><td>4</td><td>Sridhar V</td><td>4</td></tr>
-                    </table>
-                </div>
-
-                <div id="aiml2_week2" class="tab-content">
-                    <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Gladiyas Asin D</td><td>5</td></tr>
-                        <tr><td>2</td><td>Suriya Sri</td><td>5</td></tr>
-                        <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
-                    </table>
-                </div>
-
-                <div id="cse3_week2" class="tab-content">
-                    <h3>3RD YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Janany N</td><td>5</td></tr>
-                        <tr><td>2</td><td>Amirtha Varshni R</td><td>4</td></tr>
-                        <tr><td>3</td><td>Dharani S</td><td>4</td></tr>
-                        <tr><td>4</td><td>Murugalakshmi T</td><td>4</td></tr>
-                    </table>
-                </div>
-            </div>
-
-            <div id="week3" class="tab-content">
-                <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                    Results for Week 3 Quiz
-                </p>
-                <div class="tab-nav">
-                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week3')">CSE 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week3')">CSE (AI/ML) 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week3')">CSE 3rd Year</button>
-                </div>
-
-                <div id="cse2_week3" class="tab-content">
-                    <h3>2ND YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Jerusha Grace J T</td><td>5</td></tr>
-                        <tr><td>2</td><td>Prithika J</td><td>5</td></tr>
-                        <tr><td>3</td><td>Asmath Fouziya M</td><td>5</td></tr>
-                    </table>
-                </div>
-
-                <div id="aiml2_week3" class="tab-content">
-                    <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Mahalakshmi J</td><td>5</td></tr>
-                        <tr><td>2</td><td>Gladiyas Asin D</td><td>5</td></tr>
-                        <tr><td>3</td><td>Ishwarya G</td><td>5</td></tr>
-                        <tr><td>4</td><td>Suriya Sri S</td><td>5</td></tr>
-                    </table>
-                </div>
-
-                <div id="cse3_week3" class="tab-content">
-                    <h3>3RD YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
-                        <!--<tr class="disqualified-row">--><td>2</td><td>Dharani S</td><td>5</td></tr>
-                        <tr><td>3</td><td>Murugalakshmi T</td><td>5</td></tr>
-                        <tr><td>4</td><td>Janany N</td><td>3</td></tr>
-                    </table>
-                </div>
-            </div>
-
-            <div id="week4" class="tab-content">
-                <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                    Results for Week 4 Quiz
-                </p>
-                <div class="tab-nav">
-                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week4')">CSE 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week4')">CSE (AI/ML) 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week4')">CSE 3rd Year</button>
-                </div>
-
-                 <div id="cse2_week4" class="tab-content">
-                    <h3>2ND YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Asmath Fouziya M</td><td>5</td></tr>
-                        <tr><td>2</td><td>Sandhiya</td><td>1</td></tr>
-                    </table>
-                </div>
-
-                <div id="aiml2_week4" class="tab-content">
-                    <h3>2ND YEAR CSE (AI/ML) DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Gladiyas Asin D</td><td>4</td></tr>
-                        <tr><td>2</td><td>Suriya Sri </td><td>4</td></tr>
-                        <tr><td>3</td><td>Ragavi L</td><td>4</td></tr>
-                        <tr><td>4</td><td>Sivanesh S </td><td>2</td></tr>
-                    </table>
-                </div>
-
-                <div id="cse3_week4" class="tab-content">
-                    <h3>3RD YEAR CSE DEPARTMENT</h3>
-                    <table>
-                        <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
-                        <tr><td>1</td><td>Amirtha Varshni R</td><td>5</td></tr>
-                        <!--<tr class="disqualified-row">-->
-                        <tr><td>2</td><td>Janany N</td><td>5</td></tr>
-                        <tr><td>3</td><td>Murugalakshmi T</td><td>4</td></tr>
-                        <tr><td>4</td><td>Dharani S</td><td>2</td></tr>
-                    </table>
-                </div>
-            </div>
-
-            <div id="week5" class="tab-content">
-                <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-                    Results for Week 5 Quiz - Wait for Updates!
-                </p>
-                <div class="tab-nav">
-                    <button class="tab-button" onclick="switchDepartmentTab('cse2', event, 'week5')">CSE 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('aiml2', event, 'week5')">CSE (AI/ML) 2nd Year</button>
-                    <button class="tab-button" onclick="switchDepartmentTab('cse3', event, 'week5')">CSE 3rd Year</button>
-                </div>
-
-                <div id="cse2_week5" class="tab-content">
-                    <h3>Attend the Quiz / Wait for Updates!</h3>
-                </div>
-
-                <div id="aiml2_week5" class="tab-content">
-                    <h3>Attend the Quiz / Wait for Updates!</h3>
-                </div>
-
-                <div id="cse3_week5" class="tab-content">
-                    <h3>Attend the Quiz / Wait for Updates!</h3>
-                </div>
-            </div>
+                    <div id="cse3_mindmash-week2" class="tab-content">
+                        <h3>3RD YEAR CSE DEPARTMENT (Mindmash)</h3>
+                        <table>
+                            <tr><th>S.No.</th><th>Name</th><th>Score</th></tr>
+                            <tr><td>1</td><td>Mindmash CSE3 P4</td><td>24</td></tr>
+                            <tr><td>2</td><td>Mindmash CSE3 P5</td><td>22</td></tr>
+                        </table>
+                    </div>
+                </div>-->
+                </div> 
         </div>
     </div>
 
@@ -456,29 +576,43 @@
             <img src="WP.svg" alt="WhatsApp" class="social-logo">
         </a>
     </footer>
-
+    
     <script>
-        function switchWeekTab(weekId, event) {
-            // Deactivate all week content tabs
-            let weekTabs = document.querySelectorAll('.mini-window > .table-wrapper > .tab-content');
-            weekTabs.forEach(tab => tab.classList.remove('active-content'));
+        // --- Core Functions for Tab Switching ---
+
+        /**
+         * Switches between week tabs within a specific leaderboard section.
+         * @param {string} weekId - The ID of the week tab to show (e.g., 'week1', 'mindmash-week1').
+         * @param {Event} event - The click event object (can be null if called programmatically).
+         * @param {string} sectionIdPrefix - The ID prefix of the leaderboard section ('brain-cache' or 'mindmash').
+         */
+        function switchWeekTab(weekId, event, sectionIdPrefix) {
+            // Determine the correct parent section based on the prefix
+            const sectionContainerId = sectionIdPrefix + '-section';
+            const sectionContainer = document.getElementById(sectionContainerId);
+
+            // Deactivate all week content tabs within this specific section
+            sectionContainer.querySelectorAll('.table-wrapper > .tab-content').forEach(tab => {
+                tab.classList.remove('active-content');
+            });
 
             // Activate the selected week content tab
             document.getElementById(weekId).classList.add('active-content');
 
-            // Deactivate all main tab buttons
-            let mainTabButtons = document.querySelectorAll('.mini-window > .tab-nav > .tab-button');
-            mainTabButtons.forEach(button => button.classList.remove('active'));
+            // Deactivate all week tab buttons within this specific section's tab navigation
+            sectionContainer.querySelectorAll('.tab-nav > .tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
 
-            // Activate the clicked main tab button (if an event triggered it)
+            // Activate the clicked week tab button (if an event triggered it)
             if (event && event.target) {
                 event.target.classList.add('active');
             } else {
-                // If no event (i.e., called on page load), find the correct button and activate it
-                document.querySelector(`.mini-window > .tab-nav > .tab-button[onclick*="${weekId}"]`).classList.add('active');
+                // If called programmatically (e.g., on initial load), find the correct button and activate it
+                sectionContainer.querySelector(`.tab-nav > .tab-button[onclick*="${weekId}"]`).classList.add('active');
             }
 
-            // Reset the department tabs for the newly active week
+            // Reset and activate the first department tab for the newly active week
             const activeWeekContent = document.getElementById(weekId);
             const departmentTabNav = activeWeekContent.querySelector('.tab-nav');
             const departmentTabButtons = departmentTabNav.querySelectorAll('.tab-button');
@@ -491,19 +625,25 @@
             // Activate the first department tab for the new week (e.g., CSE 2nd Year)
             if (departmentTabButtons.length > 0) {
                 departmentTabButtons[0].classList.add('active');
-            }
-            if (departmentTabContents.length > 0) {
-                // Determine the correct ID for the first department content within this week
                 const firstDepartmentId = departmentTabButtons[0].getAttribute('onclick').match(/'(.*?)'/)[1];
                 document.getElementById(firstDepartmentId + '_' + weekId).classList.add('active-content');
             }
         }
 
+        /**
+         * Switches between department tabs within a specific week.
+         * @param {string} departmentId - The ID prefix of the department to show (e.g., 'cse2', 'aiml2').
+         * @param {Event} event - The click event object.
+         * @param {string} weekId - The ID of the currently active week (e.g., 'week1', 'mindmash-week1').
+         */
         function switchDepartmentTab(departmentId, event, weekId) {
-            // Select the correct table-wrapper within the active week
+            // Select the correct week content (e.g., #week1 or #mindmash-week1)
             const activeWeekContent = document.getElementById(weekId);
-            const departmentContents = activeWeekContent.querySelectorAll('.tab-content');
-            departmentContents.forEach(content => content.classList.remove('active-content'));
+            
+            // Deactivate all department content within this week
+            activeWeekContent.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active-content');
+            });
 
             // Activate the selected department content
             document.getElementById(departmentId + '_' + weekId).classList.add('active-content');
@@ -518,10 +658,17 @@
             }
         }
 
-        // Initialize the first week and its first department tab on page load
+        // Initialize both leaderboard sections on page load
         document.addEventListener('DOMContentLoaded', () => {
-            // Call switchWeekTab to set 'week1' as active, which in turn sets its first department tab as active.
-            switchWeekTab('week1', null); // Passing null for event, as it's not triggered by a click
+            // Initialize Brain Cache section:
+            // Ensure #brain-cache-section is initially visible if hidden by other CSS
+            document.getElementById('brain-cache-section').style.display = 'block'; 
+            switchWeekTab('week1', null, 'brain-cache'); // Activate Week 1 for Brain Cache
+
+            // Initialize Mindmash section:
+            // Ensure #mindmash-section is initially visible
+            document.getElementById('mindmash-section').style.display = 'block'; 
+            switchWeekTab('mindmash-week1', null, 'mindmash'); // Activate Week 1 for Mindmash
         });
     </script>
 
