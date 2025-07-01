@@ -770,6 +770,7 @@ pre code {
             <button class="tab-button" onclick="showWeek('week4', this)">Week 4</button>
             <button class="tab-button" onclick="showWeek('week5', this)">Week 5</button>
             <button class="tab-button" onclick="showWeek('week6', this)">Week 6</button>
+            <button class="tab-button" onclick="showWeek('week7', this)">Mindmash</button>
         </div>
 
         <div id="week1" class="week-content">
@@ -2624,9 +2625,450 @@ int main() {
 </div>
 
 </div>  <!-- add week6 content before these -->  
+<div id="week7" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Mindmash
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week7', this, 'week7')">Quiz 1</button>
+    </div>
 
+    <div id="monday-content-week7" class="day-content day-section">
+        <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Section under construction!</p>
+        <div class="content-block">
+            <h3>1. What are header files in C programming?</h3>
+            <ol>
+                <li>Files that contain the main function</li>
+                <li>Files that are executed before the program runs</li>
+                <li>Files that contain function declarations and macros</li>
+                <li>Files used for memory allocation</li>
+            </ol>
+        </div>
 
-</div>
+        <div class="content-block">
+            <h3>2. Which of the following appears valid at first glance but is actually an invalid variable declaration in C?</h3>
+            <ol>
+                <li>`char str[20] = "Hello";`</li>
+                <li>`int @salary = 5000;`</li>
+                <li>`float salary2025 = 99999.99;`</li>
+                <li>`int NumberOfStudents = 50;`</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>3. What could be the outcome when the following C program is compiled and executed?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt; // Preprocessor directive
+
+// main function - entry point of the program
+int main() {
+   // Print output to the screen
+   printf("Hello, World!\\n");
+
+   return 0; // Exit the program
+}
+</code></pre>
+            <ol>
+                <li>It prints Hello, World! to the screen.</li>
+                <li>It throws a compilation error due to missing semicolon.</li>
+                <li>It prints Hello, World!\n as-is, including \n.</li>
+                <li>It waits for user input before printing anything.</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>4. A programmer wants to create a custom data type to represent a person's details, including their name, age, and address. What feature of C programming would be most suitable for this purpose?</h3>
+            <ol>
+                <li>Arrays</li>
+                <li>Pointers</li>
+                <li>Structures</li>
+                <li>Functions</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>5. Which of the following is *NOT* a valid category of functions in C?</h3>
+            <ol>
+                <li>Library Functions</li>
+                <li>User-Defined Functions</li>
+                <li>Recursive Functions</li>
+                <li>Loop-Control Functions</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>6. Which of the following is NOT a control structure in C?</h3>
+            <ol>
+                <li>`if-else`</li>
+                <li>`for` loop</li>
+                <li>`switch`</li>
+                <li>`print`</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>7. Which of the following code snippets will cause an error or unexpected behavior in C?</h3>
+            <pre class="code-block"><code>A. int num = 5;
+if (num == 5); {
+   printf("Number is 5");
+}
+
+B. int x = 10;
+if (x &gt; 0)
+   printf("Positive");
+else
+   printf("Negative");
+
+C. int option = 3;
+switch(option) {
+   case 1: printf("One"); break;
+   case 2: printf("Two"); break;
+   default: printf("Other");
+}
+
+D. int a = 15;
+if (a &lt; 10)
+   printf("Less than 10");
+else if (a &lt; 20)
+   printf("Less than 20");
+else
+   printf("20 or more");
+</code></pre>
+            <ol>
+                <li>A</li>
+                <li>B</li>
+                <li>C</li>
+                <li>D</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>8. What could be a possible behavior when this C program runs?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int numbers[] = {10, 20, 30, 40, 50};
+    int *ptr = numbers; // Pointer to the first element
+
+    printf("Value at ptr: %d\n", *ptr);
+    ptr++; // Move to the next element
+    printf("Value at ptr after increment: %d\n", *ptr);
+
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>It will print "Value at ptr: 10" and then "Value at ptr after increment: 11".</li>
+                <li>It will print "Value at ptr: 10" and then "Value at ptr after increment: 20".</li>
+                <li>It will cause a segmentation fault because `ptr` is incremented.</li>
+                <li>It will print the memory addresses of the array elements.</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>9. A structure in C has a char member followed by an int member. However, the total size of the structure is larger than the sum of the sizes of its members. What is the likely reason for this discrepancy?</h3>
+            <ol>
+                <li>The structure is packed tightly in memory.</li>
+                <li>The structure is aligned to a 4-byte boundary.</li>
+                <li>The structure has extra padding for memory alignment.</li>
+                <li>The structure is compressed to reduce its size.</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>10. What is the main characteristic of a do...while loop compared to a while loop?</h3>
+            <ol>
+                <li>It checks the condition before executing the loop body</li>
+                <li>It never executes if the condition is false</li>
+                <li>It executes the loop body at least once before checking the condition</li>
+                <li>It cannot use break statements</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>11. Which keyword is used to return a value from a function?</h3>
+            <ol>
+                <li>`return`</li>
+                <li>`send`</li>
+                <li>`break`</li>
+                <li>`exit`</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>12. What will be the output of the following C code?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int arr[5] = {1, 2, 3};
+    for (int i = 0; i &lt; 5; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>1 2 3 0 0</li>
+                <li>1 2 3 garbage garbage</li>
+                <li>Compilation error</li>
+                <li>1 2 3 4 5</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>13. Which of the following best describes what the pointer `ptr` does in the program?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    int *ptr = &amp;a; // Pointer declaration and initialization
+    printf("Value of a: %d\n", *ptr);
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>It stores the value of a, not its address.</li>
+                <li>It holds the address of a and can be used to access or modify a's value.</li>
+                <li>It points to a completely unrelated memory location.</li>
+                <li>It causes a segmentation fault when dereferenced.</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>14. A programmer wants to store a flag that can have one of three possible values (0, 1, or 2) in a structure. What feature of C structures can be used to optimize memory usage in this case?</h3>
+            <ol>
+                <li>Bitwise operations</li>
+                <li>Bit fields</li>
+                <li>Unions</li>
+                <li>Enumerations</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>15. What is the correct way to declare a pointer to a function that returns `int` and takes two `int` parameters?</h3>
+            <ol>
+                <li>`int *func(int, int);`</li>
+                <li>`int (*func)(int, int);`</li>
+                <li>`int (*func(int, int));`</li>
+                <li>`(*int func)(int, int);`</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>16. What is the output of this code?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 10;
+    int *ptr = &amp;a;
+    printf("%d\n", *ptr);
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>Address of a</li>
+                <li>10</li>
+                <li>Compilation error</li>
+                <li>0</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>17. What will be the output of the following C code?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[] = "Techie";
+    char *sub = str + 2;
+    printf("%s\n", sub);
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>Techie</li>
+                <li>chie</li>
+                <li>hie</li>
+                <li>Compilation error</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>18. What will happen if the file "myfile.txt" cannot be opened in write mode in the given program?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *fptr;
+    fptr = fopen("myfile.txt", "w"); // open in write mode
+    if (fptr == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    // ... rest of the code
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>The program will skip writing and directly read from the file.</li>
+                <li>The program will crash without any message.</li>
+                <li>The program will display "Error opening file!" and exit.</li>
+                <li>The program will create a backup file and continue.</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>19. A programmer wants to represent a person's address as part of their overall details. What feature of C structures can be used to group the address details (street, city, state, zip) together within the person's structure?</h3>
+            <ol>
+                <li>Nested structures</li>
+                <li>Arrays of structures</li>
+                <li>Pointers to structures</li>
+                <li>Functions that return structures</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>20. What does the expression `found - str` do after `char *found = strchr(str, 'a');`?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main() {
+    char str[] = "banana";
+    char *found = strchr(str, 'a');
+    if (found != NULL) {
+        printf("Index of 'a': %ld\n", found - str);
+    }
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>Adds an offset to the character pointer</li>
+                <li>Returns the memory address of 'a'</li>
+                <li>Computes the index of 'a' in the string</li>
+                <li>Returns a null pointer</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>21. How can you access structure members?</h3>
+            <ol>
+                <li>Using the comma `,` operator</li>
+                <li>Using the dot `.` operator</li>
+                <li>Using the star `*` operator</li>
+                <li>Using the at `@` operator</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>22. What will happen when the following code is executed?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *fp;
+    fp = fopen("data.txt", "w"); // Open in write mode
+    if (fp == NULL) {
+        printf("Error opening file.\n");
+    } else {
+        fprintf(fp, "Hello World!\n");
+        fclose(fp);
+        printf("Data written to file successfully.\n");
+    }
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>The program creates data.txt and writes "Hello World!"</li>
+                <li>The program prints "Error opening file."</li>
+                <li>The program throws a compile-time error</li>
+                <li>The program opens the file in append mode and adds "Hello World!" at the end</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>23. What will happen if "myfile.txt" does not exist when the program tries to open it in read mode?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+
+int main() {
+    FILE *fptr;
+    fptr = fopen("myfile.txt", "r"); // open in read mode
+    if (fptr == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    // ... rest of the code
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>It creates a new empty file named "myfile.txt".</li>
+                <li>It reads from a temporary file instead.</li>
+                <li>It returns NULL and prints an error message.</li>
+                <li>It appends default text into the file.</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>24. A programmer wants to read data from a file in C. What is the first step in this process?</h3>
+            <ol>
+                <li>Reading data from the file using `fread()`</li>
+                <li>Closing the file using `fclose()`</li>
+                <li>Opening the file using `fopen()`</li>
+                <li>Writing data to the file using `fwrite()`</li>
+            </ol>
+        </div>
+
+        <div class="content-block">
+            <h3>25. Why is `fgets()` used for reading the student name instead of `scanf("%s", s.name)`?</h3>
+            <pre class="code-block"><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Student {
+    int id;
+    char name[50];
+    float marks;
+};
+
+void readStudentFromFile() {
+    struct Student s;
+    FILE *fp = fopen("student.txt", "r");
+
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    fscanf(fp, "%d\n", &amp;s.id);
+    fgets(s.name, sizeof(s.name), fp); // This is the line in question
+    fscanf(fp, "%f", &amp;s.marks);
+
+    if (s.name[strlen(s.name) - 1] == '\n') {
+        s.name[strlen(s.name) - 1] = '\0';
+    }
+
+    fclose(fp);
+
+    printf("Student Data from File:\n");
+    printf("ID: %d\n", s.id);
+    printf("Name: %s\n", s.name);
+    printf("Marks: %.2f\n", s.marks);
+}
+
+int main() {
+    // Assuming writeStudentToFile() is called before this to create student.txt
+    readStudentFromFile();
+    return 0;
+}
+</code></pre>
+            <ol>
+                <li>Because `scanf("%s")` reads newline characters</li>
+                <li>Because `fgets()` is faster than `scanf()`</li>
+                <li>Because `fgets()` can read names with spaces</li>
+                <li>Because `scanf()` automatically closes the file</li>
+            </ol>
+        </div>
+    </div>
+</div><!-- Mindmash content before this-->
+
+</div><!-- content-container-wrapper closing-->
 
     <footer>
         <p>Created by The Coders Club</p>
@@ -2643,380 +3085,389 @@ int main() {
             <img src="WP.svg" alt="WhatsApp" class="social-logo">
         </a>
     </footer>
+
 <script>
     // --- CONTROL KEYWORD HERE ---
-    // Define a variable to store the ID of the disabled week
-    // Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
-    let disabledWeekId = 'null'; // Example: Week 4 is disabled
-    // Define an array of disabled days for a given week (e.g., ['tuesday', 'thursday'] for week1)
-    const disabledDays = {
-        //'week1': ['monday','tuesday','wednesday','thursday','friday','saturday'], // Example: Tuesday and Thursday are disabled for Week 1
-        //'week2': ['monday','tuesday','wednesday','thursday','friday','saturday'],
-        //'week3': ['monday','tuesday','wednesday','thursday','friday','saturday'],
-        //'week4': ['monday','tuesday','wednesday','thursday','friday','saturday'],
-        //'week5': ['monday','tuesday','wednesday','thursday','friday','saturday'],
-    };
-    // --- END CONTROL KEYWORD ---
+// Define a variable to store the ID of the disabled week
+// Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
+let disabledWeekId = null; // Changed from 'null' to null to ensure no week is disabled
 
-    // Object to store original text content for jumbling/unjumbling
-    const originalTextStore = {};
+// Define an array of disabled days for a given week (e.g., ['tuesday', 'thursday'] for week1)
+const disabledDays = {
+    // Uncomment these lines and specify days if you want to disable specific days within weeks
+    // 'week1': [], // Example: No disabled days for Week 1
+    // 'week2': [],
+    // 'week3': [],
+    // 'week4': [],
+    // 'week5': [],
+    // 'week6': [],
+    // 'week7': [], // Mindmash - no disabled days here for now
+};
+// --- END CONTROL KEYWORD ---
 
-    // Function to shuffle characters in a string
-    function shuffleString(str) {
-        let a = str.split("");
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
+// Object to store original text content for jumbling/unjumbling
+const originalTextStore = {};
+
+// Function to shuffle characters in a string
+function shuffleString(str) {
+    let a = str.split("");
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a.join("");
+}
+
+// Function to jumble the text content of an element
+function jumbleText(element) {
+    // Check if element has any text content to jumble and is not just whitespace
+    if (element && element.textContent && element.textContent.trim().length > 0) {
+        // Use a unique key for storage, preferring element ID or generating one
+        const elementKey = element.id || 'jumble-' + Math.random().toString(36).substring(2, 9);
+        if (!element.id) { // Assign ID if it didn't exist for consistent lookup
+            element.id = elementKey;
         }
-        return a.join("");
+
+        // Store original text if not already stored
+        if (!originalTextStore[elementKey]) {
+            originalTextStore[elementKey] = element.textContent;
+        }
+        element.textContent = shuffleString(element.textContent);
+    }
+}
+
+// Function to unjumble the text content of an element
+function unjumbleText(element) {
+    if (element && element.id && originalTextStore[element.id]) {
+        element.textContent = originalTextStore[element.id];
+        // Optionally delete from store if you don't need it after unjumbling
+        // delete originalTextStore[element.id];
+    }
+}
+
+// Function to show content for a specific week
+function showWeek(weekId, clickedButton) {
+    // Hide all week content sections
+    const weekContents = document.querySelectorAll('.week-content');
+    weekContents.forEach(content => {
+        content.classList.remove('active-content');
+        content.classList.remove('content-disabled-overlay'); // Ensure this is removed when not disabled
+    });
+
+    // Deactivate all main tab buttons
+    const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
+    mainTabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Show the selected week's content
+    const selectedWeekContent = document.getElementById(weekId);
+    selectedWeekContent.classList.add('active-content');
+
+    // Activate the clicked week button
+    if (clickedButton) {
+        clickedButton.classList.add('active');
     }
 
-    // Function to jumble the text content of an element
-    function jumbleText(element) {
-        // Check if element has any text content to jumble and is not just whitespace
-        if (element && element.textContent && element.textContent.trim().length > 0) {
-            // Use a unique key for storage, preferring element ID or generating one
-            const elementKey = element.id || 'jumble-' + Math.random().toString(36).substring(2, 9);
-            if (!element.id) { // Assign ID if it didn't exist for consistent lookup
-                element.id = elementKey;
-            }
-
-            // Store original text if not already stored
-            if (!originalTextStore[elementKey]) {
-                originalTextStore[elementKey] = element.textContent;
-            }
-            element.textContent = shuffleString(element.textContent);
-        }
-    }
-
-    // Function to unjumble the text content of an element
-    function unjumbleText(element) {
-        if (element && element.id && originalTextStore[element.id]) {
-            element.textContent = originalTextStore[element.id];
-            // Optionally delete from store if you don't need it after unjumbling
-            // delete originalTextStore[element.id];
-        }
-    }
-
-    // Function to show content for a specific week
-    function showWeek(weekId, clickedButton) {
-        // Hide all week content sections
-        const weekContents = document.querySelectorAll('.week-content');
-        weekContents.forEach(content => {
-            content.classList.remove('active-content');
-            content.classList.remove('content-disabled-overlay'); // Ensure this is removed when not disabled
+    // Check if the current week is disabled (will always be false with disabledWeekId = null)
+    if (weekId === disabledWeekId) {
+        selectedWeekContent.classList.add('content-disabled-overlay');
+        // Jumble text for questions and options within the entire disabled week
+        selectedWeekContent.querySelectorAll('h3, p, h4, span, .quiz-option, li').forEach(element => {
+            jumbleText(element);
         });
 
-        // Deactivate all main tab buttons
-        const mainTabButtons = document.querySelectorAll('.main-tab-nav .tab-button');
-        mainTabButtons.forEach(button => {
+        // Ensure day buttons for a disabled week do not have 'active' class
+        selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
             button.classList.remove('active');
         });
 
-        // Show the selected week's content
-        const selectedWeekContent = document.getElementById(weekId);
-        selectedWeekContent.classList.add('active-content');
-
-        // Activate the clicked week button
-        if (clickedButton) {
-            clickedButton.classList.add('active');
-        }
-
-        // Check if the current week is disabled
-        if (weekId === disabledWeekId) {
-            selectedWeekContent.classList.add('content-disabled-overlay');
-            // Jumble text for questions and options within the entire disabled week
-            selectedWeekContent.querySelectorAll('h3, p, h4, span, .quiz-option, li').forEach(element => { // Updated .radio-group label to .quiz-option
+        // Hide all day content within the disabled week, and also apply blur
+        selectedWeekContent.querySelectorAll('.day-content').forEach(content => {
+            content.classList.remove('active-content'); // Hide any active day content
+            content.classList.add('content-disabled-overlay'); // Apply blur to all day contents
+            content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => {
                 jumbleText(element);
             });
+        });
 
-            // Ensure day buttons for a disabled week do not have 'active' class
-            selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
-                button.classList.remove('active');
-            });
+    } else { // Week is enabled
+        selectedWeekContent.classList.remove('content-disabled-overlay');
+        // Unjumble text for questions and options within the entire enabled week
+        selectedWeekContent.querySelectorAll('h3, p, h4, span, .quiz-option, li').forEach(element => {
+            unjumbleText(element);
+        });
 
-            // Hide all day content within the disabled week, and also apply blur
-            selectedWeekContent.querySelectorAll('.day-content').forEach(content => {
-                content.classList.remove('active-content'); // Hide any active day content
-                content.classList.add('content-disabled-overlay'); // Apply blur to all day contents
-                content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
-                    jumbleText(element);
-                });
-            });
-
-        } else { // Week is enabled
-            selectedWeekContent.classList.remove('content-disabled-overlay');
-            // Unjumble text for questions and options within the entire enabled week
-            selectedWeekContent.querySelectorAll('h3, p, h4, span, .quiz-option, li').forEach(element => { // Updated .radio-group label to .quiz-option
-                unjumbleText(element);
-            });
-
-            // Re-add onclick handler for nested day buttons for enabled week
-            selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
-                // IMPORTANT: Reconstruct the full dayId including weekId in the onclick
-                // This assumes the button's text content can be used to derive the day ID
-                const dayName = button.textContent.trim().toLowerCase().replace(/\s/g, ''); // Convert 'Monday' to 'monday'
-                const originalDayId = dayName + '-content-' + weekId; // e.g., 'monday-content-week1'
+        // Re-add onclick handler for nested day buttons for enabled week
+        selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button').forEach(button => {
+            // Extract the dayId directly from the button's onclick attribute
+            const onclickAttribute = button.getAttribute('onclick');
+            const dayIdMatch = onclickAttribute.match(/showDay\('([^']+)'/); // Regex to get the first argument of showDay
+            if (dayIdMatch && dayIdMatch[1]) {
+                const originalDayId = dayIdMatch[1];
+                // Set the onclick attribute using the extracted ID, ensuring the weekId is also passed
                 button.setAttribute('onclick', `showDay('${originalDayId}', this, '${weekId}')`);
-                // No 'disabled' class or onclick removal for buttons based on individual day status here.
-                // showDay will handle the content blur.
-            });
-
-            // Special handling to show Monday content by default for the *currently active* week
-            // Ensure this is called *after* unjumbling the week content
-            const defaultDayId = 'monday-content-' + weekId;
-            const defaultDayButton = selectedWeekContent.querySelector(`.nested-tab-nav .tab-button[onclick*="showDay('${defaultDayId}'"]`);
-            if (defaultDayButton) {
-                showDay(defaultDayId, defaultDayButton, weekId);
             } else {
-                // If there's no Monday content, hide all day content for this week
-                const dayContents = selectedWeekContent.querySelectorAll('.day-content');
-                dayContents.forEach(content => {
-                    content.classList.remove('active-content');
-                    content.classList.remove('content-disabled-overlay'); // Ensure removed if no default day
-                    content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
-                        unjumbleText(element); // Unjumble if no default day content is shown
-                    });
-                });
-                const dayButtons = selectedWeekContent.querySelectorAll('.nested-tab-nav .tab-button');
-                dayButtons.forEach(button => button.classList.remove('active'));
+                console.warn(`Could not extract dayId from onclick attribute for button:`, button);
             }
-        }
-    }
-
-    // Function to show content for a specific day within a week
-    function showDay(dayIdWithWeek, clickedButton, weekId) {
-        const weekContentDiv = document.getElementById(weekId);
-
-        // Hide and un-blur/unjumble all day content sections within the current week first
-        const dayContents = weekContentDiv.querySelectorAll('.day-content');
-        dayContents.forEach(content => {
-            content.classList.remove('active-content');
-            content.classList.remove('content-disabled-overlay'); // Always remove before potentially adding it back
-            content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
-                unjumbleText(element); // Always unjumble previous content
-            });
         });
 
-        // Deactivate all nested day tab buttons within the current week
-        const dayTabButtons = weekContentDiv.querySelectorAll('.nested-tab-nav .tab-button');
-        dayTabButtons.forEach(button => {
-            button.classList.remove('active');
-        });
-
-        // Extract just the day name from dayIdWithWeek (e.g., 'monday' from 'monday-content-week1')
-        const dayName = dayIdWithWeek.split('-')[0];
-
-        const targetDayContent = document.getElementById(dayIdWithWeek);
-
-        // Show the selected day's content
-        if (targetDayContent) { // Ensure target content exists before trying to show it
-            targetDayContent.classList.add('active-content');
-        }
-
-        // Activate the clicked day button
-        if (clickedButton) {
-            clickedButton.classList.add('active');
-        }
-
-        // Check if the specific day is disabled for this week OR if the entire week is disabled
-        if ((disabledDays[weekId] && disabledDays[weekId].includes(dayName)) || weekId === disabledWeekId) {
-            // Apply blur to the day's content if it's disabled or its parent week is disabled
-            if (targetDayContent) {
-                targetDayContent.classList.add('content-disabled-overlay');
-                // Jumble the text contents within this specific disabled day
-                targetDayContent.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
-                    jumbleText(element);
-                });
-            }
-            // Also, ensure the clicked button (if it's a disabled day) becomes disabled style
-            if (clickedButton) {
-                clickedButton.classList.add('disabled');
-                // Temporarily remove its onclick to prevent re-activating jumbled content if clicked again
-                clickedButton.setAttribute('data-original-onclick', clickedButton.getAttribute('onclick'));
-                clickedButton.removeAttribute('onclick');
+        // Determine the default day content to show for the *currently active* week
+        // Find the first nested tab button within the selected week and activate its content
+        const firstDayButton = selectedWeekContent.querySelector('.nested-tab-nav .tab-button');
+        if (firstDayButton) {
+            // Extract the dayId from the onclick of the first button
+            const onclickAttribute = firstDayButton.getAttribute('onclick');
+            const dayIdMatch = onclickAttribute.match(/showDay\('([^']+)'/);
+            if (dayIdMatch && dayIdMatch[1]) {
+                const defaultDayId = dayIdMatch[1];
+                showDay(defaultDayId, firstDayButton, weekId);
+            } else {
+                console.warn(`Could not determine default day ID for week ${weekId}.`);
             }
         } else {
-            // Unjumble text if the day is enabled
-            if (targetDayContent) {
-                targetDayContent.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => { // Updated .radio-group label to .quiz-option
+            // If there are no day buttons, ensure any currently visible day content is hidden.
+            const dayContents = selectedWeekContent.querySelectorAll('.day-content');
+            dayContents.forEach(content => {
+                content.classList.remove('active-content');
+                content.classList.remove('content-disabled-overlay');
+                content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => {
                     unjumbleText(element);
                 });
-            }
-            // Re-enable the button if it was previously disabled
-            if (clickedButton) {
-                clickedButton.classList.remove('disabled');
-                // Restore original onclick if it was stored
-                if (clickedButton.hasAttribute('data-original-onclick')) {
-                    clickedButton.setAttribute('onclick', clickedButton.getAttribute('data-original-onclick'));
-                    clickedButton.removeAttribute('data-original-onclick');
-                }
-            }
-        }
-    }
-
-    // Function to apply initial setup (handles button disabling based on disabledWeeks/Days)
-    function applyInitialWeekSetup() {
-        // Disable week buttons if the entire week is marked as disabled
-        document.querySelectorAll('.main-tab-nav .tab-button').forEach(button => {
-            const weekIdMatch = button.getAttribute('onclick').match(/'(week\d+)'/);
-            if (weekIdMatch && weekIdMatch[1] === disabledWeekId) {
-                button.classList.add('disabled');
-                button.setAttribute('data-original-onclick', button.getAttribute('onclick')); // Store original
-                button.removeAttribute('onclick'); // Disable click
-            } else {
-                button.classList.remove('disabled');
-                // Restore onclick if it was previously disabled and now enabled
-                if (button.hasAttribute('data-original-onclick')) {
-                    button.setAttribute('onclick', button.getAttribute('data-original-onclick'));
-                    button.removeAttribute('data-original-onclick');
-                }
-            }
-        });
-
-        // Disable specific day buttons if they are in the disabledDays list
-        // This needs to be done dynamically when a week is shown, not at initial setup for all
-        // because day buttons only exist within an active week's DOM.
-    }
-
-
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', () => {
-        applyInitialWeekSetup(); // Apply initial setup for week buttons
-
-        const hash = window.location.hash; // Get hash from URL
-
-        if (hash) {
-            // Remove the '#' to get the ID (e.g., "week1")
-            const weekIdFromHash = hash.substring(1);
-
-            // Find the corresponding week button and activate it
-            const weekButton = document.querySelector(`.main-tab-nav button[onclick*="${weekIdFromHash}"]`);
-
-            if (weekButton && !weekButton.classList.contains('disabled')) {
-                // Manually trigger the showWeek function
-                showWeek(weekIdFromHash, weekButton);
-
-            } else if (weekButton && weekButton.classList.contains('disabled')) {
-                // If the linked week is disabled, show the default week and log a message
-                console.warn(`Attempted to link to disabled week: ${weekIdFromHash}. Showing Week 1 instead.`);
-                const defaultWeekButton = document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]');
-                showWeek('week1', defaultWeekButton);
-            } else {
-                // If hash is present but no matching week button, or invalid hash
-                console.warn(`Invalid or non-existent week ID in hash: ${hash}. Showing Week 1 instead.`);
-                const defaultWeekButton = document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]');
-                showWeek('week1', defaultWeekButton);
-            }
-
-        } else {
-            // If no hash, activate Week 1 and its Monday content by default
-            const defaultWeekButton = document.querySelector('.main-tab-nav .tab-button[onclick*="week1"]');
-            showWeek('week1', defaultWeekButton);
-        }
-
-
-        // --- Quiz Logic - Instant Feedback with Clickable Options ---
-        // Nested structure for answers: answers[weekId][dayName][questionId]
-        const answers = {
-            'week6': {
-                'monday': {
-                    'q1': 'c', // Monday Q1: getc() can be a macro, while fgetc() is always a function
-                    'q2': 'a'  // Monday Q2: putc() is a macro, while fputc() is a function
-                },
-                'tuesday': {
-                    'q1': 'b', // Tuesday Q1: malloc()
-                    'q2': 'd'  // Tuesday Q2: It deallocates memory previously allocated...
-                },
-                'wednesday': {
-                    'q1': 'b', // Wednesday Q1: struct
-                    'q2': 'a'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
-                },
-                // Add more days here as needed:
-                // 'thursday': {
-                //     'q1': 'your_answer_for_thursday_q1',
-                //     'q2': 'your_answer_for_thursday_q2'
-                // },
-                // 'friday': { /* ... */ },
-                // 'saturday': { /* ... */ }
-            },
-            // Add other weeks here if they have quizzes, e.g.:
-            // 'week1': {
-            //     'monday': {
-            //         'q1': 'answer_for_week1_monday_q1',
-            //         'q2': 'answer_for_week1_monday_q2'
-            //     }
-            // }
-        };
-
-        // checkAnswer function now takes weekId, dayName, questionName, selectedValue, AND the specific feedbackElement
-        function checkAnswer(weekId, dayName, questionName, selectedValue, feedbackElement) {
-            feedbackElement.style.display = 'block'; // Show feedback area
-
-            // Clear previous feedback classes
-            feedbackElement.classList.remove('correct', 'incorrect');
-
-            const correctAnswer = answers[weekId]?.[dayName]?.[questionName]; // Safely access nested answer
-
-            if (selectedValue === correctAnswer) {
-                feedbackElement.textContent = 'Correct!';
-                feedbackElement.classList.add('correct');
-            } else {
-                let correctDisplay = correctAnswer;
-                // If the answer value is a single letter (a,b,c,d), format it as "option A"
-                if (correctAnswer && ['a', 'b', 'c', 'd'].includes(correctAnswer.toLowerCase())) {
-                    correctDisplay = `option ${correctAnswer.toUpperCase()}`;
-                } else if (!correctAnswer) {
-                    correctDisplay = " (Answer not found in script, please check)"; // Fallback for missing answers
-                }
-                feedbackElement.textContent = `Incorrect. The correct answer is ${correctDisplay}.`;
-                feedbackElement.classList.add('incorrect');
-            }
-        }
-
-        // Get ALL 'quiz-option' divs on the page, regardless of the day
-        const quizOptions = document.querySelectorAll('.quiz-container .quiz-option');
-
-        quizOptions.forEach(optionDiv => {
-            optionDiv.addEventListener('click', (event) => {
-                const clickedOption = event.target;
-                const questionName = clickedOption.getAttribute('data-question'); // e.g., 'q1'
-                const selectedValue = clickedOption.getAttribute('data-value'); // e.g., 'c'
-
-                // Find the closest parent day-content div to get weekId and dayName
-                const dayContentDiv = clickedOption.closest('.day-content');
-                if (!dayContentDiv) {
-                    console.error("Clicked quiz option is not within a .day-content div.");
-                    return;
-                }
-                const dayContentId = dayContentDiv.id; // e.g., 'monday-content-week6'
-                const parts = dayContentId.split('-');
-                // Assuming ID format is 'dayname-content-weekX'
-                const dayName = parts[0]; // 'monday'
-                const weekId = parts[2]; // 'week6'
-
-                // Find the specific quiz-feedback element within the current question-block
-                const feedbackElement = clickedOption.closest('.question-block').querySelector('.quiz-feedback');
-                if (!feedbackElement) {
-                    console.error("Quiz feedback element not found within the question block.");
-                    return;
-                }
-
-                // Deselect all other options for this specific question (within the same question-block)
-                clickedOption.closest('.options').querySelectorAll('.quiz-option').forEach(opt => {
-                    opt.classList.remove('selected');
-                });
-
-                // Select the clicked option
-                clickedOption.classList.add('selected');
-
-                // Provide feedback using the dynamically found elements and parsed IDs
-                checkAnswer(weekId, dayName, questionName, selectedValue, feedbackElement);
             });
-        });
-        // --- END Quiz Logic ---
+        }
+    }
+}
 
+// Function to show content for a specific day within a week
+function showDay(dayIdWithWeek, clickedButton, weekId) {
+    const weekContentDiv = document.getElementById(weekId);
+
+    // Hide and un-blur/unjumble all day content sections within the current week first
+    const dayContents = weekContentDiv.querySelectorAll('.day-content');
+    dayContents.forEach(content => {
+        content.classList.remove('active-content');
+        content.classList.remove('content-disabled-overlay'); // Always remove before potentially adding it back
+        content.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => {
+            unjumbleText(element); // Always unjumble previous content
+        });
     });
+
+    // Deactivate all nested day tab buttons within the current week
+    const dayTabButtons = weekContentDiv.querySelectorAll('.nested-tab-nav .tab-button');
+    dayTabButtons.forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Extract just the day name from dayIdWithWeek (e.g., 'monday' from 'monday-content-week1')
+    const dayName = dayIdWithWeek.split('-')[0];
+
+    const targetDayContent = document.getElementById(dayIdWithWeek);
+
+    // Show the selected day's content
+    if (targetDayContent) { // Ensure target content exists before trying to show it
+        targetDayContent.classList.add('active-content');
+    }
+
+    // Activate the clicked day button
+    if (clickedButton) {
+        clickedButton.classList.add('active');
+    }
+
+    // Check if the specific day is disabled for this week OR if the entire week is disabled
+    if ((disabledDays[weekId] && disabledDays[weekId].includes(dayName)) || weekId === disabledWeekId) {
+        // Apply blur to the day's content if it's disabled or its parent week is disabled
+        if (targetDayContent) {
+            targetDayContent.classList.add('content-disabled-overlay');
+            // Jumble the text contents within this specific disabled day
+            targetDayContent.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => {
+                jumbleText(element);
+            });
+        }
+        // Also, ensure the clicked button (if it's a disabled day) becomes disabled style
+        if (clickedButton) {
+            clickedButton.classList.add('disabled');
+            // Temporarily remove its onclick to prevent re-activating jumbled content if clicked again
+            clickedButton.setAttribute('data-original-onclick', clickedButton.getAttribute('onclick'));
+            clickedButton.removeAttribute('onclick');
+        }
+    } else {
+        // Unjumble text if the day is enabled
+        if (targetDayContent) {
+            targetDayContent.querySelectorAll('h4, p, span, li, .quiz-option').forEach(element => {
+                unjumbleText(element);
+            });
+        }
+        // Re-enable the button if it was previously disabled
+        if (clickedButton) {
+            clickedButton.classList.remove('disabled');
+            // Restore original onclick if it was stored
+            if (clickedButton.hasAttribute('data-original-onclick')) {
+                clickedButton.setAttribute('onclick', clickedButton.getAttribute('data-original-onclick'));
+                clickedButton.removeAttribute('data-original-onclick');
+            }
+        }
+    }
+}
+
+// Function to apply initial setup (handles button disabling based on disabledWeeks/Days)
+function applyInitialWeekSetup() {
+    // Disable week buttons if the entire week is marked as disabled
+    document.querySelectorAll('.main-tab-nav .tab-button').forEach(button => {
+        const weekIdMatch = button.getAttribute('onclick').match(/'(week\d+)'/);
+        if (weekIdMatch && weekIdMatch[1] === disabledWeekId) {
+            button.classList.add('disabled');
+            button.setAttribute('data-original-onclick', button.getAttribute('onclick')); // Store original
+            button.removeAttribute('onclick'); // Disable click
+        } else {
+            button.classList.remove('disabled');
+            // Restore onclick if it was previously disabled and now enabled
+            if (button.hasAttribute('data-original-onclick')) {
+                button.setAttribute('onclick', button.getAttribute('data-original-onclick'));
+                button.removeAttribute('data-original-onclick');
+            }
+        }
+    });
+
+    // Disable specific day buttons if they are in the disabledDays list
+    // This needs to be done dynamically when a week is shown, not at initial setup for all
+    // because day buttons only exist within an active week's DOM.
+}
+
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    applyInitialWeekSetup(); // Apply initial setup for week buttons
+
+    const hash = window.location.hash; // Get hash from URL
+    let weekToShow = 'week1'; // Default to Week 1
+
+    if (hash) {
+        const weekIdFromHash = hash.substring(1);
+        const weekButton = document.querySelector(`.main-tab-nav button[onclick*="${weekIdFromHash}"]`);
+
+        if (weekButton && !weekButton.classList.contains('disabled')) {
+            weekToShow = weekIdFromHash; // Use hash if valid and not disabled
+        } else if (weekButton && weekButton.classList.contains('disabled')) {
+            console.warn(`Attempted to link to disabled week: ${weekIdFromHash}. Showing Week 1 instead.`);
+        } else {
+            console.warn(`Invalid or non-existent week ID in hash: ${hash}. Showing Week 1 instead.`);
+        }
+    }
+
+    // Find the button for the determined weekToShow
+    const targetWeekButton = document.querySelector(`.main-tab-nav .tab-button[onclick*="${weekToShow}"]`);
+    if (targetWeekButton) {
+        showWeek(weekToShow, targetWeekButton);
+    } else {
+        // Fallback if somehow the defaultWeekButton is not found
+        console.error("Default week button not found!");
+    }
+
+
+    // --- Quiz Logic - Instant Feedback with Clickable Options ---
+    // Nested structure for answers: answers[weekId][dayName][questionId]
+    const answers = {
+        'week6': {
+            'monday': {
+                'q1': 'c', // Monday Q1: getc() can be a macro, while fgetc() is always a function
+                'q2': 'a'  // Monday Q2: putc() is a macro, while fputc() is a function
+            },
+            'tuesday': {
+                'q1': 'b', // Tuesday Q1: malloc()
+                'q2': 'd'  // Tuesday Q2: It deallocates memory previously allocated...
+            },
+            'wednesday': {
+                'q1': 'b', // Wednesday Q1: struct
+                'q2': 'a'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
+            },
+            // Add more days here as needed:
+            // 'thursday': {
+            //     'q1': 'your_answer_for_thursday_q1',
+            //     'q2': 'your_answer_for_thursday_q2'
+            // },
+            // 'friday': { /* ... */ },
+            // 'saturday': { /* ... */ }
+        },
+        'week7': { // Added answers for Week 7 (Mindmash Quiz 1)
+            'quiz1': { // Changed 'monday' to 'quiz1' for Mindmash as per your button ID
+                'q1': 'b',
+                'q2': 'b',
+                'q3': 'a',
+                'q4': 'c',
+                'q5': 'c'
+            }
+        }
+    };
+
+    // checkAnswer function now takes weekId, dayName, questionName, selectedValue, AND the specific feedbackElement
+    function checkAnswer(weekId, dayName, questionName, selectedValue, feedbackElement) {
+        feedbackElement.style.display = 'block'; // Show feedback area
+
+        // Clear previous feedback classes
+        feedbackElement.classList.remove('correct', 'incorrect');
+
+        const correctAnswer = answers[weekId]?.[dayName]?.[questionName]; // Safely access nested answer
+
+        if (selectedValue === correctAnswer) {
+            feedbackElement.textContent = 'Correct!';
+            feedbackElement.classList.add('correct');
+        } else {
+            let correctDisplay = correctAnswer;
+            // If the answer value is a single letter (a,b,c,d), format it as "option A"
+            if (correctAnswer && ['a', 'b', 'c', 'd'].includes(correctAnswer.toLowerCase())) {
+                correctDisplay = `option ${correctAnswer.toUpperCase()}`;
+            } else if (!correctAnswer) {
+                correctDisplay = " (Answer not found in script, please check)"; // Fallback for missing answers
+            }
+            feedbackElement.textContent = `Incorrect. The correct answer is ${correctDisplay}.`;
+            feedbackElement.classList.add('incorrect');
+        }
+    }
+
+    // Get ALL 'quiz-option' divs on the page, regardless of the day
+    const quizOptions = document.querySelectorAll('.quiz-container .quiz-option');
+
+    quizOptions.forEach(optionDiv => {
+        optionDiv.addEventListener('click', (event) => {
+            const clickedOption = event.target;
+            const questionName = clickedOption.getAttribute('data-question'); // e.g., 'q1'
+            const selectedValue = clickedOption.getAttribute('data-value'); // e.g., 'c'
+
+            // Find the closest parent day-content div to get weekId and dayName
+            const dayContentDiv = clickedOption.closest('.day-content');
+            if (!dayContentDiv) {
+                console.error("Clicked quiz option is not within a .day-content div.");
+                return;
+            }
+            const dayContentId = dayContentDiv.id; // e.g., 'monday-content-week6' or 'quiz1-content-week7'
+            const parts = dayContentId.split('-');
+            // Assuming ID format is 'dayname-content-weekX' or 'quizname-content-weekX'
+            const dayName = parts[0]; // 'monday' or 'quiz1'
+            const weekId = parts[2]; // 'week6' or 'week7'
+
+            // Find the specific quiz-feedback element within the current question-block
+            const feedbackElement = clickedOption.closest('.question-block').querySelector('.quiz-feedback');
+            if (!feedbackElement) {
+                console.error("Quiz feedback element not found within the question block.");
+                return;
+            }
+
+            // Deselect all other options for this specific question (within the same question-block)
+            clickedOption.closest('.options').querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Select the clicked option
+            clickedOption.classList.add('selected');
+
+            // Provide feedback using the dynamically found elements and parsed IDs
+            checkAnswer(weekId, dayName, questionName, selectedValue, feedbackElement);
+        });
+    });
+    // --- END Quiz Logic ---
+
+});
 </script>
 </body>
 </html>
