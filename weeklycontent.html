@@ -2536,7 +2536,7 @@ int main() {
     </div>
 
 <div id="monday-content-week6" class="day-content day-section">
-    <h2>How to Build Logic in Programming & File Handling Q&A</h2>
+    <h2>MONDAY</h2>
     <div class="content-block">
         <h3>How to Build Logic in Programming:</h3>
         <ul>
@@ -2578,17 +2578,7 @@ int main() {
     </div>
 </div>
 <div id="tuesday-content-week6" class="day-content day-section">
-    <h2>Memory Management & Dynamic Allocation</h2>
-    <div class="content-block">
-        <h3>Pointers and Memory Fundamentals:</h3>
-        <p>This section covers fundamental concepts related to memory management in C, essential for understanding dynamic allocation.</p>
-        <ul>
-            <li><strong>Memory Layout:</strong> Stack, Heap, Data, Text segments.</li>
-            <li><strong>Pointers:</strong> Variables that store memory addresses.</li>
-            <li><strong>"sizeof" Operator:</strong> Used to determine the size of types or variables.</li>
-        </ul>
-    </div>
-
+    <h2>TUESDAY</h2>
     <div class="quiz-container">
         <h3>File Handling in C – Interview Based Questions:</h3>
         <div class="question-block">
@@ -2615,7 +2605,37 @@ int main() {
     </div>
 </div>
 <div id="wednesday-content-week6" class="day-content day-section">
-    <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+    <h2>WEDNESDAY</h2>
+    <div class="quiz-container">
+        <h3>File Handling in C – Interview Based Questions:</h3>
+        <div class="question-block">
+            <p>What will be the output of the following C code?</p>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int a = 10;
+    printf("%d", a++ + ++a);
+    return 0;
+}</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 21</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 22</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 20</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Undefined behavior</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="question-block">
+            <p>2. Which of the following is the correct way to declare a pointer to an integer in C?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q2" data-value="a">A. int ptr;</div>
+                <div class="quiz-option" data-question="q2" data-value="b">B. int *ptr;</div>
+                <div class="quiz-option" data-question="q2" data-value="c">C. ptr int*;</div>
+                <div class="quiz-option" data-question="q2" data-value="d">D. int &ptr;</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
 </div>
 <div id="thursday-content-week6" class="day-content day-section">
     <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
@@ -3378,8 +3398,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'q2': 'd'  // Tuesday Q2: It deallocates memory previously allocated...
             },
             'wednesday': {
-                'q1': 'b', // Wednesday Q1: struct
-                'q2': 'a'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
+                'q1': 'd', // Wednesday Q1: struct
+                'q2': 'c'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
             },
             // Add more days here as needed:
             // 'thursday': {
