@@ -2536,7 +2536,7 @@ int main() {
     </div>
 
 <div id="monday-content-week6" class="day-content day-section">
-    <h2>MONDAY</h2>
+    <h2>Monday Maverick</h2>
     <div class="content-block">
         <h3>How to Build Logic in Programming:</h3>
         <ul>
@@ -2578,7 +2578,7 @@ int main() {
     </div>
 </div>
 <div id="tuesday-content-week6" class="day-content day-section">
-    <h2>TUESDAY</h2>
+    <h2>Techie Tuesday</h2>
     <div class="quiz-container">
         <h3>File Handling in C – Interview Based Questions:</h3>
         <div class="question-block">
@@ -2605,7 +2605,7 @@ int main() {
     </div>
 </div>
 <div id="wednesday-content-week6" class="day-content day-section">
-    <h2>WEDNESDAY</h2>
+    <h2>Syntax Snapshots Wednesday</h2>
     <div class="quiz-container">
         <h3>File Handling in C – Interview Based Questions:</h3>
         <div class="question-block">
@@ -2641,7 +2641,82 @@ int main() {
     <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
 </div>
 <div id="friday-content-week6" class="day-content day-section">
-<p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+<!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>-->
+     <h2>Function Friday</h2>
+    <div class="content-block">
+        <h3>Unions in C: Memory-Efficient Type Sharing:</h3>
+        <p>A union is a special user-defined data type that can hold members of different data types, but only one member can hold a value at any given time. All members of a union share the same memory location, making them highly memory-efficient.</p>
+    </div>
+    <div class="content-block">
+        <h3>Syntax:</h3>
+        <pre><code>// Union declaration
+union Data {
+    int i;
+    float f;
+    char str[20];
+};</code></pre>
+    </div>
+    <div class="content-block">
+        <h3>Example:</h3>
+        <pre><code>#include &lt;stdio.h&gt;
+
+// Define a union to store different types of data
+union Value {
+    int intVal;
+    float floatVal;
+    char charVal;
+};
+
+int main() {
+    union Value val;
+
+    // Assign and print integer
+    val.intVal = 100;
+    printf("Integer value: %d\n", val.intVal);
+
+    // Assign and print float (overwrites int)
+    val.floatVal = 3.14;
+    printf("Float value: %.2f\n", val.floatVal);
+
+    // Assign and print char (overwrites float)
+    val.charVal = 'A';
+    printf("Char value: %c\n", val.charVal);
+
+    // Show memory size
+    printf("Size of union: %lu bytes\n", sizeof(val));
+
+    return 0;
+};</code></pre>
+    </div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>Integer value: 100
+Float value: 3.14
+Char value: A
+Size of union: 4 bytes</code>
+    </div>
+    <div class="quiz-container">
+        <h3>C Unions Basics:</h3>
+        <div class="question-block">
+            <p>1.  What is a key characteristic of a C union regarding its members and memory allocation?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. All members have separate memory locations.</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. It can hold multiple member values simultaneously.</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. All members share the same memory location, and only one member can hold a value at a time.</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Its size is the sum of the sizes of all its members.</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+
+        <div class="question-block">
+            <p>2. Which of the following correctly declares a union named <strong>MyUnion</strong> with an integer member "x" and a float member "y"?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q2" data-value="a">A. MyUnion { int x; float y; };</div>
+                <div class="quiz-option" data-question="q2" data-value="b">B. union MyUnion { int x; float y; };</div>
+                <div class="quiz-option" data-question="q2" data-value="c">C. struct MyUnion { int x; float y; };</div>
+                <div class="quiz-option" data-question="q2" data-value="d">D. declare union MyUnion { int x; float y; };</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
 </div>
 
 </div>  <!-- add week6 content before these -->  
@@ -3406,7 +3481,10 @@ document.addEventListener('DOMContentLoaded', () => {
             //     'q1': 'your_answer_for_thursday_q1',
             //     'q2': 'your_answer_for_thursday_q2'
             // },
-            // 'friday': { /* ... */ },
+            'friday': { 
+                'q1': 'c', // Tuesday Q1: malloc()
+                'q2': 'b'
+            },
             // 'saturday': { /* ... */ }
         },
         'week7': { // Added answers for Week 7 (Mindmash Quiz 1)
