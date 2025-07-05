@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -552,190 +551,223 @@
         </a>
     </footer>
 
-    <script>
-        // --- CONTROL KEYWORD HERE ---
-        // Change this variable to "disable" or "enable"
-        const linkControlStatus = "disable"; // Set to "enable" to activate links
-        // --- END CONTROL KEYWORD ---
+   <script>
+    // --- CONTROL KEYWORD HERE ---
+    // Change this variable to "disable" or "enable"
+    const linkControlStatus = "disable"; // Set to "enable" to activate links
+    // --- END CONTROL KEYWORD ---
 
-        // Object to store original text content for jumbling/unjumbling
-        const originalTextStore = {};
+    // --- TIMER CONTROL KEYWORD HERE ---
+    // Change this variable to "disable" or "enable" to use the timer
+    const timerControlStatus = "enable"; // Set to "enable" to activate time-based control
+    // Define the quiz start and end times in IST (Indian Standard Time)
+    // Format: "Month Day, Year HH:MM:SS AM/PM GMT+0530"
+    // Use an unambiguous format for Date object parsing.
+    // Example for 5th July 2025, 6:00 PM IST
+    const quizStartTime = new Date("July 5, 2025 18:00:00 GMT+0530"); // 6:00 PM IST
+    const quizEndTime = new Date("July 6, 2025 18:00:00 GMT+0530");   // 6:00 PM IST
+    // --- END TIMER CONTROL KEYWORD ---
 
-        // Function to shuffle characters in a string
-        function shuffleString(str) {
-            let a = str.split("");
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
+
+    // Object to store original text content for jumbling/unjumbling
+    const originalTextStore = {};
+
+    // Function to shuffle characters in a string
+    function shuffleString(str) {
+        let a = str.split("");
+        for (let i = a.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a.join("");
+    }
+
+    // Function to jumble the text content of an element
+    function jumbleText(element) {
+        // Check if element has any text content to jumble and is not just whitespace
+        if (element && element.textContent && element.textContent.trim().length > 0) {
+            // Use a unique key for storage, preferring element ID or generating one
+            const elementKey = element.id || 'jumble-' + Math.random().toString(36).substring(2, 9);
+            if (!element.id) { // Assign ID if it didn't exist for consistent lookup
+                element.id = elementKey;
             }
-            return a.join("");
-        }
 
-        // Function to jumble the text content of an element
-        function jumbleText(element) {
-            // Check if element has any text content to jumble and is not just whitespace
-            if (element && element.textContent && element.textContent.trim().length > 0) {
-                // Use a unique key for storage, preferring element ID or generating one
-                const elementKey = element.id || 'jumble-' + Math.random().toString(36).substring(2, 9);
-                if (!element.id) { // Assign ID if it didn't exist for consistent lookup
-                    element.id = elementKey;
-                }
-
-                // Store original text if not already stored
-                if (!originalTextStore[elementKey]) {
-                    originalTextStore[elementKey] = element.textContent;
-                }
-                element.textContent = shuffleString(element.textContent);
+            // Store original text if not already stored
+            if (!originalTextStore[elementKey]) {
+                originalTextStore[elementKey] = element.textContent;
             }
+            element.textContent = shuffleString(element.textContent);
         }
+    }
 
-        // Function to unjumble the text content of an element
-        function unjumbleText(element) {
-            if (element && element.id && originalTextStore[element.id]) {
-                element.textContent = originalTextStore[element.id];
-                // Optionally delete from store if you don't need it after unjumbling
-                // delete originalTextStore[element.id];
-            }
+    // Function to unjumble the text content of an element
+    function unjumbleText(element) {
+        if (element && element.id && originalTextStore[element.id]) {
+            element.textContent = originalTextStore[element.id];
+            // Optionally delete from store if you don't need it after unjumbling
+            // delete originalTextStore[element.id];
         }
+    }
 
-        // Function for showing the submission success animation
-        function showSuccessAnimation() {
-            const successMessage = document.getElementById('submissionSuccessMessage');
-            successMessage.classList.add('show'); // Add 'show' class to display the overlay
+    // Function for showing the submission success animation
+    function showSuccessAnimation() {
+        const successMessage = document.getElementById('submissionSuccessMessage');
+        successMessage.classList.add('show'); // Add 'show' class to display the overlay
 
-            // Hide after 3 seconds
-            setTimeout(() => {
-                successMessage.classList.remove('show'); // Remove 'show' class to hide the overlay
-            }, 3000); // The animation will be visible for 3 seconds
-        }
+        // Hide after 3 seconds
+        setTimeout(() => {
+            successMessage.classList.remove('show'); // Remove 'show' class to hide the overlay
+        }, 3000); // The animation will be visible for 3 seconds
+    }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            setLinkStatus(); // Call the main function to set the quiz status based on the keyword
+    document.addEventListener('DOMContentLoaded', () => {
+        setLinkStatus(); // Call the main function to set the quiz status based on the keyword
 
-            // --- NEW CODE TO DISABLE COPY/PASTE ---
-            const inputsToRestrict = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
+        // --- NEW CODE TO DISABLE COPY/PASTE ---
+        const inputsToRestrict = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
 
-            inputsToRestrict.forEach(input => {
-                input.addEventListener('copy', (e) => e.preventDefault());
-                input.addEventListener('cut', (e) => e.preventDefault());
-                input.addEventListener('paste', (e) => e.preventDefault());
-            });
-            // --- END NEW CODE ---
+        inputsToRestrict.forEach(input => {
+            input.addEventListener('copy', (e) => e.preventDefault());
+            input.addEventListener('cut', (e) => e.preventDefault());
+            input.addEventListener('paste', (e) => e.preventDefault());
         });
+        // --- END NEW CODE ---
+    });
 
-        function setLinkStatus() {
-            const statusElement = document.getElementById('status');
+    function setLinkStatus() {
+        const statusElement = document.getElementById('status');
 
-            const quizQuestionsSection = document.getElementById('quizQuestionsSection');
-            const quizOverlay = document.getElementById('quizOverlay');
-            const quizForm = document.getElementById('quizForm');
-            const submitButton = quizForm.querySelector('.submit-button');
+        const quizQuestionsSection = document.getElementById('quizQuestionsSection');
+        const quizOverlay = document.getElementById('quizOverlay');
+        const quizForm = document.getElementById('quizForm');
+        const submitButton = quizForm.querySelector('.submit-button');
 
-            // Select elements whose text needs to be jumbled
-            const elementsToJumble = quizQuestionsSection.querySelectorAll('h3, p, .radio-group label, .checkbox-group label');
+        // Select elements whose text needs to be jumbled
+        // Updated to select only paragraphs within .form-group that contain the questions
+        const elementsToJumble = quizQuestionsSection.querySelectorAll('.form-group p');
 
-            if (linkControlStatus === "enable") {
-                // Quiz is Enabled
-                // Hide overlay first for smooth transition
-                quizOverlay.style.opacity = '0';
+        let quizShouldBeEnabled = false;
+        const currentTime = new Date();
 
-                // After overlay fades out, remove its visibility and disable class from quiz section
-                setTimeout(() => {
-                    quizOverlay.style.visibility = 'hidden';
-                    quizQuestionsSection.classList.remove('quiz-disabled-overlay');
-                }, 500); // Matches CSS transition duration
-
-                // Enable relevant form elements inside the quiz questions section
-                quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
-                    input.disabled = false;
-                });
-                submitButton.disabled = false; // Ensure submit button is enabled
-
-                // Unjumble text for questions and options
-                elementsToJumble.forEach(element => {
-                    unjumbleText(element);
-                });
-
-                statusElement.innerHTML = 'BRAIN CACHE - WEEK 5 QUIZ<br>fill within 29/6/25 6.00 PM IST!';
+        // Priority 1: Manual override via linkControlStatus
+        if (linkControlStatus === "enable") {
+            quizShouldBeEnabled = true;
+            statusElement.innerHTML = 'BRAIN CACHE - WEEK 6 QUIZ<br>fill within 5/7/25 6.00 PM IST!'; // Indicate manual override
+            statusElement.style.color = '#008000'; // Green
+        }
+        // Priority 2: Timer control, if enabled
+        else if (timerControlStatus === "enable") {
+            if (currentTime >= quizStartTime && currentTime < quizEndTime) {
+                quizShouldBeEnabled = true;
+                statusElement.innerHTML = 'BRAIN CACHE - WEEK 6 QUIZ<br>Quiz is LIVE! Ends on 06/07/2025 6:00 PM IST!';
                 statusElement.style.color = '#008000'; // Green for active
-            } else { // Assumes "disable" or any other value means disabled
-                // Quiz is Disabled
-                // Show overlay immediately or with a slight delay
-                quizOverlay.style.visibility = 'visible';
-                quizOverlay.style.opacity = '1';
-
-                // Add the disabled styling to the quiz questions section for blur and opacity
-                quizQuestionsSection.classList.add('quiz-disabled-overlay');
-
-                // Disable relevant form elements inside the quiz questions section
-                quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => { // Added select
-                    input.disabled = true;
-                });
-                submitButton.disabled = true; // Ensure submit button is disabled
-
-                // Jumble text for questions and options
-                elementsToJumble.forEach(element => {
-                    jumbleText(element);
-                });
-
+            } else if (currentTime < quizStartTime) {
+                // Quiz not yet started
+                quizShouldBeEnabled = false;
+                statusElement.innerHTML = 'BRAIN CACHE<br>Quiz starts on 05/07/2025 6:00 PM IST!';
+                statusElement.style.color = '#FFA500'; // Orange for upcoming
+            } else {
+                // Quiz ended
+                quizShouldBeEnabled = false;
                 statusElement.innerHTML = 'BRAIN CACHE<br>Quizzes ended';
                 statusElement.style.color = '#CC0000'; // Red for closed
             }
         }
+        // Priority 3: Default to disabled if neither manual nor timer is enabling it
+        else {
+            quizShouldBeEnabled = false;
+            statusElement.innerHTML = 'BRAIN CACHE<br>Quizzes ended (Manual Disable)'; // Indicate manual disable
+            statusElement.style.color = '#CC0000'; // Red
+        }
 
-        // Handle form submission to Google Sheet via Google Apps Script
-        const quizForm = document.getElementById('quizForm');
-        quizForm.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent default form submission
 
-            // Check if the form is disabled by the linkControlStatus
-            if (this.querySelector('.submit-button').disabled) {
-                alert('The quiz is currently closed.');
-                return; // Stop submission if disabled
-            }
+        if (quizShouldBeEnabled) {
+            // Quiz is Enabled
+            quizOverlay.style.opacity = '0';
+            setTimeout(() => {
+                quizOverlay.style.visibility = 'hidden';
+                quizQuestionsSection.classList.remove('quiz-disabled-overlay');
+            }, 500);
 
-            const formData = new FormData(quizForm);
-            const data = {};
-            for (let [key, value] of formData.entries()) {
-                if (key.endsWith('[]')) { // Handle checkbox arrays
-                    const originalKey = key.slice(0, -2);
-                    if (!data[originalKey]) {
-                        data[originalKey] = [];
-                    }
-                    data[originalKey].push(value);
-                } else {
-                    data[key] = value;
-                }
-            }
-
-            // Convert checkbox arrays to comma-separated strings for easier GSheet logging
-            for (const key in data) {
-                if (Array.isArray(data[key])) {
-                    data[key] = data[key].join(', ');
-                }
-            }
-
-            // Replace 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE' with your deployed Apps Script URL
-            const scriptUrl = 'https://script.google.com/macros/s/AKfycby_BUIw3iWX2yH4vFDEU2HnpFzgiPz4GSdGCvZNAVIWlEZiI1JJOeniIW_WrlzQpgijpA/exec';
-            fetch(scriptUrl, {
-                method: 'POST',
-                mode: 'no-cors', // Important for sending data to Apps Script
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: new URLSearchParams(data).toString()
-            })
-            .then(response => {
-                // If the fetch completes (even with no-cors), we assume the data was sent.
-                // Therefore, we can show the success animation.
-                showSuccessAnimation(); // CALL THE NEW ANIMATION FUNCTION HERE
-                quizForm.reset(); // Clear the form
-            })
-            .catch(error => {
-                console.error('Error submitting quiz:', error);
-                alert('There was an error submitting the quiz. Please try again.');
+            quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => {
+                input.disabled = false;
             });
+            submitButton.disabled = false;
+
+            elementsToJumble.forEach(element => {
+                unjumbleText(element);
+            });
+        } else {
+            // Quiz is Disabled
+            quizOverlay.style.visibility = 'visible';
+            quizOverlay.style.opacity = '1';
+
+            quizQuestionsSection.classList.add('quiz-disabled-overlay');
+
+            quizQuestionsSection.querySelectorAll('input, textarea, select').forEach(input => {
+                input.disabled = true;
+            });
+            submitButton.disabled = true;
+
+            elementsToJumble.forEach(element => {
+                jumbleText(element);
+            });
+        }
+    }
+
+    // Handle form submission to Google Sheet via Google Apps Script
+    const quizForm = document.getElementById('quizForm');
+    quizForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Check if the form is disabled by the linkControlStatus or timer
+        if (this.querySelector('.submit-button').disabled) {
+            alert('The quiz is currently closed or not yet open.');
+            return; // Stop submission if disabled
+        }
+
+        const formData = new FormData(quizForm);
+        const data = {};
+        for (let [key, value] of formData.entries()) {
+            if (key.endsWith('[]')) { // Handle checkbox arrays
+                const originalKey = key.slice(0, -2);
+                if (!data[originalKey]) {
+                    data[originalKey] = [];
+                }
+                data[originalKey].push(value);
+            } else {
+                data[key] = value;
+            }
+        }
+
+        // Convert checkbox arrays to comma-separated strings for easier GSheet logging
+        for (const key in data) {
+            if (Array.isArray(data[key])) {
+                data[key] = data[key].join(', ');
+            }
+        }
+
+        // Replace 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE' with your deployed Apps Script URL
+        const scriptUrl = 'https://script.google.com/macros/s/AKfycby_BUIw3iWX2yH4vFDEU2HnpFzgiPz4GSdGCvZNAVIWlEZiI1JJOeniIW_WrlzQpgijpA/exec';
+        fetch(scriptUrl, {
+            method: 'POST',
+            mode: 'no-cors', // Important for sending data to Apps Script
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams(data).toString()
+        })
+        .then(response => {
+            // If the fetch completes (even with no-cors), we assume the data was sent.
+            // Therefore, we can show the success animation.
+            showSuccessAnimation(); // CALL THE NEW ANIMATION FUNCTION HERE
+            quizForm.reset(); // Clear the form
+        })
+        .catch(error => {
+            console.error('Error submitting quiz:', error);
+            alert('There was an error submitting the quiz. Please try again.');
         });
-    </script>
+    });
+</script>
 </body>
 </html>
