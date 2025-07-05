@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -496,161 +497,28 @@
                     <h3>Quiz Questions</h3>
 
                     <div class="form-group no-select">
-                        <p><strong>1. Which of the following statements about C structures is true?</strong></p>
-                        <div class="radio-group">
-                            <label for="q1_a"><input type="radio" id="q1_a" name="Question1" value="A. A structure can only contain variables of the same data type." required> A. A structure can only contain variables of the same data type.</label>
-                            <label for="q1_b"><input type="radio" id="q1_b" name="Question1" value="B. The struct keyword is used to define a new data type."> B. The `struct` keyword is used to define a new data type.</label>
-                            <label for="q1_c"><input type="radio" id="q1_c" name="Question1" value="C. Members of a structure are accessed using the -> operator for all cases."> C. Members of a structure are accessed using the `->` operator for all cases.</label>
-                            <label for="q1_d"><input type="radio" id="q1_d" name="Question1" value="D. Structures cannot be passed as arguments to functions."> D. Structures cannot be passed as arguments to functions.</label>
-                        </div>
+                        <p><strong>1. What is the purpose of the printf() function in C?</strong></p>
+                        <textarea id="q1_ans" name="Question1" rows="4" required placeholder="Type your answer here..."></textarea>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>2. What will be the output of the following code snippet?</strong></p>
-                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
-
-int main() {
-    FILE *fp;
-    fp = fopen("data.txt", "r");
-    if (fp == NULL) {
-        printf("Can't open file \n");
-    } else {
-        fprintf(fp, "Hello, world! ");
-        printf("Written to file \n");
-        fclose(fp);
-    }
-    return 0;
-}</code></pre>
-                        <div class="radio-group">
-                            <label for="q2_a"><input type="radio" id="q2_a" name="Question2" value="A. Written to file" required> A. Written to file</label>
-                            <label for="q2_b"><input type="radio" id="q2_b" name="Question2" value="B. Can't open file"> B. Can't open file</label>
-                            <label for="q2_c"><input type="radio" id="q2_c" name="Question2" value="C. File gets created and "Hello, world! " is written into it"> C. File gets created and "Hello, world! " is written into it</label>
-                            <label for="q2_d"><input type="radio" id="q2_d" name="Question2" value="D. Compile-time error"> D. Compile-time error</label>
-                        </div>
+                        <p><strong>2. What is a pointer in C?</strong></p>
+                        <textarea id="q2_ans" name="Question2" rows="4" required placeholder="Type your answer here..."></textarea>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>3. What might happen when the following C program is executed?</strong></p>
-                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
-
-int main() {
-    FILE *fptr;
-    char data[100];
-
-    fptr = fopen("myfile.txt", "w"); // open in write mode
-    if (fptr == NULL) {
-        printf("Error opening file!\n");
-        return 1;
-    }
-
-    printf("Enter some text to write into the file: ");
-    fgets(data, sizeof(data), stdin);
-    fprintf(fptr, "%s", data);
-    fclose(fptr);
-    printf("Data written to file successfully.\n");
-
-    fptr = fopen("myfile.txt", "r"); // open in read mode
-    if (fptr == NULL) {
-        printf("Error opening file!\n");
-        return 1;
-    }
-
-    printf("Reading from the file:\n");
-    while (fgets(data, sizeof(data), fptr) != NULL) {
-        printf("%s", data);
-    }
-    fclose(fptr);
-
-    return 0;
-}</code></pre>
-                        <div class="radio-group">
-                            <label for="q3_a"><input type="radio" id="q3_a" name="Question3" value="A. The program writes user input to a file and reads it back successfully."> A. The program writes user input to a file and reads it back successfully.</label>
-                            <label for="q3_b"><input type="radio" id="q3_b" name="Question3" value="B. The program writes data to the file but fails to read it."> B. The program writes data to the file but fails to read it.</label>
-                            <label for="q3_c"><input type="radio" id="q3_c" name="Question3" value="C. The program crashes immediately due to a syntax error."> C. The program crashes immediately due to a syntax error.</label>
-                            <label for="q3_d"><input type="radio" id="q3_d" name="Question3" value="D. The file is opened in append mode, so it keeps adding new data every time."> D. The file is opened in append mode, so it keeps adding new data every time.</label>
-                        </div>
+                        <p><strong>3. What is the difference between ++i and i++?</strong></p>
+                        <textarea id="q3_ans" name="Question3" rows="4" required placeholder="Type your answer here..."></textarea>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>4. What is the primary reason for structure padding in C?</strong></p>
-                        <div class="radio-group">
-                            <label for="q4_a"><input type="radio" id="q4_a" name="Question4" value="A. To improve code readability"> A. To improve code readability</label>
-                            <label for="q4_b"><input type="radio" id="q4_b" name="Question4" value="B. To reduce memory usage"> B. To reduce memory usage</label>
-                            <label for="q4_c"><input type="radio" id="q4_c" name="Question4" value="C. To ensure proper alignment of structure members in memory"> C. To ensure proper alignment of structure members in memory</label>
-                            <label for="q4_d"><input type="radio" id="q4_d" name="Question4" value="D. To increase execution speed"> D. To increase execution speed</label>
-                        </div>
+                        <p><strong>4. What is the purpose of the malloc() function in C?</strong></p>
+                        <textarea id="q4_ans" name="Question4" rows="4" required placeholder="Type your answer here..."></textarea>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>5. What is the purpose of the `fprintf` function in `writeStudentToFile()`?</strong></p>
-                        <pre class="code-block"><code>#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-
-struct Student {
-    int id;
-    char name[50];
-    float marks;
-};
-
-void writeStudentToFile() {
-    struct Student s;
-    
-    printf("Enter Student ID: ");
-    scanf("%d", &s.id);
-    
-    printf("Enter Student Name: ");
-    scanf(" %[^\n]", s.name);
-    
-    printf("Enter Marks: ");
-    scanf("%f", &s.marks);
-
-    FILE *fp = fopen("student.txt", "w");
-    if (fp == NULL) {
-        printf("Error opening file!\n");
-        return;
-    }
-
-    fprintf(fp, "%d\n%s\n%.2f\n", s.id, s.name, s.marks);
-    fclose(fp);
-    printf("Student data saved successfully.\n\n");
-}
-
-void readStudentFromFile() {
-    struct Student s;
-    FILE *fp = fopen("student.txt", "r");
-
-    if (fp == NULL) {
-        printf("Error opening file!\n");
-        return;
-    }
-
-    fscanf(fp, "%d\n", &s.id);
-    fgets(s.name, sizeof(s.name), fp);
-    fscanf(fp, "%f", &s.marks);
-
-    if (s.name[strlen(s.name) - 1] == '\n') {
-        s.name[strlen(s.name) - 1] = '\0';
-    }
-
-    fclose(fp);
-
-    printf("Student Data from File:\n");
-    printf("ID: %d\n", s.id);
-    printf("Name: %s\n", s.name);
-    printf("Marks: %.2f\n", s.marks);
-}
-
-int main() {
-    writeStudentToFile();
-    readStudentFromFile();
-    return 0;
-}</code></pre>
-                        <div class="radio-group">
-                            <label for="q5_a"><input type="radio" id="q5_a" name="Question5" value="A. To read data from a file"> A. To read data from a file</label>
-                            <label for="q5_b"><input type="radio" id="q5_b" name="Question5" value="B. To print data to the console"> B. To print data to the console</label>
-                            <label for="q5_c"><input type="radio" id="q5_c" name="Question5" value="C. To write formatted data to a file"> C. To write formatted data to a file</label>
-                            <label for="q5_d"><input type="radio" id="q5_d" name="Question5" value="D. To close the file after writing"> D. To close the file after writing</label>
-                        </div>
+                        <p><strong>5. What is a dangling pointer in C, and how can it be avoided?</strong></p>
+                        <textarea id="q5_ans" name="Question5" rows="4" required placeholder="Type your answer here..."></textarea>
                     </div>
 
                     <p><strong>After submission wait until you see a tick</strong></p>
