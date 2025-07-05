@@ -2736,7 +2736,7 @@ Size of union: 4 bytes</code>
             <ol>
                 <li>Files that contain the main function</li>
                 <li>Files that are executed before the program runs</li>
-                <li>Files that contain function declarations and macros</li>
+                <li><strong>Files that contain function declarations and macros</strong></li>
                 <li>Files used for memory allocation</li>
             </ol>
         </div>
@@ -2744,10 +2744,10 @@ Size of union: 4 bytes</code>
         <div class="content-block">
             <h3>2. Which of the following appears valid at first glance but is actually an invalid variable declaration in C?</h3>
             <ol>
-                <li>`char str[20] = "Hello";`</li>
-                <li>`int @salary = 5000;`</li>
-                <li>`float salary2025 = 99999.99;`</li>
-                <li>`int NumberOfStudents = 50;`</li>
+                <li>char str[20] = "Hello";</li>
+                <li><strong>int @salary = 5000;</strong></li>
+                <li>float salary2025 = 99999.99;</li>
+                <li>int NumberOfStudents = 50;</li>
             </ol>
         </div>
 
@@ -2766,7 +2766,7 @@ int main() {
             <ol>
                 <li>It prints Hello, World! to the screen.</li>
                 <li>It throws a compilation error due to missing semicolon.</li>
-                <li>It prints Hello, World!\n as-is, including \n.</li>
+                <li><strong>It prints Hello, World!\n as-is, including \n.</strong></li>
                 <li>It waits for user input before printing anything.</li>
             </ol>
         </div>
@@ -2776,7 +2776,7 @@ int main() {
             <ol>
                 <li>Arrays</li>
                 <li>Pointers</li>
-                <li>Structures</li>
+                <li><strong>Structures</strong></li>
                 <li>Functions</li>
             </ol>
         </div>
@@ -2787,17 +2787,17 @@ int main() {
                 <li>Library Functions</li>
                 <li>User-Defined Functions</li>
                 <li>Recursive Functions</li>
-                <li>Loop-Control Functions</li>
+                <li><strong>Loop-Control Functions</strong></li>
             </ol>
         </div>
 
         <div class="content-block">
             <h3>6. Which of the following is NOT a control structure in C?</h3>
             <ol>
-                <li>`if-else`</li>
-                <li>`for` loop</li>
-                <li>`switch`</li>
-                <li>`print`</li>
+                <li>if-else</li>
+                <li>for loop</li>
+                <li>switch</li>
+                <li><strong>print</strong></li>
             </ol>
         </div>
 
@@ -2830,7 +2830,7 @@ else
    printf("20 or more");
 </code></pre>
             <ol>
-                <li>A</li>
+                <li><strong>A</strong></li>
                 <li>B</li>
                 <li>C</li>
                 <li>D</li>
@@ -2854,7 +2854,7 @@ int main() {
 </code></pre>
             <ol>
                 <li>It will print "Value at ptr: 10" and then "Value at ptr after increment: 11".</li>
-                <li>It will print "Value at ptr: 10" and then "Value at ptr after increment: 20".</li>
+                <li><strong>It will print "Value at ptr: 10" and then "Value at ptr after increment: 20".</strong></li>
                 <li>It will cause a segmentation fault because `ptr` is incremented.</li>
                 <li>It will print the memory addresses of the array elements.</li>
             </ol>
@@ -2865,7 +2865,7 @@ int main() {
             <ol>
                 <li>The structure is packed tightly in memory.</li>
                 <li>The structure is aligned to a 4-byte boundary.</li>
-                <li>The structure has extra padding for memory alignment.</li>
+                <li><strong>The structure has extra padding for memory alignment.</strong></li>
                 <li>The structure is compressed to reduce its size.</li>
             </ol>
         </div>
@@ -2875,7 +2875,7 @@ int main() {
             <ol>
                 <li>It checks the condition before executing the loop body</li>
                 <li>It never executes if the condition is false</li>
-                <li>It executes the loop body at least once before checking the condition</li>
+                <li><strong>It executes the loop body at least once before checking the condition</strong></li>
                 <li>It cannot use break statements</li>
             </ol>
         </div>
@@ -2883,10 +2883,10 @@ int main() {
         <div class="content-block">
             <h3>11. Which keyword is used to return a value from a function?</h3>
             <ol>
-                <li>`return`</li>
-                <li>`send`</li>
-                <li>`break`</li>
-                <li>`exit`</li>
+                <li><strong>return</strong></li>
+                <li>send</li>
+                <li>break</li>
+                <li>exit</li>
             </ol>
         </div>
 
@@ -2903,7 +2903,7 @@ int main() {
 }
 </code></pre>
             <ol>
-                <li>1 2 3 0 0</li>
+                <li><strong>1 2 3 0 0</strong></li>
                 <li>1 2 3 garbage garbage</li>
                 <li>Compilation error</li>
                 <li>1 2 3 4 5</li>
@@ -2923,7 +2923,7 @@ int main() {
 </code></pre>
             <ol>
                 <li>It stores the value of a, not its address.</li>
-                <li>It holds the address of a and can be used to access or modify a's value.</li>
+                <li><strong>It holds the address of a and can be used to access or modify a's value.</strong></li>
                 <li>It points to a completely unrelated memory location.</li>
                 <li>It causes a segmentation fault when dereferenced.</li>
             </ol>
@@ -2933,7 +2933,7 @@ int main() {
             <h3>14. A programmer wants to store a flag that can have one of three possible values (0, 1, or 2) in a structure. What feature of C structures can be used to optimize memory usage in this case?</h3>
             <ol>
                 <li>Bitwise operations</li>
-                <li>Bit fields</li>
+                <li><strong>Bit fields</strong></li>
                 <li>Unions</li>
                 <li>Enumerations</li>
             </ol>
@@ -2942,10 +2942,10 @@ int main() {
         <div class="content-block">
             <h3>15. What is the correct way to declare a pointer to a function that returns `int` and takes two `int` parameters?</h3>
             <ol>
-                <li>`int *func(int, int);`</li>
-                <li>`int (*func)(int, int);`</li>
-                <li>`int (*func(int, int));`</li>
-                <li>`(*int func)(int, int);`</li>
+                <li>int *func(int, int);</li>
+                <li><strong>int (*func)(int, int);</strong></li>
+                <li>int (*func(int, int));</li>
+                <li>(*int func)(int, int);</li>
             </ol>
         </div>
 
@@ -2962,7 +2962,7 @@ int main() {
 </code></pre>
             <ol>
                 <li>Address of a</li>
-                <li>10</li>
+                <li><strong>10</strong></li>
                 <li>Compilation error</li>
                 <li>0</li>
             </ol>
@@ -2982,7 +2982,7 @@ int main() {
 </code></pre>
             <ol>
                 <li>Techie</li>
-                <li>chie</li>
+                <li><strong>chie</strong></li>
                 <li>hie</li>
                 <li>Compilation error</li>
             </ol>
@@ -3006,7 +3006,7 @@ int main() {
             <ol>
                 <li>The program will skip writing and directly read from the file.</li>
                 <li>The program will crash without any message.</li>
-                <li>The program will display "Error opening file!" and exit.</li>
+                <li><strong>The program will display "Error opening file!" and exit.</strong></li>
                 <li>The program will create a backup file and continue.</li>
             </ol>
         </div>
@@ -3014,7 +3014,7 @@ int main() {
         <div class="content-block">
             <h3>19. A programmer wants to represent a person's address as part of their overall details. What feature of C structures can be used to group the address details (street, city, state, zip) together within the person's structure?</h3>
             <ol>
-                <li>Nested structures</li>
+                <li><strong>Nested structures</strong></li>
                 <li>Arrays of structures</li>
                 <li>Pointers to structures</li>
                 <li>Functions that return structures</li>
@@ -3038,7 +3038,7 @@ int main() {
             <ol>
                 <li>Adds an offset to the character pointer</li>
                 <li>Returns the memory address of 'a'</li>
-                <li>Computes the index of 'a' in the string</li>
+                <li><strong>Computes the index of 'a' in the string</strong></li>
                 <li>Returns a null pointer</li>
             </ol>
         </div>
@@ -3046,10 +3046,10 @@ int main() {
         <div class="content-block">
             <h3>21. How can you access structure members?</h3>
             <ol>
-                <li>Using the comma `,` operator</li>
-                <li>Using the dot `.` operator</li>
-                <li>Using the star `*` operator</li>
-                <li>Using the at `@` operator</li>
+                <li>Using the comma (,) operator</li>
+                <li><strong>Using the dot (.) operator</strong></li>
+                <li>Using the star (*) operator</li>
+                <li>Using the at (@) operator</li>
             </ol>
         </div>
 
@@ -3071,7 +3071,7 @@ int main() {
 }
 </code></pre>
             <ol>
-                <li>The program creates data.txt and writes "Hello World!"</li>
+                <li><strong>The program creates data.txt and writes "Hello World!"</strong></li>
                 <li>The program prints "Error opening file."</li>
                 <li>The program throws a compile-time error</li>
                 <li>The program opens the file in append mode and adds "Hello World!" at the end</li>
@@ -3096,7 +3096,7 @@ int main() {
             <ol>
                 <li>It creates a new empty file named "myfile.txt".</li>
                 <li>It reads from a temporary file instead.</li>
-                <li>It returns NULL and prints an error message.</li>
+                <li><strong>It returns NULL and prints an error message.</strong></li>
                 <li>It appends default text into the file.</li>
             </ol>
         </div>
@@ -3106,7 +3106,7 @@ int main() {
             <ol>
                 <li>Reading data from the file using `fread()`</li>
                 <li>Closing the file using `fclose()`</li>
-                <li>Opening the file using `fopen()`</li>
+                <li><strong>Opening the file using `fopen()`</strong></li>
                 <li>Writing data to the file using `fwrite()`</li>
             </ol>
         </div>
@@ -3156,7 +3156,7 @@ int main() {
             <ol>
                 <li>Because `scanf("%s")` reads newline characters</li>
                 <li>Because `fgets()` is faster than `scanf()`</li>
-                <li>Because `fgets()` can read names with spaces</li>
+                <li><strong>Because `fgets()` can read names with spaces</strong></li>
                 <li>Because `scanf()` automatically closes the file</li>
             </ol>
         </div>
@@ -3185,17 +3185,17 @@ int main() {
     // --- CONTROL KEYWORD HERE ---
 // Define a variable to store the ID of the disabled week
 // Set this to the week you want to disable (e.g., 'week4', 'week2', or null if no week is disabled)
-let disabledWeekId = null; // Changed from 'null' to null to ensure no week is disabled
+let disabledWeekId = 'week7'; // Changed from 'null' to null to ensure no week is disabled
 
 // Define an array of disabled days for a given week (e.g., ['tuesday', 'thursday'] for week1)
 const disabledDays = {
     // Uncomment these lines and specify days if you want to disable specific days within weeks
-    // 'week1': [], // Example: No disabled days for Week 1
-    // 'week2': [],
-    // 'week3': [],
-    // 'week4': [],
-    // 'week5': [],
-    // 'week6': [],
+   'week1': ['monday','tuesday','wednesday','thursday','friday'], // Example: disabled days for Week 1
+   'week2': ['monday','tuesday','wednesday','thursday','friday'],
+   'week3': ['monday','tuesday','wednesday','thursday','friday'],
+   'week4': ['monday','tuesday','wednesday','thursday','friday'],
+   'week5': ['monday','tuesday','wednesday','thursday','friday'],
+   'week6': ['monday','tuesday','wednesday','thursday','friday'],
     // 'week7': [], // Mindmash - no disabled days here for now
 };
 // --- END CONTROL KEYWORD ---
