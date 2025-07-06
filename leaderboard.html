@@ -191,24 +191,31 @@
 
     /* --- Key changes for the Week/Quiz tab buttons (Brain Cache & Mindmash) --- */
     .tab-nav {
-        flex-wrap: wrap; /* Allow buttons to wrap to the next line */
-        justify-content: center; /* Center the wrapped buttons */
-        padding: 5px 0; /* Adjust padding if needed, make sure it doesn't push content out */
+        /* Prevents wrapping and enables horizontal scrolling */
+        flex-wrap: nowrap; /* Forces all items onto a single line */
+        overflow-x: auto;   /* Enables horizontal scrolling when content overflows */
+        -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS devices */
+        justify-content: flex-start; /* Align buttons to the start of the scrollable area */
+        padding: 5px; /* Adjust padding as needed */
+        width: 100%; /* Ensure it takes full width to enable proper scrolling */
+        box-sizing: border-box; /* Include padding in width calculation */
     }
 
     .tab-button {
-        flex: 0 0 48%; /* Each button takes up slightly less than half the width, allowing two per row */
-        max-width: 48%; /* Ensure it doesn't grow beyond this */
-        box-sizing: border-box; /* Include padding and border in the width calculation */
-        margin: 4px 1%; /* Small margin between and around buttons for spacing */
-        padding: 8px 5px; /* Slightly reduce internal padding */
-        font-size: 0.85em; /* Slightly smaller font for readability */
+        /* Prevent shrinking below content size and maintain some minimum width */
+        flex-shrink: 0; /* Prevents buttons from shrinking */
+        min-width: fit-content; /* Allows button to be as wide as its content */
+        padding: 8px 12px; /* Maintain good padding */
+        margin: 0 4px; /* Add horizontal spacing between buttons */
+        font-size: 0.9em; /* Slightly smaller font for more buttons on screen */
     }
 
-    /* Override the first/last child border-radius if they conflict with wrapping */
-    .tab-button:first-child,
+    /* Remove any specific first/last child styling if it interferes with uniform appearance in a scrollable row */
+    .tab-button:first-child {
+        margin-left: 0; /* No left margin for the first button in the row */
+    }
     .tab-button:last-child {
-        border-radius: 6px; /* Apply consistent border-radius when wrapping */
+        margin-right: 0; /* No right margin for the last button in the row */
     }
 
     /* General mini-window adjustments for small screens */
