@@ -177,26 +177,56 @@
             border-bottom: 2px solid #00408f;
             padding-bottom: 10px;
         }
-
-
-        /* Small devices (phones, 600px and down) */
         @media only screen and (max-width: 600px) {
-            /* ... other mobile styles ... */
-            .content-access-button {
-                padding: 6px 10px;
-                font-size: 0.8em;
-            }
-            /* REDUCE SIZE OF NAVIGATION BUTTONS FOR MOBILE VIEW */
-            .nav-button {
-                padding: 6px 8px; /* Smaller padding */
-                font-size: 0.75em; /* Smaller font size */
-                margin: 2px; /* Reduce margin between buttons */
-            }
-            .button-container {
-                padding: 10px; /* Adjust padding for the button container */
-                text-align: center; /* Center buttons if they wrap */
-            }
-        }
+    /* Adjustments for the main navigation buttons (Home, Weekly Content, etc.) */
+    .nav-button {
+        padding: 6px 8px; /* Smaller padding */
+        font-size: 0.75em; /* Smaller font size */
+        margin: 2px; /* Reduce margin between buttons */
+    }
+    .button-container {
+        padding: 10px; /* Adjust padding for the button container */
+        text-align: center; /* Center buttons if they wrap */
+    }
+
+    /* --- Key changes for the Week/Quiz tab buttons (Brain Cache & Mindmash) --- */
+    .tab-nav {
+        flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+        justify-content: center; /* Center the wrapped buttons */
+        padding: 5px 0; /* Adjust padding if needed, make sure it doesn't push content out */
+    }
+
+    .tab-button {
+        flex: 0 0 48%; /* Each button takes up slightly less than half the width, allowing two per row */
+        max-width: 48%; /* Ensure it doesn't grow beyond this */
+        box-sizing: border-box; /* Include padding and border in the width calculation */
+        margin: 4px 1%; /* Small margin between and around buttons for spacing */
+        padding: 8px 5px; /* Slightly reduce internal padding */
+        font-size: 0.85em; /* Slightly smaller font for readability */
+    }
+
+    /* Override the first/last child border-radius if they conflict with wrapping */
+    .tab-button:first-child,
+    .tab-button:last-child {
+        border-radius: 6px; /* Apply consistent border-radius when wrapping */
+    }
+
+    /* General mini-window adjustments for small screens */
+    .mini-window {
+        width: 95%; /* Give it a bit more width on small screens */
+        margin: 10px auto 30px auto; /* Adjust vertical margins */
+        padding: 10px; /* Reduce overall padding */
+    }
+
+    /* Table cell adjustments for readability on small screens */
+    th, td {
+        padding: 8px 5px; /* Reduce padding inside table cells */
+        font-size: 0.9em; /* Slightly smaller text in tables */
+    }
+    table {
+        min-width: 300px; /* Ensure table doesn't get too squished */
+    }
+}
         /* Media Queries for Leaderboard specific elements */
         @media (max-width: 768px) {
             .mini-window {
