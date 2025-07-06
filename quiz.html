@@ -554,18 +554,18 @@
    <script>
     // --- CONTROL KEYWORD HERE ---
     // Change this variable to "disable" or "enable"
-    const linkControlStatus = "enable"; // Set to "enable" to activate links
+    const linkControlStatus = "disable"; // Set to "enable" to activate links
     // --- END CONTROL KEYWORD ---
 
     // --- TIMER CONTROL KEYWORD HERE ---
     // Change this variable to "disable" or "enable" to use the timer
-    const timerControlStatus = "disable"; // Set to "enable" to activate time-based control
+    const timerControlStatus = "enable"; // Set to "enable" to activate time-based control
     // Define the quiz start and end times in IST (Indian Standard Time)
     // Format: "Month Day, Year HH:MM:SS AM/PM GMT+0530"
     // Use an unambiguous format for Date object parsing.
     // Example for 5th July 2025, 6:00 PM IST
-    const quizStartTime = new Date("July 5, 2025 18:00:00 GMT+0530"); // 6:00 PM IST
-    const quizEndTime = new Date("July 6, 2025 18:00:00 GMT+0530");   // 6:00 PM IST
+    const quizStartTime = new Date("July 12, 2025 18:00:00 GMT+0530"); // 6:00 PM IST
+    const quizEndTime = new Date("July 13, 2025 18:00:00 GMT+0530");   // 6:00 PM IST
     // --- END TIMER CONTROL KEYWORD ---
 
 
@@ -652,19 +652,19 @@
         // Priority 1: Manual override via linkControlStatus
         if (linkControlStatus === "enable") {
             quizShouldBeEnabled = true;
-            statusElement.innerHTML = 'BRAIN CACHE - WEEK 6 QUIZ<br>fill within 5/7/25 6.00 PM IST!'; // Indicate manual override
+            statusElement.innerHTML = 'BRAIN CACHE - WEEK 7 QUIZ<br>fill within 13/07/2025 6.00 PM IST!'; // Indicate manual override
             statusElement.style.color = '#008000'; // Green
         }
         // Priority 2: Timer control, if enabled
         else if (timerControlStatus === "enable") {
             if (currentTime >= quizStartTime && currentTime < quizEndTime) {
                 quizShouldBeEnabled = true;
-                statusElement.innerHTML = 'BRAIN CACHE - WEEK 6 QUIZ<br>Quiz is LIVE! Ends on 06/07/2025 6:00 PM IST!';
+                statusElement.innerHTML = 'BRAIN CACHE - WEEK 7 QUIZ<br>Quiz is LIVE! Ends on 13/07/2025 6:00 PM IST!';
                 statusElement.style.color = '#008000'; // Green for active
             } else if (currentTime < quizStartTime) {
                 // Quiz not yet started
                 quizShouldBeEnabled = false;
-                statusElement.innerHTML = 'BRAIN CACHE<br>Quiz starts on 05/07/2025 6:00 PM IST!';
+                statusElement.innerHTML = 'BRAIN CACHE - WEEK 7 QUIZ<br>Quiz starts on 12/07/2025 6:00 PM IST!';
                 statusElement.style.color = '#FFA500'; // Orange for upcoming
             } else {
                 // Quiz ended
