@@ -2718,7 +2718,52 @@ Size of union: 4 bytes</code>
     </div>
 </div>
 <div id="saturday-content-week6" class="day-content day-section">
-    <p style="text-align: center; font-style: italic; color: #555;">WEEK 6 QUIZ ENDED. WAIT FOR LEADERBOARD UPDATES!</p>
+    <h2>Brain Cache</h2>
+    <div class="content-block">
+        <h3>Expected Answers:</h3>
+        </div>
+    <div class="content-block">
+    <h3>1. What is the purpose of the printf() function in C?</h3>
+    <p>The printf() function in C is used to print formatted output to the standard output device, typically the console (monitor). It allows displaying text, values of variables (integers, floats, characters, strings, etc.), and special characters using format specifiers (like '%d', '%f', '%s', etc.). It's part of the '&lt;stdio.h&gt;' library.</p>
+
+    <h3>2. What is a pointer in C?</h3>
+    <p>A pointer in C is a variable that stores the memory address of another variable. Instead of holding a data value directly, it holds the location (address) where a data value is stored in the computer's memory. Pointers are fundamental for dynamic memory allocation, working with arrays, strings, and implementing data structures like linked lists.</p>
+
+    <h3>3. What is the difference between ++i and i++?</h3>
+    <p>Both '++i' (prefix increment) and 'i++'' (postfix increment) increment the value of the variable 'i' by 1. The difference lies in when the increment occurs relative to the expression's evaluation:</p>
+    <ul>
+        <li>'++i' (Prefix Increment): Increments the value of 'i' <strong>first</strong>, and then uses the <strong>new</strong> (incremented) value in the expression.
+            <ul>
+                <li>Example: 'int i = 5; int j = ++i;'' // 'i' becomes 6, 'j' becomes 6.</li>
+            </ul>
+        </li>
+        <li>'i++' (Postfix Increment): Uses the <strong>current</strong> value of 'i' in the expression <strong>first</strong>, and then increments 'i' after the expression has been evaluated.
+            <ul>
+                <li>Example: 'int i = 5; int j = i++;' // 'i' becomes 6, 'j' becomes 5.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>4. What is the purpose of the malloc() function in C?</h3>
+    <p>The malloc() (memory allocation) function in C is used for dynamic memory allocation. It allocates a block of memory of a specified size (in bytes) during program execution from the heap and returns a 'void' pointer to the beginning of the allocated block. If the memory allocation fails, it returns a 'NULL' pointer. The allocated memory is not initialized and contains garbage values. It's part of the '&lt;stdlib.h&gt;' library.</p>
+
+    <h3>5. What is a dangling pointer in C, and how can it be avoided?</h3>
+    <p>A dangling pointer in C is a pointer that points to a memory location that has been deallocated or freed. When the memory is freed, the pointer still holds the address of that now-invalid memory, leading to undefined behavior if dereferenced (e.g., crashes, data corruption, security vulnerabilities).</p>
+    <p>How to avoid it:</p>
+    <ul>
+        <li>Set to NULL after 'free()': After freeing memory pointed to by a pointer, immediately set that pointer to 'NULL'. This makes it a null pointer, which can be safely checked before dereferencing.
+            <ul>
+                <li>Example: free(ptr); ptr = NULL;</li>
+            </ul>
+        </li>
+        <li>Scope Management: Ensure that pointers do not outlive the memory they point to. For example, don't return a pointer to a local variable from a function, as the local variable's memory is deallocated when the function exits.</li>
+        <li>Avoid Double Free: Do not free the same memory block twice, as this can lead to dangling pointers and heap corruption.</li>
+        <li>Use 'realloc()' carefully: If you resize memory with 'realloc()'', and it fails, the original pointer is still valid. If it succeeds and returns a new address, the old pointer might become a dangling pointer if not handled correctly (e.g., if the original memory was moved).</li>
+    </ul>
+</div>
+    
+    
+    <!-- <p style="text-align: center; font-style: italic; color: #555;">WEEK 6 QUIZ ENDED. WAIT FOR LEADERBOARD UPDATES!</p> -->
 </div>
 </div>  <!-- add week6 content before these -->  
 <div id="week10" class="week-content">
