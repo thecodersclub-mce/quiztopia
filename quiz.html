@@ -328,12 +328,14 @@
         </div>
     </div>
 
-    <div class="button-container" style="text-align: right; padding: 15px;">
-        <button class="nav-button" onclick="window.location.href='index.html';">Back to Homepage</button>
-        <button class="nav-button" onclick="window.location.href='finalquiz.html';">Final Quiz</button>
+    <div class="button-container">
+        <button class="nav-button active-nav-button" onclick="window.location.href='index.html';">Home</button>
+        <button class="nav-button" onclick="window.location.href='weeklycontent.html';">Weekly Content</button>
+        <button class="nav-button" onclick="window.location.href='quiz.html';">Brain Cache</button>
+        <button class="nav-button" onclick="window.location.href='finalquiz.html';">Mindmash</button>
         <button class="nav-button" onclick="window.location.href='leaderboard.html';">Leaderboard</button>
         <button class="nav-button" onclick="window.location.href='feedback.html';">Feedback</button>
-    </div>
+</div>
 
     <div class="content-container">
         <center><h4 id="status"></h4></center>
@@ -462,7 +464,7 @@ printf("Hi");
     <script>
     // --- CONTROL KEYWORD HERE ---
     // Change this variable to "disable" or "enable"
-    const linkControlStatus = "enable"; // Set to "enable" to activate links
+    const linkControlStatus = "disable"; // Set to "enable" to activate links
     // --- END CONTROL KEYWORD ---
 
     // --- TIMER CONTROL KEYWORD HERE ---
