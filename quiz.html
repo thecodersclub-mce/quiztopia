@@ -494,58 +494,51 @@
                     <h3>Quiz Questions</h3>
 
                     <div class="form-group no-select">
-                        <p><strong>1. Which is true about the const keyword in C?</strong></p>
+                        <p><strong>1. What is the output of the following C code snippet?</strong></p>
+                        <pre><code>int x = 10;
+printf("%d", ++x);</code></pre>
                         <div class="radio-group">
-                            <label><input type="radio" id="q1_a" name="Question1" value="A" required>A. It creates a constant pointer.</label>
-                            <label><input type="radio" id="q1_b" name="Question1" value="B">B. It prevents modification of the value it points to.</label>
-                            <label><input type="radio" id="q1_c" name="Question1" value="C">C. It can be changed using pointer tricks.</label>
-                            <label><input type="radio" id="q1_d" name="Question1" value="D">D. It's the same as #define</label>
+                            <label><input type="radio" id="q1_a" name="Question1" value="A" required>A. 10</label>
+                            <label><input type="radio" id="q1_b" name="Question1" value="B">B. 11</label>
+                            <label><input type="radio" id="q1_c" name="Question1" value="C">C. Undefined behavior</label>
+                            <label><input type="radio" id="q1_d" name="Question1" value="D">D. Compiler error</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>2. What is wrong with this loop?</strong></p>
-                        <pre><code>for (int i = 0; i < 10; i--);</code></pre>
+                        <p><strong>2. Which header file must be included to use `malloc()` and `free()` functions in C?</strong></p>
                         <div class="radio-group">
-                            <label><input type="radio" id="q2_a" name="Question2" value="A" required>A. i should be declared outside.</label>
-                            <label><input type="radio" id="q2_b" name="Question2" value="B">B. Semicolon is missing.</label>
-                            <label><input type="radio" id="q2_c" name="Question2" value="C">C. Infinite loop.</label>
-                            <label><input type="radio" id="q2_d" name="Question2" value="D">D. Nothing wrong.</label>
+                            <label><input type="radio" id="q2_a" name="Question2" value="A" required>A. `stdio.h`</label>
+                            <label><input type="radio" id="q2_b" name="Question2" value="B">B. `string.h`</label>
+                            <label><input type="radio" id="q2_c" name="Question2" value="C">C. `stdlib.h`</label>
+                            <label><input type="radio" id="q2_d" name="Question2" value="D">D. `math.h`</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>3. Which of the following statements correctly frees memory allocated by malloc in C?</strong></p>
+                        <p><strong>3. What is the purpose of the `break` statement in C?</strong></p>
                         <div class="radio-group">
-                            <label><input type="radio" id="q3_a" name="Question3" value="A" required>A. deallocate(p);</label>
-                            <label><input type="radio" id="q3_b" name="Question3" value="B">B. free(p);</label>
-                            <label><input type="radio" id="q3_c" name="Question3" value="C">C. delete p;</label>
-                            <label><input type="radio" id="q3_d" name="Question3" value="D">D. release(p);</label>
+                            <label><input type="radio" id="q3_a" name="Question3" value="A" required>A. To exit the program.</label>
+                            <label><input type="radio" id="q3_b" name="Question3" value="B">B. To skip the current iteration of a loop.</label>
+                            <label><input type="radio" id="q3_c" name="Question3" value="C">C. To terminate a loop or switch statement.</label>
+                            <label><input type="radio" id="q3_d" name="Question3" value="D">D. To jump to a specific label.</label>
                         </div>
                     </div>
 
                     <div class="form-group no-select">
-                        <p><strong>4. Spot the logical error:</strong></p>
-                        <pre><code>while (1 == 1); { 
-printf("Hi"); 
-}</code></pre>
+                        <p><strong>4. In C, what does `sizeof(char)` typically return?</strong></p>
                         <div class="radio-group">
-                            <label><input type="radio" id="q4_a" name="Question4" value="A" required>A. Infinite loop prints "Hi" repeatedly.</label>
-                            <label><input type="radio" id="q4_b" name="Question4" value="B">B. Syntax error.</label>
-                            <label><input type="radio" id="q4_c" name="Question4" value="C">C. Semicolon ends the loop before block.</label>
-                            <label><input type="radio" id="q4_d" name="Question4" value="D">D. Nothing wrong.</label>
+                            <label><input type="radio" id="q4_a" name="Question4" value="A" required>A. 0 bytes</label>
+                            <label><input type="radio" id="q4_b" name="Question4" value="B">B. 1 byte</label>
+                            <label><input type="radio" id="q4_c" name="Question4" value="C">C. 2 bytes</label>
+                            <label><input type="radio" id="q4_d" name="Question4" value="D">D. 4 bytes</label>
                         </div>
                     </div>
-                    
-                    <div class="form-group no-select">
-                        <p><strong>5. Give a c program to print the pattern:</strong></p>
-                        <pre><code>1
-2 3
-4 5 6
-7 8 9 10</code></pre>
-                        <textarea id="q5_ans" name="Question5" rows="4" required placeholder="Type your answer here..."></textarea>
-                    </div>
 
+                    <div class="form-group no-select">
+                        <p><strong>5. Write a C program to swap two numbers without using a third variable.</strong></p>
+                        <textarea id="q5_ans" name="Question5" rows="6" required placeholder="Type your C code here..."></textarea>
+                    </div>
                     
                     <p><strong>After submission wait until you see a tick</strong></p>
                     <button type="submit" class="submit-button">Submit Quiz</button>
@@ -580,7 +573,7 @@ printf("Hi");
    <script>
     // --- CONTROL KEYWORD HERE ---
     // Change this variable to "disable" or "enable"
-    const linkControlStatus = "disable"; // Set to "enable" to activate links
+    const linkControlStatus = "enable"; // Set to "enable" to activate links
     // --- END CONTROL KEYWORD ---
 
     // --- TIMER CONTROL KEYWORD HERE ---
@@ -678,19 +671,19 @@ printf("Hi");
         // Priority 1: Manual override via linkControlStatus
         if (linkControlStatus === "enable") {
             quizShouldBeEnabled = true;
-            statusElement.innerHTML = 'BRAIN CACHE - WEEK 8 QUIZ<br>fill within 5/7/25 6.00 PM IST!'; // Indicate manual override
+            statusElement.innerHTML = 'BRAIN CACHE - QUIZ<br>fill within 27/7/25 6.00 PM IST!'; // Indicate manual override
             statusElement.style.color = '#008000'; // Green
         }
         // Priority 2: Timer control, if enabled
         else if (timerControlStatus === "enable") {
             if (currentTime >= quizStartTime && currentTime < quizEndTime) {
                 quizShouldBeEnabled = true;
-                statusElement.innerHTML = 'BRAIN CACHE - WEEK 8 QUIZ<br>Quiz is LIVE! Ends on 06/07/2025 6:00 PM IST!';
+                statusElement.innerHTML = 'BRAIN CACHE - QUIZ<br>Quiz is LIVE! Ends on 27/7/2025 6:00 PM IST!';
                 statusElement.style.color = '#008000'; // Green for active
             } else if (currentTime < quizStartTime) {
                 // Quiz not yet started
                 quizShouldBeEnabled = false;
-                statusElement.innerHTML = 'BRAIN CACHE - WEEK 8 QUIZ<br>wait for updates!';
+                statusElement.innerHTML = 'BRAIN CACHE - QUIZ<br>wait for updates!';
                 statusElement.style.color = '#FFA500'; // Orange for upcoming
             } else {
                 // Quiz ended
