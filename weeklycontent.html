@@ -769,7 +769,11 @@ pre code {
             <button class="tab-button" onclick="showWeek('week4', this)">Week 4</button>
             <button class="tab-button" onclick="showWeek('week5', this)">Week 5</button>
             <button class="tab-button" onclick="showWeek('week6', this)">Week 6</button>
-            <button class="tab-button" onclick="showWeek('week10', this)">Mindmash</button>
+            <button class="tab-button" onclick="showWeek('week7', this)">Week 7</button>
+            <!--<button class="tab-button" onclick="showWeek('week8', this)">Week 8</button>
+            <button class="tab-button" onclick="showWeek('week9', this)">Week 9</button>
+            <button class="tab-button" onclick="showWeek('week10', this)">Week 10</button>-->
+            <button class="tab-button" onclick="showWeek('week11', this)">Mindmash</button>
         </div>
 
         <div id="week1" class="week-content">
@@ -2523,7 +2527,7 @@ int main() {
 
 <div id="week6" class="week-content">
     <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
-        Content for Week 6 - Brainstorming
+        Content for Week 6 - Brainstorming P-01
     </p>
     <div class="nested-tab-nav">
         <button class="tab-button" onclick="showDay('monday-content-week6', this, 'week6')">Monday</button>
@@ -2760,13 +2764,201 @@ Size of union: 4 bytes</code>
         <li>Avoid Double Free: Do not free the same memory block twice, as this can lead to dangling pointers and heap corruption.</li>
         <li>Use 'realloc()' carefully: If you resize memory with 'realloc()'', and it fails, the original pointer is still valid. If it succeeds and returns a new address, the old pointer might become a dangling pointer if not handled correctly (e.g., if the original memory was moved).</li>
     </ul>
+</div></div>
+</div>  <!-- add week6 content before these -->
+
+<div id="week7" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 7 - Brainstorming P-02
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week7', this, 'week7')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week7', this, 'week7')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week7', this, 'week7')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week7', this, 'week7')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week7', this, 'week7')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week7', this, 'week7')">Saturday</button>
+    </div>
+
+<div id="monday-content-week7" class="day-content day-section">
+    <h2>Monday Maverick</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>1. What is the correct syntax of the ternary operator?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. condition ? expr1 : expr2;</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. expr1 ? condition : expr2;</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. condition : expr1 ? expr2;</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. expr1 : expr2 ? condition;</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
 </div>
+<div id="tuesday-content-week7" class="day-content day-section">
+    <h2>Techie Tuesday</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <<p>What will be the output of the following code?</p>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int a = 10;
+    printf("%d", a++);
+    return 0;
+}</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 10</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 11</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 0</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Compilation error</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
+</div>
+<div id="wednesday-content-week7" class="day-content day-section">
+    <h2>Syntax Snapshots Wednesday</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>What will be the output of the following C code?</p>
+            <pre><code>#include &lt;stdio.h&gt;
+void update(int *a){
+    *a = *a +10;
+}
+
+int main() {
+    int x = 54;
+    update(&x);
+    printf("%d" ,x);
+    return 0;
+}</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 5</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 10</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 15</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Compilation error</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
+</div>
+<div id="thursday-content-week7" class="day-content day-section">
+    <h2>Te Ta Thursday</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>What does *p = *q; do in the following code?</p>
+            <pre><code>int a = 5;
+int b = 10;
+int *p = &a;
+int *q = &b;
+*p = *q;</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. Copies address of b to p</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. Copies value of b to a</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. Copies address of a to q</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Swaps values of a abd b</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
+</div>
+<div id="friday-content-week7" class="day-content day-section">
+<!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>-->
+     <h2>Function Friday</h2>
+    <div class="quiz-container">
+        <h3>Question</h3>
+        <div class="question-block">
+            <p>1.  What is the output of this code involving arrays and pointers?</p>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() { 
+    int arr[] = {1,2,3,4};
+    printf("%d",*(arr + 2));
+    return 0;
+}</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 2</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 3</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 1</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Error</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
+</div>
+<div id="saturday-content-week7" class="day-content day-section">
+    <h2>Brain Cache</h2>
+    <div class="content-block">
+        <h3>1. Which is true about the const keyword in C?</h3>
+        <ol>
+            <li>A. It creates a constant pointer.</li>
+            <li><strong>B. It prevents modification of the value it points to.</strong></li>
+            <li>C. It can be changed using pointer tricks.</li>
+            <li>D. It's the same as #define</li>
+        </ol>
+    </div>
     
+    <div class="content-block">
+        <h3>2. What is wrong with this loop?</h3>
+        <pre class="code-block"><code>for (int i = 0; i < 10; i--);</code></pre>
+        <ol>
+            <li>A. i should be declared outside.</li>
+            <li>B. Semicolon is missing.</li>
+            <li><strong>C. Infinite loop.</strong></li>
+            <li>D. Nothing wrong.</li>
+        </ol>
+    </div>
     
+    <div class="content-block">
+        <h3>3. Which of the following statements correctly frees memory allocated by malloc in C?</h3>
+        <ol>
+            <li>A. deallocate(p);</li>
+            <li><strong>B. free(p);</strong></li>
+            <li>C. delete p;</li>
+            <li>D. release(p);</li>
+        </ol>
+    </div>
+    
+    <div class="content-block">
+        <h3>4. Spot the logical error:</h3>
+        <pre class="code-block"><code>while (1 == 1); {
+printf("Hi");
+}</code></pre>
+        <ol>
+            <li>A. Infinite loop prints "Hi" repeatedly.</li>
+            <li>B. Syntax error.</li>
+            <li><strong>C. Semicolon ends the loop before block.</strong></li>
+            <li>D. Nothing wrong.</li>
+        </ol>
+    </div>
+    
+    <div class="content-block">
+        <h3>5. Give a c program to print the pattern:</h3>
+        <pre class="code-block"><code>1
+2 3
+4 5 6
+7 8 9 10</code></pre>
+<p><strong>Expected answer (focus on the loop part):</strong></p>
+                <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int rows = 4;
+    int num = 1;
+    for (int i = 1; i <= rows; i++) {
+        for (int j = 1; j <= i; j++) {
+            printf("%d ", num++);
+}
+    printf("\n");
+}
+    return 0;
+}</code></pre>
+    </div>
     <!-- <p style="text-align: center; font-style: italic; color: #555;">WEEK 6 QUIZ ENDED. WAIT FOR LEADERBOARD UPDATES!</p> -->
 </div>
-</div>  <!-- add week6 content before these -->  
-<div id="week10" class="week-content">
+</div>  <!-- add week7 content before these -->  
+
+
+<div id="week11" class="week-content">
 <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">Mindmash</p>
     <div class="nested-tab-nav">
         <button class="tab-button" onclick="showDay('monday-content-week10', this, 'week10')">Quiz 1</button>
@@ -3520,17 +3712,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 'q2': 'c'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
             },
             // Add more days here as needed:
-            // 'thursday': {
-            //     'q1': 'your_answer_for_thursday_q1',
-            //     'q2': 'your_answer_for_thursday_q2'
-            // },
+            'thursday': {
+                'q1': 'your_answer_for_thursday_q1',
+                'q2': 'your_answer_for_thursday_q2'
+            },
             'friday': { 
                 'q1': 'c', // Tuesday Q1: malloc()
                 'q2': 'b'
             },
             // 'saturday': { /* ... */ }
         },
-        'week7': { // Added answers for Week 7 (Mindmash Quiz 1)
+        'week7': {
+            'monday': {
+                'q1': 'a', 
+            },
+            'tuesday': {
+                'q1': 'a', 
+            },
+            'wednesday': {
+                'q1': 'c', 
+            },
+            'thursday': {
+                'q1': 'b', 
+            },
+            'friday': { 
+                'q1': 'b', 
+            },
+            // 'saturday': { /* ... */ }
+        },
+
+
+        'week11': { // Added answers for Week 7 (Mindmash Quiz 1)
             'quiz1': { // Changed 'monday' to 'quiz1' for Mindmash as per your button ID
                 'q1': 'b',
                 'q2': 'b',
