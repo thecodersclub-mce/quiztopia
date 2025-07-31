@@ -48,19 +48,19 @@
     justify-content: center;
     background: #e3f2fd; /* Lighter blue background for nested tabs */
     border-radius: 6px;
-    overflow: hidden;
+    overflow: hidden; /* Ensures content within bounds */
     padding: 5px;
     box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 15px; /* Space above nested tabs */
     margin-bottom: 15px; /* Space below nested tabs */
-    flex-wrap: wrap; /* Added for responsiveness: allows buttons to wrap */
+    /* Removed flex-wrap: wrap; to ensure all buttons stay in one row */
 }
 
 /* General Tab Button Styling */
 .tab-button {
     flex: 1; /* Allows buttons to grow and shrink */
-    min-width: 80px; /* Minimum width to prevent squishing */
-    padding: 8px 12px;
+    min-width: 60px; /* Reduced minimum width to allow more buttons in a row */
+    padding: 5px 8px; /* Reduced padding to make buttons more compact */
     border: none;
     cursor: pointer;
     background: linear-gradient(to right, #F5F5F5, #E0E0E0);
@@ -69,10 +69,10 @@
     border-radius: 6px; /* Uniform rounded corners */
     transition: 0.3s;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 2px; /* Adjusted margin for consistent spacing when wrapping */
-    white-space: nowrap; /* Prevent text wrapping */
+    margin: 2px; /* Adjusted margin for consistent spacing */
+    /* Removed white-space: nowrap; text-overflow: ellipsis; overflow: hidden; */
+    word-break: break-word; /* Allows long words to break and wrap to the next line */
 }
-
 .tab-button:hover {
     background: #1E88E5;
     color: white;
@@ -294,49 +294,58 @@ pre code {
         margin: 10px auto 70px auto;
     }
 
-    /* For both main and nested tab navigation */
-    .main-tab-nav,
+    .main-tab-nav {
+        flex-direction: row; /* Ensure horizontal flow */
+        justify-content: center;
+        flex-wrap: wrap; /* ALLOW WRAPPING for buttons on smaller screens */
+        padding: 5px;
+        /* Removed overflow-x: auto; as wrapping is now allowed */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+
+    /* --- Specific Adjustments for Week Buttons (assuming these are .tab-button within .main-tab-nav) --- */
+    .main-tab-nav .tab-button { /* Targeting .tab-button specifically within .main-tab-nav */
+        /*
+         * To allow buttons to wrap while still trying to maintain a proportional width,
+         * we use flex-basis. If there are 5 buttons, 18% allows for margins and wrapping.
+         */
+        flex: 1 1 18%; /* Target ~18% width per button, allowing wrapping */
+        min-width: 0; /* Allow them to shrink as much as needed */
+        margin: 2px; /* Small margin for consistent spacing */
+        font-size: 10px; /* Potentially smaller font for weeks to fit */
+        padding: 6px 2px; /* Even tighter padding for weeks */
+
+        /* Ensure text visibility */
+        white-space: normal; /* Allow text to wrap naturally within the button */
+        overflow: visible; /* Ensure all content is visible */
+        text-overflow: clip; /* Prevent ellipsis, show all text */
+        word-break: break-word; /* Allows long words to break and wrap to the next line */
+    }
+
     .nested-tab-nav {
         flex-direction: row; /* Ensure horizontal flow */
         justify-content: center;
-        flex-wrap: nowrap; /* PREVENT WRAPPING for buttons */
+        flex-wrap: wrap; /* ALLOW WRAPPING for buttons on smaller screens */
         padding: 5px;
-        /* Add overflow-x here to enable horizontal scrolling for buttons if they exceed */
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        /* Remove overflow-x: auto; as wrapping is now allowed, horizontal scrolling is less likely needed */
+        /* If buttons still overflow due to min-width, consider adjusting min-width further or ensuring content fits */
     }
 
     /* General Tab Button Styling for Mobile */
     .tab-button {
         flex: 1 1 auto; /* Allows buttons to grow and shrink */
+        /* Consider a small min-width here, e.g., 30% or 80px, depending on how many buttons per row are desired.
+           Setting it to 0 might make them too small if there are many. Let's keep it at 0 for maximum flexibility. */
         min-width: 0; /* Allow them to shrink as much as needed */
         margin: 2px; /* Small margin for consistent spacing */
         font-size: 11px; /* Base font size for mobile */
         padding: 6px 4px; /* Reduced horizontal padding to save space */
-        white-space: nowrap; /* Prevent text wrapping inside buttons */
-        overflow: hidden; /* Hide overflowing text if it gets too small */
-        text-overflow: ellipsis; /* Add ellipsis for hidden text */
+        /* Ensure text visibility by using word-break and removing hiding properties */
+        white-space: normal; /* Allow text to wrap naturally within the button */
+        overflow: visible; /* Ensure all content is visible */
+        text-overflow: clip; /* Prevent ellipsis, show all text */
+        word-break: break-word; /* Allows long words to break and wrap to the next line */
     }
-
-    /* --- Specific Adjustments for Week Buttons --- */
-    .main-tab-nav .tab-button {
-        /*
-         * To keep all 5 'Week' buttons on a single row,
-         * we set a flex-basis that ensures they take roughly 1/5th of the space.
-         * The `min-width: 0` above allows extreme shrinking if necessary.
-         */
-        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
-        font-size: 10px; /* Potentially smaller font for weeks to fit 5 */
-        padding: 6px 2px; /* Even tighter padding for weeks */
-    }
-
-    /* --- Specific Adjustments for Weekday Buttons --- */
-    .nested-tab-nav .tab-button {
-        flex: 1 1 18%; /* Target ~18% width per button (20% - margins) */
-        font-size: 10px; /* Smallest font size for weekdays to fit 5 */
-        padding: 6px 2px; /* Tighter padding for weekdays */
-    }
-
     /* Content and other elements responsiveness (no change needed here for this specific request) */
     .day-section {
         padding: 15px;
