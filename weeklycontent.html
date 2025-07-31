@@ -771,8 +771,8 @@ pre code {
             <button class="tab-button" onclick="showWeek('week6', this)">Week 6</button>
             <button class="tab-button" onclick="showWeek('week7', this)">Week 7</button>
             <button class="tab-button" onclick="showWeek('week8', this)">Week 8</button>
-            <!--<button class="tab-button" onclick="showWeek('week9', this)">Week 9</button>
-            <button class="tab-button" onclick="showWeek('week10', this)">Week 10</button>-->
+            <button class="tab-button" onclick="showWeek('week9', this)">Week 9</button>
+            <!--<button class="tab-button" onclick="showWeek('week10', this)">Week 10</button>-->
             <button class="tab-button" onclick="showWeek('week11', this)">Mindmash</button>
         </div>
 
@@ -3109,6 +3109,199 @@ int main(){
     </div>
 </div>
 </div>  <!-- add week8 content before these -->  
+<div id="week9" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 9 - Programming Concepts and Challenges
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week9', this, 'week9')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week9', this, 'week9')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week9', this, 'week9')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week9', this, 'week9')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week9', this, 'week9')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week9', this, 'week9')">Saturday</button>
+    </div>
+
+<div id="monday-content-week9" class="day-content day-section">
+    <h2>Monday Maverick</h2>
+    <div class="content-block">
+        <h3>A–Z list of programming languages:</h3>
+        <ol>
+            <li>A – Assembly<br>Low-level language used to communicate directly with hardware.</li>
+            <li>B – BASIC<br>Beginner’s All-purpose Symbolic Instruction Code – great for early learning.</li>
+            <li>C – C<br>Powerful systems programming language used in OS, embedded systems.</li>
+            <li>D – Dart<br>Used primarily for Flutter to build cross-platform mobile apps.</li>
+            <li>E – Elixir<br>Functional language for scalable, maintainability applications.</li>
+            <li>F – Fortran<br>One of the oldest languages, still used in scientific computing.</li>
+            <li>G – Go (Golang)<br>Developed by Google, known for its simplicity and performance.</li>
+            <li>H – Haskell<br>Purely functional language used in academia and finance.</li>
+            <li>I – Io<br>Minimalist prototype-based language with a small syntax.</li>
+            <li>J – Java<br>Versatile, object-oriented, used in enterprise, Android, and web apps.</li>
+            <li>K – Kotlin<br>Modern JVM language, official for Android development.</li>
+            <li>L – Lua<br>Lightweight scripting language often used in game development.</li>
+            <li>M – MATLAB<br>Designed for numerical computing and simulations.</li>
+            <li>N – Nim<br>Statically typed compiled language that is fast and expressive.</li>
+            <li>O – Objective-C<br>Used mainly for macOS and iOS development (pre-Swift era).</li>
+            <li>P – Python<br>Beginner-friendly, widely used in data science, web, AI, automation.</li>
+            <li>Q – Q#<br>Quantum programming language developed by Microsoft.</li>
+            <li>R – Ruby<br>Elegant syntax, used in web development (especially Rails framework).</li>
+            <li>S – Swift<br>Apple’s modern language for iOS, macOS development.</li>
+            <li>T – TypeScript<br>Superset of JavaScript adding static types, improving large-scale JS apps.</li>
+            <li>U – Unicon<br>Language combining goal-directed evaluation with object-oriented features.</li>
+            <li>V – V<br>Simple, fast language designed for safety and readability.</li>
+            <li>W – Wolfram Language<br>Used in Mathematica, powerful for symbolic computation and math.</li>
+            <li>X – Xojo<br>Cross-platform app development language with a VB-like syntax.</li>
+            <li>Y – Yorick<br>Used in scientific simulations and numerical computation.</li>
+            <li>Z – Zig<br>Low-level, safe language for systems programming, alternative to C.</li>
+        </ol>
+    </div>
+</div>
+<div id="tuesday-content-week9" class="day-content day-section">
+    <h2>Techie Tuesday</h2>
+    <div class="quiz-container">
+        <h3>Spot the Error Challenge:</h3>
+        <div class="question-block">
+            <p>1. Find the mistake in this code:</p>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+    int a = 10;
+    if (a = 5)
+        printf("Yes");
+    return 0;
+}</code></pre>
+<p>What's wrong?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. Nothing</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. Assignment u8sed instead of comparision</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. Syntax error</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Loop is missing</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
+</div>
+<div id="wednesday-content-week9" class="day-content day-section">
+    <h2>Syntax Snapshots Wednesday</h2>
+    <div class="content-block">
+    <h3>1. C Memory Layout (Intermediate View)</h3>
+    <p>Description:<br>This diagram breaks down how a C program is loaded into memory:</p>
+    <ul>
+        <li>Code Segment: Stores compiled code</li>
+        <li>Stack: Stores function calls, local variables (LIFO)</li>
+        <li>Heap: Dynamically allocated memory (malloc, calloc)</li>
+        <li>Data Segment: Global and static variables</li>
+    </ul>
+    <p>Understanding this is key for debugging, memory optimization, and pointer management.</p>
+    </div>
+</div>
+<div id="thursday-content-week9" class="day-content day-section">
+    <h2>Te Ta Thursday</h2>
+    <div class="content-block">
+    <h3>Career Opportunities with C Language (2025)</h3>
+            <p>Knowing C language can open up various career opportunities in 2025. Here are some potential paths:</p>
+            <h4>Job Roles</h4>
+            <ol>
+                <li>Junior Programmer: Basic coding, debugging, reviewing codes, and technical documentation.</li>
+                <li>Senior Programmer: Experienced programmer with expertise in software development.</li>
+                <li>Software Developer: Creating and marketing software.</li>
+                <li>Quality Analyst: Analyzing software design and functionality.</li>
+                <li>Game Programmer: Developing codebases for gaming software.</li>
+                <li>Embedded Engineer: Developing embedded systems with a focus on microcontrollers and real-time operating systems.</li>
+                <li>Database Developer: Designing, modifying, and troubleshooting databases.</li>
+                <li>Programming Architect: Designing and implementing software architectures.</li>
+            </ol>
+            <h4>Industries</h4>
+            <ul>
+                <li>Finance: Financial modeling, trading platforms, and risk management.</li>
+                <li>Healthcare: Developing medical devices, patient monitoring systems, and clinical decision support systems.</li>
+                <li>Gaming: Building game engines, physics engines, and dynamic simulations.</li>
+                <li>Embedded Systems: Automotive, robotics, and IoT development.</li>
+            </ul>
+            <h4>Key Skills</h4>
+            <ul>
+                <li>Problem-solving: Strong problem-solving skills to debug and optimize code.</li>
+                <li>System programming: Understanding of system calls, memory management, and file systems.</li>
+                <li>Algorithm design: Knowledge of algorithms and data structures is crucial for efficient programming.</li>
+            </ul>
+</div>
+</div>
+<div id="friday-content-week9" class="day-content day-section">
+<!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>-->
+     <h2>Function Friday</h2>
+     <div class="content-block">
+     <h3>Let's unravel a little mystery about how your C code actually turns into a program.</h3>
+            <p>Before your computer can even understand what your 'int's and 'if's mean, there's a crucial first step! Imagine your C code is a recipe. The compiler (your digital chef) has a "checklist" it goes through before it starts cooking your program.</p>
+            <p>What's the very first thing the compiler looks for in a typical C program that uses printf to print text?</p>
+            <p>Which "ingredient" on the compiler's checklist comes first? Share your thoughts!</p>
+        </div>
+        <div class="quiz-container">
+            <h3>Question:</h3>
+            <div class="question-block">
+                <p>Is it..</p>
+                <div class="options">
+                    <div class="quiz-option" data-question="q1" data-value="a">A. The main() function?</div>
+                    <div class="quiz-option" data-question="q1" data-value="b">B. The #include &lt;stdio.h&gt; line?</div>
+                    <div class="quiz-option" data-question="q1" data-value="c">C. A specific variable declaration?</div>
+                </div>
+                <div class="quiz-feedback"></div> </div>
+        </div>
+
+</div>
+    <div id="saturday-content-week9" class="day-content day-section">
+        <h2>Brain Cache</h2>
+        <div class="content-block">
+            <h3>1. What is the output of the following C code snippet?</h3>
+            <pre><code>int x = 10;
+    printf("%d", ++x);</code></pre>
+    <ol>
+        <li>A. 10</li>
+        <li><strong>B. 11</strong></li>
+        <li>C. Undefined behavior</li>
+        <li>D. Compiler error</li>
+    </ol>    
+            <h3>2. Which header file must be included to use malloc() and free() functions in C?</h3>
+            <ol>
+                <li>A. stdio.h</li>
+                <li>B. string.h</li>
+                <li><strong>C. stdlib.h</strong></li>
+                <li>D. math.h</li>
+            </ol>
+            <h3>3. What is the purpose of the `break` statement in C?</h3>
+            <ol>
+                <li>A. To exit the program.</li>
+                <li>B. To skip the current iteration of a loop.</li>
+                <li><strong>C. To terminate a loop or switch statement.</strong></li>
+                <li>D. To jump to a specific label.</li>
+            </ol>
+    
+            <h3>4. In C, what does sizeof(char) typically return?</h3>
+            <ol>
+                <li>A. 0 bytes</li>
+                <li><strong>B. 1 byte</strong></li>
+                <li>C. 2 bytes</li>
+                <li>D. 4 bytes</li>
+            </ol>
+    
+            <h3>5. Write a C program to swap two numbers without using a third variable.</h3>
+            <p><strong>Expected Answer (focus on logic):</strong></p>
+            <pre><code>#include &lt;stdio.h&gt;
+int main() {
+
+int num1 = 5;
+int num2 = 10;
+
+printf("Before swap: num1 = %d, num2 = %d\n", num1, num2);
+
+// Swap using arithmetic operations
+num1 = num1 + num2; // num1 now holds the sum
+num2 = num1 - num2; // num2 now holds the original num1
+num1 = num1 - num2; // num1 now holds the original num2
+
+printf("After swap: num1 = %d, num2 = %d\n", num1, num2);
+return 0;
+}</code></pre>
+        </div>
+    </div>
+</div>  <!-- add week9 content before these -->  
 
 <div id="week11" class="week-content">
 <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">Mindmash</p>
@@ -3910,6 +4103,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 'q1': 'd', 
             },
             'saturday': { 
+                'q1': 'b', 
+            },
+        },
+        'week9': {
+            'tuesday': {
+                'q1': 'b',  
+            },
+            'friday': { 
                 'q1': 'b', 
             },
         },
