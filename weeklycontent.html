@@ -772,7 +772,7 @@ pre code {
             <button class="tab-button" onclick="showWeek('week7', this)">Week 7</button>
             <button class="tab-button" onclick="showWeek('week8', this)">Week 8</button>
             <button class="tab-button" onclick="showWeek('week9', this)">Week 9</button>
-            <!--<button class="tab-button" onclick="showWeek('week10', this)">Week 10</button>-->
+            <button class="tab-button" onclick="showWeek('week10', this)">Week 10</button>
             <button class="tab-button" onclick="showWeek('week11', this)">Mindmash</button>
         </div>
 
@@ -3301,7 +3301,262 @@ return 0;
 }</code></pre>
         </div>
     </div>
-</div>  <!-- add week9 content before these -->  
+</div>  <!-- add week10 content before these -->  
+<div id="week10" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 10 - Programming Concepts and Challenges
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week10', this, 'week10')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week10', this, 'week10')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week10', this, 'week10')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week10', this, 'week10')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week10', this, 'week10')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week10', this, 'week10')">Saturday</button>
+    </div>
+
+<div id="monday-content-week10" class="day-content day-section">
+    <h2>Monday Maverick</h2>
+    <div class="quiz-container">
+        <h3>Questions:</h3>
+    <div class="question-block">
+        <p>1. What are the key components of a node in a singly linked list in C?</p>
+        <div class="options">
+            <div class="quiz-option" data-question="q1" data-value="a">A. int node[10];</div>
+            <div class="quiz-option" data-question="q1" data-value="b">B. struct Node { int data; struct Node* next; };</div>
+            <div class="quiz-option" data-question="q1" data-value="c">C. char *node = "linked";</div>
+            <div class="quiz-option" data-question="q1" data-value="d">D. All of the above</div>
+        </div>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question-block">
+        <p>2. What will be the output?
+char str[20] = "Hello"; 
+strcat(str, " World"); 
+printf("%s", str);</p>
+        <div class="options">
+            <div class="quiz-option" data-question="q2" data-value="a">A. Hello</div>
+            <div class="quiz-option" data-question="q2" data-value="b">B. HelloWorld</div>
+            <div class="quiz-option" data-question="q2" data-value="c">C. Hello World</div>
+            <div class="quiz-option" data-question="q2" data-value="d">D. Compilation Error</div>
+        </div>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question-block">
+        <p>3. Which functions in C are used for dynamic memory allocation?</p>
+        <div class="options">
+            <div class="quiz-option" data-question="q3" data-value="a">A. scanf() and printf()</div>
+            <div class="quiz-option" data-question="q3" data-value="b">B. malloc() and calloc()</div>
+            <div class="quiz-option" data-question="q3" data-value="c">C. malloc() and scanf()</div>
+            <div class="quiz-option" data-question="q3" data-value="d">D. calloc() and strlen()</div>
+        </div>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Question 4 -->
+    <div class="question-block">
+        <p>4. What will be the output of factorial(4) using this function?
+int factorial(int n)
+{ 
+if(n <= 1) return 1; return n * factorial(n - 1); 
+}</p>
+        <div class="options">
+            <div class="quiz-option" data-question="q4" data-value="a">A. 24</div>
+            <div class="quiz-option" data-question="q4" data-value="b">B. 12</div>
+            <div class="quiz-option" data-question="q4" data-value="c">C. 4</div>
+            <div class="quiz-option" data-question="q4" data-value="d">D. 1</div>
+        </div>
+        <div class="quiz-feedback"></div>
+    </div>
+
+    <!-- Question 5 -->
+    <div class="question-block">
+        <p>5. What is the most efficient way to reverse an array in C?</p>
+        <div class="options">
+            <div class="quiz-option" data-question="q5" data-value="a">A. Create a new array and copy in reverse</div>
+            <div class="quiz-option" data-question="q5" data-value="b">B. Use recursion only</div>
+            <div class="quiz-option" data-question="q5" data-value="c">C. Swap elements from both ends using a loop</div>
+            <div class="quiz-option" data-question="q5" data-value="d">D. Sort the array in descending order</div>
+        </div>
+        <div class="quiz-feedback"></div>
+    </div>
+</div>
+</div>
+<div id="tuesday-content-week10" class="day-content day-section">
+    <h2>Techie Tuesday</h2>
+    <div class="content-block">
+    <h3>Write a C program to check whether two given strings are anagrams of each other or not.</h3>
+    <p>(Ignore case sensitivity and spaces)</p>
+    <p><strong>Example:</strong></p>
+<p>Input: "listen" and "silent"<br>Output: "Yes, they are anagrams."</p>
+    </ul>
+    <p><strong>Expected code:</strong></p>
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;stdlib.h&gt; // Required for malloc, free, and strdup
+#include &lt;ctype.h&gt;// Required for tolower and isspace
+            
+ // Function to clean a string: removes spaces and converts to lowercase.
+// This function modifies the string in place.
+
+void cleanString(char *str) {\
+    int i, j = 0;
+    // Iterate through the string
+    for (i = 0; str[i] != '\0'; i++) {
+        // If the character is not a whitespace, process it
+        if (!isspace((unsigned char)str[i])) {
+            // Convert to lowercase and store it at the current 'j' position
+            tr[j++] = tolower((unsigned char)str[i]);
+        }
+    }
+    // Null-terminate the cleaned string at the new end
+    str[j] = '\0';
+}
+            
+// Function to check if two strings are anagrams of each other.
+// Ignores case sensitivity and spaces.
+// This function creates internal copies of the input strings to avoid
+// modifying the original strings passed by the caller.
+// Returns 1 if they are anagrams, 0 otherwise.
+int areAnagrams(const char *str1, const char *str2) {
+    // Duplicate the input strings to allow for in-place modification by cleanString.
+    // Using strdup is crucial here to avoid altering the original strings.
+    // strdup allocates memory on the heap, so it must be freed later.
+    char *s1_cleaned = strdup(str1);
+    char *s2_cleaned = strdup(str2);
+            
+    // Check for memory allocation failure
+    if (s1_cleaned == NULL || s2_cleaned == NULL) {
+        fprintf(stderr, "Memory allocation failed.\n"); // Removed specific error message
+        // Free any allocated memory before returning
+        if (s1_cleaned) free(s1_cleaned);
+            if (s2_cleaned) free(s2_cleaned);
+                    return 0; // Indicate failure or not an anagram due to memory error
+    }
+            
+    // Clean both duplicated strings
+    cleanString(s1_cleaned);
+     cleanString(s2_cleaned);
+            
+    // If the lengths of the cleaned strings are different, they cannot be anagrams.
+    if (strlen(s1_cleaned) != strlen(s2_cleaned)) {
+        free(s1_cleaned);
+        free(s2_cleaned);
+        return 0;
+    }
+            
+    // Use frequency arrays to count character occurrences.
+    // An array of 256 integers covers all possible ASCII character values.
+    int count1[256] = {0}; // Initialize all counts to 0 for s1_cleaned
+    int count2[256] = {0}; // Initialize all counts to 0 for s2_cleaned
+    int i;
+            
+    // Populate count1 array with frequencies from s1_cleaned
+    for (i = 0; s1_cleaned[i] != '\0'; i++) {
+        count1[(unsigned char)s1_cleaned[i]]++;
+    }
+            
+    // Populate count2 array with frequencies from s2_cleaned
+    for (i = 0; s2_cleaned[i] != '\0'; i++) {
+        count2[(unsigned char)s2_cleaned[i]]++;
+    }
+            
+    // Compare the frequency arrays. If any character count differs, they are not anagrams.
+    for (i = 0; i < 256; i++) {
+        if (count1[i] != count2[i]) {
+            free(s1_cleaned);
+            free(s2_cleaned);
+            return 0; // Not anagrams
+        }
+    } 
+            
+    // If all character counts match, they are anagrams.
+    free(s1_cleaned); // Free the dynamically allocated memory
+    free(s2_cleaned); // Free the dynamically allocated memory
+    return 1; // Are anagrams
+}
+            
+int main() {
+    char str1_input[100]; // Buffer for the first user-entered string
+    char str2_input[100]; // Buffer for the second user-entered string
+            
+    printf("Enter the first string: ");
+    // fgets reads a line from stdin, including the newline character.
+    fgets(str1_input, sizeof(str1_input), stdin);
+    // Remove the trailing newline character if present.
+    str1_input[strcspn(str1_input, "\n")] = 0;
+            
+    printf("Enter the second string: ");
+    fgets(str2_input, sizeof(str2_input), stdin);
+    str2_input[strcspn(str2_input, "\n")] = 0;
+          
+    // Call areAnagrams with the user input.
+    // The original str1_input and str2_input arrays will remain unchanged.
+    if (areAnagrams(str1_input, str2_input)) {
+        printf("Yes, they are anagrams.\n");
+    }
+    else {
+        printf("No, they are not anagrams.\n");
+    }
+return 0; // Exit after processing one input
+}</code></pre>
+<p><strong>Output:</strong></p>
+<code>Enter the first string: listen
+Enter the second string: silent
+Yes, they are anagrams.
+
+---------------
+
+Enter the first string: hello
+Enter the second string: world
+No, they are not anagrams.</code>
+    </div>
+</div>
+<div id="wednesday-content-week10" class="day-content day-section">
+    <h2>Syntax Snapshots Wednesday</h2>
+    <h3>Try to solve this puzzle using clues to be mentioned and find answer for it.</h3>
+    <p><strong>Question:</strong> Which C concept lets you group function addresses and switch them at runtime?</p>
+    <h4>(🧰👉🏻⚙️🎮) -> Clues</h4>
+    <p><strong>Hint:</strong> Like a remote control for functions!</p>
+    <ul>
+        <li>🧰 -> Tool box (Represents a collection of Item)</li>
+        <li>👉🏻 -> Finger Pointing (Represents a pointer)</li>
+        <li>⚙️ -> Gear Icon (Represents a Function or Behaviour)</li>
+        <li>🎮 -> Game Controller (Represents  you can control from the outside)</li>
+    </ul>
+    <div class="quiz-container">
+    <div class="question-block">
+        <p>Above question's answer?</p>
+        <div class="options">
+            <div class="quiz-option" data-question="q1" data-value="a">A. Loop in C programming</div>
+            <div class="quiz-option" data-question="q1" data-value="b">B. Struct in C programming</div>
+            <div class="quiz-option" data-question="q1" data-value="c">C. Function pointers in struct in C programming</div>
+            <div class="quiz-option" data-question="q1" data-value="d">D. Functions in C programming</div>
+        </div>
+        <div class="quiz-feedback"></div>
+    </div>
+</div>
+</div>
+<div id="thursday-content-week10" class="day-content day-section">
+    <h2>Te Ta Thursday</h2>
+    <p style="text-align: center; font-style: italic; color: #555;">WEEK 6 QUIZ ENDED. WAIT FOR LEADERBOARD UPDATES!</p>
+</div>
+<div id="friday-content-week10" class="day-content day-section">
+<!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>-->
+     <h2>Function Friday</h2>
+     <p style="text-align: center; font-style: italic; color: #555;">WEEK 6 QUIZ ENDED. WAIT FOR LEADERBOARD UPDATES!</p>
+
+</div>
+    <div id="saturday-content-week10" class="day-content day-section">
+        <h2>Brain Cache</h2>
+        <p style="text-align: center; font-style: italic; color: #555;">Content coming soon!</p>
+
+    </div>
+</div>  <!-- add week10 content before these -->  
 
 <div id="week11" class="week-content">
 <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">Mindmash</p>
@@ -4114,7 +4369,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 'q1': 'b', 
             },
         },
-
+        'week10': {
+            'monday': {
+                'q1': 'b',
+                'q2': 'c', 
+                'q3': 'b', 
+                'q4': 'a', 
+                'q5': 'c',  
+            },
+            'wednesday': {
+                'q1': 'd', 
+            },
+        },
 
         'week11': { // Added answers for Week 7 (Mindmash Quiz 1)
             'quiz1': { // Changed 'monday' to 'quiz1' for Mindmash as per your button ID
