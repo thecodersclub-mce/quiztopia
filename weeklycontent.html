@@ -770,8 +770,8 @@ pre code {
             <button class="tab-button" onclick="showWeek('week5', this)">Week 5</button>
             <button class="tab-button" onclick="showWeek('week6', this)">Week 6</button>
             <button class="tab-button" onclick="showWeek('week7', this)">Week 7</button>
-            <!--<button class="tab-button" onclick="showWeek('week8', this)">Week 8</button>
-            <button class="tab-button" onclick="showWeek('week9', this)">Week 9</button>
+            <button class="tab-button" onclick="showWeek('week8', this)">Week 8</button>
+            <!--<button class="tab-button" onclick="showWeek('week9', this)">Week 9</button>
             <button class="tab-button" onclick="showWeek('week10', this)">Week 10</button>-->
             <button class="tab-button" onclick="showWeek('week11', this)">Mindmash</button>
         </div>
@@ -2800,7 +2800,7 @@ Size of union: 4 bytes</code>
     <div class="quiz-container">
         <h3>Question:</h3>
         <div class="question-block">
-            <<p>What will be the output of the following code?</p>
+            <p>What will be the output of the following code?</p>
             <pre><code>#include &lt;stdio.h&gt;
 int main() {
     int a = 10;
@@ -2859,7 +2859,7 @@ int *q = &b;
                 <div class="quiz-option" data-question="q1" data-value="a">A. Copies address of b to p</div>
                 <div class="quiz-option" data-question="q1" data-value="b">B. Copies value of b to a</div>
                 <div class="quiz-option" data-question="q1" data-value="c">C. Copies address of a to q</div>
-                <div class="quiz-option" data-question="q1" data-value="d">D. Swaps values of a abd b</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Swaps values of a and b</div>
             </div>
             <div class="quiz-feedback"></div>
         </div>
@@ -2956,7 +2956,158 @@ int main() {
     <!-- <p style="text-align: center; font-style: italic; color: #555;">WEEK 6 QUIZ ENDED. WAIT FOR LEADERBOARD UPDATES!</p> -->
 </div>
 </div>  <!-- add week7 content before these -->  
+<div id="week8" class="week-content">
+    <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">
+        Content for Week 8 - Brainstorming P-03
+    </p>
+    <div class="nested-tab-nav">
+        <button class="tab-button" onclick="showDay('monday-content-week8', this, 'week8')">Monday</button>
+        <button class="tab-button" onclick="showDay('tuesday-content-week8', this, 'week8')">Tuesday</button>
+        <button class="tab-button" onclick="showDay('wednesday-content-week8', this, 'week8')">Wednesday</button>
+        <button class="tab-button" onclick="showDay('thursday-content-week8', this, 'week8')">Thursday</button>
+        <button class="tab-button" onclick="showDay('friday-content-week8', this, 'week8')">Friday</button>
+        <button class="tab-button" onclick="showDay('saturday-content-week8', this, 'week8')">Saturday</button>
+    </div>
 
+<div id="monday-content-week8" class="day-content day-section">
+    <h2>Monday Maverick</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>1. Which operator has higher precedence?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. Prefix increment (++i)</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. Postfix increment (i++)</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. Both have same precedence</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Depends upon compiler</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
+</div>
+<div id="tuesday-content-week8" class="day-content day-section">
+    <h2>Techie Tuesday</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>1. Which operator has higher precedence?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. Prefix increment (++i)</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. Postfix increment (i++)</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. Both have same precedence</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Depends upon compiler</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+        <div class="question-block">
+            <p>2. What is the mistake here?</p>
+            <pre><code>int arr[3];
+arr[3] = 10;</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q2" data-value="a">A. No error</div>
+                <div class="quiz-option" data-question="q2" data-value="b">B. Index out ob bounds</div>
+                <div class="quiz-option" data-question="q2" data-value="c">C. Array too small</div>
+                <div class="quiz-option" data-question="q2" data-value="d">D. Compilation fails</div>
+            </div>
+            <div class="quiz-feedback"></div>
+            
+        </div>
+    </div>
+</div>
+<div id="wednesday-content-week8" class="day-content day-section">
+    <h2>Syntax Snapshots Wednesday</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>1. What will be the output of this code?</p>
+            <pre><code>int a = 10;
+int b = 20;
+printf("%d", a+++b);</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 30</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 31</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 21</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Syntax error</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
+</div>
+<div id="thursday-content-week8" class="day-content day-section">
+    <h2>Te Ta Thursday</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>1. What will be the output?</p>
+            <pre><code>#include &lt;stdio.h&gt;
+voidfunc1(){
+    printf("Inside func1\n");
+}
+
+voidfunc2(){
+    printf("Inside func2\n");
+}
+
+void(*func_ptr[2])() = {func1, func2};
+
+int main() {
+(*func_ptr[0])();
+func_ptr[1]();
+return 0;
+}</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. Inside func1Inside func1</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. Inside func1Inside func2</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. Inside func2Inside func1</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Compilation error</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
+</div>
+<div id="friday-content-week8" class="day-content day-section">
+<!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>-->
+     <h2>Function Friday</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>1.  What will be the output of the following C code?</p>
+            <pre><code>#include &lt;stdio.h&gt;
+void counter(){
+    static int count = 0;
+    count++;
+    print("d", count);
+}
+
+int main(){
+    counter();
+    counter();
+    counter();
+    return 0;
+}</code></pre>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 1 1 1</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 0 1 2</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 1 2 3</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Error</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
+</div>
+<div id="saturday-content-week8" class="day-content day-section">
+    <h2>Brain Cache</h2>
+    <div class="quiz-container">
+        <h3>Question:</h3>
+        <div class="question-block">
+            <p>1.  If sizeof(int) returns 4, how many bits does it represent?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. 16  bits</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. 32 bits</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. 15 bits</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. Depends on the machine clock</div>
+            </div>
+            <div class="quiz-feedback"></div> </div>
+    </div>
+</div>
+</div>  <!-- add week8 content before these -->  
 
 <div id="week11" class="week-content">
 <p style="text-align: left; font-weight: bold; font-size: 18px; margin-bottom: 10px; color: #00408f;">Mindmash</p>
@@ -3712,10 +3863,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 'q2': 'c'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
             },
             // Add more days here as needed:
-            'thursday': {
-                'q1': 'your_answer_for_thursday_q1',
-                'q2': 'your_answer_for_thursday_q2'
-            },
+            // 'thursday': {
+            //     'q1': 'your_answer_for_thursday_q1',
+            //     'q2': 'your_answer_for_thursday_q2'
+            // },
             'friday': { 
                 'q1': 'c', // Tuesday Q1: malloc()
                 'q2': 'b'
@@ -3724,21 +3875,24 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'week7': {
             'monday': {
-                'q1': 'a', 
+                'q1': 'b', 
             },
             'tuesday': {
-                'q1': 'a', 
+                'q1': 'b',
+                'q2': 'b', 
             },
             'wednesday': {
-                'q1': 'c', 
+                'q1': 'a', 
             },
             'thursday': {
-                'q1': 'b', 
+                 'q1': 'b',
             },
             'friday': { 
+                'q1': 'c', 
+            },
+            'saturday': { 
                 'q1': 'b', 
             },
-            // 'saturday': { /* ... */ }
         },
 
 
