@@ -191,15 +191,16 @@
     }
 
     /* --- Critical changes for the Week/Quiz tab buttons (Brain Cache & Mindmash) --- */
-    .tab-nav {
-        display: flex; /* Ensure flexbox is active */
-        flex-wrap: nowrap; /* IMP: Force all items onto a single line */
-        justify-content: space-around; /* Distribute space evenly between items */
-        overflow: hidden; /* IMP: Hide any overflowing content */
-        padding: 5px 0; /* Adjust padding if needed, make sure it doesn't push content out */
-        width: 100%; /* Ensure it takes full width to distribute space */
-        box-sizing: border-box; /* Include padding in width calculation */
-    }
+            .tab-nav {
+                display: flex; /* Ensure flexbox is active */
+                flex-wrap: nowrap; /* IMP: Force all items onto a single line */
+                justify-content: space-around; /* Distribute space evenly between items */
+                overflow: hidden; /* IMP: Hide any overflowing content */
+                padding: 5px 0; /* Adjust padding if needed, make sure it doesn't push content out */
+                width: 100%; /* Ensure it takes full width to distribute space */
+                text-overflow: ellipsis;
+                box-sizing: border-box; /* Include padding in width calculation */
+            }
 
     .tab-button {
         flex: 1; /* IMP: Allow buttons to grow and shrink to fill available space evenly */
