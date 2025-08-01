@@ -179,12 +179,6 @@
             padding-bottom: 10px;
         }
         @media only screen and (max-width: 600px) {
-    /* Adjustments for the main navigation buttons (Home, Weekly Content, etc.) */
-    .nav-button {
-        padding: 6px 8px; /* Smaller padding */
-        font-size: 0.75em; /* Smaller font size */
-        margin: 2px; /* Reduce margin between buttons */
-    }
     .button-container {
         padding: 10px; /* Adjust padding for the button container */
         text-align: center; /* Center buttons if they wrap (though nav buttons should fit) */
@@ -192,6 +186,7 @@
 
     /* --- Critical changes for the Week/Quiz tab buttons (Brain Cache & Mindmash) --- */
             .tab-nav {
+                font-size: 0.75em;
                 display: flex; /* Ensure flexbox is active */
                 flex-wrap: nowrap; /* IMP: Force all items onto a single line */
                 justify-content: space-around; /* Distribute space evenly between items */
