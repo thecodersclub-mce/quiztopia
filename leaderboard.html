@@ -186,27 +186,32 @@
 
     /* --- Critical changes for the Week/Quiz tab buttons (Brain Cache & Mindmash) --- */
             .tab-nav {
-                font-size: 0.75em;
-                display: flex; /* Ensure flexbox is active */
-                flex-wrap: nowrap; /* IMP: Force all items onto a single line */
-                justify-content: space-around; /* Distribute space evenly between items */
-                overflow: hidden; /* IMP: Hide any overflowing content */
-                padding: 5px 0; /* Adjust padding if needed, make sure it doesn't push content out */
-                width: 100%; /* Ensure it takes full width to distribute space */
-                text-overflow: ellipsis;
-                box-sizing: border-box; /* Include padding in width calculation */
-            }
+        font-size: 0.95em;
+    display: flex;
+    flex-wrap: nowrap; /* CRITICAL: This forces all buttons onto a single line */
+    justify-content: space-around;
+    overflow: hidden; 
+    padding: 5px 0;
+    width: 100%;
+    box-sizing: border-box;
+    }
 
     .tab-button {
-        flex: 1; /* IMP: Allow buttons to grow and shrink to fill available space evenly */
-        min-width: 0; /* Allow the button to shrink smaller than its content, but handle overflow */
-        padding: 8px 4px; /* Reduced padding for more content space */
-        margin: 0 2px; /* Minimal margin between buttons */
-        font-size: 0.75em; /* Adjusted font size for fitting. This is the compromise. */
-        white-space: nowrap; /* IMP: Prevent text from wrapping inside the button */
-        overflow: hidden; /* IMP: Hide overflowing text */
-        text-overflow: ellipsis; /* IMP: Show "..." for hidden overflowing text */
-        box-sizing: border-box; /* Include padding and border in the width calculation */
+    flex: 1; 
+    min-width: 0;
+    padding: 8px 4px;
+    margin: 0 2px;
+    font-size: 0.75em;
+    
+    /* --- CRITICAL CHANGES BELOW --- */
+    white-space: normal; /* This allows text to wrap */
+    overflow: visible;   /* This allows all text to be shown */
+    text-overflow: clip; /* This prevents the ellipsis from showing */
+    word-break: break-word; /* This ensures a single long word will break */
+    /* --- CRITICAL CHANGES ABOVE --- */
+    
+    box-sizing: border-box; 
+  }
     }
 
     /* Ensure active button styling doesn't break layout */
