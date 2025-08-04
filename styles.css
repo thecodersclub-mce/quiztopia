@@ -128,7 +128,7 @@ button:active {
     -webkit-overflow-scrolling: touch;
 }
 
-.nav-button {
+.b-nav-button {
     background-color: rgba(12, 129, 224, 0.2); /* Your specified blue hue with transparency */
     color: #003060; /* Darker, richer blue text for good contrast */
     border: 1px solid rgba(0, 40, 80, 0.15); /* Subtle blue border */
@@ -161,7 +161,11 @@ button:active {
     border-color: rgba(0, 64, 143, 0.3); /* More prominent border on hover */
     color: #001530; /* Even darker blue on hover */
 }
-
+.active-nav-button {
+            background-color: #0056b3;
+            color: white;
+            border-bottom: 3px solid #f0f0f0;
+        }
 /* Footer Styles */
 footer {
     width: 100%;
