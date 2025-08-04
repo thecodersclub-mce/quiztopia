@@ -2651,8 +2651,71 @@ int main() {
     </div>
 </div>
 <div id="thursday-content-week6" class="day-content day-section">
-    <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>
+    <h2>Te Ta Thursday</h2>
+    <div class="content-block">
+        <h3>Typedef in C: Creating Custom Data Type Names</h3>
+        <p>The <strong>typedef</strong> keyword in C is used to create a new name, or an alias, for an existing data type. This makes the code easier to read and understand by allowing you to use more meaningful names for complex data types, such as structures, unions, and pointers. It is often used to simplify the declaration of variables.</p>
+    </div>
+    <div class="content-block">
+        <h3>Syntax:</h3>
+        <pre><code>typedef &lt;existing_type&gt; &lt;new_name&gt;;</code></pre>
+    </div>
+    <div class="content-block">
+        <h3>Example:</h3>
+        <pre><code>#include &lt;stdio.h&gt;
+
+// 1. Using typedef with a structure
+// Define a structure named 'Student'
+struct Student {
+    int id;
+    int age;
+};
+
+// Create a new name 'StudentData' for the 'struct Student' type
+typedef struct Student StudentData;
+
+// 2. Using typedef with a basic data type
+// Create a new name 'Ulong' for the 'unsigned long int' type
+typedef unsigned long int Ulong;
+
+int main() {
+    // Declare a variable using the new name 'StudentData'
+    StudentData s1;
+    s1.id = 101;
+    s1.age = 22;
+
+    printf("Student ID: %d\n", s1.id);
+    printf("Student Age: %d\n\n", s1.age);
+
+    // Declare a variable using the new name 'Ulong'
+    Ulong largeNumber = 4294967295;
+    printf("Large number: %lu\n", largeNumber);
+
+    return 0;
+}</code></pre>
+    </div>
+    <div class="content-block">
+        <h3>Output:</h3>
+        <code>Student ID: 101
+Student Age: 22
+
+Large number: 4294967295</code>
+    </div>
+    <div class="quiz-container">
+        <h3>C Typedef Basics:</h3>
+        <div class="question-block">
+            <p>1. What is the primary purpose of the <strong>typedef</strong> keyword in C?</p>
+            <div class="options">
+                <div class="quiz-option" data-question="q1" data-value="a">A. To define new functions.</div>
+                <div class="quiz-option" data-question="q1" data-value="b">B. To allocate dynamic memory.</div>
+                <div class="quiz-option" data-question="q1" data-value="c">C. To create a new name for an existing data type.</div>
+                <div class="quiz-option" data-question="q1" data-value="d">D. To define constants.</div>
+            </div>
+            <div class="quiz-feedback"></div>
+        </div>
+    </div>
 </div>
+
 <div id="friday-content-week6" class="day-content day-section">
 <!-- <p style="text-align: center; font-style: italic; color: #555;">CONTENT COMING SOON!</p>-->
      <h2>Function Friday</h2>
@@ -4351,11 +4414,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 'q1': 'd', // Wednesday Q1: struct
                 'q2': 'c'  // Wednesday Q2: Structures store all members in separate memory locations, while unions store all members in the same memory location.
             },
-            // Add more days here as needed:
-            // 'thursday': {
-            //     'q1': 'your_answer_for_thursday_q1',
-            //     'q2': 'your_answer_for_thursday_q2'
-            // },
+            'thursday': {
+                'q1': 'c', 
+                'q2': 'c'  
+            },
             'friday': { 
                 'q1': 'c', // Tuesday Q1: malloc()
                 'q2': 'b'
