@@ -17,6 +17,7 @@
             padding-bottom: 50px; /* Add padding to prevent content from being hidden by the fixed footer */
             box-sizing: border-box; /* Include padding in the element's total width and height */
         }
+
         .quiz-form-wrapper { /* Renamed to feedback-form-wrapper for clarity, but kept for compatibility */
             width: 90%; /* Adjust width for better responsiveness */
             max-width: 700px; /* Limit max-width for larger screens */
@@ -286,6 +287,13 @@
 
         #submissionSuccessMessage.show .success-content {
             transform: scale(1);
+        }
+
+        .success-content p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #008000;
+            margin-top: 15px;
         }
 
         .success-icon-fa {
